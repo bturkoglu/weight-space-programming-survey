@@ -1,0 +1,11 @@
+% Fig.: largest target network of the 44 primary studies that state it, LLM vs non-LLM targets.
+\begin{tikzpicture}
+\begin{axis}[wspaxis,width=\columnwidth,height=4.6cm,ybar stacked,bar width=15pt,ymin=0,ymax=15,xmin=0.4,xmax=5.6,
+  xtick={1,...,5},xticklabels={${<}$1k,1k--1M,1M--100M,100M--1B,${\geq}$1B},x tick label style={font=\scriptsize},
+  ymajorgrids,ytick={0,5,10,15},ylabel={Studies},xlabel={Parameters of the largest target network},
+  legend style={at={(0.02,0.98)},anchor=north west,cells={anchor=west}},every axis plot/.append style={draw=white,line width=0.5pt}]
+\addplot[fill=cViolet] coordinates {(1,4)(2,8)(3,6)(4,1)(5,1)};
+\addplot[fill=cOrange] coordinates {(1,0)(2,1)(3,0)(4,12)(5,11)};
+\legend{non-LLM target (20),LLM target (24)}
+\end{axis}
+\end{tikzpicture}

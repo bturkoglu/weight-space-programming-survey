@@ -5,11 +5,11 @@
   {Weight-Space Programming with Large Language Models: a survey of 70 studies (3--21 November 2026)};
 \foreach \i/\c/\t/\s in {
  0/cBlue/{I.\ Introduction}/{{Background and the MIT post},{Why a review now},{Contributions},{PRISMA-ScR method; 80 sources, 714 quotes checked}},
- 1/cOrange/{II.\ Concepts}/{{What WSP is},{Workflow (Fig.~3)},{Seven neighbouring families (Table~I)}},
- 2/cAqua/{III.\ Classification}/{{Four axes (Fig.~4)},{Reading, writing and editing weights},{A model editing itself},{Who the editors are}},
- 3/cViolet/{IV.\ Applications}/{{13 domains, from clinical networks to quantum circuits (Table~II)},{Target sizes (Fig.~5b)}},
- 4/cYellow/{V.\ Evidence}/{{Audit of 54 primary studies (Fig.~5a)},{Recurring failure modes (Table~III)},{Worked example: Qwen3.5-0.8B (Table~IV, Fig.~6)}},
- 5/cMagenta/{VI--VIII.\ Outlook}/{{Open resources},{WSP-12 reporting checklist (Table~V)},{Open problems},{Conclusion}}} {
+ 1/cOrange/{II.\ Concepts}/{{What WSP is},{Workflow (Fig.~\ref{fig:workflow})},{Seven neighbouring families (Table~\ref{tab:neighbours})}},
+ 2/cAqua/{III.\ Classification}/{{Four axes (Fig.~\ref{fig:taxonomy})},{Reading, writing and editing weights},{A model editing itself},{Who the editors are}},
+ 3/cViolet/{IV.\ Applications}/{{11 areas, from medicine to quantum circuits (Table~\ref{tab:apps})},{Target sizes (Fig.~\ref{fig:size})}},
+ 4/cYellow/{V.\ Evidence}/{{Audit of 54 primary studies (Fig.~\ref{fig:evidence})},{Recurring failure modes (Table~\ref{tab:failure})},{Qwen3.5-0.8B repair (Tables~\ref{tab:qwenlit},~\ref{tab:case})}},
+ 5/cMagenta/{VI--VII.\ Outlook}/{{WSP-12 checklist (Table~\ref{tab:checklist})},{Open problems},{Conclusion}}} {
   \pgfmathsetmacro{\x}{\i*(\cw+\gap)}
   \node[fill=\c,text=white,rounded corners=2pt,minimum width=\cw cm,minimum height=\hh cm,font=\footnotesize\bfseries,anchor=north west] (h\i) at (\x,-0.75) {\t};
   \node[draw=\c,fill=\c!6,rounded corners=2pt,line width=0.6pt,minimum width=\cw cm,minimum height=\bh cm,anchor=north west,inner sep=0pt] (b\i) at (\x,-0.75-\hh-0.08) {};
@@ -17,5 +17,5 @@
    {\raggedright\hyphenpenalty=10000\setlength{\parskip}{2.4pt}\foreach \it in \s {\hangindent=2.6mm\hangafter=1\noindent\textcolor{\c}{\tiny$\blacktriangleright$}\hspace{0.9mm}\it\par}};
 }
 \foreach \i [evaluate=\i as \j using int(\i+1)] in {0,...,4} \draw[->,line width=0.8pt,draw=cMuted] (h\i.east) -- (h\j.west);
-\node[anchor=north west,font=\scriptsize,text=cMuted] at (0,-0.75-\hh-0.08-\bh-0.12) {Appendix A: index of all 70 studies with their coded axes. \quad Appendix B: dated protocol amendments of the case study.};
+\node[anchor=north west,font=\scriptsize,text=cMuted] at (0,-0.75-\hh-0.08-\bh-0.12) {Appendix A: case-study details and protocol amendments. \quad Appendix B: evidence table of the 54 primary studies. \quad Appendix C: index of all 70 studies.};
 \end{tikzpicture}

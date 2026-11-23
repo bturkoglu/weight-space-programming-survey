@@ -13,3 +13,7 @@ Command: sacct -u bturkoglu -S 2026-11-16 -X -n -P -o JobName,ElapsedRaw, summed
 | Total (MATH-500 work) | | 646.1 | |
 | wsp-other | 63 | 158.7 | AMENDMENT-6 MMLU-Pro 1k and IFEval, 5 models (added 2026-11-22) |
 | Total incl. AMENDMENT-6 | | 804.8 | |
+
+**Update 23 Nov 2026.** `sacct -u bturkoglu -S 2026-11-01 -X` summed over all jobs (one V100 each): 1,042 GPU-hours,
+including the LoRA arms (wsp-cgen 53, wsp-ctrain 3) and the full-set C1/C2 evaluations. With the Qwen3.5-2B/4B full-set
+evaluations still running, the paper reports about 1,100 V100-hours.

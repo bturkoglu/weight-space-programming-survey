@@ -1,4 +1,4 @@
-# Full MATH-500 confirmation (PROTOCOL AMENDMENT-5 / 5b)
+# Full MATH-500 confirmation (PROTOCOL AMENDMENT-5 / 5b; C arms AMENDMENT-7)
 
 All 500 problems x 4 samples, 32,768 tokens, MIT sampling, fp16 on V100 (TRUBA akya-cuda).
 Paired gain = per-problem mean over 4 samples, arm minus reference; 95% bootstrap CI over problems
@@ -11,6 +11,8 @@ Paired gain = per-problem mean over 4 samples, arm minus reference; 95% bootstra
 | B1c thinking off | 0.487 | 0.097 | 7,782 | +0.409 [+0.380, +0.440] | 356/0 | -0.026 [-0.051, -0.001] | 114/139 |
 | B4 seed 0 (best-of-3 seed) | 0.279 | 0.719 | 27,283 | +0.201 [+0.175, +0.227] | 226/14 | -0.234 [-0.262, -0.206] | 22/254 |
 | B4 seed 1 (median seed) | 0.269 | 0.724 | 27,422 | +0.191 [+0.165, +0.217] | 205/15 | -0.244 [-0.274, -0.214] | 33/270 |
+| C1 LoRA on own correct solutions (199) | 0.187 | 0.816 | 27,677 | +0.109 [+0.091, +0.128] | 145/10 | - | - |
+| C2 LoRA on Qwen3.5-4B solutions (1,286) | 0.450 | 0.401 | 18,214 | +0.372 [+0.342, +0.403] | 317/0 | -0.063 [-0.086, -0.040] | 77/154 |
 
 Reference values: MIT reports unedited 7.9 and p50c 48.1 on MATH-500.
 
@@ -20,3 +22,6 @@ Reading:
   but on the full set Astra's edit is better by 2.6 points, CI just excluding zero. The first-50 result
   ("no difference", 0.00 [-0.10, +0.105]) was underpowered.
 - B4 (44 passes, no LLM) recovers 44-46% of Astra's gain; it is far below p50c on the full set.
+- C2 (LoRA on solutions written by Qwen3.5-4B, AMENDMENT-7) recovers 86% of Astra's gain (0.372 / 0.435) with 84% of
+  Astra's tokens; Astra is better by 6.3 points [4.0, 8.6], and thinking off beats C2 by 3.7 [1.3, 6.1]. C1 (LoRA on
+  the model's own solutions) recovers 25%. Completed 23 Nov 2026.

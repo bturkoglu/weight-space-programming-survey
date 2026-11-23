@@ -11,6 +11,10 @@ and Khattab, 2 November 2026). This repository holds everything behind the surve
 (cut-off 21 November 2026), every extracted claim with its page and verbatim quote, the **WSP-12** reporting checklist,
 the figures, and the code and results of the Qwen3.5-0.8B case study.
 
+**Case study in one line.** On all 500 MATH-500 problems, the GPT-6 Astra weight edit raises Qwen3.5-0.8B from 7.8% to
+51.3%; switching thinking off (no weight change) reaches 48.7% with about a third of the tokens, and LoRA on 1,286
+solutions written by Qwen3.5-4B reaches 45.0% (86% of the gain). See `case_study/results/FULL_500.md`.
+
 <p align="center"><img src="figures/pdf/fig4_taxonomy.png" width="95%" alt="Four-axis classification of weight-space programming studies"></p>
 
 ## Contents
@@ -21,6 +25,7 @@ the figures, and the code and results of the Qwen3.5-0.8B case study.
 | `data/claims_with_quotes.csv` | 714 extracted claims, each with page and verbatim quote, machine-checked against the source text |
 | `data/extracts/`, `data/coding/` | first-pass extraction forms and second-pass codes, one JSON per study |
 | `data/audit/` | blind second coding of 13 studies and the agreement (82 of 91 items, Cohen's kappa 0.81) |
+| `data/evidence_rows.json` | evidence table of the 54 primary studies: main finding, strongest simple comparison, outcome tag |
 | `data/classification.json` | group A (LLM editor, 57), group B (no LLM editor, 13), excluded (10) |
 | `data/EXTRACT_SPEC.md`, `data/CODE2_SPEC.md` | the extraction and coding forms |
 | `checklist/WSP-12.md` | the WSP-12 reporting checklist, in Markdown and LaTeX, ready to paste |
