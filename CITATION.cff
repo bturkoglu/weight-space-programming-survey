@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this corpus, the WSP-12 checklist or the figures, please cite the survey."
-title: "Weight-Space Programming with Large Language Models: A Survey of Concepts, Evidence Audit, Applications, and Future Directions"
+title: "Weight-Space Programming with Large Language Models: A Survey"
 authors:
   - family-names: "Türkoğlu"
     given-names: "Bahaeddin"

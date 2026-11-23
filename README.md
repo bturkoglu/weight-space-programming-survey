@@ -2,8 +2,7 @@
 
 Supplementary material and living paper list for
 
-> Bahaeddin Türkoğlu. **Weight-Space Programming with Large Language Models: A Survey of Concepts, Evidence Audit,
-> Applications, and Future Directions.** 2026. (arXiv link will be added here.)
+> Bahaeddin Türkoğlu. **Weight-Space Programming with Large Language Models: A Survey.** 2026. (arXiv link will be added here.)
 
 Weight-space programming (WSP) uses a large language model (LLM) to read, write or edit the weights of another neural
 network directly, without training it. The term comes from the MIT CSAIL post
