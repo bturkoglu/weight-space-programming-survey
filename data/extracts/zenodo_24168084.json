@@ -1,0 +1,49 @@
+{
+ "key": "zenodo_24168084",
+ "title": "ZeGA: Zero-Gradient Gated Adaptation via Weight-Space Synapse Cartridges",
+ "authors": ["Johan Thulin"],
+ "date": "2026-11-12",
+ "doc_type": "method_or_tool",
+ "wsp_role": ["write_from_scratch", "repair_or_edit"],
+ "is_wsp": false,
+ "editor_models": ["none"],
+ "target_networks": [
+  {"name": "Ministral-3-8B-Instruct-2512-BF16", "params": "8.9B", "kind": "LLM"},
+  {"name": "CLIP-ViT-B/32", "params": "151M", "kind": "other"},
+  {"name": "Juggernaut XL (SDXL-derived UNet)", "params": "2.57B", "kind": "diffusion"}
+ ],
+ "domain": "language (Swedish), vision-language, image diffusion",
+ "tasks_benchmarks": ["SwedMaster-300", "SwedFreeGen-60", "ScaLA-sv (first 1,000 test items)", "DaLAJ-derived minimal pairs", "Belebele-SV/EN/FR", "Anchor-40", "Python-20", "Math-20", "CompBind-240", "ClauseSwap-180", "SpatialRel-160", "CIFAR-100 zero-shot", "CelebA probe", "Juggernaut XL multi-object scenes"],
+ "headline_result": {
+  "text": "Closed-form appended MLP channels (no gradients, no LLM editor) raised SwedMaster-300 on Ministral-3-8B from 73.67% to 84.00% while leaving base weights byte-identical.",
+  "page": "PAGE 1",
+  "quote": "improves SwedMaster-300 from 73.67% to 84.00% (+10.33 pp, p = 1.64 × 10−6 ),"
+ },
+ "evidence_quality": {
+  "random_or_null_control": "yes",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "no",
+  "n_runs_or_seeds": "single",
+  "full_test_set": "no",
+  "held_out_eval": "yes",
+  "preregistered": "no",
+  "code_or_data_released": "yes",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "no",
+ "relation_to_qwen_math_edit": "none",
+ "key_claims": [
+  {"claim": "ZeGA builds appended MLP channels in closed form from forward-pass calibration activations, without gradient optimization, and leaves base weights untouched.", "page": "PAGE 1", "quote": "ZeGA synthesizes closed-form structural width expansions (M → M + Kℓ ) from forward- pass calibration activations and attaches them directly to native nn.Linear layers"},
+  {"claim": "The author frames the work as extending Weight-Space Programming from compact circuits and the Qwen loop-dampening experiment to reversible adaptation of foundation models.", "page": "PAGE 2", "quote": "Extending WSP from compact circuits and single-direction loop dampening (Sparks Experiment 8) to reversible, context-selective adaptation in foundation models requires addressing three concrete challenges"},
+  {"claim": "On CLIP-ViT-B/32 the 4-row quartet raised CompBind-240 Group Score from 0.83% to 25.83%, while a 1-row control stayed at the base level.", "page": "PAGE 2", "quote": "whereas a 1-row control stays at 0.83%/3.33%/0.00% Group (p = 1.00)."},
+  {"claim": "On the Swedish language model, general benchmarks were preserved and Math-20 stayed at 7/20 with identical greedy completions.", "page": "PAGE 1", "quote": "Math-20 (7/20 → 7/20, 20/20 char-identical)"},
+  {"claim": "In SDXL, the patch-gated cartridge converted target vessels while a constant-gate control destroyed bystanders.", "page": "PAGE 2", "quote": "while preserving nearby bystanders (85.91% all-8, 83.90% n = 7, 81.21% n = 6 naturalness vs. 4.11%/4.70%/5.09% for a matched constant-gate control;"}
+ ],
+ "limitations_stated": [
+  {"text": "SpatialRel-160 group score remains below the i.i.d. chance reference.", "page": "PAGE 8", "quote": "SpatialRel-160 Group Score (6.25% quartet, 1.25% pair; quartet I2T 65.0%∗ , p = 0.0014) remains below the 16.67% i.i.d. reference"},
+  {"text": "Vision evaluation uses synthetic rendered vocabularies, not natural open-vocabulary benchmarks.", "page": "PAGE 8", "quote": "evaluates synthetic 3D attribute/relation vocabular- ies (0% template overlap) rather than open-vocabulary natural benchmarks such as Winoground [26] or SugarCrepe [10]."},
+  {"text": "No comparison against trained diffusion adapters; audio, video and convolutional extensions are future work.", "page": "PAGE 8", "quote": "Audio, video, trained diffusion adapter comparisons, and Family III convolutions remain future work."}
+ ],
+ "notes_for_review": "Cites Sparks of WSP as its paradigm but the weights are computed by closed-form SVD/ridge/polarization formulas, not written by an LLM, so it is better seen as a non-LLM, mechanical counterpart to WSP. Evidence is single-run, uses mostly author-built suites (SwedMaster-300, CompBind-240) and partial test sets (first 1,000 ScaLA items), with no LoRA or fine-tuning baseline actually run. Controls (1-row, constant-gate) are ablations of the method itself. The SDXL scalar offset was tuned on one development scene, reported separately."
+}

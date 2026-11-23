@@ -1,0 +1,46 @@
+{
+ "key": "zenodo_24235217",
+ "title": "Weight-Space Audit of MIT-p50c and DNA Weight Editing (SGNE-CC) on Qwen3.5-0.8B at a 32,768-Token Generation Limit (EN / RU)",
+ "authors": ["unclear (no author name in text; GitHub account Nondual-Observer)"],
+ "date": "2026-11-15",
+ "doc_type": "audit_or_critique",
+ "wsp_role": ["read", "repair_or_edit"],
+ "is_wsp": true,
+ "editor_models": ["unclear (SGNE-CC search procedure not released; MIT-p50c is the MIT WSP edit)"],
+ "target_networks": [{"name": "Qwen3.5-0.8B", "params": "0.8B (752M text parameters)", "kind": "LLM"}],
+ "domain": "math reasoning, symbolic logic, code generation, multilingual text generation",
+ "tasks_benchmarks": ["MATH-500", "MGSM-240", "BBH-160", "BBH Web of Lies", "HumanEval-164", "MultiSpeech-64"],
+ "headline_result": {
+  "text": "Under greedy decoding the MIT-p50c edit solved only 4 of 100 MATH-500 problems versus 44 for the norm-preserving SGNE-CC patch, while under model-card sampling on the full 500 problems MIT-p50c solved 51.8% and SGNE-CC 47.0%.",
+  "page": "FILE 01_SGNE_CC_Weight_Space_Audit_and_DNA_Weight_Editing_Qwen35_08B_EN.md",
+  "quote": "Under strict grading, Base solves none of the 100 problems, MIT-p50c solves 4, and SGNE-CC solves 44: the paired difference is +41/−1 problems (exact paired McNemar test, p = 1.96 × 10⁻¹¹)."
+ },
+ "evidence_quality": {
+  "random_or_null_control": "no",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "yes",
+  "n_runs_or_seeds": "single",
+  "full_test_set": "yes",
+  "held_out_eval": "yes",
+  "preregistered": "no",
+  "code_or_data_released": "yes",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "partial",
+ "relation_to_qwen_math_edit": "critiques",
+ "key_claims": [
+  {"claim": "The MIT-p50c edit is nearly rank-one in both edited layers and more than doubles some column norms, while SGNE-CC rotates columns and keeps norms within about 0.16%.", "page": "FILE 01_SGNE_CC_Weight_Space_Audit_and_DNA_Weight_Editing_Qwen35_08B_EN.md", "quote": "the first singular mode accounts for over 99.999% of update energy. Individual column norms increase by up to 114.3%, reaching more than twice their pretrained length."},
+  {"claim": "The MIT-p50c gain depends strongly on decoding settings: on the same 100 problems it went from 4 correct under greedy decoding to 45 under model-card sampling with presence penalty.", "page": "FILE 01_SGNE_CC_Weight_Space_Audit_and_DNA_Weight_Editing_Qwen35_08B_EN.md", "quote": "switching to model-card settings changes MIT-p50c's score in the direct PyTorch run from 4 to 45 of 100 (+42/−1, p = 1.00 × 10⁻¹¹)."},
+  {"claim": "In a direct PyTorch run on all 500 MATH-500 problems under model-card settings, base, MIT-p50c and SGNE-CC solved 7.8%, 51.8% and 47.0%, with SGNE-CC four times shorter.", "page": "FILE 01_SGNE_CC_Weight_Space_Audit_and_DNA_Weight_Editing_Qwen35_08B_EN.md", "quote": "Base solves 39 problems (7.8%), MIT-p50c solves 259 (51.8%), and SGNE-CC solves 235 (47.0%; McNemar +56/−80, nominal p = 0.048)."},
+  {"claim": "Both edits, selected only on math, transfer to logic and code: on BBH-160 base solved 3, MIT-p50c 81 and SGNE-CC 66 of 160.", "page": "FILE 01_SGNE_CC_Weight_Space_Audit_and_DNA_Weight_Editing_Qwen35_08B_EN.md", "quote": "Base solves 3 of 160 problems (1.9%), MIT-p50c solves 81 (50.6%), and SGNE-CC solves 66 (41.3%)."},
+  {"claim": "SGNE-CC is significantly worse than MIT-p50c on multilingual word problems even after a clustered test.", "page": "FILE 01_SGNE_CC_Weight_Space_Audit_and_DNA_Weight_Editing_Qwen35_08B_EN.md", "quote": "On MGSM-240, SGNE-CC solves 100 of 240 language instances (41.7%) versus 137 (57.1%) for MIT-p50c and 62 (25.8%) for Base."},
+  {"claim": "Shorter, formally finished output does not guarantee faithful content.", "page": "FILE 01_SGNE_CC_Weight_Space_Audit_and_DNA_Weight_Editing_Qwen35_08B_EN.md", "quote": "This case shows that formal completion guarantees neither instruction fidelity nor preservation of prompt facts."}
+ ],
+ "limitations_stated": [
+  {"text": "One run per prompt; seed variance is unmeasured.", "page": "FILE 01_SGNE_CC_Weight_Space_Audit_and_DNA_Weight_Editing_Qwen35_08B_EN.md", "quote": "All direct PyTorch runs record one output per prompt (seed 0), so seed-to-seed variance inside the PyTorch generator is unmeasured"},
+  {"text": "The search procedure that produced SGNE-CC is not released.", "page": "FILE 01_SGNE_CC_Weight_Space_Audit_and_DNA_Weight_Editing_Qwen35_08B_EN.md", "quote": "The rotation-angle search procedure is not released"},
+  {"text": "The two edits differ in several factors at once, so the causal role of norm preservation is not isolated.", "page": "FILE 01_SGNE_CC_Weight_Space_Audit_and_DNA_Weight_Editing_Qwen35_08B_EN.md", "quote": "the empirical results below are consistent with this hypothesis, yet do not isolate the causal effect of norm preservation on their own."}
+ ],
+ "notes_for_review": "An independent audit of the MIT Qwen3.5-0.8B MATH-500 edit: it recomputes the edit geometry and shows that the MIT gain largely disappears under greedy decoding without the presence penalty (4/100), which is direct evidence that the reported gain is tied to the sampling setting. Under model-card settings the MIT number is roughly reproduced (51.8% in PyTorch vs 48.1% reported). The competing SGNE-CC patch is released but how it was found is not, and it may or may not involve an LLM. Single seed, no multiplicity correction, no fine-tuning baseline; author identity is not given in the text."
+}

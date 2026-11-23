@@ -1,0 +1,28 @@
+{
+ "key": "zenodo_24377674",
+ "peripheral": false,
+ "operation": ["edit"],
+ "protocol": "closed_loop",
+ "mechanism": ["code_or_tensor_tool"],
+ "scope": "external",
+ "editor_tier": ["none"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": null,
+ "edited_fraction": "unclear",
+ "cost_reported": "no",
+ "wsp_evidence": {
+  "random_or_null_control": "unclear",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "yes",
+  "inference_only_fix_tested": "unclear",
+  "full_test_set": "unclear",
+  "held_out_eval": "unclear",
+  "multiple_runs": "unclear",
+  "code_or_data_released": "yes"
+ },
+ "prereg": "none",
+ "llm_in_authoring_or_grading": "unclear",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["none_reported"],
+ "evidence_notes": "This is a data-only companion record (README.md) with no results, authors or editor model; the WSP agent runs ('agents/<variant>/<size>/run<n>/') sit beside fine-tuning and SAE-guided edits of the same OmniLearned models, and WSP leads the companion paper's title, so it is coded not peripheral. Protocol and mechanism are inferred, not stated: agents hand in partial state dicts of replacement tensors and practice/test jet sets are separate, which suggests tool-based edits with practice feedback. editor_tier 'none' means the editor model is not stated, not that there was no LLM. Model sizes are not given (only checkpoint file sizes); data and a GitHub code link are released."
+}

@@ -1,0 +1,31 @@
+% Fig. 2: (a) PRISMA-ScR flow, (b) studies per day after the MIT post (groups A and B).
+\begin{tikzpicture}[x=1cm,y=1cm]
+\tikzset{pb/.style={draw=#1!80!black,fill=#1!7,rounded corners=2pt,line width=0.6pt,align=center,font=\scriptsize,text=cInk,inner sep=2pt}}
+\node[anchor=north west,font=\footnotesize\bfseries] at (-0.1,0.1) {(a) Search and selection (PRISMA-ScR)};
+\node[pb=cBlue,text width=2.25cm,minimum height=0.95cm] (s1) at (1.25,-1.0) {OpenAlex, phrase\\\textbf{n = 79}};
+\node[pb=cBlue,text width=2.25cm,minimum height=0.95cm] (s2) at (3.95,-1.0) {OpenAlex, variants\\\textbf{n = 184}};
+\node[pb=cBlue,text width=2.25cm,minimum height=0.95cm] (s3) at (6.65,-1.0) {arXiv API\\\textbf{n = 38} (32 dup.)};
+\node[pb=cMuted,text width=4.6cm,minimum height=0.95cm] (scr) at (2.6,-2.62) {Date filter, de-duplication,\\title and abstract screening\\\textbf{n = 85}};
+\node[pb=cMuted,text width=2.2cm,minimum height=0.95cm] (ex1) at (6.65,-2.62) {Excluded\\before 1 Nov: 2\\off-topic: 182};
+\node[pb=cMuted,text width=4.6cm,minimum height=0.85cm] (ft) at (2.6,-4.12) {Full texts read\\(72 PDF, 8 Zenodo text)\\\textbf{n = 80}};
+\node[pb=cMuted,text width=2.2cm,minimum height=0.85cm] (ex2) at (6.65,-4.12) {No open full text\\n = 5};
+\node[pb=cAqua,text width=4.6cm,minimum height=1.15cm] (inc) at (2.6,-5.65) {\textbf{Included: n = 70}\\A: LLM editor, 57 (54 primary)\\B: no LLM editor, 13};
+\node[pb=cMuted,text width=2.2cm,minimum height=1.05cm] (ex3) at (6.65,-5.65) {Excluded\\label only: 10};
+\draw[arr] (s1.south) -- (s1.south|-scr.north); \draw[arr] (s2.south) -- (s2.south|-scr.north);
+\draw[arr] (s3.south) -- ++(0,-0.3) -| ($(scr.north east)+(-0.3,0)$);
+\draw[arr] (scr)--(ft); \draw[arr] (ft)--(inc); \draw[arr] (scr)--(ex1); \draw[arr] (ft)--(ex2); \draw[arr] (inc)--(ex3);
+\node[anchor=north west,font=\tiny,text=cMuted] at (0.1,-6.45) {Searched 23 Nov 2026; works posted by 21 Nov 2026.};
+\begin{scope}[xshift=8.45cm,yshift=-0.35cm]
+\node[anchor=north west,font=\footnotesize\bfseries] at (0.1,0.45) {(b) New studies per day after the MIT post};
+\begin{axis}[wspaxis,width=9.6cm,height=6.2cm,ybar stacked,bar width=5.2pt,ymin=0,ymax=9,clip=false,xmin=1.4,xmax=21.6,
+  xtick={2,4,...,20},ytick={0,2,...,8},ymajorgrids,xlabel={November 2026},ylabel={Studies},
+  legend style={at={(0.5,1.02)},anchor=south,legend columns=2,cells={anchor=west},column sep=6pt},
+  every axis plot/.append style={draw=white,line width=0.4pt},anchor=north west,at={(0.6cm,-0.75cm)}]
+\addplot[fill=cBlue] coordinates {(2,0)(3,1)(4,1)(5,5)(6,6)(7,4)(8,3)(9,2)(10,1)(11,1)(12,4)(13,6)(14,0)(15,1)(16,6)(17,3)(18,3)(19,4)(20,5)(21,1)};
+\addplot[fill=cOrange] coordinates {(2,0)(3,3)(4,1)(5,1)(6,0)(7,0)(8,0)(9,2)(10,1)(11,0)(12,0)(13,0)(14,0)(15,1)(16,1)(17,0)(18,0)(19,2)(20,0)(21,1)};
+\legend{Group A: LLM editor (57),Group B: no LLM editor (13)}
+\draw[cMuted,dashed,line width=0.6pt] (axis cs:2,0) -- (axis cs:2,8.2) node[above right,font=\tiny,text=cMuted,xshift=-3pt]{MIT post, 2 Nov};
+\draw[cMuted,decorate,decoration={brace,amplitude=3pt}] (axis cs:18.6,7.8) -- (axis cs:21.4,7.8) node[midway,above=2pt,font=\tiny,text=cMuted,align=center]{indexing lag};
+\end{axis}
+\end{scope}
+\end{tikzpicture}

@@ -1,0 +1,13 @@
+{"key": "zenodo_24416417",
+ "random_or_null_control": "yes",
+ "non_llm_baseline": "no",
+ "finetune_comparison": "no",
+ "inference_only_fix_tested": "no",
+ "preregistered": "no",
+ "code_or_data_released": "yes",
+ "full_test_set": "no",
+ "evidence": {
+  "random_or_null_control": "EN version p.37 (Table 2): \"17 R attention outputs only, random r ⊥ u ... +3.1 ± 5.5\"; \"Random-direction control (pass 17). Same 12 tensors, same s = 2, but a random unit [vector]\" (on 32 dev problems)",
+  "code_or_data_released": "EN §10 Open code and data: \"This record contains ... scalpello_code_results_v1.0.zip: orchestrator, kernel, provider and relay code ... generation outputs ... analysis script\"; checkpoint at https://huggingface.co/odelpa/qwen3.5-0.8b-scalpello-b2-gdp",
+  "full_test_set_note": "held-out = six cohorts of 64 problems drawn from GSM8K and MATH training splits; limitations: \"Not the official benchmarks\"; sampling fixed at T=0.6, model-card T=1.0 discussed but not tested"
+ }}

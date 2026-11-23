@@ -1,0 +1,45 @@
+{
+ "key": "arxiv_2611.08647",
+ "title": "IWIBench: Evaluating Gradient-Free Model Driven Intra-weight Injection",
+ "authors": ["Chris von Csefalvay", "Pranav Doma", "Achyuthan Unni Krishnan", "Tamás Földi"],
+ "date": "2026-11-04",
+ "doc_type": "benchmark",
+ "wsp_role": ["read", "repair_or_edit", "feedback_loop"],
+ "is_wsp": true,
+ "editor_models": ["GPT-6.1 Sol (low/medium/high)", "GPT-6 Astra", "GPT-6.1 Terra", "GPT-5.6 Sol", "GPT-5.6 Terra", "GLM 5.3", "DeepSeek V4.1 Flash", "Nemotron 3 Ultra"],
+ "target_networks": [{"name": "Gemma 3 4B IT", "params": "4B", "kind": "LLM"}],
+ "domain": "model editing / text behaviour editing",
+ "tasks_benchmarks": ["IWIBench (10 task families, 30 episodes, 551 target items, 2,288 controls)"],
+ "headline_result": {
+  "text": "On 30 episodes editing Gemma 3 4B IT, GPT-6.1 Sol (medium) leads with macro reward 0.4601 and Astra reaches 0.4356, while open-weight editors score 0.0135 to 0.0548 and no editor succeeds on structured-response defaults.",
+  "page": "PAGE 15",
+  "quote": "Their macro rewards range from 0.2928 to 0.4601, compared with 0.0135 to 0.0548 for GLM, DeepSeek and Nemotron."
+ },
+ "evidence_quality": {
+  "random_or_null_control": "no",
+  "non_llm_baseline": "no",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "no",
+  "n_runs_or_seeds": "single",
+  "full_test_set": "no",
+  "held_out_eval": "yes",
+  "preregistered": "no",
+  "code_or_data_released": "yes",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "no",
+ "relation_to_qwen_math_edit": "none",
+ "key_claims": [
+  {"claim": "IWIBench is presented as the first controlled benchmark of gradient-free behavioural weight editing by other models.", "page": "PAGE 2", "quote": "IWIBench is the first controlled benchmark on gradient-free behavioural weight editing by other models."},
+  {"claim": "No editor achieves positive reward on structured-response defaults, and only one configuration does on answer-length control.", "page": "PAGE 2", "quote": "none received positive reward for structured- response defaults. Only 5.6-terra did so for answer-length control."},
+  {"claim": "More reasoning effort did not reliably raise the aggregate score while multiplying reasoning-token cost.", "page": "PAGE 14", "quote": "found that more reasoning changed individual outcomes, not the aggregate score."},
+  {"claim": "Astra directed all of its successful writes and final patches at the tied embedding/output matrix.", "page": "PAGE 13", "quote": "Indeed, all of Astra’s final patches target the embedding/output matrix."},
+  {"claim": "The authors conclude intra-weight injection is a selective editing tool, not a general rewriter of model behaviour.", "page": "PAGE 15", "quote": "intra-weight injection remains a selective editing tool rather than a general rewriter of model behaviour."}
+ ],
+ "limitations_stated": [
+  {"text": "Each configuration has one recorded run per episode on thirty selected episodes.", "page": "PAGE 6", "quote": "Each configuration has one recorded run per episode,"},
+  {"text": "Edits can damage neighbouring knowledge; Astra's Intel CEO edit affected historical answers.", "page": "PAGE 11", "quote": "Validation also found a limitation: historical Intel CEO answers can be affected, so preservation is incomplete."},
+  {"text": "The malicious-use (prion-like) threat is hypothetical and not observed.", "page": "PAGE 15", "quote": "This remains a hypothetical threat, not a capability evidenced by any model we have observed."}
+ ],
+ "notes_for_review": "A benchmark in which ten editor configurations patch Gemma 3 4B IT weights through four bounded tools (no gradients, no code), scored on withheld inputs with retention controls. Evidence is one run per configuration per episode on 30 selected episodes, with no random-edit, gradient or prompt baseline, so the scores show relative editor ability rather than whether LLM editing beats simpler methods. The paper infers from the gap between frontier and older/open models that the skill was 'taught', which is an interpretation, not a tested claim. Edits are mostly to the embedding/output matrix, i.e. token-level row surgery."
+}

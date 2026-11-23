@@ -1,0 +1,14 @@
+{"key": "arxiv_2611.26408",
+ "random_or_null_control": "no",
+ "non_llm_baseline": "yes",
+ "finetune_comparison": "unclear",
+ "inference_only_fix_tested": "no",
+ "preregistered": "no",
+ "code_or_data_released": "no",
+ "full_test_set": "yes",
+ "evidence": {
+  "non_llm_baseline": "p.14: \"Each network was then edited by six scripted editors on the test concepts: the two ERT edit rules, three sparse refits of the head ... and a rescaling of 32 channels\"; \"No LLM is involved.\" (used to screen/select training methods, not head-to-head vs LLM editors)",
+  "finetune_comparison_note": "p.13: scripted editors include \"a single gradient step on the head\" (tuning/screen only); ENN is gradient-based editable training of the network, a training method not a repair comparator",
+  "code_or_data_released_note": "p.1: \"We will release our LLM testing framework\"; p.20: \"Release. We will release the tasks ... together with the code\" (promised only)",
+  "full_test_set": "p.8: \"For all training methods, accuracy on the full test sets still ends 3 to 4 points below the unedited network after the final edit.\""
+ }}

@@ -1,0 +1,24 @@
+{
+ "key": "arxiv_2611.11537",
+ "peripheral": false,
+ "operation": ["write"],
+ "protocol": "open_loop",
+ "mechanism": ["direct_values"],
+ "scope": "external",
+ "editor_tier": ["frontier_proprietary"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": 54,
+ "edited_fraction": "whole network",
+ "cost_reported": "yes: 45-240 s and 1.8k-14k output tokens per request vs optimizer baselines taking seconds to a minute per run; no $",
+ "wsp_evidence": {
+  "random_or_null_control": "yes", "non_llm_baseline": "yes", "finetune_comparison": "yes",
+  "inference_only_fix_tested": "no", "full_test_set": "yes", "held_out_eval": "yes",
+  "multiple_runs": "yes",
+  "code_or_data_released": "yes"
+ },
+ "prereg": "none",
+ "llm_in_authoring_or_grading": "no",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["known_rule_rediscovered", "run_to_run_variance"],
+ "evidence_notes": "GPT-6 Astra writes circuit angles as a JSON list with no feedback beyond syntax checks (p2, p4). Fixed-ansatz circuits have at most 54 weights (p6); free-design circuits (up to 200 gates, e.g. 117 u3 rotations) have uncounted parameters, so 54 is the largest stated count. Successes are closed-form textbook cases (H2, p=1 QAOA) and linear classifiers (p12-13); 6 of 42 QAOA replies negated every mixing angle (p9, p13); code on GitHub (p15); no preregistration or LLM-authoring statement found."
+}

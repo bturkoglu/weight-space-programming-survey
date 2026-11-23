@@ -1,0 +1,28 @@
+{
+ "key": "arxiv_2611.21958",
+ "peripheral": false,
+ "operation": ["read", "write", "edit"],
+ "protocol": "both",
+ "mechanism": ["direct_values"],
+ "scope": "external",
+ "editor_tier": ["frontier_proprietary"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": 253,
+ "edited_fraction": "whole network (repair by Astra changed 144 of 253 weights)",
+ "cost_reported": "per session: 25 evaluations, API time 934-4157 s, 70k-322k output tokens (Table 4); no $; ES needed about 40x the evaluation budget to approach similar results",
+ "wsp_evidence": {
+  "random_or_null_control": "no",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "yes",
+  "inference_only_fix_tested": "no",
+  "full_test_set": "yes",
+  "held_out_eval": "yes",
+  "multiple_runs": "no",
+  "code_or_data_released": "no"
+ },
+ "prereg": "none",
+ "llm_in_authoring_or_grading": "yes",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["known_rule_rediscovered", "simple_baseline_matches"],
+ "evidence_notes": "WSP is the whole study. Astra and Fable, with no tools or code execution, write the 253 weights as JSON with simulated feedback over 25 evaluations (p.6), plus a zero-shot repair test without feedback (p.8), so direct_values and both. One session per model and start point, and the prompt was developed in the repair sessions (p.15). PPO beat every LLM controller and pure pursuit (18.5 cm) beat Fable-from-zero (27.8 cm) on the tractor (p.10, p.13); the LLM controllers are classical cascaded control laws (p.10). Claude Opus 5.5 supported coding, data analysis and text (declaration, p.15); no code or data release stated."
+}

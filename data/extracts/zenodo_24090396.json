@@ -1,0 +1,56 @@
+{
+  "key": "zenodo_24090396",
+  "title": "SOVEREIGN RSI SANCTUARY (V30.1): A Homeostatic, Non-Symmetric Golden Rule, and Cryo-Verified Immune Architecture for Surviving Recursive Self-Improvement, Weight-Space Splicing, and Subliminal Alignment Drift",
+  "authors": ["Jim Raboin", "Gemini Argon"],
+  "date": "2026-11-09",
+  "doc_type": "position",
+  "wsp_role": ["other"],
+  "is_wsp": false,
+  "editor_models": ["none"],
+  "target_networks": [],
+  "domain": "security (AI safety defense architecture)",
+  "tasks_benchmarks": ["self-defined 32-loop red-team gauntlet (28 attack classes)"],
+  "headline_result": {
+    "text": "The white paper proposes a defense architecture against weight splicing and alignment drift and claims 96-99% defense efficacy on its own red-team gauntlet, without describing datasets, models, baselines or repeated runs.",
+    "page": "PAGE 1",
+    "quote": "Across a 32-loop adversarial red-team gauntlet encompassing 28 distinct attack classes, V30.1 achieves 96%–99% defense efficacy with zero false- positive degradation on legitimate code, JSON, and coherent capability evolution."
+  },
+  "evidence_quality": {
+    "random_or_null_control": "no",
+    "non_llm_baseline": "no",
+    "finetune_comparison": "no",
+    "inference_only_fix_tested": "no",
+    "n_runs_or_seeds": "unclear",
+    "full_test_set": "unclear",
+    "held_out_eval": "unclear",
+    "preregistered": "no",
+    "code_or_data_released": "no",
+    "peer_reviewed": "no"
+  },
+  "replicates_mit": "no",
+  "relation_to_qwen_math_edit": "none",
+  "key_claims": [
+    {
+      "claim": "The paper uses MIT's Qwen3.5-0.8B edit as motivation, arguing that an agent able to raise math scores by editing 0.016% of weights could equally implant backdoors.",
+      "page": "PAGE 2",
+      "quote": "if an RSI agent can boost math scores 6× by editing 0.016% of weights, it can equally perform surgical conscience abliteration, rank-1 LoRA backdoors, or distributed +0.001 sleeper poisoning."
+    },
+    {
+      "claim": "It states, without a listed reference, that the MIT MATH-500 result was replicated at 51.0% by 'Khaliq, 2026'.",
+      "page": "PAGE 2",
+      "quote": "performance on MATH-500 surged from 7.9% to 48.1% (replicated at 51.0% by Khaliq, 2026)"
+    },
+    {
+      "claim": "It claims a weight-drift metric that detects distributed sleeper poisoning and weight-shuffling permutations.",
+      "page": "PAGE 6",
+      "quote": "This catches both +0.001 distributed sleeper poisoning and sorted-W1-preserving weight-shuffling permutations."
+    },
+    {
+      "claim": "It reports a direct weight-space splice attack as fully healed in its own gauntlet table.",
+      "page": "PAGE 8",
+      "quote": "100% HEALED"
+    }
+  ],
+  "limitations_stated": [],
+  "notes_for_review": "Not a WSP study: a self-published defense 'monograph' that cites the MIT post only as motivation and does no LLM weight reading or writing. Its evaluation is a self-defined attack table with no models, datasets, baselines or statistics, and the text mixes established methods with idiosyncratic terminology. The unreferenced claim of a 51.0% MATH-500 replication by 'Khaliq, 2026' should not be cited without an independent source; at most the paper can be mentioned as an example of security framing around WSP."
+}

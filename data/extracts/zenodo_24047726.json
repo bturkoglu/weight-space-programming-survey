@@ -1,0 +1,47 @@
+{
+ "key": "zenodo_24047726",
+ "title": "WeightBench v0: two small instruction models at chance on five weight-reading tasks",
+ "authors": ["unclear"],
+ "date": "2026-11-08",
+ "doc_type": "benchmark",
+ "wsp_role": ["read"],
+ "is_wsp": true,
+ "editor_models": ["Qwen2.5-1.5B-Instruct", "Qwen2.5-7B-Instruct"],
+ "target_networks": [
+  {"name": "2-layer MLP 784->16->10 trained on MNIST/FashionMNIST/CIFAR-gray", "params": "about 12.7k", "kind": "MLP"},
+  {"name": "PPO game-playing policies (RikiyaT/lm_understand-logs exp1)", "params": "unknown", "kind": "policy"}
+ ],
+ "domain": "weight reading (model property inference from weights)",
+ "tasks_benchmarks": ["WeightBench v0 T1 game", "T2 dataset", "T3 activation", "T4 trained vs random", "T5 which is better"],
+ "headline_result": {
+  "text": "All 10 model-by-task cells failed the preregistered bar (main >= 12/24): both Qwen2.5 models scored near the 25% chance level and no better than on value-shuffled weights.",
+  "page": "FILE RESULT.md",
+  "quote": "Control matches main within noise for both models, so neither reads the weights; best cell (1.5B T2, 9/24) is below the 12/24 bar. 7B is not better than 1.5B."
+ },
+ "evidence_quality": {
+  "random_or_null_control": "yes",
+  "non_llm_baseline": "no",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "no",
+  "n_runs_or_seeds": "single",
+  "full_test_set": "yes",
+  "held_out_eval": "unclear",
+  "preregistered": "yes",
+  "code_or_data_released": "yes",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "partial",
+ "relation_to_qwen_math_edit": "none",
+ "key_claims": [
+  {"claim": "The benchmark was preregistered with fixed PASS/FAIL thresholds before any run.", "page": "FILE TASKS.md", "quote": "Verdict rule for every task and model (fixed now, thresholds do not move): PASS if main correct >= 12/24 AND control correct <= 11/24; FAIL if main correct <= 9/24; otherwise INCONCLUSIVE."},
+  {"claim": "Every instance has a control arm in which weight values are permuted, destroying structure but keeping value statistics.", "page": "FILE TASKS.md", "quote": "Each instance also has a CONTROL arm: the same prompt with every summary array's values randomly permuted across positions (structure destroyed, value statistics kept)."},
+  {"claim": "All ten model-by-task cells were FAIL at n=24 each.", "page": "FILE RESULT.md", "quote": "All 10 model x task cells are FAIL (chance 25%, n=24 each, 4-way forced choice, deterministic letter-logit scoring)"},
+  {"claim": "The authors state the results say nothing about frontier models or the original claim.", "page": "FILE RESULT.md", "quote": "no frontier model was tested, so nothing here bears on the source post's claim."}
+ ],
+ "limitations_stated": [
+  {"text": "Models saw a lossy compressed summary of the weights, so a floor score does not show they cannot read raw weights.", "page": "FILE RESULT.md", "quote": "the summary (hidden-mean pooled first layer, norms, small output layer) is lossy; activation and dataset signal may be partly or wholly unrecoverable by design"},
+  {"text": "Only two small models, n=24 per cell with correlated instances, about +-10 points of noise.", "page": "FILE RESULT.md", "quote": "Two small models only; n=24 per cell with correlated instances (shared training procedure), so +-10 points of noise"},
+  {"text": "Raw-weight prompts, chain of thought, tools and larger models were not tested.", "page": "FILE RESULT.md", "quote": "Untested: raw-weight prompts, chain of thought, tool use, larger models, other summaries."}
+ ],
+ "notes_for_review": "A small, preregistered weight-reading benchmark with a value-permutation control arm, which is the kind of null control most WSP reports lack. Its negative result is weak evidence about WSP as practised, because only 1.5B and 7B open models were tested on a lossy numeric summary without tools or reasoning. The record has no author names in the text and no PDF; the value is the harness and control design, as the authors say. Parameter count of the MLP (784*16+16+16*10+10) is computed from the stated architecture, not reported."
+}

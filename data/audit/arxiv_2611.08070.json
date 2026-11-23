@@ -1,0 +1,12 @@
+{"key": "arxiv_2611.08070",
+ "random_or_null_control": "yes",
+ "non_llm_baseline": "no",
+ "finetune_comparison": "no",
+ "inference_only_fix_tested": "no",
+ "preregistered": "no",
+ "code_or_data_released": "no",
+ "full_test_set": "yes",
+ "evidence": {
+  "random_or_null_control": "p.3: \"We include a label permutation, a shuffled-weight control, an architecture comparison...\"; p.8: \"The shuffled control scrambled the values within each of the 22 [arrays]\"",
+  "full_test_set": "p.6: \"CIFAR-10 and KMNIST use their standard test sets\" (reading-only study; test sets used to characterise the read networks)"
+ }}

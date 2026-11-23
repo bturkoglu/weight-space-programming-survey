@@ -1,0 +1,90 @@
+{
+  "key": "arxiv_2611.20953",
+  "title": "Same Fix, Different Weights: Replicating Weight-Space Programming with Claude",
+  "authors": ["Subham Kundu"],
+  "date": "2026-11-16",
+  "doc_type": "replication",
+  "wsp_role": ["read", "repair_or_edit", "write_from_scratch", "feedback_loop"],
+  "is_wsp": true,
+  "editor_models": ["Claude Opus 5.5"],
+  "target_networks": [
+    {"name": "Atari RAM PPO policies (Breakout, Pong, Ms. Pac-Man, Freeway)", "params": "13,586", "kind": "policy"},
+    {"name": "Classic-control PPO policies (CartPole, Acrobot, MountainCar, LunarLander)", "params": "1,476 (v1)", "kind": "policy"},
+    {"name": "DDPM MLP denoisers (circle, square, triangle)", "params": "28,000", "kind": "diffusion"},
+    {"name": "Character-level transformer middle blocks (Python, romaji, English)", "params": "7,097,856", "kind": "LLM"},
+    {"name": "Gemma 3 270M honest vs sycophantic finetunes", "params": "270M", "kind": "LLM"},
+    {"name": "9x9 Go policy network written by Claude", "params": "1,480,274", "kind": "policy"},
+    {"name": "Qwen3.5-0.8B", "params": "0.8B", "kind": "LLM"}
+  ],
+  "domain": "reinforcement learning, games, interpretability, math reasoning",
+  "tasks_benchmarks": ["ALE Atari", "Gymnasium classic control", "LunarLander", "9x9 Go", "MATH-500", "GSM8K", "IFEval"],
+  "headline_result": {
+    "text": "Given Qwen3.5-0.8B's weights and 10, 25 or 50 practice forward passes, Claude Opus 5.5 raised MATH-500 from 6.7% to 51.4%, 55.2% and 58.1%, but by scaling the final norm (a temperature change that alone gives 20.9-22.1%) and the logits of 'Wait' and </think>, not by removing an internal loop direction.",
+    "page": "PAGE 1",
+    "quote": "Claude raised its MATH-500 score from 6.7% to 51.4%, 55.2% and 58.1% (500 problems × 4 samples; at 50 passes +51.4 points, 95% interval [47.9, 55.0], against the original’s 48.1%)"
+  },
+  "evidence_quality": {
+    "random_or_null_control": "yes",
+    "non_llm_baseline": "yes",
+    "finetune_comparison": "no",
+    "inference_only_fix_tested": "yes",
+    "n_runs_or_seeds": "3-5 attempts per network in most reading/fixing probes; single run per budget in Experiments 5b, 6 and 8",
+    "full_test_set": "yes",
+    "held_out_eval": "yes",
+    "preregistered": "yes",
+    "code_or_data_released": "yes",
+    "peer_reviewed": "no"
+  },
+  "replicates_mit": "partial",
+  "relation_to_qwen_math_edit": "reproduces",
+  "key_claims": [
+    {
+      "claim": "Every Qwen edit acted at the output side (final norm scaling plus 'Wait' and </think> logits) rather than removing an internal loop direction as the original did.",
+      "page": "PAGE 1",
+      "quote": "Unlike the original, which removed an internal loop direction, every edit acted at the output: it scaled the final norm, which raises the effective sampling temperature, and the logits of “Wait” and </think>."
+    },
+    {
+      "claim": "A norm-only temperature control reproduces about a third of the MATH-500 gain and nearly all of the IFEval gain.",
+      "page": "PAGE 34",
+      "quote": "Temperature alone lifts MATH-500 to 22.1% (s = 0.6) and 20.9% (s = 0.68), about a third of the gain (28–35%), and GSM8K by about half (49–59%)."
+    },
+    {
+      "claim": "On Gemma 3 270M, which rarely loops, no edit helped, matching the original's null control.",
+      "page": "PAGE 35",
+      "quote": "On MATH-500 (n = 500 × 4) it moved the score from 9.2% to 8.3%, a change of −0.8 points [−1.9, +0.2], and the share at the 8,192-token limit from 4.6% to 2.0%."
+    },
+    {
+      "claim": "Repairs and zero-shot policies were known textbook controllers grafted into a few units, not repairs of the learned circuit.",
+      "page": "PAGE 38",
+      "quote": "None of the ten repairs in Experiment 4 repaired the learned circuit. Each grafted a textbook controller into repurposed units; nine of the ten switched the trained units off"
+    },
+    {
+      "claim": "When asked what data a network was trained on, Claude fell back on priors (interface shape, dataset defaults, famous games).",
+      "page": "PAGE 37",
+      "quote": "When the question is about the training distribution, Claude falls back on priors. Three priors recur."
+    },
+    {
+      "claim": "Claude identified all 10 untrained networks and found copying heads from weight products in 15 of 15 runs.",
+      "page": "PAGE 1",
+      "quote": "All 10 untrained networks were called untrained."
+    }
+  ],
+  "limitations_stated": [
+    {
+      "text": "One Claude run per budget in Experiment 8, so the budget comparison covers evaluation noise, not run-to-run spread.",
+      "page": "PAGE 40",
+      "quote": "Each budget has one Claude run, as in the original, so the budget comparison (+6.8 points [4.9, 8.7] from 10 to 50 passes on MATH-500) is a comparison of three runs."
+    },
+    {
+      "text": "The practice tool returned per-layer mean activations that the original does not describe, which may have made the task easier.",
+      "page": "PAGE 40",
+      "quote": "This is more information than generations alone, and it may have made the task easier than the original’s."
+    },
+    {
+      "text": "Pre-registration fixed grading, not design, and was not deposited with a third party.",
+      "page": "PAGE 40",
+      "quote": "Pre-registration fixed grading, not design, and it was not deposited with a third party or timestamped externally."
+    }
+  ],
+  "notes_for_review": "The most complete independent replication: all eight MIT probes with Claude Opus 5.5, internal pre-registered grading rules, untrained and permutation controls, and a norm-only temperature control for the Qwen edit. The Qwen MATH-500 gain replicates in size but by a different mechanism, and about a third of it equals a sampling-temperature change. Single runs per budget, one effort level, and self-audited transcripts limit strength; the RL rows use different environments and weaker PPO opponents than the original."
+}

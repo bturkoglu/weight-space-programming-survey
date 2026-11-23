@@ -1,0 +1,28 @@
+{
+ "key": "arxiv_2611.16981",
+ "peripheral": false,
+ "operation": ["write", "edit"],
+ "protocol": "both",
+ "mechanism": ["code_or_tensor_tool"],
+ "scope": "external",
+ "editor_tier": ["frontier_proprietary"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": 150000,
+ "edited_fraction": "whole network",
+ "cost_reported": "token and request accounting per arm (Table 9), no $; written FreeArch actors 5x slower per step than the fixed actor (24 vs 4.8 ms), Python players 0.8 ms",
+ "wsp_evidence": {
+  "random_or_null_control": "yes",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "yes",
+  "inference_only_fix_tested": "no",
+  "full_test_set": "yes",
+  "held_out_eval": "yes",
+  "multiple_runs": "yes",
+  "code_or_data_released": "no"
+ },
+ "prereg": "internal",
+ "llm_in_authoring_or_grading": "yes",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["fragile_to_perturbation_or_retraining", "simple_baseline_matches", "editor_refusal_or_unfinished"],
+ "evidence_notes": "WSP is the whole study: writers return one Python/NumPy code block that builds the weights (p.~16, Appendix A), one-shot (W1) and with feedback rounds (W2), so code_or_tensor_tool and both. Hypotheses H1-H4 were written in a protocol before data collection with dated amendments in the supplement (p.6), so internal. target_params_max is the 150k FreeArch cap (fixed actor 57,289; FreeArch median 30k, p.4, p.9); the true maximum is not reported. Release cites only 'the project repository (commit 20eee09)' with no link (p.13), so coded no. Claude Opus 5.5 designed the harness and analysis and refusals scored 0 (p.12); written weights collapse under tiny noise or one PPO update, and same-writer Python programs do better (p.1, p.11)."
+}

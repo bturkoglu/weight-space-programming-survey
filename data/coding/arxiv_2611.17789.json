@@ -1,0 +1,28 @@
+{
+ "key": "arxiv_2611.17789",
+ "peripheral": false,
+ "operation": ["edit"],
+ "protocol": "closed_loop",
+ "mechanism": ["direct_values", "solver_delegated"],
+ "scope": "external",
+ "editor_tier": ["open_weight"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": 20411000,
+ "edited_fraction": "bounded stage-wise perturbations of selected stages; fraction not stated (unclear)",
+ "cost_reported": "LLM token counts and mean wall times per budget reported (tens of thousands of tokens); denominators not harmonized; no $",
+ "wsp_evidence": {
+  "random_or_null_control": "yes",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "no",
+  "full_test_set": "no",
+  "held_out_eval": "yes",
+  "multiple_runs": "yes",
+  "code_or_data_released": "no"
+ },
+ "prereg": "none",
+ "llm_in_authoring_or_grading": "no",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["simple_baseline_matches", "proxy_overfitting", "editor_refusal_or_unfinished"],
+ "evidence_notes": "Whole paper is LLM-guided gradient-free editing of YOLO26 (PAGE 4): local gemma4 returns a schema-checked JSON action (operation, target layer, finite coefficients within bounds), and in the hybrid arm the LLM picks a stage subspace that CMA-ES then optimizes, hence direct_values + solver_delegated. LLM hybrid did not beat a matched random-policy hybrid (paired p = 0.612/0.369/0.694) and dev gains turned negative on the selection split (PAGE 9-10); only 53/225 proposals pass the strict schema (PAGE 4, 12). Explicitly 'not a fully prospective preregistered test' (PAGE 5); code package deposit only recommended (PAGE 14); evaluation on COCO val subsets, not the full set."
+}

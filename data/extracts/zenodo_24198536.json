@@ -1,0 +1,100 @@
+{
+ "key": "zenodo_24198536",
+ "title": "The Mathematics of Weight-Space Programming: Behavioral Geometry, Constructive Synthesis, and Proof-Carrying Neural Edits",
+ "authors": [
+  "Derrick Macharia"
+ ],
+ "date": "2026-11-19",
+ "doc_type": "theory",
+ "wsp_role": [
+  "repair_or_edit",
+  "write_from_scratch",
+  "other"
+ ],
+ "is_wsp": true,
+ "editor_models": [
+  "none"
+ ],
+ "target_networks": [
+  {
+   "name": "abstract parameter manifolds; two-layer ReLU networks for finite contracts",
+   "params": "unknown",
+   "kind": "MLP"
+  },
+  {
+   "name": "Qwen3 (archived earlier author study, model size not stated)",
+   "params": "unknown",
+   "kind": "LLM"
+  }
+ ],
+ "domain": "theory",
+ "tasks_benchmarks": [
+  "144 finite-contract compiler fixtures",
+  "Qwen3 next-token winner forecasts (1,824)",
+  "96 arithmetic prompts (complete-response)"
+ ],
+ "headline_result": {
+  "text": "A mathematical framework for weight edits (four-subspace decomposition, minimum-norm edits, exact finite ReLU compiler of width at most n-1); the only model evidence is an earlier Qwen3 study where 1,824 next-token forecasts matched but the continuous rank-one edit got 0 of 96 complete arithmetic answers versus 47 for baseline.",
+  "page": "PAGE 25",
+  "quote": "among 96 arithmetic prompts, the baseline obtained 47 complete answers, a selected 128-weight deletion obtained 50, and the continuous rank-one intervention obtained zero."
+ },
+ "evidence_quality": {
+  "random_or_null_control": "unclear",
+  "non_llm_baseline": "no",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "no",
+  "n_runs_or_seeds": "unclear",
+  "full_test_set": "unclear",
+  "held_out_eval": "unclear",
+  "preregistered": "no",
+  "code_or_data_released": "yes",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "no",
+ "relation_to_qwen_math_edit": "none",
+ "key_claims": [
+  {
+   "claim": "The paper frames WSP as an inverse problem: when an admissible weight edit exists for a desired behavior change under audit and retention constraints, its least cost, and how to certify it.",
+   "page": "PAGE 2",
+   "quote": "given a desired behavioral displacement, a collection of audit and retention constraints, and a metric on parameter space, when does an admissible weight program exist, what is its least cost, and how can its effect be certified?"
+  },
+  {
+   "claim": "A terminating exact-rational procedure compiles any consistent finite rational input-output contract into a two-layer ReLU network with at most n-1 hidden units.",
+   "page": "PAGE 2",
+   "quote": "A constructive result supplies a terminating exact-rational procedure that realizes every consistent finite rational input-output contract with a two-layer ReLU network of at most 𝑛 − 1 hidden units for 𝑛 ≥ 2."
+  },
+  {
+   "claim": "The claim that every fixed architecture can realize every target behavior by a weight write is false.",
+   "page": "PAGE 16",
+   "quote": "Consequently the assertion that every fixed neural architecture can realize every possible target behavior by a parameter write is false."
+  },
+  {
+   "claim": "Finite test observations cannot certify universal competence without a hypothesis class or regularity assumptions.",
+   "page": "PAGE 17",
+   "quote": "Therefore observations restricted to 𝑆 cannot establish equality of two unconstrained functions on all of 𝑋."
+  },
+  {
+   "claim": "In the archived Qwen3 study, token-level forecasts were accurate but the full-response acceptance contract was not met.",
+   "page": "PAGE 25",
+   "quote": "The full acceptance contract was not met by the tested interventions."
+  }
+ ],
+ "limitations_stated": [
+  {
+   "text": "The global theorem does not prove bracket-generation or capability acquisition for any given transformer.",
+   "page": "PAGE 9",
+   "quote": "Not proved: bracket-generation for a given transformer, completeness of its horizontal paths, uniform global costs, or global acquisition of an unspecified capability."
+  },
+  {
+   "text": "The finite compiler protects only enumerated samples, not a pretrained model's behavior on all inputs.",
+   "page": "PAGE 24",
+   "quote": "The construction protects only explicitly enumerated samples in its contract."
+  },
+  {
+   "text": "Lean kernel verification of the main theorem is outstanding.",
+   "page": "PAGE 28",
+   "quote": "Lean-kernel acceptance for the complete eight-clause theorem is a distinct milestone and is recorded separately from the textual proofs and executable fixtures."
+  }
+ ],
+ "notes_for_review": "A theory monograph (v3.3) that restates standard linear algebra, differential geometry and control results in the language of constrained weight edits; most theorems are textbook reductions applied under stated hypotheses, and the paper is explicit about what is not proved. No LLM acts as editor and no new experiments are run; the only model evidence is transcribed from an earlier unpublished Qwen3 study in which local token forecasts were exact but the rank-one edit destroyed complete-response arithmetic. Useful for the review as a formal statement that local predictability is not capability. The PDF is dated 19 November 2026 while the Zenodo manifest date is 2026-11-13."
+}

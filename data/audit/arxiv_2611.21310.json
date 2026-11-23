@@ -1,0 +1,13 @@
+{"key": "arxiv_2611.21310",
+ "random_or_null_control": "no",
+ "non_llm_baseline": "yes",
+ "finetune_comparison": "no",
+ "inference_only_fix_tested": "no",
+ "preregistered": "no",
+ "code_or_data_released": "yes",
+ "full_test_set": "no",
+ "evidence": {
+  "non_llm_baseline": "p.4: \"The heuristic arm uses no language model: a deterministic rule stretches the most conflated category pairs.\"; p.5: \"In a control round a deterministic heuristic replaces the analyst under the same targets, seeds, and limits.\"",
+  "code_or_data_released": "p.9: \"The code and the data generated and analyzed in this study are openly available at https://github.com/amingolnari/weight-baking.\"",
+  "full_test_set_note": "p.20: \"Each benchmark is subsampled with the run seed\" (HellaSwag, ARC-Easy, TruthfulQA); steering/closed-form baselines \"which we did not run\" (p.8)"
+ }}

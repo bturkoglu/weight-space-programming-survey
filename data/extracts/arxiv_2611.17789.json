@@ -1,0 +1,76 @@
+{
+  "key": "arxiv_2611.17789",
+  "title": "Can Large Language Models Optimize Pretrained Neural Network Weights? A Multi-Phase Empirical Evaluation of Gradient-Free Editing in YOLO26 Object Detection",
+  "authors": ["Mohamed Abdallah Salem"],
+  "date": "2026-11-13",
+  "doc_type": "original_study",
+  "wsp_role": ["repair_or_edit", "feedback_loop"],
+  "is_wsp": true,
+  "editor_models": ["gemma4:latest (local Ollama)"],
+  "target_networks": [
+    {"name": "YOLO26n", "params": "2.409M", "kind": "CNN"},
+    {"name": "YOLO26s", "params": "9.496M", "kind": "CNN"},
+    {"name": "YOLO26m", "params": "20.411M", "kind": "CNN"}
+  ],
+  "domain": "vision (object detection)",
+  "tasks_benchmarks": ["COCO Val2017 1,000-image development subset", "COCO Val2017 1,500-image selection subset", "COCO Val2017 2,500-image holdout (Phase II)"],
+  "headline_result": {
+    "text": "LLM-guided hybrid edits did not beat a matched random-policy hybrid (paired p = 0.612, 0.369, 0.694 at budgets 8, 25, 50), and a five-seed YOLO26m replication gave a mean official COCO AP change of +0.004 points (95% CI -0.026 to +0.034).",
+    "page": "10",
+    "quote": "8 (5) +0.02 [-0.09,+0.13] 0.612"
+  },
+  "evidence_quality": {
+    "random_or_null_control": "yes",
+    "non_llm_baseline": "yes",
+    "finetune_comparison": "no",
+    "inference_only_fix_tested": "no",
+    "n_runs_or_seeds": "1 to 5 seeds depending on budget (5 at B=8 and 25, 3 at B=50, 2 at B=100, 1 at B=250)",
+    "full_test_set": "no",
+    "held_out_eval": "yes",
+    "preregistered": "no",
+    "code_or_data_released": "no",
+    "peer_reviewed": "no"
+  },
+  "replicates_mit": "no",
+  "relation_to_qwen_math_edit": "none",
+  "key_claims": [
+    {
+      "claim": "In the Phase III comparison, real LLM proposals gave smaller development gains than DE and CMA-ES; zero-shot LLM reached +0.03 development and -0.03 selection points.",
+      "page": "14",
+      "quote": "Real LLM (zero-shot) 14 7,440 / 4,294 133.8 42.11 (+0.03) 39.14 (-0.03)"
+    },
+    {
+      "claim": "Raising the CMA-ES budget to 250 evaluations increased development gains to +0.28 points while selection changes stayed negative (-0.12), consistent with selection overfitting; this row has one seed.",
+      "page": "9",
+      "quote": "250 1 CMA-ES +0.28 N/A -0.12 414.2"
+    },
+    {
+      "claim": "The five-seed YOLO26m replication produced a near-zero mean change on the selection images.",
+      "page": "12",
+      "quote": "Mean +0.001 +0.004"
+    },
+    {
+      "claim": "Of 225 archived LLM proposals, only 53 (23.6%) pass the final strict schema.",
+      "page": "12",
+      "quote": "Schema-valid now 53 23.6%"
+    },
+    {
+      "claim": "An earlier class labelled as LLM-guided only sampled Gaussian perturbations, so the author separates it from genuine LLM inference.",
+      "page": "4",
+      "quote": "bations using NumPy. That version is a heuristic local search,"
+    }
+  ],
+  "limitations_stated": [
+    {
+      "text": "The selection partition was inspected in earlier phases and is not pristine.",
+      "page": "13",
+      "quote": "Selection reuse: The model-selection partition was inspected"
+    },
+    {
+      "text": "Development-set gains are not evidence of out-of-sample improvement.",
+      "page": "4",
+      "quote": "Observed development gains do not establish out-of-sample improvements."
+    }
+  ],
+  "notes_for_review": "A careful negative study that applies WSP-style LLM edit proposals to YOLO26 detectors with a matched random-policy control and numerical optimizers (random search, DE, CMA-ES). All gains are hundredths of a point on development and vanish or turn negative on the selection set; the LLM adds no measurable benefit over the random policy. Weaknesses the author discloses: small local editor model (gemma4), few seeds, reused evaluation partitions, conflicting provenance for one subset, and an earlier Gaussian 'LLM' simulator that was mislabelled."
+}

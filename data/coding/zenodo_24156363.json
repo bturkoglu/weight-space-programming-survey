@@ -1,0 +1,28 @@
+{
+ "key": "zenodo_24156363",
+ "peripheral": false,
+ "operation": ["read", "edit"],
+ "protocol": "closed_loop",
+ "mechanism": ["code_or_tensor_tool", "solver_delegated"],
+ "scope": "external",
+ "editor_tier": ["frontier_proprietary"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": 12000000000,
+ "edited_fraction": "8 MLP neurons, 92,148 parameters (0.00077% of Gemma-4-12B-it)",
+ "cost_reported": "described session took about two hours and 30 of 50 forward passes; no $",
+ "wsp_evidence": {
+  "random_or_null_control": "no",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "yes",
+  "inference_only_fix_tested": "yes",
+  "full_test_set": "yes",
+  "held_out_eval": "yes",
+  "multiple_runs": "yes",
+  "code_or_data_released": "yes"
+ },
+ "prereg": "none",
+ "llm_in_authoring_or_grading": "yes",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["simple_baseline_matches"],
+ "evidence_notes": "The agent edit is the paper's headline (with a weight-scan section): Claude Opus 5.5 as headless Claude Code agent with 50 forward passes and 300 Python runs rewrote 8 Gemma neurons whose gates hold closed-form ridge detectors computed in its own code (PAGE 1-2), hence code + solver_delegated. Two of three sessions succeeded, one described (PAGE 2); a later review found doubling one native neuron gives the same shift (PAGE 2); system-prompt rule and LoRA r16 baselines. Server-side timestamps document priority, not a preregistration (PAGE 1). Experiments, code and drafts produced by Claude Opus 5.5 (PAGE 1, 4). The 27B Qwen implant is gradient-trained by the author, not WSP, so target_params_max uses the 12B WSP target."
+}

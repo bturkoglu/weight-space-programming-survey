@@ -1,0 +1,43 @@
+{
+ "key": "arxiv_2611.20174",
+ "title": "Weights & Caches: LLMs Can Program Tabular Foundation Models",
+ "authors": ["Shi Bin Hoo", "Magnus Bühler", "Omar Swelam", "Frank Hutter", "Lennart Purucker"],
+ "date": "2026-11-15",
+ "doc_type": "original_study",
+ "wsp_role": ["write_from_scratch", "read", "repair_or_edit", "feedback_loop", "other"],
+ "is_wsp": true,
+ "editor_models": ["GPT-6 Astra"],
+ "target_networks": [
+  {"name": "nanoTabPFN (zero-initialised)", "params": "3.7M", "kind": "other"},
+  {"name": "TabPFN-3.5 (pretrained tabular foundation model; weights and KV cache)", "params": "unknown", "kind": "other"}
+ ],
+ "domain": "tabular prediction (tabular foundation models)",
+ "tasks_benchmarks": ["TabArena-v0.1 (20 classification datasets)", "TabArena-Lite (51 tasks)", "synthetic signed-product regression (240 hidden datasets)", "synthetic flip-the-slope and sine-to-square-wave (10 unseen datasets each)"],
+ "headline_result": {"text": "Astra wrote nanoTabPFN from zero weights without running it, reaching mean ROC AUC 0.849 on 20 TabArena datasets versus 0.876 for a pretrained baseline, and repaired a TabPFN-3.5 signed-product failure (median R2 about 0 to 0.991-0.998) with 0.08% average error increase on TabArena-Lite.", "page": "1", "quote": "First, Astra directly programs nanoTabPFN from zero-initialized weights, achiev- ing a mean ROC AUC of 0.849 across 20 TabArena datasets, compared to 0.876 for a pretrained baseline."},
+ "evidence_quality": {
+  "random_or_null_control": "no",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "no",
+  "n_runs_or_seeds": "nanoTabPFN: 2 sessions, better one reported; repair: 1 session; KV-cache steering: 1 session per task",
+  "full_test_set": "yes",
+  "held_out_eval": "yes",
+  "preregistered": "no",
+  "code_or_data_released": "no",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "partial",
+ "relation_to_qwen_math_edit": "none",
+ "key_claims": [
+  {"claim": "The written nanoTabPFN implements a multiscale kernel naive Bayes classifier and filled in only 0.42% of the weights.", "page": "3", "quote": "Notably, only 0.42% of the weights were filled in, which can be indicative of overparametrization of nanoTabPFN."},
+  {"claim": "The written network had higher AUC than the trained baseline on only 3 of 20 datasets.", "page": "10", "quote": "WSP-NanoTabPFN has the higher AUC on 3 of the 20 datasets"},
+  {"claim": "The signed-product repair passed all fixed success criteria while leaving TabArena-Lite error nearly unchanged.", "page": "15", "quote": "On TabArena-Lite, the geometric-mean edited-to-pretrained error ratio is 1.0008 (95% confidence interval: 0.9999–1.0017), indicating little aggregate change on the preservation bench- mark."},
+  {"claim": "The repair changed about 105 million weight entries, so it does not show that a small local edit suffices, and transfer beyond targeted regimes is partial.", "page": "15", "quote": "Transfer beyond the targeted regimes is partial. The intervention also changes approximately 105 million weight entries, so it does not establish that a small local edit suffices."},
+  {"claim": "Astra-written KV-cache editing programs approximately flipped slopes and turned sines into square waves on unseen datasets without changing weights, with varying quality.", "page": "5", "quote": "Both programs ap- proximate the intended transformations on previously unseen datasets, although the quality of the interventions varies across datasets."}
+ ],
+ "limitations_stated": [
+  {"text": "Controls support the constructed sign computation but do not show that the pretrained model already contained the full circuit.", "page": "15", "quote": "they do not establish that the pretrained model already contained the complete circuit."},
+  {"text": "The findings are described as exploratory.", "page": "5", "quote": "These findings remain exploratory"}
+ ],
+ "notes_for_review": "Extends WSP to tabular foundation models in three settings: writing nanoTabPFN from zero weights with no forward passes (strict, audited), repairing a real TabPFN-3.5 failure with a tool-using agent and closed-form fits, and programming KV-cache edits. The construction result is credible and the written algorithm is interpretable; the repair is not a small edit (125 tensors, ~105M entries) and used closed-form ridge solves, so it is closer to analytic engineering than hand-written weights. Single sessions (the best of two for construction), no random-edit or fine-tuning comparison for the repair, and no code release is stated."
+}

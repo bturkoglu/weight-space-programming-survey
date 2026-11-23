@@ -1,0 +1,24 @@
+{
+ "key": "arxiv_2611.14210",
+ "peripheral": false,
+ "operation": ["edit"],
+ "protocol": "open_loop",
+ "mechanism": ["none"],
+ "scope": "external",
+ "editor_tier": ["none"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": 2000000000,
+ "edited_fraction": "112,630 weights in two down_proj matrices of Qwen3.5-0.8B (~1.8% of those matrices); ~1.2% of the two matrices on Qwen3.5-2B",
+ "cost_reported": "yes: Tree-Ising 31 min and ~$0.90 GPU vs agent edit 15.6 h and $312 ($291 LLM API + $21 GPU)",
+ "wsp_evidence": {
+  "random_or_null_control": "no", "non_llm_baseline": "yes", "finetune_comparison": "no",
+  "inference_only_fix_tested": "no", "full_test_set": "yes", "held_out_eval": "yes",
+  "multiple_runs": "no",
+  "code_or_data_released": "no"
+ },
+ "prereg": "none",
+ "llm_in_authoring_or_grading": "no",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["simple_baseline_matches"],
+ "evidence_notes": "Group-B non-LLM method: a forward-statistics objective solved per row as Ising/QUBO problems, no LLM tokens (p2); it reuses the GPT-6 Astra agent's layers and dose (p10), and layers on Qwen3.5-2B come from a forward scan (p12). Beats the agent edit re-scored at 51.7% (54.6% on MATH-500, p1, p8), with cost table on p10; single generation seed, no code link, no preregistration or LLM-authoring statement found."
+}

@@ -1,0 +1,124 @@
+{
+ "key": "arxiv_2611.07319",
+ "title": "WeightLoop: Weight-Space Programming with Experimental Feedback",
+ "authors": [
+  "Mengran Li",
+  "Bo Li",
+  "Weijing Zhao",
+  "Chengyang Zhang",
+  "Boyu Zhang",
+  "Jinfeng Xu",
+  "Zelin Zang",
+  "Victor C. M. Leung",
+  "Stan Z. Li"
+ ],
+ "date": "2026-11-05",
+ "doc_type": "method_or_tool",
+ "wsp_role": [
+  "write_from_scratch",
+  "repair_or_edit",
+  "feedback_loop"
+ ],
+ "is_wsp": true,
+ "editor_models": [
+  "GPT-6 Astra",
+  "DeepSeek (deepseek-flash, DeepSeek-V4.1-Flash-1017)"
+ ],
+ "target_networks": [
+  {
+   "name": "GEARS",
+   "params": "unknown",
+   "kind": "other"
+  },
+  {
+   "name": "PhaseNet",
+   "params": "unknown",
+   "kind": "CNN"
+  },
+  {
+   "name": "ClimaX",
+   "params": "unknown",
+   "kind": "other"
+  },
+  {
+   "name": "FNO2d (Fourier neural operator)",
+   "params": "unknown",
+   "kind": "other"
+  },
+  {
+   "name": "gene-recommendation MLPs (GO/scGPT/MAP-KG features)",
+   "params": "unknown",
+   "kind": "MLP"
+  },
+  {
+   "name": "scGPT and scFoundation+GEARS decoders",
+   "params": "unknown",
+   "kind": "other"
+  }
+ ],
+ "domain": "scientific prediction and experiment selection (cell biology, earthquake monitoring, weather, fluid dynamics, genomics)",
+ "tasks_benchmarks": [
+  "Adamson CRISPRi (GEARS)",
+  "INSTANCE P-wave picking",
+  "ERA5 Z500 / WeatherBench 2",
+  "PDEBench shallow-water",
+  "DepMap HepG2/Jurkat",
+  "HL60 proliferation/migration",
+  "LC3/NBR1 autophagic flux",
+  "HuH7 LDL uptake",
+  "H1 CRISPRi RNA calibration"
+ ],
+ "headline_result": {
+  "text": "With identical feedback and writable parameters, LLM-written update programs gave 5.10-18.56% lower primary error than Adam across four pretrained scientific predictors; for weather, editing four output-bias parameters cut RMSE by 13.28%.",
+  "page": "PAGE 1",
+  "quote": "5.10–18.56% lower primary error. For weather prediction, changing"
+ },
+ "evidence_quality": {
+  "random_or_null_control": "no",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "yes",
+  "inference_only_fix_tested": "no",
+  "n_runs_or_seeds": "single (execution seed17) for the four prediction tasks; 3 training seeds for recommendation, discovery and RNA calibration",
+  "full_test_set": "unclear",
+  "held_out_eval": "yes",
+  "preregistered": "no",
+  "code_or_data_released": "yes",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "no",
+ "relation_to_qwen_math_edit": "none",
+ "key_claims": [
+  {
+   "claim": "GPT-6 Astra (interactive session) and DeepSeek (API) are given the task, model code and permitted parameters and write a reusable update program, which is then run on returned measurements in later rounds.",
+   "page": "PAGE 1",
+   "quote": "code and permitted parameters in an interactive coding session"
+  },
+  {
+   "claim": "The comparison baseline is Adam started from the same model with the same ordered feedback, writable coordinates, validation folds and acceptance rules.",
+   "page": "PAGE 2",
+   "quote": "and Adam [13] start from the same model and receive the same"
+  },
+  {
+   "claim": "The update itself is a regularized numerical fit (regularized least squares or L-BFGS on smooth MAE) chosen from 12 preset settings, so the LLM writes the fitting code rather than the numbers.",
+   "page": "PAGE 3",
+   "quote": "We test 12 preset fitting settings. They combine squared error or"
+  },
+  {
+   "claim": "In sequential discovery, GPT-6 Astra editing improved mean utility over the initial MLP by 8.30%, 14.97% and 303.43% for LC3, NBR1 and HuH7.",
+   "page": "PAGE 4",
+   "quote": "Astra editing improves mean utility by 8.30%, 14.97% and 303.43%"
+  },
+  {
+   "claim": "RNA calibration lowered MSE by 1.85% (scGPT) and 7.49% (scF+GEARS) versus adapted checkpoints; on scGPT Adam and WeightLoop reached close values.",
+   "page": "PAGE 4",
+   "quote": "MSE reductions of 1.85% for scGPT and 7.49% for scF+GEARS rel-"
+  },
+  {
+   "claim": "The four prediction-task comparisons use a single execution seed.",
+   "page": "PAGE 2",
+   "quote": "The four tasks use execution seed17 and a regularized numeri-"
+  }
+ ],
+ "limitations_stated": [],
+ "notes_for_review": "An LLM writes a numerical update program (essentially regularized least squares or L-BFGS over a small permitted parameter set) that is rerun on accumulating experimental feedback; the LLM does not choose weight values directly. The Adam baseline shares data and parameters, but Adam fits from zero correction with a fixed learning rate, so the gap may reflect closed-form ridge fitting versus a tuned-light optimizer rather than LLM insight. The four prediction-task results come from one execution seed and report no variance; no limitations section is given. The paper is short (5 pages) and not peer reviewed. The source PDF is two-column with interleaved extraction, so quotes are short single-column fragments."
+}

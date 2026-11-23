@@ -1,0 +1,46 @@
+{
+ "key": "arxiv_2611.08383",
+ "title": "FedReason: Large Language Models as Weight-Space Meta-Aggregators for Heterogeneous Federated Learning",
+ "authors": ["Ali Mohammadi Ruzbahani", "Abbas Yazdinejad", "Hadis Karimipour"],
+ "date": "2026-11-05",
+ "doc_type": "method_or_tool",
+ "wsp_role": ["read", "write_from_scratch", "feedback_loop"],
+ "is_wsp": true,
+ "editor_models": ["Claude Opus 5.5"],
+ "target_networks": [{"name": "ResNet-18 (CIFAR variant) global and client models", "params": "11.17M / 11.22M", "kind": "CNN"}],
+ "domain": "federated learning, security (Byzantine robustness)",
+ "tasks_benchmarks": ["CIFAR-10", "CIFAR-100", "Dirichlet label skew (alpha 0.1, 0.5)", "width-heterogeneous sub-models", "sign-flipping and label-flipping attacks"],
+ "headline_result": {
+  "text": "An LLM that reads client weights in a sandbox and writes aggregation programs beat FedAvg by 1.26 pp on average over 12 paired label-skew runs, but did not beat SCAFFOLD or FLTrust, and without proxy feedback accuracy fell from 73.8% to 38.8% in one seed.",
+  "page": "PAGE 1",
+  "quote": "Across 12 paired label-skew runs it beat FedAvg by 1.26 percentage points on average (10 wins), and a control that spends the same per-round proxy budget on choosing among standard rules by 1.08 points."
+ },
+ "evidence_quality": {
+  "random_or_null_control": "no",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "no",
+  "n_runs_or_seeds": "3 seeds (label skew), 2 seeds (width, Byzantine), 1 seed (ablations)",
+  "full_test_set": "yes",
+  "held_out_eval": "yes",
+  "preregistered": "no",
+  "code_or_data_released": "no",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "no",
+ "relation_to_qwen_math_edit": "none",
+ "key_claims": [
+  {"claim": "Against ProxySel, a control spending the same per-round proxy budget on choosing among standard rules, the gain was about 1 pp with a wide interval.", "page": "PAGE 9", "quote": "Against ProxySel, which spends the same per-round proxy budget on choosing among three standard rules, the mean gain was 1.08 pp (95% CI 0.01 to 2.15) with 9 wins, 1 tie and 2 losses (p = 0.064)."},
+  {"claim": "SCAFFOLD, which changes client training, was the most accurate method in every label-skew setting.", "page": "PAGE 9", "quote": "SCAFFOLD was the most accurate method in all four settings."},
+  {"claim": "Under sign-flipping attack the LLM excluded all three attackers from round 1 based on update norms and cosines, without excluding honest clients.", "page": "PAGE 12", "quote": "FedReason gave the sign-flipping clients 0.43% of the aggregate on average and excluded all three from round 1 in both seeds, without excluding any honest client"},
+  {"claim": "Proxy feedback mattered far more than weight access: removing proxy feedback cost 35 points, withholding weights about 6, each in a single seed.", "page": "PAGE 17", "quote": "In the ablations, removing proxy feedback cost 35 points and withholding the weights about six, each in one seed, while the transcripts show that the LLM’s inferences can be wrong."},
+  {"claim": "The LLM misread honest narrow-width clients as label-flip attackers and excluded them, which damaged the sub-model.", "page": "PAGE 15", "quote": "In the CIFAR-10 width-heterogeneous run with seed 0, the LLM read strongly negative class-9 bias changes of clients 3 and 5 (both × 12 ) as label-flip poisoning"},
+  {"claim": "A 60-round run cost 0.79 USD in API fees on average.", "page": "PAGE 16", "quote": "A 60-round run with six invocations cost 0.79 USD on average (0.56 to 1.26 USD)."}
+ ],
+ "limitations_stated": [
+  {"text": "The system prompt was written knowing the evaluated heterogeneity types; gains may partly come from prompt domain knowledge.", "page": "PAGE 16", "quote": "Part of FedReason’s gains may come from domain knowledge in the prompt rather than from the analysis of the weights"},
+  {"text": "Few seeds; ablations rest on a single seed; outputs cannot be made deterministic.", "page": "PAGE 16", "quote": "Three seeds expose only large effects, and the ablations rest on a single seed each."},
+  {"text": "Only simple non-adaptive attacks were tested.", "page": "PAGE 16", "quote": "The attacks we evaluated are simple and non-adaptive."}
+ ],
+ "notes_for_review": "A carefully controlled application of the Sparks read-then-write idea to federated aggregation: the LLM reads ResNet-18 client weights through a sandbox and writes aggregation code, with 14 baselines, a budget-matched non-LLM control (ProxySel) and ablations removing weights or proxy feedback. Gains are about one point and not significant after correction; the method loses to SCAFFOLD and FLTrust, and the single-seed ablation suggests black-box proxy probing does most of the work. The paper itself is candid about wrong inferences and privacy leakage to the model provider. Code is promised only upon publication."
+}

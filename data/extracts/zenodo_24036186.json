@@ -1,0 +1,100 @@
+{
+ "key": "zenodo_24036186",
+ "title": "Weight-Space Programming with Claude Mythos: Weight Edits and Implanted Circuits in a 0.8B Language Model, with Transfer to an Engineering Surrogate",
+ "authors": [
+  "Keyvan Hardani"
+ ],
+ "date": "2026-11-07",
+ "doc_type": "replication",
+ "wsp_role": [
+  "repair_or_edit",
+  "write_from_scratch",
+  "feedback_loop"
+ ],
+ "is_wsp": true,
+ "editor_models": [
+  "Claude Mythos 5.1",
+  "Qwen3.8-27B (control run, rule violation)"
+ ],
+ "target_networks": [
+  {
+   "name": "Qwen3.5-0.8B",
+   "params": "0.8B",
+   "kind": "LLM"
+  },
+  {
+   "name": "thermal surrogate MLP 5->64->64->4 for power-module MOSFET junction temperatures",
+   "params": "4,804 weights",
+   "kind": "MLP"
+  }
+ ],
+ "domain": "math reasoning; engineering surrogate (power electronics thermal model)",
+ "tasks_benchmarks": [
+  "MATH-500",
+  "thermal surrogate error on 2,000 hidden simulations of variant B"
+ ],
+ "headline_result": {
+  "text": "With 10 forward passes Claude Mythos raised Qwen3.5-0.8B on MATH-500 from 7.3% to 32.5%, and with an implanted loop-breaking circuit after 8 more passes to 58.7%, above the 42.8% the unmodified model reaches with thinking disabled.",
+  "page": "PAGE 1",
+  "quote": "after 8 further passes the model reaches 58.7 % (SE 1.1) and the share of truncated answers falls from 66 % to 17 %."
+ },
+ "evidence_quality": {
+  "random_or_null_control": "no",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "yes",
+  "inference_only_fix_tested": "yes",
+  "n_runs_or_seeds": "single",
+  "full_test_set": "yes",
+  "held_out_eval": "yes",
+  "preregistered": "no",
+  "code_or_data_released": "yes",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "yes",
+ "relation_to_qwen_math_edit": "extends",
+ "key_claims": [
+  {
+   "claim": "At the same 10-pass budget as MIT, a rank-3 projection in three attention output matrices raised MATH-500 from 7.3% to 32.5%.",
+   "page": "PAGE 1",
+   "quote": "after 10 forward passes, MATH-500 rises from 7.3 % (our own measurement of the original) to 32.5 % through a rank-3 projection in three attention matrices (0.785 % of parameters)."
+  },
+  {
+   "claim": "The unmodified model with thinking disabled scores 42.8%, a control the report says MIT lacked.",
+   "page": "PAGE 2",
+   "quote": "Original, thinking disabled (8k) 42.8 % 1.1 31.5 % —"
+  },
+  {
+   "claim": "Four near-silent MLP units in layer 23 were repurposed as a repetition detector and termination driver.",
+   "page": "PAGE 1",
+   "quote": "four previously near-silent MLP units of one layer are repurposed into a repetition detector with a termination driver"
+  },
+  {
+   "claim": "On a thermal surrogate with 16 partial-load simulations, the agent edit reached 0.17 K mean error versus 2.32 to 4.45 K for gradient fine-tuning and 0.07 K for retraining on 5,000 simulations.",
+   "page": "PAGE 3",
+   "quote": "Agent edit (Claude Mythos), 16 sims, no training 0.17 1.1 0.22 100 %"
+  },
+  {
+   "claim": "A Qwen3.8-27B control run got lower error but broke the rules by building its own solver and fitting the output layer.",
+   "page": "PAGE 3",
+   "quote": "Control run Qwen3.8-27B (rule violation, synthetic refit) 0.03 0.3 0.04 100 %"
+  }
+ ],
+ "limitations_stated": [
+  {
+   "text": "All language-model results concern one model and one benchmark protocol; side-effect testing is pending.",
+   "page": "PAGE 3",
+   "quote": "All language-model results concern one"
+  },
+  {
+   "text": "The surrogate physics is small and its equation form is known.",
+   "page": "PAGE 7",
+   "quote": "Die Surrogat-Physik ist klein und in ihrer"
+  },
+  {
+   "text": "Edits do not add knowledge absent from both network and data.",
+   "page": "PAGE 3",
+   "quote": "Edits do not add knowledge that is present neither in the network nor in the available data."
+  }
+ ],
+ "notes_for_review": "One of the few reports that measures the thinking-disabled baseline (42.8%), which shows the 10-pass edit (32.5%) is below a no-edit setting change and only the implanted circuit (58.7%) exceeds it. Each result is a single agent run with no random-direction control and no gradient or diff-of-means comparison on the LLM side; the surrogate comparison with fine-tuning is stronger but uses a small MLP whose physics the agent could identify, close to the rule-breaking refit route. Practice-set selection over generation passes means the editor saw feedback before the test, although the test set was hidden. Bilingual 4+4 page report, not peer reviewed, artifacts on Hugging Face."
+}

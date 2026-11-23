@@ -1,0 +1,123 @@
+{
+ "key": "arxiv_2611.22013",
+ "title": "Weight-Space Programming for Materials Science",
+ "authors": [
+  "Sk Md Ahnaf Akif Alvi",
+  "Raymundo Arróyave"
+ ],
+ "date": "2026-11-17",
+ "doc_type": "original_study",
+ "wsp_role": [
+  "write_from_scratch",
+  "read",
+  "repair_or_edit",
+  "feedback_loop"
+ ],
+ "is_wsp": true,
+ "editor_models": [
+  "Claude Opus 5.5",
+  "Fable 5.2",
+  "Sonnet 5.5",
+  "Haiku 5.5"
+ ],
+ "target_networks": [
+  {
+   "name": "written MLP, one hidden layer of 16 ReLU units (property predictors)",
+   "params": "113 to 417",
+   "kind": "MLP"
+  },
+  {
+   "name": "larger written MLPs (64 units or 32+32)",
+   "params": "577 to 1,825",
+   "kind": "MLP"
+  },
+  {
+   "name": "trained surrogate 51-32-32-1 with planted leak (reading)",
+   "params": "unknown",
+   "kind": "MLP"
+  },
+  {
+   "name": "last readout layer of interatomic potentials (MACE-MPA-0, ORB-v3, eSEN-30M-OAM, GRACE-2L-OAM)",
+   "params": "64 to 256 in last layer (9,063,204 to 30,161,153 total)",
+   "kind": "other"
+  }
+ ],
+ "domain": "materials science (alloy and crystal property prediction, Bayesian optimization)",
+ "tasks_benchmarks": [
+  "Ti-alloy Young's modulus, yield strength, hardness",
+  "MPEA hardness and yield strength",
+  "35 Thermo-Calc phase-equilibrium targets",
+  "crystal bulk modulus and heat capacity",
+  "MatterGen and CrystalFlow sample screening",
+  "interatomic potential readout edit (bulk modulus)"
+ ],
+ "headline_result": {
+  "text": "With no labels, networks written by Claude Opus 5.5 ranked experimental alloys at Spearman 0.64 to 0.79 (best simple descriptor 0.47 to 0.62) and as a GP prior mean lowered Bayesian-optimization regret on 4 of 5 experimental tasks and 13 to 16 of 33 computed targets, with gains confined to the first tens of labels.",
+  "page": "PAGE 1",
+  "quote": "With no labels, the networks of the strongest model rank experimental alloys at Spearman 𝜌 = 0.64 to 0.79, where the best of five simple descriptors reaches 0.47 to 0.62."
+ },
+ "evidence_quality": {
+  "random_or_null_control": "yes",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "yes",
+  "inference_only_fix_tested": "no",
+  "n_runs_or_seeds": "2-3 replies per model and task; 20 BO seeds per arm",
+  "full_test_set": "yes",
+  "held_out_eval": "yes",
+  "preregistered": "no",
+  "code_or_data_released": "no",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "no",
+ "relation_to_qwen_math_edit": "none",
+ "key_claims": [
+  {
+   "claim": "On 35 Thermo-Calc targets written networks rank at mean 0.67, close to but not above a sub-system extrapolation with no LLM (0.70).",
+   "page": "PAGE 7",
+   "quote": "all 35 targets the Opus networks rank the pool at a mean 𝜌 = 0.67 and the Fable networks at 0.64"
+  },
+  {
+   "claim": "On crystal bulk modulus, most of what the networks know is the inverse-volume rule.",
+   "page": "PAGE 6",
+   "quote": "the two strongest models rank bulk modulus at 𝜌 = 0.95 and 0.94 against 0.89 for the inverse volume per atom, so most of what the networks know about this target is the volume rule."
+  },
+  {
+   "claim": "As a generator screen, written networks match but do not exceed standard models trained on 400 labeled crystals.",
+   "page": "PAGE 13",
+   "quote": "The written filter therefore matches what 400 labeled crystals give a standard model and does not exceed it, and its advantage is that it needs none."
+  },
+  {
+   "claim": "A network that ranks a pool well can still make Bayesian optimization worse, because it misorders the top tenth.",
+   "page": "PAGE 13",
+   "quote": "A high rank correlation over the pool is therefore not sufficient for a prior mean to help the optimizer"
+  },
+  {
+   "claim": "Reading trained weights never beat a simple weight statistic.",
+   "page": "PAGE 58",
+   "quote": "We found no case in which a model extracted from trained weights something that a simple statistic of those weights missed."
+  },
+  {
+   "claim": "Single-reply edits of a potential's readout were just as good when weight values were permuted, so the edit was arithmetic on the supplied sensitivity table.",
+   "page": "PAGE 59",
+   "quote": "A control prompt in which the weight values were permuted while the sensitivity table stayed correct produced edits just as good, so the edit is arithmetic on the table."
+  }
+ ],
+ "limitations_stated": [
+  {
+   "text": "All LLM results come from one vendor, and experimental results may reflect recall of public datasets named in the prompts.",
+   "page": "PAGE 14",
+   "quote": "The self-reports of the networks also show calibration against remembered values of alloys that are in the pools, so the experimental results measure recall as well as reasoning."
+  },
+  {
+   "text": "Tool use was excluded only by instruction and transcript audit, not a technical block.",
+   "page": "PAGE 14",
+   "quote": "Tool use was excluded by instruction and by an audit of every transcript rather than by a technical block"
+  },
+  {
+   "text": "Significance is over 20 seeds with replies fixed and says nothing about variation between replies; one prompt wording and network size.",
+   "page": "PAGE 15",
+   "quote": "Significance in the optimization tables is over 20 seeds with the written replies held fixed, and says nothing about the variation between replies."
+  }
+ ],
+ "notes_for_review": "The largest and most carefully referenced WSP application in this batch: 358 audited no-tool sessions from four Claude-family models write small 16-unit networks used as GP prior means, BNN means, feature maps and generator screens, compared against label-free rules, a CALPHAD sub-system extrapolation and models trained on 400 labels. The value is a knowledge prior over named inputs, and the authors show it is matched by simple descriptors or trained models in several settings and fades after tens of labels. The supplementary tests of reading and editing are negative or reduce to table arithmetic (permuted-weights controls do as well), which supports the view that the useful part is writing from domain knowledge, not reading weights. Code is promised but not yet released at the time of the preprint, and several references were strengthened only after an internal code review."
+}

@@ -1,0 +1,28 @@
+{
+ "key": "arxiv_2611.17246",
+ "peripheral": false,
+ "operation": ["write", "read"],
+ "protocol": "both",
+ "mechanism": ["direct_values"],
+ "scope": "external",
+ "editor_tier": ["frontier_proprietary"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": 468,
+ "edited_fraction": "whole network",
+ "cost_reported": "no",
+ "wsp_evidence": {
+  "random_or_null_control": "no",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "no",
+  "full_test_set": "yes",
+  "held_out_eval": "unclear",
+  "multiple_runs": "yes",
+  "code_or_data_released": "yes"
+ },
+ "prereg": "none",
+ "llm_in_authoring_or_grading": "no",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["simple_baseline_matches", "run_to_run_variance"],
+ "evidence_notes": "GPT-6 Astra as a frozen optimizer that writes the full parameter vector of fixed quantum circuits is the whole paper (p.2-4); the target is a quantum circuit, not a neural network. It returns numeric vectors with a first proposal without feedback and optional energy feedback afterwards (p.3-4, p.6), so direct_values and both protocols; largest stated size is p = 3n(L+1) with n = 12, L = n, i.e. 468 (p.7; LiH count not stated). No preregistration or AI-authorship statement found; code at github.com/tiago939/NeuralOptimizer (p.11); LLM inference cost explicitly excluded (p.7)."
+}

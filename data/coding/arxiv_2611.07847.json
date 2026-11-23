@@ -1,0 +1,28 @@
+{
+ "key": "arxiv_2611.07847",
+ "peripheral": false,
+ "operation": ["read", "edit"],
+ "protocol": "both",
+ "mechanism": ["direct_values", "code_or_tensor_tool"],
+ "scope": "external",
+ "editor_tier": ["frontier_proprietary"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": 38401,
+ "edited_fraction": "unclear (repair of a 209-weight MLP; LLM with calculator refitted 15 of 16 hidden units; scripted gate changed 29/209)",
+ "cost_reported": "wall-clock only: no-tool runs 23-62 min, calculator runs median 13 min (9-30); scripted gate 0.2 s",
+ "wsp_evidence": {
+  "random_or_null_control": "yes",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "yes",
+  "inference_only_fix_tested": "no",
+  "full_test_set": "yes",
+  "held_out_eval": "yes",
+  "multiple_runs": "yes",
+  "code_or_data_released": "yes"
+ },
+ "prereg": "internal",
+ "llm_in_authoring_or_grading": "yes",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["editor_refusal_or_unfinished", "proxy_overfitting", "simple_baseline_matches"],
+ "evidence_notes": "LLM reading/auditing/repair of networks is the whole study (p.1-2). Tool-free condition has the model write weights in its reply (direct_values, single reply) while the calculator condition gives a run_python tool with predict() (p.4), so mechanism is both and protocol both. Plans and scoring code were committed to a private repository before each run, 'internal pre-specification, not a public registration' (p.5, Appendix A p.12); Claude Opus 5.5 assisted with code, analyses and drafting (p.12); code at github.com/Chth1z/llm-clinical-network-audit (p.12)."
+}

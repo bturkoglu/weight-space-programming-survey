@@ -1,0 +1,45 @@
+{
+ "key": "arxiv_2611.26408",
+ "title": "Training Vision Models for LLM-Driven Weight-Space Programming",
+ "authors": ["Timo Ropinski", "Sebastian Kranz"],
+ "date": "2026-11-19",
+ "doc_type": "method_or_tool",
+ "wsp_role": ["read", "repair_or_edit", "feedback_loop"],
+ "is_wsp": true,
+ "editor_models": ["GPT-6 Astra", "Claude Opus 5.5", "GLM-5.3-Flash", "DeepSeek-V4.1-Flash", "Gemma-4-26B"],
+ "target_networks": [{"name": "ResNet-18", "params": "unknown", "kind": "CNN"}, {"name": "ResNet-50", "params": "unknown", "kind": "CNN"}, {"name": "ViT-B/16", "params": "unknown", "kind": "other"}],
+ "domain": "vision",
+ "tasks_benchmarks": ["Waterbirds (concept relabel)", "CIFAR-100 (relabel, confusion fix)", "Entity-30 (confusion fix)", "PACS (subgroup fix)"],
+ "headline_result": {
+  "text": "Edit-Ready Training (ERT) gives the highest mean net edit score for both main editors (Astra 0.74 vs 0.63 for standard training; Opus 0.72 vs 0.60), with large gains only on the hardest settings such as the Entity-30 confusion fix (0.46 to 0.79 for Astra).",
+  "page": "PAGE 5",
+  "quote": "ERT has the highest mean net score for both editors (Astra: 0.74, against 0.71 for ENN, 0.63 for LS and 0.63 for ERM; Opus: 0.72, against 0.68, 0.65 and 0.60)."
+ },
+ "evidence_quality": {
+  "random_or_null_control": "no",
+  "non_llm_baseline": "unclear",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "no",
+  "n_runs_or_seeds": "8-16 edit processes per cell; mostly one trained network per method and setting",
+  "full_test_set": "yes",
+  "held_out_eval": "yes",
+  "preregistered": "no",
+  "code_or_data_released": "no",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "no",
+ "relation_to_qwen_math_edit": "none",
+ "key_claims": [
+  {"claim": "On four of nine settings standard networks are already easy to edit and dedicated training adds little; where they are hard, ERT helps substantially.", "page": "PAGE 1", "quote": "On four of the nine tested settings formed by dataset, task"},
+  {"claim": "LLM editors almost always edit only the final classification layer; backbone edits are rare.", "page": "PAGE 8", "quote": "Both editors almost always edit the final"},
+  {"claim": "Opus's head edits are rank one, confined to the source and target class rows, and sparse, chosen along the support-reference contrast.", "page": "PAGE 8", "quote": "change to the final layer is rank one (median share of its en-"},
+  {"claim": "Edits still cost overall accuracy: test accuracy ends 3 to 4 points below the unedited network for all training methods.", "page": "PAGE 8", "quote": "Even with frontier LLMs, targeted edits by weight-"},
+  {"claim": "Weaker open-weight editors (GLM, Gemma) score much lower and gain reliably from no preparation method.", "page": "PAGE 6", "quote": "GLM-5.3-Flash and Gemma-4-26B are much weaker (0.45"}
+ ],
+ "limitations_stated": [
+  {"text": "With 8 to 16 paired edit processes per cell only large differences between methods are detectable.", "page": "PAGE 8", "quote": "per cell, only large differences between methods are de-"},
+  {"text": "Hyperparameters and baselines were tuned with scripted editors on ResNet-18 rather than with agents.", "page": "PAGE 8", "quote": "Hyperparameters were tuned and baselines selected"},
+  {"text": "Most cells rest on a single trained network per method.", "page": "PAGE 4", "quote": "we train a single network per training method and"}
+ ],
+ "notes_for_review": "Large benchmark (over 2,600 scored edit processes, five LLM editors) of LLM agents editing vision classifiers through a budgeted tool server, plus a training method (ERT) that rehearses the closed-form rank-one head edits the agents were observed to make. The key descriptive finding is that LLM edits reduce to sparse rank-one re-routing of the classifier head along a support-vs-reference feature contrast, i.e. a mechanical closed-form edit; yet the paper does not directly compare the LLM against applying that closed-form rule itself on the same requests. Statistics are paired sign-flip tests with bootstrap intervals; code and transcripts are promised, not yet released."
+}

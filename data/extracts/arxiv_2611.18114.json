@@ -1,0 +1,46 @@
+{
+ "key": "arxiv_2611.18114",
+ "title": "Interpretable weight-space programming builds transparent transformers and brain encoding models",
+ "authors": ["Yash Mehta", "Chandan Singh", "Weijia Xu", "Richard J. Antonello", "Adeen Flinker", "Nima Mesgarani", "Michael F. Bonner", "Nebojsa Jojic", "Jianfeng Gao"],
+ "date": "2026-11-13",
+ "doc_type": "method_or_tool",
+ "wsp_role": ["write_from_scratch", "feedback_loop"],
+ "is_wsp": true,
+ "editor_models": ["Claude Opus 5.5", "Claude Sonnet 5.5", "Claude Haiku 5.5", "Gemini 4 Carbon", "Claude Opus 4.7"],
+ "target_networks": [
+  {"name": "small GPT-style transformer written from scratch (algorithmic/NLP tasks; default 3 layers, width 64)", "params": "median 166 for smallest 100%-accurate algorithmic models (Opus); about 190,000 for NLP", "kind": "LLM"},
+  {"name": "hand-written visual feature network for fMRI encoding (865-line program, 9,996 features)", "params": "under 100,000", "kind": "CNN"},
+  {"name": "hand-written word-feature model for story-listening fMRI", "params": "unknown", "kind": "other"},
+  {"name": "hand-written audio feature network for ECoG encoding (3,852 features)", "params": "unknown", "kind": "other"}
+ ],
+ "domain": "neuroscience (fMRI, ECoG brain encoding); algorithmic tasks and NLP",
+ "tasks_benchmarks": ["13 algorithmic tasks (addition, multiplication, GCD, edit distance, etc.)", "TREC", "SST-2", "MRPC", "SNLI", "LAION-fMRI", "Natural Scenes Dataset (NSD)", "story-listening fMRI (UTS03)", "podcast ECoG"],
+ "headline_result": {"text": "LLM agents wrote transformers that reach 100% hidden accuracy on all 26 Opus runs of 13 algorithmic tasks, and a hand-written visual encoding model beat all seven interpretable baselines on the held-out NSD dataset (ventral 0.317 vs 0.256) while trailing AlexNet in ventral cortex.", "page": "PAGE 4", "quote": "All 26 runs on algorithmic tasks reach 100% accuracy both on the visible set and the hidden set (Fig. 2a), often by implementing a known algorithm in the weights."},
+ "evidence_quality": {
+    "random_or_null_control": "yes",
+    "non_llm_baseline": "yes",
+    "finetune_comparison": "no",
+    "inference_only_fix_tested": "no",
+    "n_runs_or_seeds": "2 runs per task per LLM (algorithmic/NLP); single search per brain dataset",
+    "full_test_set": "yes",
+    "held_out_eval": "yes",
+    "preregistered": "no",
+    "code_or_data_released": "yes",
+    "peer_reviewed": "no"
+ },
+ "replicates_mit": "no",
+ "relation_to_qwen_math_edit": "none",
+ "key_claims": [
+  {"claim": "On NLP tasks the written models are crude; iWSP reaches respectable accuracy on 3 of 4 datasets but fails on paraphrase.", "page": "PAGE 4", "quote": "on 3 of the 4 NLP datasets iWSP builds models that achieve respectable performance well above a naive majority baseline (it fails on the relatively difficult Paraphrase task)."},
+  {"claim": "The visual encoding model transfers to the unseen NSD dataset and beats all seven interpretable baselines, but trails pretrained AlexNet in ventral cortex.", "page": "PAGE 6", "quote": "Compared with pretrained AlexNet, iWSP matches black-box accuracy in early visual cortex while trailing in ventral visual cortex (0.391)."},
+  {"claim": "In language fMRI, a sudden jump in performance came from story-position features, which exposed a scan-timing confound in the dataset.", "page": "PAGE 8", "quote": "We find that the new features added at this step surprisingly do not encode a word’s semantic content, but rather only its position in the story."},
+  {"claim": "For ECoG, the written audio features slightly underperform Whisper but add variance Whisper misses.", "page": "PAGE 11", "quote": "As a result, combining both in one ridge regression significantly improves on Whisper alone, raising performance from 0.070 to 0.075"},
+  {"claim": "Interpretability was tested by rebuilding models from a 200-word description; algorithmic rebuilds kept 100% accuracy and stayed far closer in size than a no-description control.", "page": "PAGE 6", "quote": "On algorithmic tasks, rebuilt models have 1.74 times the original’s parameters on a geometric mean, against 2,043 times for the control (Fig. A2b)."}
+ ],
+ "limitations_stated": [
+  {"text": "Agents recombine known motifs (textbook algorithms, Gabor filters) rather than invent new computational principles.", "page": "PAGE 12", "quote": "First, current agents do not invent genuinely new computational principles."},
+  {"text": "Programming deep hierarchical representations without backpropagation remains open, which likely explains trailing trained networks in ventral cortex, harder NLP and ECoG.", "page": "PAGE 12", "quote": "Programming deep hierarchical representations without backpropagation remains an open problem"},
+  {"text": "Training bans in the algorithmic harness are only instructions audited afterwards; some Sonnet runs fit weights to labels and were excluded.", "page": "PAGE 3", "quote": "The harness cannot stop the agent’s own Python from training or from computing the answer outside the network, so those rules remain instructions that we audit afterward."}
+ ],
+ "notes_for_review": "Extends WSP from editing to writing small interpretable networks from scratch with an evaluator-feedback loop, with brain-encoding feature extractors as the main scientific use (ridge regression is fitted on top of the hand-written features). Evidence is fairly careful: hidden sets, held-out subjects/datasets, classical and black-box baselines, audits for hidden training, and a text-bottleneck rebuild test with a no-description control. Written models still trail pretrained networks where deep hierarchies matter, and total API cost was about $17,500. It does not touch MIT's Qwen math edit."
+}

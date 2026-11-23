@@ -1,0 +1,49 @@
+{
+ "key": "arxiv_2611.13758",
+ "title": "Mixed Signals: Weight-Space Programming for EEG and ECG",
+ "authors": ["Dara Varam", "Taraneh Aminosharieh Najafi", "David Atienza"],
+ "date": "2026-11-10",
+ "doc_type": "original_study",
+ "wsp_role": ["read", "write_from_scratch", "repair_or_edit", "feedback_loop"],
+ "is_wsp": true,
+ "editor_models": ["Claude Opus 5.5", "GLM-5.3", "DeepSeek-V4.1-Flash"],
+ "target_networks": [
+  {"name": "TinyEEGNet", "params": "2,730", "kind": "CNN"},
+  {"name": "ECGResNet", "params": "941,189", "kind": "CNN"}
+ ],
+ "domain": "EEG/ECG",
+ "tasks_benchmarks": ["PhysioNet EEG Motor Movement/Imagery (eyes open/closed, left/right fist, fists/feet)", "PTB-XL 12-lead ECG (5 diagnostic superclasses)"],
+ "headline_result": {
+  "text": "Writing all 2,730 weights of an EEG classifier from zero using 5 practice subjects, Claude Opus 5.5 reached 0.834 balanced accuracy on 65 unseen subjects, versus 0.704 for gradient descent on 5 subjects and 0.806 on 30; no model improved an already healthy network.",
+  "page": "PAGE 2",
+  "quote": "A TinyEEGNet network, with all its weights initialized to 0, is written through the reasoning of Claude Opus 5.5 using only 5 training subjects, and matches the same network trained by gradient descent on 30 training subjects."
+ },
+ "evidence_quality": {
+  "random_or_null_control": "yes",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "yes",
+  "inference_only_fix_tested": "no",
+  "n_runs_or_seeds": "Exp 1: 52 runs per model; Exp 2: 12; Exp 3 EEG: 42; Exp 3 ECG, 4 and 5: single run per model and setting",
+  "full_test_set": "yes",
+  "held_out_eval": "yes",
+  "preregistered": "no",
+  "code_or_data_released": "yes",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "partial",
+ "relation_to_qwen_math_edit": "none",
+ "key_claims": [
+  {"claim": "No model could identify a network's task from its weights; the best score was no better than on untrained control networks.", "page": "PAGE 5", "quote": "conclude that it was guessing rather than reading the weights)."},
+  {"claim": "No model improved an already well-trained network, and standard fixes did not either.", "page": "PAGE 6", "quote": "None of the models improved a healthy network (Fig. 4)."},
+  {"claim": "Visible planted faults were found and undone; invisible faults were only recovered with feedback and without naming the cause.", "page": "PAGE 6", "quote": "Instead, they found edits that the feedback rewarded, and those"},
+  {"claim": "In the hidden-shortcut ECG task the artifact's effect on MI calls was removed and MI-AUC rose, but no edit beat the pre-set best standard fix.", "page": "PAGE 7", "quote": "rose from 0.67–0.69 to 0.83–0.86 for every model and every"},
+  {"claim": "No edit beat the pre-set pass mark in experiment 4.", "page": "PAGE 7", "quote": "However, no edit beat the pass mark set before running the"},
+  {"claim": "Writing a network took 38-39 minutes and about 9 USD versus 2-5 seconds of GPU training.", "page": "PAGE 8", "quote": "minutes of wall-clock time, while gradient descent trains the"}
+ ],
+ "limitations_stated": [
+  {"text": "Experiments 3 (ECG), 4 and 5 use a single run per model and setting.", "page": "PAGE 8", "quote": "experiments 3 (ECG), 4 and 5 use a single run per model and"},
+  {"text": "Both datasets are public and likely in LLM training data, so 'physiology priors' may be dataset knowledge.", "page": "PAGE 8", "quote": "validation. Third, both PhysioNet datasets are public and likely"},
+  {"text": "The hand-crafted baselines in experiment 5 were added after the LLM runs.", "page": "PAGE 8", "quote": "experiment 5 were added after the LLM runs, so, unlike the"}
+ ],
+ "notes_for_review": "One of the better-controlled WSP studies: success rules fixed in advance, random-edit placebo, untrained/shuffled-label control networks, fine-tuning and last-layer retraining baselines, and three editor LLMs (two open-weight). The from-scratch EEG result rests on one run per model and a public dataset the editor recognized, and the comparison is against gradient descent on a 2,730-weight network trained with very few subjects. Negative findings (cannot read task from weights, cannot improve healthy nets, invisible faults fixed by feedback-driven trial rather than diagnosis) are reported clearly. The text is two-column and quotes here are taken from single extracted lines."
+}

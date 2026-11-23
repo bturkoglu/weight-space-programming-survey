@@ -1,0 +1,48 @@
+{
+ "key": "arxiv_2611.11894",
+ "title": "Distilling Instructions into Weights: Closed-Form Edits Fix a Robot Policy's Misreading",
+ "authors": ["Ali-Adeeb Abbas", "Esmaeil Seraj"],
+ "date": "2026-11-09",
+ "doc_type": "original_study",
+ "wsp_role": ["read", "repair_or_edit"],
+ "is_wsp": true,
+ "editor_models": ["Claude Opus (headless Claude Code, operator and seven blind editors)", "GPT-6 Astra (companion study edits)"],
+ "target_networks": [
+  {"name": "pi0.5 DROID joint-position VLA (PaliGemma VLM + Gemma action expert)", "params": "3.35B", "kind": "policy"}
+ ],
+ "domain": "robotics (vision-language-action manipulation in simulation)",
+ "tasks_benchmarks": ["RoboLab (16 tasks, Isaac Sim)", "cube then banana into bowl", "pick up eyeglasses", "cube left/right of bowl", "stack yellow on red", "stack three cubes", "mustard into left bin", "pick up flat box"],
+ "headline_result": {
+  "text": "A closed-form edit that distils an explicit instruction rewording into the VLM's MLP weights raised held-out success on cube-then-banana from 27/128 to 106/128 (81 fixed, 2 broken), while a same-size random-direction update did not help.",
+  "page": "PAGE 1",
+  "quote": "On 128 held-out seeds, success rises from 27 to 106 episodes, with 81 fixed and 2 broken (p = 7 × 10−22 ), while an update of the same size in random directions leaves success unchanged."
+ },
+ "evidence_quality": {
+  "random_or_null_control": "yes",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "yes",
+  "n_runs_or_seeds": "paired seeds, 16 to 128 pairs per comparison; unchanged-weight reruns as noise controls",
+  "full_test_set": "unclear",
+  "held_out_eval": "yes",
+  "preregistered": "yes",
+  "code_or_data_released": "yes",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "no",
+ "relation_to_qwen_math_edit": "none",
+ "key_claims": [
+  {"claim": "The fix comes from the edit's directions, not its size: a random-direction update matched in layers, rank and singular values scored 9/64 versus 50/64 for the distilled edit.", "page": "PAGE 5", "quote": "The fix comes from the edit’s directions, not its size. On the first 64 of these seeds, a random-direction update with the same layers, rank, and singular values scored 9/64."},
+  {"claim": "The edit does not beat simply using the explicit wording at inference (57/64 vs 50/64, p = 0.12); it recovers most of the wording's effect.", "page": "PAGE 5", "quote": "Given the explicit wording, the unedited policy scored 57/64 (p = 0.12 against the edit), so the edit recovers most of the wording’s effect (Appendix C)."},
+  {"claim": "Of seven blind Claude Opus editors, only the one whose task had a known-good wording produced an edit that passed held-out scoring (11/64 to 27/64).", "page": "PAGE 7", "quote": "One of seven submissions passed. On cube then banana, the editor independently traced the release to the wording."},
+  {"claim": "Edits at perception, missing competence, contact physics and gripper commitment did not help, including four GPT-6 Astra edits that stayed within noise.", "page": "PAGE 8", "quote": "Four GPT-6 Astra edits of 791–6,225 values stayed within noise, and none passed the companion study’s gate."},
+  {"claim": "Reruns with unchanged weights flip about a third of paired outcomes, so small-sample screens are not evidence.", "page": "PAGE 8", "quote": "A 16-episode screen is therefore a filter, not evidence."},
+  {"claim": "Weight edits fix decisions where a known-good input exists but do not supply missing skills.", "page": "PAGE 9", "quote": "Edit when the network can be shown to do the right thing under some input, and train when it cannot."}
+ ],
+ "limitations_stated": [
+  {"text": "The full edit is low-rank but dense, changing 13.4% of stored values; the 0.16% variant still changes 7.4%.", "page": "PAGE 9", "quote": "The full edit is low-rank but not sparse. It changes 13.4% of the policy’s stored values, and the 0.16% variant still changes 7.4% once applied."},
+  {"text": "The distilled edit was built by the operator session; the tool has run on one task and needs a known-good wording as input.", "page": "PAGE 9", "quote": "The distilled edit was built by the operator session under the editor rules. The released tool rebuilds such an edit end to end, but it has run on one task, and it needs the known-good wording as input."},
+  {"text": "One zero-shot checkpoint in simulation, 16-128 pairs per comparison, and failure levels assigned without an independent rater.", "page": "PAGE 9", "quote": "All results come from one zero-shot checkpoint in simulation, with 16 to 128 pairs per comparison. The failure levels were assigned without an independent rater."}
+ ],
+ "notes_for_review": "One of the most carefully controlled WSP-style studies: paired seeds, held-out slots, a matched random-direction control, the inference-only alternative (explicit rewording), unchanged-weight reruns that measure a ~30% discordance noise floor, and blind editors. The successful edit is a ROME/MEMIT-style closed-form ridge update rather than an LLM-chosen weight pattern, and it does not beat simply rewording the instruction. The 'preregistered' flag applies only to the where-to-edit sub-study; there is no fine-tuning comparison. Astra edits on the perception task stayed within noise."
+}

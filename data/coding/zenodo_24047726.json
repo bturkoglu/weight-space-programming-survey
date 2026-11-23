@@ -1,0 +1,28 @@
+{
+ "key": "zenodo_24047726",
+ "peripheral": false,
+ "operation": ["read"],
+ "protocol": "open_loop",
+ "mechanism": ["none"],
+ "scope": "external",
+ "editor_tier": ["open_weight"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": null,
+ "edited_fraction": "not applicable (reading only)",
+ "cost_reported": "no",
+ "wsp_evidence": {
+  "random_or_null_control": "yes",
+  "non_llm_baseline": "no",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "no",
+  "full_test_set": "yes",
+  "held_out_eval": "unclear",
+  "multiple_runs": "no",
+  "code_or_data_released": "yes"
+ },
+ "prereg": "internal",
+ "llm_in_authoring_or_grading": "unclear",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["layout_or_prior_fallback"],
+ "evidence_notes": "A weight-reading benchmark is the whole record (TASKS.md, RESULT.md). Only forced-choice letter logits are scored, so no weights are written (mechanism none, open loop). TASKS.md is headed 'pre-registered 2026-11-07, before any run' and RESULT.md cites its unchanged sha256, but the record was deposited on Zenodo after the runs, so coded internal. No frontier model was tested, so open-weight failure relative to frontier is not_tested; scores equal the value-shuffled control (RESULT.md). Target size is null because the PPO policies' size is not given (the MLPs are 784-16-10, about 12.7k)."
+}

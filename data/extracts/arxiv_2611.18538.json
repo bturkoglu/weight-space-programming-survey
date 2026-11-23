@@ -1,0 +1,38 @@
+{
+ "key": "arxiv_2611.18538",
+ "title": "Why Finite Intelligence Works in an Infinite World: A Mathematical Theory",
+ "authors": ["Mojtaba Soltanalian"],
+ "date": "2026-11-13",
+ "doc_type": "theory",
+ "wsp_role": ["other"],
+ "is_wsp": false,
+ "editor_models": ["none"],
+ "target_networks": [],
+ "domain": "theory (information theory, rate-distortion, decision theory)",
+ "tasks_benchmarks": ["none (analytic results; numerical checks of the stated formulas only)"],
+ "headline_result": {"text": "A purely mathematical paper: the information needed to keep decision value for tasks announced later is characterised by a joint decision-regret state, and finite retention is bounded by weak-star closure (fixed action count) or singular mass (all finite menus); it reports no WSP experiment.", "page": "1", "quote": "Two exact boundaries govern finite preservation: weak-star closure for a fixed action count, and the singular mass of the source–evidence law when all finite action menus are admitted."},
+ "evidence_quality": {
+  "random_or_null_control": "no",
+  "non_llm_baseline": "no",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "no",
+  "n_runs_or_seeds": "unclear",
+  "full_test_set": "unclear",
+  "held_out_eval": "no",
+  "preregistered": "no",
+  "code_or_data_released": "no",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "no",
+ "relation_to_qwen_math_edit": "none",
+ "key_claims": [
+  {"claim": "Weight-space programming appears only as one of three motivating application areas in an introductory table, where preparation precedes the later specification of a model to be built.", "page": "2", "quote": "Weight-space programming [34]      parameter relationships, model       architecture and objective, training"},
+  {"claim": "Any retained representation can be replaced by a calibrated compression of the decision-regret state without increasing information or regret.", "page": "2", "quote": "Any retained representation can be replaced, without increasing information or regret, by a calibrated compression of this state."},
+  {"claim": "Task families with the same source law, pairwise metric and individual-task rates can need different amounts of retained information.", "page": "1", "quote": "Families with identical source laws, pairwise task metrics, and individual-task rates can have different high-resolution exponents."},
+  {"claim": "Preservation of information is distinct from efficient discovery and use.", "page": "1", "quote": "Nonlinear learning and computational separations distinguish preservation from efficient discovery and use."}
+ ],
+ "limitations_stated": [
+  {"text": "The numerical checks only evaluate the stated formulas; an external test on a separately trained system is left open.", "page": "22", "quote": "The numerical checks evaluate the specified formulas and constructions. An external test would estimate task structure in a separately trained system and predict held-out coding losses."}
+ ],
+ "notes_for_review": "An information-theory paper on how much retained information preserves decision value for tasks specified later. It cites the MIT WSP blog once, in an introductory table, as an example of 'preparation before purpose'; no LLM reads or writes weights and nothing in the results concerns WSP. Exclude from the WSP evidence base or mention only as a citing paper."
+}

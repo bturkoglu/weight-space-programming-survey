@@ -1,0 +1,28 @@
+{
+ "key": "arxiv_2611.22013",
+ "peripheral": false,
+ "operation": ["write", "read", "edit"],
+ "protocol": "both",
+ "mechanism": ["direct_values"],
+ "scope": "external",
+ "editor_tier": ["frontier_proprietary"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": 30161153,
+ "edited_fraction": "whole network for written MLPs (113-1,825 weights); readout edits touch only the last layer (64-256 of 9-30M weights)",
+ "cost_reported": "no",
+ "wsp_evidence": {
+  "random_or_null_control": "yes",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "yes",
+  "inference_only_fix_tested": "no",
+  "full_test_set": "yes",
+  "held_out_eval": "yes",
+  "multiple_runs": "yes",
+  "code_or_data_released": "no"
+ },
+ "prereg": "none",
+ "llm_in_authoring_or_grading": "yes",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["known_rule_rediscovered", "simple_baseline_matches", "layout_or_prior_fallback"],
+ "evidence_notes": "Writing small property-prediction networks from domain knowledge in audited no-tool replies is the main study (p.1-6; prompt p.17), so direct_values; reading and readout editing are in Supplement S3 (p.58-59), with a five-attempt feedback arm, hence both protocols. Only the BO selection rule was 'fixed before the 20-seed runs, after a pilot' (p.5) with no registry or timestamp, so prereg none; code 'will be released' at a GitHub URL (p.15), so not released. Text, figures and analysis code were drafted with an AI assistant (p.15); bulk-modulus knowledge is mostly the inverse-volume rule (p.6), and permuted-weight controls edited as well as real weights (p.59)."
+}

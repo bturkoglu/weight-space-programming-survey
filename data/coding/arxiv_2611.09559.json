@@ -1,0 +1,28 @@
+{
+ "key": "arxiv_2611.09559",
+ "peripheral": false,
+ "operation": ["write", "edit"],
+ "protocol": "closed_loop",
+ "mechanism": ["direct_values"],
+ "scope": "external",
+ "editor_tier": ["frontier_proprietary"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": null,
+ "edited_fraction": "whole network",
+ "cost_reported": "no (only says networks are specialised 'in hours', p.2; no $ or matched wall-clock)",
+ "wsp_evidence": {
+  "random_or_null_control": "yes",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "yes",
+  "inference_only_fix_tested": "yes",
+  "full_test_set": "unclear",
+  "held_out_eval": "yes",
+  "multiple_runs": "no",
+  "code_or_data_released": "yes"
+ },
+ "prereg": "none",
+ "llm_in_authoring_or_grading": "yes",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["simple_baseline_matches", "proxy_overfitting"],
+ "evidence_notes": "WSP is the method of all four studies (p.3-4): Claude Opus 5.5 writes small MLPs (one linear or one width-6 ReLU layer) as JSON and edits them from forward-pass diagnostics, so direct_values and closed_loop. Weights were frozen on practice instances before test (p.4-5) but with no timestamped registry or hashes, so prereg none. The MARTA gain is fully matched by SCIP's pseudocost rule (p.10, p.14) and the synthetic rule fails on MIPLIB (p.9); Claude wrote all code, weights, analysis and text (p.1, p.17); code at github.com/butkeraites/llm-written-weights-or (p.14). Exact parameter counts are not given."
+}

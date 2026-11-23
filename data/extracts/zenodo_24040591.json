@@ -1,0 +1,84 @@
+{
+  "key": "zenodo_24040591",
+  "title": "Weight-space programming on a regulatory-genomics CNN: public release 1 (preprint: Can an LLM agent detect and repair a planted shortcut in a genomics CNN without data? A preregistered, blinded test of weight-space programming)",
+  "authors": ["Alexandre Bruni-Cardoso"],
+  "date": "2026-11-07",
+  "doc_type": "original_study",
+  "wsp_role": ["read", "repair_or_edit"],
+  "is_wsp": true,
+  "editor_models": ["Claude Opus 5.5 (claude-opus-5-5 in Claude Code 2.1.318, effort high)"],
+  "target_networks": [
+    {"name": "SmallCNN predicting CTCF binding (18 planted-shortcut + 10 clean models)", "params": "58,433", "kind": "CNN"}
+  ],
+  "domain": "genomics (CTCF binding prediction from DNA)",
+  "tasks_benchmarks": ["ENCODE CTCF ChIP-seq GM12878 (ENCFF796WRU), clean test set chr8/chr9", "planted shortcuts: random 10-mer, poly-A 12-mer at window start, flank GC shift", "probe FPR, reliance, clean test AUPRC"],
+  "headline_result": {
+    "text": "In 56 blind sessions, Claude Opus 5.5 detection beat false alarms only narrowly (D = 0.396, 95% CI 0.021-0.792, one-sided p = 0.0177), resting on one correct poly-A answer; all correct detections came from sessions that ran parts of the network locally, and only 2 of 36 planted-model repairs met the fix criterion.",
+    "page": "README.md",
+    "quote": "D = 0.396 [0.021, 0.792], one-sided p = 0.0177. Arithmetic on the preregistered bootstrap shows the support rests on one correct poly-A answer."
+  },
+  "evidence_quality": {
+    "random_or_null_control": "yes",
+    "non_llm_baseline": "yes",
+    "finetune_comparison": "yes",
+    "inference_only_fix_tested": "no",
+    "n_runs_or_seeds": "56 sessions (2 per model on 28 models: 18 planted, 10 clean); 4 plant instances in the primary analysis",
+    "full_test_set": "yes",
+    "held_out_eval": "yes",
+    "preregistered": "yes",
+    "code_or_data_released": "yes",
+    "peer_reviewed": "no"
+  },
+  "replicates_mit": "partial",
+  "relation_to_qwen_math_edit": "none",
+  "key_claims": [
+    {
+      "claim": "Detection succeeded for two of three planted k-mers (3 of 4 answers each) but never for the third, and only once in 12 answers for the poly-A pattern.",
+      "page": "reports/results.md",
+      "quote": "Per plant instance: kmer_s0 3/4, kmer_s1 3/4, kmer_s2 0/4, positional 1/12."
+    },
+    {
+      "claim": "There were no false alarms on clean models.",
+      "page": "reports/results.md",
+      "quote": "0 of 20 clean-model answers claimed a shortcut."
+    },
+    {
+      "claim": "Budget 0 was not weights alone: 47 of 56 sessions ran parts of the network locally, every correct detection came from such sessions, and per-protocol analyses did not support detection.",
+      "page": "README.md",
+      "quote": "All 7 correct detections came from such sessions, and the per-protocol analyses did not support detection."
+    },
+    {
+      "claim": "Repair largely failed: 2 of 36 planted-model sessions met the fix criterion, though no edit harmed clean AUPRC; random matched edits fixed 0 of 520.",
+      "page": "README.md",
+      "quote": "2 of 36 planted-model sessions met the fix criterion, and no edit harmed clean performance."
+    },
+    {
+      "claim": "A non-LLM interpretability baseline (MoDISco then zeroing conv1 filters) fixed 6 of 18 k-mer cells but no positional or GC cells.",
+      "page": "reports/results.md",
+      "quote": "| 3 interp (MoDISco → zero conv1 filters), v3 | 6/18 | 0/18 | 0/18 |"
+    },
+    {
+      "claim": "For WSP studies that let agents run Python, a 'no forward passes' condition may hide self-built forward computation unless it is prevented or audited.",
+      "page": "reports/preprint/main.tex",
+      "quote": "forward passes'' condition may include self-built forward computation, which here accompanied every correct detection."
+    }
+  ],
+  "limitations_stated": [
+    {
+      "text": "Design, harness, subjects and both coders all used the same model family, so shared biases cannot be ruled out.",
+      "page": "reports/results.md",
+      "quote": "subjects and both coders are `claude-opus-5-5` (effort high, Claude Code 2.1.318)."
+    },
+    {
+      "text": "Amendment 3 allowed local computation when judging runs after the pilot cells, while the instructions still forbade it.",
+      "page": "reports/results.md",
+      "quote": "Amendment 3 changed how runs are judged after cells 0–6, not what sessions were told."
+    },
+    {
+      "text": "Stage-2 sessions used a median of 7.5 of 50 forward passes, so the budget comparison is weak.",
+      "page": "reports/results.md",
+      "quote": "H3 therefore compares budget 0 with \"up to 50, mostly under 15\", not with 50 passes used."
+    }
+  ],
+  "notes_for_review": "The most rigorous independent test of the MIT claim in the set: preregistered hypotheses, sealed answer keys, sandboxed blind Claude Opus 5.5 sessions, two blind coders, random-edit, fine-tuning, interpretability and oracle baselines, and every session reported. The primary detection hypothesis passed only narrowly and the author shows it hinges on one answer; detection from weights alone was not shown, and repair (H2, H3) failed. Weaknesses are only four plant instances, one model family throughout, 13 amendments (all before unblinding), and withheld weights and transcripts until a planned second release."
+}

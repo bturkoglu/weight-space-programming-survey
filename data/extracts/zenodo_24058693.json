@@ -1,0 +1,46 @@
+{
+ "key": "zenodo_24058693",
+ "title": "Knowing Is Not Committing: Replicating MIT's weight-space edit and programming a truth-gated reflex into a 0.8B reasoning model",
+ "authors": ["Dave Uhlemann"],
+ "date": "2026-11-21",
+ "doc_type": "replication",
+ "wsp_role": ["repair_or_edit", "other"],
+ "is_wsp": true,
+ "editor_models": ["none"],
+ "target_networks": [{"name": "Qwen3.5-0.8B", "params": "0.8B", "kind": "LLM"}],
+ "domain": "math reasoning",
+ "tasks_benchmarks": ["MATH-500 (problems 1-370 in blocks; 371-500 untouched)", "MATH training problems (Set B, N30 150, N45 100, 50 fresh)", "IFEval (120 prompts)"],
+ "headline_result": {
+  "text": "On the same 40 MATH-500 problems MIT's released edit scores 55% with vLLM-style sampling but 25% with llama.cpp default sampling, and a loop direction built without any search agent lifts the unedited model from 10% to 37.5%.",
+  "page": "FILE report__Knowing_Is_Not_Committing_v0.5.md (TL;DR items 1-2)",
+  "quote": "Sampling settings alone move MIT's own edit from 25 % to 55 %."
+ },
+ "evidence_quality": {
+  "random_or_null_control": "no",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "yes",
+  "n_runs_or_seeds": "mostly single seed; second seeds for parts (Set B, blocks of 161-300, S-GDN, SGNE-CC)",
+  "full_test_set": "no",
+  "held_out_eval": "yes",
+  "preregistered": "yes",
+  "code_or_data_released": "yes",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "partial",
+ "relation_to_qwen_math_edit": "reproduces",
+ "key_claims": [
+  {"claim": "The loop direction can be found without a search agent: a mean-difference direction from base-model transcripts (cosine 0.76/0.77 to MIT's) lifts the model from 10% to 37.5% on 40 problems, against 55% for MIT's edit.", "page": "FILE report__Knowing_Is_Not_Committing_v0.5.md (TL;DR 2, Section 3.2)", "quote": "The loop direction is findable without a search agent."},
+  {"claim": "The author's own ERGORE edit tied MIT on the development range but fell short on fresh problems (pre-registered).", "page": "FILE report__Knowing_Is_Not_Committing_v0.5.md (TL;DR 3, Section 3.9)", "quote": "Fresh problems 161–300: 66 vs 82 of 140"},
+  {"claim": "Turning off the thinking block (answer mode) on the author's edited model nearly matches MIT's edit with thinking at less than half the tokens per correct answer.", "page": "FILE report__Knowing_Is_Not_Committing_v0.5.md (Abstract, Section 3.10)", "quote": "Without its thinking block (answer mode), our edited model is close to MIT's edit with thinking: 76 vs 82 of 140, at less than half the tokens per correct answer."},
+  {"claim": "The model's own tendency to stop reasoning does not track whether a written value is correct, for the author's model or for MIT's edit, while a linear probe does.", "page": "FILE report__Knowing_Is_Not_Committing_v0.5.md (Abstract, Section 3.12)", "quote": "its own tendency to stop reasoning does not track whether the value is correct (AUC 0.51), while the probe does (0.68). MIT's edit is no exception (0.43)."},
+  {"claim": "A council of answer-mode runs with an external edit (SGNE-CC) as fallback beats MIT's edit on 100 fresh problems (pre-registered).", "page": "FILE report__Knowing_Is_Not_Committing_v0.5.md (Abstract, Section 3.14)", "quote": "In its lean form (two answer-mode runs in front) it solves 59 against 49 for MIT's edit on 100 fresh problems"},
+  {"claim": "The unedited model in answer mode alone already solves a large share of problems, so the front room needs no edit at this size.", "page": "FILE report__Knowing_Is_Not_Committing_v0.5.md (Section 3.14)", "quote": "The front room needs no edit at this size"}
+ ],
+ "limitations_stated": [
+  {"text": "One 0.8B model and mostly one seed.", "page": "FILE report__Knowing_Is_Not_Committing_v0.5.md (Section 5)", "quote": "One model (0.8B). Mostly one seed; second seeds cover Set B and parts of 161–300."},
+  {"text": "Development sets were reused, and the development tie did not transfer to fresh problems.", "page": "FILE report__Knowing_Is_Not_Committing_v0.5.md (Section 5)", "quote": "Set B and MATH-500 1–160 were reused for development."},
+  {"text": "A grading fallback on the second machine silently counted 65 correct answers as wrong in versions 0.2-0.3, corrected in v0.4.", "page": "FILE README.md", "quote": "so 65 correct answers in 23 run tables were counted as wrong (never the other way round)."}
+ ],
+ "notes_for_review": "An independent, pre-registered replication and dissection of MIT's Qwen3.5-0.8B MATH-500 anti-loop edit on consumer hardware; the edits are hand-built mechanically (mean-difference directions, linear probes, gradients) with Claude Opus 5.5 as coding assistant, not by an LLM reading weights. Its strongest points for the review are that decoding settings alone move MIT's edit from 25% to 55%, that a non-agent mean-difference direction recovers a weaker version of the same edit, and that inference-only changes (answer mode, sampling, agreement councils) compete with the edit. Evidence is careful (dated pre-registration, fresh confirmation sets, an openly reported grading erratum) but mostly single-seed on 40-150 problem subsets of one model."
+}

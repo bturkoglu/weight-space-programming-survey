@@ -1,0 +1,82 @@
+{
+  "key": "arxiv_2611.24877",
+  "title": "Auditing black-box clinical prediction models with a large language model through queries alone: a blinded test with planted flaws",
+  "authors": ["Zhiyu Liu", "Xinyu Yang"],
+  "date": "2026-11-18",
+  "doc_type": "original_study",
+  "wsp_role": ["other"],
+  "is_wsp": false,
+  "editor_models": ["GPT-6 Astra"],
+  "target_networks": [
+    {"name": "Logistic regression with splines", "params": "unknown", "kind": "other"},
+    {"name": "Explainable boosting machine", "params": "unknown", "kind": "other"},
+    {"name": "Gradient-boosted trees", "params": "unknown", "kind": "other"},
+    {"name": "Neural network (tanh, 1-2 hidden layers of 8-32 units)", "params": "unknown", "kind": "MLP"}
+  ],
+  "domain": "clinical prediction (acute ischaemic stroke)",
+  "tasks_benchmarks": ["International Stroke Trial (death or dependency at 6 months; death within 6 months)"],
+  "headline_result": {
+    "text": "With query access only (no weights), GPT-6 Astra found the planted flaw in 69 of 72 blinded runs (96%; 95% CI 80-99%) and wrote surrogates with mean R2 0.976, but a purpose-written script found all 24 flaws, 60% of its 1,089 checkable problem reports failed the pre-specified check, and only 11% of its 601 unexpected relationships held in later patients.",
+    "page": "PAGE 1",
+    "quote": "It found the planted flaw in 69 of 72 runs (96%; 95% CI 80% to 99%); a script written for the purpose found all 24."
+  },
+  "evidence_quality": {
+    "random_or_null_control": "yes",
+    "non_llm_baseline": "yes",
+    "finetune_comparison": "no",
+    "inference_only_fix_tested": "no",
+    "n_runs_or_seeds": "3 runs per model (32 models; 96 black-box and 6 white-box runs)",
+    "full_test_set": "yes",
+    "held_out_eval": "yes",
+    "preregistered": "yes",
+    "code_or_data_released": "yes",
+    "peer_reviewed": "no"
+  },
+  "replicates_mit": "no",
+  "relation_to_qwen_math_edit": "none",
+  "key_claims": [
+    {
+      "claim": "Access to weights added little: for the two clean networks, surrogate R2 was 0.951 with weights versus 0.947 through queries alone.",
+      "page": "PAGE 6",
+      "quote": "With the weights of the two clean networks loaded in the tool, the mean R2 was 0.951, against 0.947 for the same networks through queries alone."
+    },
+    {
+      "claim": "LLM surrogates were more faithful than an analyst's 42-term additive surrogate but much longer (median 128 terms).",
+      "page": "PAGE 6",
+      "quote": "The surrogates written by the LLM reproduced the audited models’ log-odds on the test inputs with a mean R2 of 0.976 (median over runs 0.982), against 0.959 for the analyst’s surrogate"
+    },
+    {
+      "claim": "Most reported problems failed the pre-specified check on the model, far above the expected 10%.",
+      "page": "PAGE 7",
+      "quote": "Of the 1,089 reports that could be checked, 655 (60%; 95% CI 53% to 67%) failed the"
+    },
+    {
+      "claim": "Unexpected relationships read from the models held in later patients at 11%, below a regression scan (28%) and near the models' own strongest interactions; after a training-data check the LLM and the scan were similar (33% vs 30%).",
+      "page": "PAGE 8",
+      "quote": "In the test set, 68 of the LLM’s relationships held (11%; 95% CI 9% to 14%), against 28 of the scan’s 101 (28%; 20% to 37%)"
+    },
+    {
+      "claim": "The three runs of each model always agreed, so the effective sample is 24 models, not 72 runs.",
+      "page": "PAGE 7",
+      "quote": "The three runs of a model always agreed (intraclass correlation 1.00), so the effective sample size was 24 and the 95% interval 80% to 99%."
+    }
+  ],
+  "limitations_stated": [
+    {
+      "text": "One LLM and one public, much-analysed dataset the LLM may already know.",
+      "page": "PAGE 10",
+      "quote": "We studied one LLM and one dataset. The International Stroke Trial is public and much analysed, so the LLM may know its results"
+    },
+    {
+      "text": "The prompt named the three kinds of problem, so the study does not show what an LLM finds when the flaw type is not announced.",
+      "page": "PAGE 10",
+      "quote": "the present study does not show what an LLM finds when the kind of flaw is not announced"
+    },
+    {
+      "text": "The plan was fixed in a private repository rather than a public registry, and one comparator and one measure were computed after the results.",
+      "page": "PAGE 10",
+      "quote": "The plan was fixed in a private repository rather than a public registry, was amended before the first run, and one listed comparator and one listed measure were computed after the results."
+    }
+  ],
+  "notes_for_review": "Not weight-space programming: the main condition gives GPT-6 Astra only a predict() calculator, with weights loaded for two networks as a secondary arm, and finds weights add almost nothing (R2 0.951 vs 0.947). It is a useful null-style comparator for WSP 'reading' claims: a non-LLM script matched or beat the LLM on planted flaws, and LLM 'discoveries' from models held no more often than a regression scan. Design is careful (blinded, program-judged, committed plan, released code), though flaws are large and announced in kind."
+}

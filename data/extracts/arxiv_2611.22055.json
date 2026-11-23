@@ -1,0 +1,130 @@
+{
+ "key": "arxiv_2611.22055",
+ "title": "Weight-Space Programming Doesn't Need Transformers",
+ "authors": [
+  "Hyunjong Ok",
+  "Jaeho Lee"
+ ],
+ "date": "2026-11-17",
+ "doc_type": "method_or_tool",
+ "wsp_role": [
+  "write_from_scratch",
+  "repair_or_edit",
+  "feedback_loop"
+ ],
+ "is_wsp": true,
+ "editor_models": [
+  "Claude Opus 5.5",
+  "GPT-6.1 Sol",
+  "GPT-6 Astra",
+  "Claude Fable 5.2 (CIFAR-10 only)"
+ ],
+ "target_networks": [
+  {
+   "name": "LLM-designed sparse fact-table models",
+   "params": "0.11M-3.35M",
+   "kind": "other"
+  },
+  {
+   "name": "associative-memory-based model (authors')",
+   "params": "0.09M-6.24M",
+   "kind": "other"
+  },
+  {
+   "name": "given two-layer Transformer",
+   "params": "0.03M-3.96M",
+   "kind": "LLM"
+  },
+  {
+   "name": "15 released architectures from random init or pretrained (SmolLM2, Qwen3, Qwen3.5, Gemma, ModernBERT, UltraBERT, Mamba-2, RWKV-7)",
+   "params": "129M-2.6B",
+   "kind": "LLM"
+  },
+  {
+   "name": "CIFAR-10 MLP/CNN/ViT and AG News classifiers",
+   "params": "1,666-201,482",
+   "kind": "other"
+  }
+ ],
+ "domain": "science QA (ARC), text generation/reading comprehension, text classification, vision",
+ "tasks_benchmarks": [
+  "ARC-Easy + ARC-Challenge (3,530 test)",
+  "SciQ",
+  "OpenBookQA",
+  "MMLU",
+  "MathBench",
+  "SQuAD 1.1",
+  "CNN/DailyMail",
+  "AG News",
+  "CIFAR-10"
+ ],
+ "headline_result": {
+  "text": "Given ten labeled ARC questions, frontier LLMs free to design the architecture all built sparse fact tables reaching up to 54.4% ARC test accuracy, above what they achieved writing Transformers (about 36%), yet far below a fine-tuned Qwen3.5-0.8B (82.1%).",
+  "page": "PAGE 1",
+  "quote": "When free to design, all three compile plain-text facts into a sparse table queried by a fixed procedure, reaching up to 54.4% test accuracy."
+ },
+ "evidence_quality": {
+  "random_or_null_control": "yes",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "yes",
+  "inference_only_fix_tested": "yes",
+  "n_runs_or_seeds": "two runs per generation/condition for most rows; gradient-descent baselines one seed",
+  "full_test_set": "yes",
+  "held_out_eval": "yes",
+  "preregistered": "no",
+  "code_or_data_released": "yes",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "no",
+ "relation_to_qwen_math_edit": "extends",
+ "key_claims": [
+  {
+   "claim": "An LLM-designed model beats the most accurate released Transformer the same LLM wrote while using about 1,800x fewer parameters.",
+   "page": "PAGE 1",
+   "quote": "An LLM-designed model achieves higher test accuracy than the most accurate released Trans- former that the same LLM wrote while using about 1,800× fewer parame- ters."
+  },
+  {
+   "claim": "Written two-layer Transformers score below plain BM25 search over the very text the LLM wrote (by 8.0 points on average for Opus 5.5), consistent with interference between dense keys.",
+   "page": "PAGE 8",
+   "quote": "The six written two-layer Transformers of Claude Opus 5.5 all score below BM25 over their own text, by 8.0 points on average."
+  },
+  {
+   "claim": "Pretrained models fine-tuned on ARC remain far more accurate than any written model.",
+   "page": "PAGE 7",
+   "quote": "fine-tuned on ARC remain far more accurate, with Qwen3.5-0.8B at 82.1%, leaving a wide gap for WSP to narrow."
+  },
+  {
+   "claim": "When editing pretrained checkpoints, strong ones stay within about a point, weak ones near chance gain up to about twelve points, and some are damaged (UltraBERT-380M 63.7% to about 33%).",
+   "page": "PAGE 29",
+   "quote": "Editing leaves strong bases near their unedited test accuracy, lifts weak ones, and in some cases damages the base."
+  },
+  {
+   "claim": "MIT's released edited Qwen3.5-0.8B checkpoint scores within half a point of its unedited base on ARC, MMLU and MathBench.",
+   "page": "PAGE 30",
+   "quote": "The edited checkpoint that Takehi et al. (2026) released scores within half a point of its unedited base on ARC, MMLU and MathBench and slightly below it on SQuAD in our evaluation."
+  },
+  {
+   "claim": "On raw CIFAR-10 pixels written networks reach only 21-28%, and the 96.1% with DINOv2 tokens comes from the pretrained encoder.",
+   "page": "PAGE 33",
+   "quote": "WSP as studied here therefore does not reach images and would need input units that an LLM can name without a pretrained encoder."
+  }
+ ],
+ "limitations_stated": [
+  {
+   "text": "Written models only recall stated facts; they do not chain facts, and ARC-Challenge stays near 38% while MMLU stays at chance.",
+   "page": "PAGE 12",
+   "quote": "None chains facts across steps or com- poses a long answer. ARC-Challenge accuracy stays near 38% while ARC-Easy reaches 63%"
+  },
+  {
+   "text": "The claim about Transformers applies only to current LLMs writing weights from random initialization without running on data.",
+   "page": "PAGE 12",
+   "quote": "Our finding that WSP does not need a Trans- former applies to how current LLMs write weights from random initialization without run- ning on data."
+  },
+  {
+   "text": "Data do not separate a table chosen because it suits writing from one chosen because it is a familiar retrieval baseline.",
+   "page": "PAGE 9",
+   "quote": "so our data do not separate a structure chosen because it suits writing from one chosen because it is known."
+  }
+ ],
+ "notes_for_review": "Large, well-controlled study of WSP from scratch: three writers, 15 released architectures, gradient-descent and fine-tuned baselines, a BM25-over-own-text control, test-overlap/deletion checks, and line-removal locality tests. Its central finding is that what LLMs 'write' into weights is essentially a hand-authored retrieval table, which works on elementary science recall but not on MMLU, multi-step reasoning or raw pixels. It also independently scores MIT's released edited Qwen3.5-0.8B checkpoint and finds no change on ARC/MMLU/MathBench. The 'code' link is stated on the title page; gradient-descent baselines use one seed."
+}

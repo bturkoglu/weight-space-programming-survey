@@ -1,0 +1,50 @@
+{
+ "key": "arxiv_2611.19304",
+ "title": "A Backdoor Trigger Is Legible in Fine-Tune Weights",
+ "authors": ["Snigdha Chandan Khilar"],
+ "date": "2026-11-14",
+ "doc_type": "method_or_tool",
+ "wsp_role": ["read", "repair_or_edit"],
+ "is_wsp": false,
+ "editor_models": ["none"],
+ "target_networks": [
+  {"name": "SmolLM2-360M-Instruct", "params": "362M", "kind": "LLM"},
+  {"name": "GPT-2-medium", "params": "355M", "kind": "LLM"},
+  {"name": "Qwen2.5-0.5B-Instruct", "params": "494M", "kind": "LLM"},
+  {"name": "Pythia-410m (development only)", "params": "405M", "kind": "LLM"}
+ ],
+ "domain": "security (backdoor trigger recovery from weights)",
+ "tasks_benchmarks": ["synthetic capital-city QA with trigger-conditioned sycophancy backdoor (171 questions, 24 held-out facts)", "held-out trigger designs G0-G3, H0-H3"],
+ "headline_result": {
+  "text": "A static, per-token standardised weight-delta statistic named an exact trigger token as the single top candidate in 14 of 14 ordinary backdoors on SmolLM2-360M and GPT-2-medium without running the suspect, but an attacker who adds the statistic to the poisoning loss drives recovery to 0 of 2 at no cost.",
+  "page": "PAGE 1",
+  "quote": "recovers an exact trigger token in 14 of 14 ordinary backdoors"
+ },
+ "evidence_quality": {
+  "random_or_null_control": "yes",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "yes",
+  "inference_only_fix_tested": "yes",
+  "n_runs_or_seeds": "2-3 seeds per held-out design; adaptive attacks 1-2 seeds per cell",
+  "full_test_set": "unclear",
+  "held_out_eval": "yes",
+  "preregistered": "no",
+  "code_or_data_released": "yes",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "no",
+ "relation_to_qwen_math_edit": "none",
+ "key_claims": [
+  {"claim": "The pipeline was fixed in writing and then run unchanged on trigger designs built afterwards.", "page": "PAGE 1", "quote": "The rule was written down, frozen, and then run on trigger"},
+  {"claim": "An attacker who adds the defender's statistic as a poisoning-loss penalty keeps full attack success and defeats exact-token recovery.", "page": "PAGE 8", "quote": "and exact-token recovery falls from 2 of 2 to 0 of 2 at every"},
+  {"claim": "The statistic reads a correlate of the trigger, not its mechanism: resetting all scanned weights leaves attack success at 0.97.", "page": "PAGE 2", "quote": "to its base value leaves attack success at 0.97. Nothing here"},
+  {"claim": "Per-token standardisation against clean fine-tunes is essential; without it the method recovers nothing.", "page": "PAGE 3", "quote": "Without it the method recovers nothing; with it the trigger"},
+  {"claim": "Simply deleting the recovered token from the prompt matched or beat the weight edit as a defence in most designs.", "page": "PAGE 14", "quote": "accuracy and no perplexity, and is one line of code."},
+  {"claim": "The paper frames itself as a purpose-built statistic answering a question that Takehi et al. posed for general-purpose LLM weight readers.", "page": "PAGE 5", "quote": "answered negatively, by [20]; this paper attacks one instance of"}
+ ],
+ "limitations_stated": [
+  {"text": "One synthetic task, single payload, frozen embeddings, nothing above 0.5B parameters.", "page": "PAGE 10", "quote": "beddings; a single payload; nothing above 0.5B parameters; no"},
+  {"text": "Freezing past the scan window and filling the frozen block defeats every rule (0 of 16).", "page": "PAGE 10", "quote": "takes recovery to 0 of 16 under every rule in this paper, and"}
+ ],
+ "notes_for_review": "Not LLM-driven weight-space programming: the weight reader is a hand-designed statistic (per-token standardised weight-delta salience), and the paper cites Takehi et al. only as having posed the question of reading a fine-tune's purpose from weights. It is relevant to WSP as a non-LLM baseline for 'reading weights' and is unusually candid, with frozen rules, held-out designs, adaptive attackers and withdrawn earlier claims. Seeds per cell are small and scale stops at 0.5B."
+}

@@ -1,0 +1,28 @@
+{
+ "key": "zenodo_23954378",
+ "peripheral": false,
+ "operation": ["read", "write", "edit"],
+ "protocol": "closed_loop",
+ "mechanism": ["none"],
+ "scope": "external",
+ "editor_tier": ["none"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": 800000000,
+ "edited_fraction": "re-verified MIT edit: 130,188 entries in two matrices (8.1-10.6% Frobenius change); own recreation E3: 16 of 747 weights (2.14%)",
+ "cost_reported": "re-reports the source: editor spent 158 turns and 20.3 hours on Experiment 8, while a scripted no-LLM pipeline re-derived a similar edit in about five CPU minutes; own decoding-control run stopped by compute billing",
+ "wsp_evidence": {
+  "random_or_null_control": "yes",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "no",
+  "full_test_set": "yes",
+  "held_out_eval": "unclear",
+  "multiple_runs": "no",
+  "code_or_data_released": "no"
+ },
+ "prereg": "partial",
+ "llm_in_authoring_or_grading": "no",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["simple_baseline_matches", "known_rule_rediscovered"],
+ "evidence_notes": "WSP is the subject: an evidence review of the MIT post, small recreations with deterministic tools (no LLM editor; p.16) and a bit-exact re-verification of the released Qwen3.5-0.8B edit (p.4, p.12-13). Only the thinking-off decoding control has a pre-registered decision rule in the public Zenodo edition, and it was not run because billing stopped it (p.1, p.13-14), so prereg is partial. A no-LLM scripted pipeline matched about 75% of the edit and the edit follows the abliteration playbook (p.6). The E1-E4 scripts stay on the THOX build VM and are not released (p.~19). The planned decoding-control rows are listed as planned, not given numbers."
+}

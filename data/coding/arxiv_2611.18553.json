@@ -1,0 +1,28 @@
+{
+ "key": "arxiv_2611.18553",
+ "peripheral": false,
+ "operation": ["read", "write", "edit"],
+ "protocol": "both",
+ "mechanism": ["code_or_tensor_tool"],
+ "scope": "external",
+ "editor_tier": ["frontier_proprietary", "open_weight"],
+ "open_weight_editor_failed": "yes",
+ "target_params_max": 7000000000,
+ "edited_fraction": "unclear (varies by task; whole network for WRITE tasks)",
+ "cost_reported": "no",
+ "wsp_evidence": {
+  "random_or_null_control": "yes",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "yes",
+  "inference_only_fix_tested": "no",
+  "full_test_set": "unclear",
+  "held_out_eval": "yes",
+  "multiple_runs": "yes",
+  "code_or_data_released": "yes"
+ },
+ "prereg": "none",
+ "llm_in_authoring_or_grading": "no",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["simple_baseline_matches", "editor_refusal_or_unfinished"],
+ "evidence_notes": "A benchmark of LLM agents reading, patching and writing weights is the whole paper (p.1-4). Agents work through Claude Code/Codex in a CPU sandbox with metered forward passes and some zero-pass tasks (p.2, p.4-5), so code_or_tensor_tool and both protocols; targets range from 2K MLPs to 7B transformers (p.4). '42 registered tasks' refers to the task registry, not a preregistration (p.4); DeepSeek scored 0.000 on WRITE vs Opus 0.829 (Table 1, p.5); Claude models had two samples per task, others one (p.5); code at github.com/Aayush-Marasini/WeightBench (p.1)."
+}

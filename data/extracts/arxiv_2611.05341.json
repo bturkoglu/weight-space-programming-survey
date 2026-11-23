@@ -1,0 +1,109 @@
+{
+ "key": "arxiv_2611.05341",
+ "title": "Weight-space programming for auditing clinical decision networks",
+ "authors": [
+  "Humza Nusrat",
+  "Omar Nusrat"
+ ],
+ "date": "2026-11-03",
+ "doc_type": "original_study",
+ "wsp_role": [
+  "read",
+  "repair_or_edit",
+  "write_from_scratch"
+ ],
+ "is_wsp": true,
+ "editor_models": [
+  "Claude Opus 5.5",
+  "Claude Sonnet 5.5",
+  "Claude Haiku 5.5",
+  "Claude Opus 4.6",
+  "Claude Fable 5.1"
+ ],
+ "target_networks": [
+  {
+   "name": "two-hidden-layer ReLU decision network (16 units per layer)",
+   "params": "433",
+   "kind": "MLP"
+  },
+  {
+   "name": "larger decision networks (32 and 64 units per layer)",
+   "params": "1,377 and 4,801",
+   "kind": "MLP"
+  }
+ ],
+ "domain": "clinical prediction (radiotherapy head-and-neck planning-request screening)",
+ "tasks_benchmarks": [
+  "synthetic planning requests modelled on OpenGray (about 420,000 test requests)",
+  "planted flaw panel: 4 confounds, 3 Gy cord threshold drift, hidden trigger, healthy networks"
+ ],
+ "headline_result": {
+  "text": "Claude Opus 5.5, reading raw weights without tools, named the broken rule in 16 of 18 flawed networks and repaired each by changing a median of 3 parameters, but cleared only 2 of 5 healthy networks unforced and found 1 of 3 triggers.",
+  "page": "1",
+  "quote": "The language model named the broken rule in 16 of 18 flawed networks (95% CI 67% to 97%), including all 15 with a confound or a threshold shift."
+ },
+ "evidence_quality": {
+  "random_or_null_control": "yes",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "yes",
+  "inference_only_fix_tested": "no",
+  "n_runs_or_seeds": "3 networks (seeds) per condition; each network audited once; fine-tuning 5 seeds",
+  "full_test_set": "yes",
+  "held_out_eval": "yes",
+  "preregistered": "no",
+  "code_or_data_released": "yes",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "partial",
+ "relation_to_qwen_math_edit": "none",
+ "key_claims": [
+  {
+   "claim": "Fine-tuning on protocol-labelled requests also repaired every network but changed nearly every parameter.",
+   "page": "1",
+   "quote": "Fine-tuning on protocol-labeled requests also repaired every network, but changed nearly every parameter."
+  },
+  {
+   "claim": "A simple weight statistic chosen per flaw type found the same confound and drift flaws, with no language model involved.",
+   "page": "1",
+   "quote": "Each confound and shift it found was visible in single units, and a simple statistic chosen for each flaw type found the same flaws."
+  },
+  {
+   "claim": "Testing against the protocol detected every flaw, and black-box testing found the confounds and drift faster than weight reading.",
+   "page": "1",
+   "quote": "Testing against the protocol detected every flaw, and black-box testing found the confounds and the shift faster."
+  },
+  {
+   "claim": "Random edits of the same number and size left a mean error of 51% in the planted region.",
+   "page": "7",
+   "quote": "edits of the same number and sizes left a mean error of 51%"
+  },
+  {
+   "claim": "Every edit that wrote weights of 10^5 or more failed in 16-bit floating point, sending every request to automated planning.",
+   "page": "7",
+   "quote": "Large weights carried a cost, and it fell on the unsafe side."
+  },
+  {
+   "claim": "The LLM did not reliably clear healthy networks or find hidden triggers.",
+   "page": "1",
+   "quote": "It cleared 2 of 5 healthy networks without being forced and found 1 of 3 triggers."
+  }
+ ],
+ "limitations_stated": [
+  {
+   "text": "Networks were small, requests synthetic, and the protocol had four rules; a few lines of code implement the protocol exactly.",
+   "page": "10",
+   "quote": "The networks were small, the requests were"
+  },
+  {
+   "text": "Every flaw found was visible in single units; distributed flaws were not tested.",
+   "page": "10",
+   "quote": "size of shift in one rule, and flaws spread across several units"
+  },
+  {
+   "text": "Not preregistered, and some comparisons (including the switch-on statistic) were defined after the flaw types were known.",
+   "page": "10",
+   "quote": "and some comparisons, including the switch-on statistic, were"
+  }
+ ],
+ "notes_for_review": "A carefully designed known-answer study: planted flaws, healthy controls, weights-free guessing, a per-flaw weight statistic, black-box testing, protocol testing, scripted repair, random edits and two fine-tuning settings, with every claim checked on hundreds of thousands of requests. The LLM did locate and repair simple, single-unit flaws with tiny edits, but simple statistics and plain testing found the same flaws faster, and the LLM could not reliably clear healthy networks or find triggers. Several repairs overflowed in fp16. Networks are tiny (433-4,801 parameters) and each was audited once."
+}

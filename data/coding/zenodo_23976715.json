@@ -1,0 +1,24 @@
+{
+ "key": "zenodo_23976715",
+ "peripheral": false,
+ "operation": ["read", "write"],
+ "protocol": "open_loop",
+ "mechanism": ["none"],
+ "scope": "external",
+ "editor_tier": ["none"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": 6700000000,
+ "edited_fraction": "unclear (circuits appended as new residual coordinates/heads to OPT hosts; agent-written snapshots verified, not edited)",
+ "cost_reported": "no",
+ "wsp_evidence": {
+  "random_or_null_control": "no", "non_llm_baseline": "no", "finetune_comparison": "no",
+  "inference_only_fix_tested": "no", "full_test_set": "yes", "held_out_eval": "unclear",
+  "multiple_runs": "no",
+  "code_or_data_released": "yes"
+ },
+ "prereg": "none",
+ "llm_in_authoring_or_grading": "no",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["proxy_overfitting", "fragile_to_perturbation_or_retraining"],
+ "evidence_notes": "Group-B formal-verification paper: no LLM is run; it proves in Lean 4 seven agent-written snapshots from Singh's WSP study (up to ~1.3M parameters) and refutes a 22.2M-parameter multiplication snapshot that scored 100% on the agent's 200-sample evaluation (p1, p3, p5). The author hand-writes circuits grafted into OPT-1.3B to 6.7B hosts (p7-8); word reversal depends on an environment variable for attention scale (p4) and fine-tuning voids the graft guarantees (p11-12). Artifact deposited on Zenodo (Reproducibility); no preregistration or LLM-authoring statement found."
+}

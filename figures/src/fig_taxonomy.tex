@@ -1,0 +1,34 @@
+% Fig. 4: four-axis classification of the 54 primary studies (counts from lit/code2). Designed for \textwidth.
+\begin{tikzpicture}[x=1cm,y=1cm]
+\def\cw{4.32}\def\gap{0.27}\def\bw{2.85}
+\node[fill=cInk!85,text=white,rounded corners=3pt,minimum width=7.2cm,minimum height=0.75cm,font=\footnotesize\bfseries,align=center] (root) at (9.05,0)
+ {Weight-space programming\\[-1pt]{\scriptsize\mdseries 54 primary studies with an LLM editor}};
+\newcommand{\leaf}[6]{% #1 colour, #2 name, #3 x, #4 y, #5 count, #6 cite keys
+  \node[draw=#1!80!black,fill=white,rounded corners=2pt,line width=0.5pt,minimum width=\cw cm,minimum height=1.12cm,anchor=north west] (L) at (#3,#4) {};
+  \node[anchor=north west,font=\scriptsize\bfseries,text=cInk] at ($(L.north west)+(0.12,-0.07)$) {#2};
+  \fill[cGrid,rounded corners=0.6pt] ($(L.north west)+(0.12,-0.47)$) rectangle ++(\bw,-0.13);
+  \fill[#1,rounded corners=0.6pt] ($(L.north west)+(0.12,-0.47)$) rectangle ++({\bw*#5/54},-0.13);
+  \pgfmathsetmacro{\pc}{round(100*#5/54)}
+  \node[anchor=west,font=\scriptsize\bfseries,text=#1!80!black,inner sep=0pt] at ($(L.north west)+(0.12+\bw+0.1,-0.535)$) {#5 \mdseries\textcolor{cMuted}{(\pgfmathprintnumber[precision=0]{\pc}\%)}};
+  \node[anchor=north west,font=\tiny,text=cMuted] at ($(L.north west)+(0.12,-0.68)$) {e.g.\ \cite{#6}};
+}
+\foreach \i/\c/\t/\d in {0/cBlue/Operation/what is done to the weights,1/cOrange/Protocol/is the network run and the result fed back?,2/cAqua/Mechanism/how the new values are set,3/cViolet/Scope/whose weights are changed} {
+  \pgfmathsetmacro{\x}{\i*(\cw+\gap)}
+  \node[fill=\c,text=white,rounded corners=2pt,minimum width=\cw cm,minimum height=0.55cm,font=\footnotesize\bfseries,anchor=north west] (A\i) at (\x,-1.05) {\t};
+  \node[anchor=north,font=\tiny\itshape,text=cMuted] at ($(A\i.south)+(0,-0.02)$) {\d};
+  \draw[line width=0.7pt,draw=cMuted] (root.south) -- ++(0,-0.2) -| (A\i.north);
+}
+\leaf{cBlue}{Read the weights}{0}{-1.95}{38}{arxiv_2611.20953,arxiv_2611.08070,arxiv_2611.21449}
+\leaf{cBlue}{Write a network from scratch}{0}{-3.17}{27}{arxiv_2611.11604,arxiv_2611.16981,arxiv_2611.13758}
+\leaf{cBlue}{Edit or repair a trained network}{0}{-4.39}{44}{arxiv_2611.09376,arxiv_2611.25476,arxiv_2611.27089}
+\leaf{cOrange}{Open loop: no runs}{4.59}{-1.95}{10}{arxiv_2611.11537,arxiv_2611.12066,arxiv_2611.08070}
+\leaf{cOrange}{Closed loop: edit, run, edit}{4.59}{-3.17}{30}{arxiv_2611.07319,arxiv_2611.09376,arxiv_2611.08383}
+\leaf{cOrange}{Both, in separate experiments}{4.59}{-4.39}{14}{arxiv_2611.13758,arxiv_2611.12954,arxiv_2611.09271}
+\leaf{cAqua}{Values written as text}{9.18}{-1.95}{16}{arxiv_2611.11537,arxiv_2611.12066,arxiv_2611.21958}
+\leaf{cAqua}{Code or tensor tools}{9.18}{-3.17}{38}{arxiv_2611.25476,arxiv_2611.26408,arxiv_2611.09382}
+\leaf{cAqua}{Solver-delegated}{9.18}{-4.39}{10}{arxiv_2611.23718,arxiv_2611.11894,arxiv_2611.21310}
+\leaf{cViolet}{Another network}{13.77}{-1.95}{53}{arxiv_2611.09382,arxiv_2611.20953,arxiv_2611.25476}
+\leaf{cViolet}{The editor's own weights}{13.77}{-3.17}{1}{arxiv_2611.21885}
+\node[draw=cGrid,rounded corners=2pt,fill=cPaper,minimum width=\cw cm,minimum height=1.12cm,anchor=north west,align=left,font=\tiny,text=cMuted,text width=\cw cm-0.25cm] at (13.77,-4.39)
+ {Counts: number of studies (bar = share of 54). A study can fall in several cells of one axis; two read-only studies have no mechanism.};
+\end{tikzpicture}

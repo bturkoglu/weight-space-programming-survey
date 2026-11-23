@@ -1,0 +1,44 @@
+{
+ "key": "arxiv_2611.21958",
+ "title": "Weight-space programming for tractor guidance controller: large language models natively write neural network weights that steer a real tractor",
+ "authors": ["Timo Oksanen"],
+ "date": "2026-11-16",
+ "doc_type": "original_study",
+ "wsp_role": ["read", "write_from_scratch", "repair_or_edit", "feedback_loop"],
+ "is_wsp": true,
+ "editor_models": ["GPT-6 Astra", "Claude Fable 5.1", "Claude Fable 5.2 (quick check)"],
+ "target_networks": [{"name": "253-parameter tokenised steering network (9-4-4 encoder + 22-8-1 head, tanh)", "params": "253", "kind": "policy"}],
+ "domain": "robotics / agricultural vehicle control (tractor path tracking)",
+ "tasks_benchmarks": ["simulated AMX G-trac path tracking on 512 held-out random paths (objective J)", "field test on real AMX G-trac tractor, 2779 m path"],
+ "headline_result": {
+  "text": "With 25 simulated evaluations, GPT-6 Astra and Claude Fable 5.1 each repaired a PPO-trained 253-weight steering network for a slower actuator and wrote a working controller from all-zero weights (J 4.94 and 7.00, no failures on 512 held-out paths), where an evolution strategy found none from zero even with 1000 evaluations; PPO remained more accurate.",
+  "page": "PAGE 1",
+  "quote": "With simulated feedback, both models repaired the trained network in single sessions and wrote a working controller from zero weights, whereas from zero the evolution strategy found none."
+ },
+ "evidence_quality": {
+  "random_or_null_control": "no",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "yes",
+  "inference_only_fix_tested": "no",
+  "n_runs_or_seeds": "single session per model and start point; zero-shot repair 10 repetitions; ES 5 seeds",
+  "full_test_set": "yes",
+  "held_out_eval": "yes",
+  "preregistered": "no",
+  "code_or_data_released": "no",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "no",
+ "relation_to_qwen_math_edit": "none",
+ "key_claims": [
+  {"claim": "Without simulation feedback, zero-shot repair by Fable worked in only 2 of 10 attempts.", "page": "PAGE 8", "quote": "ten proposals repaired the network, which resulted in no"},
+  {"claim": "PPO from scratch and PPO fine-tuned from the start network beat every LLM controller in simulation.", "page": "PAGE 10", "quote": "and fine-tuned from S1 (GD-1) both had a lower error than"},
+  {"claim": "LLM repairs at 25 evaluations beat gradient-free search, which needed about 40 times the evaluation budget to approach similar results.", "page": "PAGE 15", "quote": "results with 40 times the evaluation budget. Both LLMs"},
+  {"claim": "All controllers steered the real tractor without intervention, with RMS lateral errors from 12.6 cm (PPO) to 27.8 cm (Fable from zero); pure pursuit got 18.5 cm.", "page": "PAGE 13", "quote": "The RMS lateral error ranged from 12.6 cm (GD-1) to 27.8"},
+  {"claim": "LLM-written controllers were sparse cascaded control laws (about 50 of 253 non-zero weights), and stated gains matched measured linearised gains.", "page": "PAGE 10", "quote": "GPT-6 Astra and Claude Fable 5.1 produced 53 and 50"}
+ ],
+ "limitations_stated": [
+  {"text": "One session per model and start point, no statistical tests, and the repair sessions also served to develop the prompt.", "page": "PAGE 15", "quote": "This study conducted one session per model and start point without performing statistical tests; furthermore, the"},
+  {"text": "One small 253-parameter network, one tractor, one speed, one path; transfer to larger networks is open.", "page": "PAGE 15", "quote": "since the study used one small network with 253 parameters"}
+ ],
+ "notes_for_review": "A careful engineering case study: equal-budget evolution strategy and gain-grid baselines, PPO references, held-out paths, linearised closed-loop checks of stated vs measured gains, and a real-tractor field run. The task is tiny (253 weights) and the LLM essentially hand-designs a classical cascaded controller with feed-forward inside the network, so it shows LLMs encoding control-engineering knowledge into weights rather than learning; each condition rests on a single session. No code or data release is stated, and the author frames it as a new 'Era 4' / 'Weight-Space Engineering', which is a strong framing for n=1 sessions."
+}

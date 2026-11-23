@@ -1,0 +1,49 @@
+{
+ "key": "arxiv_2611.09382",
+ "title": "Exploring Weight-Space Programming: Capabilities, Generalization, and Limitations",
+ "authors": ["Junru Hu", "Cheng Tang", "Wei Li", "Hongze Zhu", "Chun-Mei Feng", "Qi Zhang", "Yirong Chen", "Ming Hu"],
+ "date": "2026-11-06",
+ "doc_type": "replication",
+ "wsp_role": ["read", "repair_or_edit", "feedback_loop"],
+ "is_wsp": true,
+ "editor_models": ["GPT-6 Astra"],
+ "target_networks": [
+  {"name": "Qwen3.5-0.8B", "params": "0.8B", "kind": "LLM"},
+  {"name": "Qwen3.5-9B", "params": "9B", "kind": "LLM"}
+ ],
+ "domain": "math reasoning, scientific QA, instruction following, medical QA, scientific coding",
+ "tasks_benchmarks": ["MATH-500", "MMLU-Pro", "IFEval", "GPQA Diamond", "MedXpertQA", "SciBench", "SciCode"],
+ "headline_result": {
+  "text": "Across 16 GPT-6 Astra editing trajectories on Qwen3.5-0.8B/9B, held-out gains reached +29.45 (MATH-500), +4.42 (GPQA Diamond), +36.72 (IFEval) and +17.11 (SciBench) points on the 0.8B model, with the MATH gain from changing 1,023 parameters; gains at 9B were small and six trajectories kept the original weights.",
+  "page": "PAGE 1",
+  "quote": "On full held-out evaluations, accuracy improves by up to 29.45, 4.42, 36.72, and 17.11 percentage points on MATH-500, GPQA Diamond, IFEval, and SciBench, respectively. Notably, modifying only 1,023 parameters yields a 29.45-point improvement."
+ },
+ "evidence_quality": {
+  "random_or_null_control": "yes",
+  "non_llm_baseline": "no",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "no",
+  "n_runs_or_seeds": "single trajectory per model-benchmark pair, except 3 for 0.8B MATH; final evaluation with seed 0",
+  "full_test_set": "yes",
+  "held_out_eval": "yes",
+  "preregistered": "no",
+  "code_or_data_released": "yes",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "partial",
+ "relation_to_qwen_math_edit": "reproduces",
+ "key_claims": [
+  {"claim": "Three independent MATH searches on Qwen3.5-0.8B gave very different held-out gains (+29.45, +5.00, +27.30), all editing the layer-23 MLP down-projection.", "page": "PAGE 6", "quote": "the primary search achieves a +29.45 percentage-point improvement, while reruns 1 and 2 yield gains of +5.00 and +27.30 points, respectively."},
+  {"claim": "In six of 16 trajectories the editor kept the original weights, and the evaluated 9B Math candidate lowered held-out accuracy despite a large development gain.", "page": "PAGE 4", "quote": "Notably, the evaluated 9B Math candidate decreases held-out accuracy by 0.35 points, despite a +29.69-point development gain."},
+  {"claim": "A Math-edited 0.8B checkpoint transferred to other benchmarks without further editing, but transfer was uneven.", "page": "PAGE 1", "quote": "A Math-edited checkpoint improves GPQA Diamond, IFEval, and SciBench by 3.03, 12.18, and 20.10 points, respectively, without further editing, while leaving SciCode performance unchanged."},
+  {"claim": "The primary MATH edit subtracts a 'doubt versus progress' token-readout direction (Wait/However/But... vs Therefore/Thus/So...) from one column, targeting reasoning loops; at diagnosis 111 of 128 base samples hit the token cap.", "page": "PAGE 17", "quote": "On F1 the base model answers 19 of 128 samples correctly, and 111 samples hit the token cap, which points to long, unresolved reasoning as the main failure."},
+  {"claim": "On one 48-question batch the chosen edit beat an ablation and a single equal-norm random orthogonal direction (20 vs 4 vs 10 of 48, base 6).", "page": "PAGE 17", "quote": "and a single random direction orthogonal to u with equal norm gives 10 of 48. On this batch, the chosen intervention outperforms both the ablation and the single equal-norm orthogonal random control."},
+  {"claim": "Gains were much smaller at 9B, which already scores 97.70% on MATH-500.", "page": "PAGE 8", "quote": "The results suggest that smaller models offer greater opportunities for measurable improvements, while stronger models present a more constrained search landscape."}
+ ],
+ "limitations_stated": [
+  {"text": "Within a 50-request budget the agent may fail to discover and validate an effective intervention.", "page": "PAGE 8", "quote": "within a fixed exploration budget, the agent may fail to discover and validate an intervention sufficiently effective to justify modifying the original model."},
+  {"text": "Development gains do not always carry over to held-out data, and evaluation is costly.", "page": "PAGE 8", "quote": "However, development gains do not always translate into reliable held-out improvements, and repeated evaluations incur substantial computational costs."},
+  {"text": "Development results are adaptively selected without multiple-comparison correction.", "page": "PAGE 11", "quote": "Development results are selected adaptively and are reported without correction for multiple comparisons."}
+ ],
+ "notes_for_review": "An independent re-run of MIT's setup (GPT-6 Astra editing Qwen3.5-0.8B, same sampling with presence penalty 1.5 and thinking on, 32k tokens) that roughly reproduces the MATH-500 jump (8.35 to 37.80, versus MIT's 7.9 to 48.1) and extends it to six more benchmarks and a 9B model. Large gains appear only where the small model fails by looping or truncating (base 8.35% MATH, 1.38% SciBench), and the primary edit is a hand-built anti-'Wait' direction, which points to loop suppression rather than new capability; there is no fine-tuning, decoding-setting (e.g. thinking off, token budget) or mechanical edit baseline, and held-out results come from one trajectory and one evaluation seed each. Run-to-run variance (+5.00 to +29.45 on the same task) is reported openly."
+}

@@ -1,0 +1,41 @@
+{
+ "key": "arxiv_2611.04268",
+ "title": "Weight-Space Programming for Improving Image-Restoration Diffusion Models: Technical Conjectures and a Recursive Improvement Loop",
+ "authors": ["Zhuoran Zheng", "Doubao"],
+ "date": "2026-11-03",
+ "doc_type": "position",
+ "wsp_role": ["repair_or_edit", "feedback_loop"],
+ "is_wsp": true,
+ "editor_models": ["none"],
+ "target_networks": [{"name": "restoration diffusion UNet (hypothetical)", "params": "unknown", "kind": "diffusion"}],
+ "domain": "vision (image restoration)",
+ "tasks_benchmarks": ["deblurring, super-resolution, denoising, inpainting (proposed benchmark only)"],
+ "headline_result": {"text": "No experiments are run; the paper states three conjectures, e.g. sparse edits giving +0.2 to 0.5 dB PSNR and a recursive loop giving +0.5 to 1.5 dB, and labels these numbers as hypotheses.", "page": "PAGE 1", "quote": "The numerical conjectures in this manuscript are merely hypotheses."},
+ "evidence_quality": {
+    "random_or_null_control": "no",
+    "non_llm_baseline": "no",
+    "finetune_comparison": "no",
+    "inference_only_fix_tested": "no",
+    "n_runs_or_seeds": "unclear",
+    "full_test_set": "no",
+    "held_out_eval": "no",
+    "preregistered": "no",
+    "code_or_data_released": "no",
+    "peer_reviewed": "no"
+ },
+ "replicates_mit": "no",
+ "relation_to_qwen_math_edit": "extends",
+ "key_claims": [
+  {"claim": "The paper restates the MIT result as the starting evidence for WSP and its boundary (latent competence can be unlocked, new competence cannot be created).", "page": "PAGE 2", "quote": "This establishes WSP’s boundary: it unlocks latent competence suppressed by concentrated interference, but cannot create new distributed competence."},
+  {"claim": "It conjectures that an LLM can narrow a restoration quality gap to at most five layers within about 30 forward passes.", "page": "PAGE 3", "quote": "Expected result. The LLM narrows down the responsible layer(s) to a short list (≤ 5 layers) within 30 forward passes."},
+  {"claim": "It conjectures that targeted sparse edits (under 0.1% of parameters) can raise PSNR by at least 0.2 dB on concentrated defects, and gives a falsification rule.", "page": "PAGE 4", "quote": "If the LLM cannot improve PSNR by ≥ 0.2 dB on at least half of the concentrated-defect benchmark cases, with < 0.1% parameters edited, C2 is false."},
+  {"claim": "It conjectures that a recursive diagnose-edit-evaluate loop could compound gains to roughly 0.5 to 1.5 dB before plateauing.", "page": "PAGE 4", "quote": "The total improvement over a full loop might be +0.5–1.5 dB PSNR—meaningful, but not a leap from bad to state-of-the-art."},
+  {"claim": "It argues that targeted edits do not need superintelligence, whereas from-scratch generation of distributed representations still needs gradient training.", "page": "PAGE 8", "quote": "What current LLMs cannot do is generate new distributed representations from scratch—that still requires gradient-based training."}
+ ],
+ "limitations_stated": [
+  {"text": "Large UNets do not fit in an LLM context, so the LLM only sees compressed summaries.", "page": "PAGE 7", "quote": "Scale. A 100M-parameter UNet cannot fit in any LLM context. The LLM works on compressed summaries, not raw weights."},
+  {"text": "Edits that help the small feedback set may hurt out-of-distribution images.", "page": "PAGE 7", "quote": "OOD side effects. An edit that helps the feedback set may hurt out-of-distribution images. Full regression testing is mandatory."},
+  {"text": "No experiments have been run yet.", "page": "PAGE 8", "quote": "The next step is to run the experiments."}
+ ],
+ "notes_for_review": "A purely conjectural position paper that transfers the MIT WSP framing to image-restoration diffusion models; it contains pseudocode and a proposed benchmark but no experiments. All numbers are expected effects, explicitly labelled as hypotheses. The second author is listed as 'Doubao', an LLM. It relies only on the MIT blog post, model card and logs as evidence."
+}

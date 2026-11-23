@@ -1,0 +1,24 @@
+{
+ "key": "zenodo_24235217",
+ "peripheral": false,
+ "operation": ["read", "edit"],
+ "protocol": "closed_loop",
+ "mechanism": ["none"],
+ "scope": "external",
+ "editor_tier": ["none"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": 800000000,
+ "edited_fraction": "SGNE-CC: 1,984 output columns (802 down_proj in 15 layers + 1,182 GatedDeltaNet out_proj) plus one gate row; MIT-p50c: 128 down_proj columns",
+ "cost_reported": "no",
+ "wsp_evidence": {
+  "random_or_null_control": "no", "non_llm_baseline": "yes", "finetune_comparison": "no",
+  "inference_only_fix_tested": "yes", "full_test_set": "yes", "held_out_eval": "yes",
+  "multiple_runs": "no",
+  "code_or_data_released": "yes"
+ },
+ "prereg": "none",
+ "llm_in_authoring_or_grading": "no",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["fragile_to_perturbation_or_retraining"],
+ "evidence_notes": "Audit of the MIT-p50c edit's geometry plus a competing norm-preserving SGNE-CC patch whose rotation-angle search procedure is not released and is not stated to involve an LLM (file 01, intro and Conclusions item 3), so mechanism and editor are coded none; angles were selected on at most 200 MATH-500 problems before a post-freeze holdout on 300 (closed-loop development). MIT-p50c solves 4/100 under greedy decoding vs 45 under model-card sampling, a decoding dependence (Sec. 2.1-2.2). One run per prompt (seed 0); patch and code deposited on Zenodo (DOI 10.5281/zenodo.24235218); no preregistration or LLM-authoring statement found."
+}

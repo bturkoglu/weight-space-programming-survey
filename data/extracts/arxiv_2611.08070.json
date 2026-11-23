@@ -1,0 +1,95 @@
+{
+ "key": "arxiv_2611.08070",
+ "title": "Can an LLM Actually Reason and Program about Neural Network's Weights or is it just memorization on steroids? Exploring \"Weight-Space Programming\"",
+ "authors": [
+  "Nazmus Sakib Ahmed"
+ ],
+ "date": "2026-11-05",
+ "doc_type": "audit_or_critique",
+ "wsp_role": [
+  "read"
+ ],
+ "is_wsp": true,
+ "editor_models": [
+  "Claude Opus 5.5"
+ ],
+ "target_networks": [
+  {
+   "name": "small CNNs (Model 1, Model 2, Random) on five image datasets",
+   "params": "123,782-127,318",
+   "kind": "CNN"
+  }
+ ],
+ "domain": "vision / interpretability (zero-shot weight reading)",
+ "tasks_benchmarks": [
+  "CIFAR-10",
+  "KMNIST",
+  "Cats vs Dogs",
+  "fast-food image classification",
+  "SAT-6"
+ ],
+ "headline_result": {
+  "text": "Opus 5.5 reading ~125k CNN weights as text did accurate local arithmetic (e.g. CIFAR-10 vehicle/animal split) but named familiar datasets for unfamiliar ones and got all nine class pairs wrong on a label-permuted CIFAR-10 network.",
+  "page": "PAGE 1",
+  "quote": "Permuting CIFAR-10’s labels preserves the output split at the new indices, but every class pair the model interprets is then wrong, indicating reliance on remembered label order."
+ },
+ "evidence_quality": {
+  "random_or_null_control": "yes",
+  "non_llm_baseline": "no",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "no",
+  "n_runs_or_seeds": "single",
+  "full_test_set": "yes",
+  "held_out_eval": "yes",
+  "preregistered": "no",
+  "code_or_data_released": "no",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "no",
+ "relation_to_qwen_math_edit": "none",
+ "key_claims": [
+  {
+   "claim": "The model performs accurate local arithmetic, e.g. inferring about three optimizer steps from batch-norm statistics and finding the CIFAR-10 vehicle/animal output split.",
+   "page": "PAGE 1",
+   "quote": "batch-normalization statistics lead it to infer about three optimizer steps on networks stopped after three updates, and output-layer sign patterns recover the vehicle/animal split of CIFAR-10."
+  },
+  {
+   "claim": "Semantic judgments fall back on familiar datasets: KMNIST read as MNIST, fast-food networks as CIFAR-10, a 99.57%-accurate SAT-6 network as CIFAR-10 animal photos.",
+   "page": "PAGE 1",
+   "quote": "the model names CIFAR-10 for CIFAR-10 networks but also for all three fast-food networks, relabels KMNIST as MNIST, reads a 99.57%-accurate SAT-6 network as CIFAR-10 animal photos"
+  },
+  {
+   "claim": "On a shuffled-weight control confidence fell to 45% but the model did not notice the scrambling.",
+   "page": "PAGE 8",
+   "quote": "On the shuffled control, confidence fell to 45%."
+  },
+  {
+   "claim": "Sessions report reading first and last layers closely and sampling the middle; several partial-tracing claims failed verification, though no forward-pass test was run.",
+   "page": "PAGE 11",
+   "quote": "Across these reports, the model reads the edges closely and samples the middle sparsely (Figure 6)."
+  },
+  {
+   "claim": "The author argues edits that improve a benchmark should be shown to depend on claimed understanding rather than search over weights.",
+   "page": "PAGE 13",
+   "quote": "An editing result can be real even if the reading account is prior-driven, but an edit that improves a benchmark should be shown to depend on the claimed understanding rather than on search over weights."
+  }
+ ],
+ "limitations_stated": [
+  {
+   "text": "Only Claude Opus 5.5 at one effort level; most configurations run once on one seed with no significance tests.",
+   "page": "PAGE 14",
+   "quote": "Most configurations were run once, on a single random seed. The counts in the tables are descriptive; we report no confidence intervals or significance tests for the model’s answers"
+  },
+  {
+   "text": "Without tools, tracing 125k weights by hand may be infeasible; evidence on tracing is behavioral and partly self-reported.",
+   "page": "PAGE 14",
+   "quote": "Sessions had no calculator or code, and following about 125,000 weights by hand within one reply may be infeasible for any reader."
+  },
+  {
+   "text": "Scoring was done through Claude Code without an independent second rater.",
+   "page": "PAGE 15",
+   "quote": "Scores were assigned without an independent second rater, so we cannot report inter-rater reli- ability."
+  }
+ ],
+ "notes_for_review": "A single-author audit of the reading side of WSP with Claude Opus 5.5 (not Astra), using label permutation, shuffled weights, varied architectures and datasets of differing familiarity. The label-permutation control is a useful design, but it was run once, most conditions are single runs, scoring was done by Claude Code without a second rater, and materials are only available on request. Weight editing was not tested, and the author states the work does not refute Takehi et al."
+}

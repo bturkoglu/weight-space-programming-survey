@@ -1,0 +1,14 @@
+{"key": "arxiv_2611.17246",
+ "random_or_null_control": "no",
+ "non_llm_baseline": "yes",
+ "finetune_comparison": "yes",
+ "inference_only_fix_tested": "no",
+ "preregistered": "no",
+ "code_or_data_released": "yes",
+ "full_test_set": "unclear",
+ "evidence": {
+  "non_llm_baseline": "p.7: \"We compare three approaches on the same Hamiltonian instances and circuit architectures. First, Adam optimizes randomly initialized circuit parameters using parameter-shift gradients.\"",
+  "finetune_comparison": "p.23: \"We compare the LMO with Adam as a conventional gradient-based [optimizer]\" on the same fixed parameterized circuit (gradient training of the same parameters)",
+  "code_or_data_released": "p.11: \"The code and data presented in this paper can be found at https://github.com/tiago939/NeuralOptimizer.\"",
+  "full_test_set_note": "no fixed benchmark test set; generated Hamiltonian instances (random seeds 42-46) and selected molecules"
+ }}

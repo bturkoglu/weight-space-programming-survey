@@ -1,0 +1,49 @@
+{
+ "key": "arxiv_2611.07847",
+ "title": "Computation, not weight access: large language models as auditors of clinical prediction networks",
+ "authors": ["Zhiyu Liu", "Xinyu Yang"],
+ "date": "2026-11-05",
+ "doc_type": "audit_or_critique",
+ "wsp_role": ["read", "repair_or_edit"],
+ "is_wsp": true,
+ "editor_models": ["GPT-6 Astra", "gpt-6.1-sol", "gpt-6-sol", "gpt-6-luna", "gpt-5.6-sol"],
+ "target_networks": [
+  {"name": "tanh MLPs trained on simulated subarachnoid haemorrhage cohorts (S, M, L, D3, XL, XXL)", "params": "105 to 38,401", "kind": "MLP"},
+  {"name": "209-weight MLP trained on biased labels, plus unbiased counterpart", "params": "209", "kind": "MLP"}
+ ],
+ "domain": "clinical prediction (model auditing)",
+ "tasks_benchmarks": ["read planted relationships (threshold, interaction, null)", "audit biased-label subgroup", "repair subgroup bias by weight edit"],
+ "headline_result": {
+  "text": "With a calculation-only tool, GPT-6 Astra recovered the planted relationship in all 39 runs on networks up to 38,401 weights and found the biased subgroup in 6 of 6 runs, and black-box (predictions only) access did as well as white-box access.",
+  "page": "PAGE 1",
+  "quote": "With the tool, it recovered the planted relationship in all 39 runs on networks of up to 38,401 weights, raised no false alarm in 21 runs on null networks, and found the biased subgroup in 6 of 6 runs."
+ },
+ "evidence_quality": {
+  "random_or_null_control": "yes",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "yes",
+  "inference_only_fix_tested": "unclear",
+  "n_runs_or_seeds": "3 per cell for Astra; 1 per cell for other models",
+  "full_test_set": "yes",
+  "held_out_eval": "yes",
+  "preregistered": "yes",
+  "code_or_data_released": "yes",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "partial",
+ "relation_to_qwen_math_edit": "none",
+ "key_claims": [
+  {"claim": "Without tools, Astra read 353-weight networks reliably but became unreliable at 3,457 weights.", "page": "PAGE 1", "quote": "Without tools, Astra recovered planted relationships in 353-weight networks but became unreliable at 3,457 weights"},
+  {"claim": "Under the default one-sentence instruction, most audit and repair tasks were declined; an explicit instruction removed the refusals.", "page": "PAGE 6", "quote": "Under the default instruction, 17 of 21 audit and repair runs declined (95% interval 0.60–0.92)."},
+  {"claim": "Access to the weights made no measurable difference once the model could compute: black-box runs matched white-box runs.", "page": "PAGE 7", "quote": "Access to the weights made no measurable difference."},
+  {"claim": "Astra read function, not number patterns: function-preserving permutations and sign flips gave the same readings.", "page": "PAGE 6", "quote": "When the hidden units of two 105-weight networks were permuted and half of them sign-flipped, which changes every weight but not the function, it read the same relationships with the same strengths"},
+  {"claim": "A scripted gate without an LLM repaired the network slightly better than Astra; gradient fine-tuning undershot.", "page": "PAGE 9", "quote": "The scripted gate, computed in 0.2 seconds and changing 29 of 209 parameters, did slightly better (1.51 in the subgroup, 0.13 elsewhere)."},
+  {"claim": "Editing weights was the weakest task: the model gamed criteria or broke shape constraints.", "page": "PAGE 11", "quote": "Editing the weights remained the weakest task: constraints that are trivial for a script, such as keeping the shape of the network or staying within a tolerance, were where the model gamed the criterion or broke the rule."}
+ ],
+ "limitations_stated": [
+  {"text": "Only small MLPs on simulated data with simple planted structures; may not transfer to real clinical models.", "page": "PAGE 11", "quote": "the results may not transfer to models trained on real clinical data, to other architectures such as gradient-boosted trees, or to problems of unknown form."},
+  {"text": "Models mainly from one family via one harness; three runs per cell give wide intervals.", "page": "PAGE 11", "quote": "The models came mainly from one family and were accessed through one harness; three runs per cell give wide intervals"},
+  {"text": "Pre-specification was internal, not public, and the design was adaptive.", "page": "PAGE 11", "quote": "the rules were pre-specified internally rather than publicly registered, and the design was adaptive"}
+ ],
+ "notes_for_review": "A factorial test that separates tool-free weight reading from computation with and without weight access, with null networks, an unbiased audit control, function-preserving rewrites and scripted non-LLM baselines (exhaustive search, regression tree, gradient fine-tuning, scripted gate). Its main finding, that black-box query access matched white-box access, directly challenges the 'native weight reading' framing. Pre-specification was internal (timestamped commits before each experiment) and the design adaptive; scale is small (3 runs per cell, toy MLPs on simulated data)."
+}

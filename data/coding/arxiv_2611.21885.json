@@ -1,0 +1,28 @@
+{
+ "key": "arxiv_2611.21885",
+ "peripheral": false,
+ "operation": ["read", "edit"],
+ "protocol": "closed_loop",
+ "mechanism": ["code_or_tensor_tool"],
+ "scope": "self",
+ "editor_tier": ["open_weight"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": 27000000000,
+ "edited_fraction": "unclear (best edit: +0.5 on time-step bias of all 48 linear-attention layers; first-protocol edit removes 5% of one direction at layer 8)",
+ "cost_reported": "sessions of 2.5-3.5 h each; best session ran in a few hours on a single GPU; no $",
+ "wsp_evidence": {
+  "random_or_null_control": "no",
+  "non_llm_baseline": "no",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "no",
+  "full_test_set": "no",
+  "held_out_eval": "yes",
+  "multiple_runs": "yes",
+  "code_or_data_released": "no"
+ },
+ "prereg": "partial",
+ "llm_in_authoring_or_grading": "no",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["editor_refusal_or_unfinished", "run_to_run_variance"],
+ "evidence_notes": "Whole paper is self-WSP: Qwen3.5 2B-27B edit their own weights by running Python against tools on forward passes (PAGE 2-3, 38). The held-out 490x8 paired test was 'fixed in advance' with question, problems, test, threshold and analysis code written down before it ran (PAGE 35), but no registry or timestamp and not all reported results are covered, hence partial. Five of eight second-protocol sessions withdrew; 2B made no edit and 4B/9B broke themselves (PAGE 18, 62), but no frontier editor was compared. Headline +6.6 is the best of eight sessions; no random, decoding or fine-tuning baseline; no code link."
+}

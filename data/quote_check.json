@@ -1,0 +1,3732 @@
+{
+ "arxiv_2611.04268": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "The numerical conjectures in this manuscript are merely hypotheses."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "This establishes WSP\u2019s boundary: it unlocks latent competence suppressed by concentrated interference, but cannot create"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Expected result. The LLM narrows down the responsible layer(s) to a short list (\u2264 5 layers) within 30 forward passes."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "If the LLM cannot improve PSNR by \u2265 0.2 dB on at least half of the concentrated-defect benchmark cases, with < 0.1% para"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The total improvement over a full loop might be +0.5\u20131.5 dB PSNR\u2014meaningful, but not a leap from bad to state-of-the-art"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "What current LLMs cannot do is generate new distributed representations from scratch\u2014that still requires gradient-based "
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Scale. A 100M-parameter UNet cannot fit in any LLM context. The LLM works on compressed summaries, not raw weights."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "OOD side effects. An edit that helps the feedback set may hurt out-of-distribution images. Full regression testing is ma"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "The next step is to run the experiments."
+  }
+ ],
+ "arxiv_2611.05341": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "The language model named the broken rule in 16 of 18 flawed networks (95% CI 67% to 97%), including all 15 with a confou"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Fine-tuning on protocol-labeled requests also repaired every network, but changed nearly every parameter."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Each confound and shift it found was visible in single units, and a simple statistic chosen for each flaw type found the"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Testing against the protocol detected every flaw, and black-box testing found the confounds and the shift faster."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "edits of the same number and sizes left a mean error of 51%"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Large weights carried a cost, and it fell on the unsafe side."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "It cleared 2 of 5 healthy networks without being forced and found 1 of 3 triggers."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "The networks were small, the requests were"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "size of shift in one rule, and flaws spread across several units"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "and some comparisons, including the switch-on statistic, were"
+  }
+ ],
+ "arxiv_2611.05798": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "one-period hidden-bias shifts change 7.3% of a re- leased HiddenProbe configuration\u2019s predictions while barely"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Shape Stats ridge falls from 96.7% to 24.2% under joint permutation and rescaling: 87 of 120 correct predictions become "
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Phase wrapping removes phase sensitivity; Gram features also remove sign sensitivity."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "information is therefore present, but the tested learner does"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Nonrejection does not establish invariance: only 9 and 13"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Qwen2.5-0.5B gives the same letter on all 60 original and redacted inputs. A Qwen3.5-27B control reads 7/60 weight input"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "The scope remains shallow ReLU and two-hidden-layer"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "dent stationary calls and have limited power at three repeats"
+  }
+ ],
+ "arxiv_2611.07319": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "5.10\u201318.56% lower primary error. For weather prediction, changing"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "code and permitted parameters in an interactive coding session"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "and Adam [13] start from the same model and receive the same"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "We test 12 preset fitting settings. They combine squared error or"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Astra editing improves mean utility by 8.30%, 14.97% and 303.43%"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "MSE reductions of 1.85% for scGPT and 7.49% for scF+GEARS rel-"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The four tasks use execution seed17 and a regularized numeri-"
+  }
+ ],
+ "arxiv_2611.07847": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "With the tool, it recovered the planted relationship in all 39 runs on networks of up to 38,401 weights, raised no false"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Without tools, Astra recovered planted relationships in 353-weight networks but became unreliable at 3,457 weights"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Under the default instruction, 17 of 21 audit and repair runs declined (95% interval 0.60\u20130.92)."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Access to the weights made no measurable difference."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "When the hidden units of two 105-weight networks were permuted and half of them sign-flipped, which changes every weight"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The scripted gate, computed in 0.2 seconds and changing 29 of 209 parameters, did slightly better (1.51 in the subgroup,"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Editing the weights remained the weakest task: constraints that are trivial for a script, such as keeping the shape of t"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "the results may not transfer to models trained on real clinical data, to other architectures such as gradient-boosted tr"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "The models came mainly from one family and were accessed through one harness; three runs per cell give wide intervals"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "the rules were pre-specified internally rather than publicly registered, and the design was adaptive"
+  }
+ ],
+ "arxiv_2611.08070": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "Permuting CIFAR-10\u2019s labels preserves the output split at the new indices, but every class pair the model interprets is "
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "batch-normalization statistics lead it to infer about three optimizer steps on networks stopped after three updates, and"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "the model names CIFAR-10 for CIFAR-10 networks but also for all three fast-food networks, relabels KMNIST as MNIST, read"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "On the shuffled control, confidence fell to 45%."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Across these reports, the model reads the edges closely and samples the middle sparsely (Figure 6)."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "An editing result can be real even if the reading account is prior-driven, but an edit that improves a benchmark should "
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Most configurations were run once, on a single random seed. The counts in the tables are descriptive; we report no confi"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Sessions had no calculator or code, and following about 125,000 weights by hand within one reply may be infeasible for a"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Scores were assigned without an independent second rater, so we cannot report inter-rater reli- ability."
+  }
+ ],
+ "arxiv_2611.08383": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "Across 12 paired label-skew runs it beat FedAvg by 1.26 percentage points on average (10 wins), and a control that spend"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Against ProxySel, which spends the same per-round proxy budget on choosing among three standard rules, the mean gain was"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "SCAFFOLD was the most accurate method in all four settings."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "FedReason gave the sign-flipping clients 0.43% of the aggregate on average and excluded all three from round 1 in both s"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "In the ablations, removing proxy feedback cost 35 points and withholding the weights about six, each in one seed, while "
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "In the CIFAR-10 width-heterogeneous run with seed 0, the LLM read strongly negative class-9 bias changes of clients 3 an"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "A 60-round run with six invocations cost 0.79 USD on average (0.56 to 1.26 USD)."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Part of FedReason\u2019s gains may come from domain knowledge in the prompt rather than from the analysis of the weights"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Three seeds expose only large effects, and the ablations rest on a single seed each."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "The attacks we evaluated are simple and non-adaptive."
+  }
+ ],
+ "arxiv_2611.08647": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "Their macro rewards range from 0.2928 to 0.4601, compared with 0.0135 to 0.0548 for GLM, DeepSeek and Nemotron."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "IWIBench is the first controlled benchmark on gradient-free behavioural weight editing by other models."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "none received positive reward for structured- response defaults. Only 5.6-terra did so for answer-length control."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "found that more reasoning changed individual outcomes, not the aggregate score."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Indeed, all of Astra\u2019s final patches target the embedding/output matrix."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "intra-weight injection remains a selective editing tool rather than a general rewriter of model behaviour."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Each configuration has one recorded run per episode,"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Validation also found a limitation: historical Intel CEO answers can be affected, so preservation is incomplete."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "This remains a hypothetical threat, not a capability evidenced by any model we have observed."
+  }
+ ],
+ "arxiv_2611.09271": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "the two chess endgames fall from 84.9 and 100 per cent success at the one-ply tactic to 0.57 and 9.13 per cent in full a"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Track A gives the model full code execution, iterative testing against its own test suite, and exhaustive-search tooling"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Against search, both networks lose every game in both seats, with no exception across 1600 games in total."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The ceiling this paper documents is a ceiling on what a compact, hand-derivable circuit achieves, not on what the archit"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Claude Haiku 4.5 completed two of the nine tasks in this paper\u2019s scope and, for the other seven, declined to attempt con"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Table 10 shows no rung on which the addendum helped."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "No arm reached a second block. All five stopped on Nim, the ladder\u2019s easiest rung"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "The first is that the second axis of Section 3 was never traced as a curve"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "The second is that our own override counts are upper bounds produced by one tier vocabulary"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "which is why those results are read directionally."
+  }
+ ],
+ "arxiv_2611.09376": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "65 embedding rows                              74.3% \u2192 87.5% on targeted instructions                         430 other "
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Run C improves edited-token instructions from 249/335 to 293/335 successes; all 430 untouched instructions retain their "
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Random direction, matched norm          85.2 7/15       0.134"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Full destination replacement            90.5 43/11 1.40\u00d710\u22125"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Of the other 13 sessions, 12 decline their candidates; the sole retained suffix follow-up has \ud835\udc5d = .542."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "scores 49.4%, compared with the report\u2019s 48.1% using four"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "by 21.4 pp. The evaluated \ud835\udf0b0.5 checkpoint has the same aggregate rate"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "gradient fitting. These approaches are relevant alternatives, not"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "All robot experiments are in simulation and use two released"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "versus 9.0% is not a matched full-benchmark improvement."
+  }
+ ],
+ "arxiv_2611.09382": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "On full held-out evaluations, accuracy improves by up to 29.45, 4.42, 36.72, and 17.11 percentage points on MATH-500, GP"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "the primary search achieves a +29.45 percentage-point improvement, while reruns 1 and 2 yield gains of +5.00 and +27.30 "
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Notably, the evaluated 9B Math candidate decreases held-out accuracy by 0.35 points, despite a +29.69-point development "
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "A Math-edited checkpoint improves GPQA Diamond, IFEval, and SciBench by 3.03, 12.18, and 20.10 points, respectively, wit"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "On F1 the base model answers 19 of 128 samples correctly, and 111 samples hit the token cap, which points to long, unres"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "and a single random direction orthogonal to u with equal norm gives 10 of 48. On this batch, the chosen intervention out"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The results suggest that smaller models offer greater opportunities for measurable improvements, while stronger models p"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "within a fixed exploration budget, the agent may fail to discover and validate an intervention sufficiently effective to"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "However, development gains do not always translate into reliable held-out improvements, and repeated evaluations incur s"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Development results are selected adaptively and are reported without correction for multiple comparisons."
+  }
+ ],
+ "arxiv_2611.09559": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "the LLM-written rules took 0.63\u00d7 the default\u2019s time on 32 held-out instances (p < 10\u22124 ) \u2014 but SCIP\u2019s own plain pseudoco"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "the LLM-written arc scorer ties the classical reduced-cost rule (time ratio 1.02 over 34 instances;"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "On independent set, v1 is faster on all 18 instances, with a geometric-mean time ratio of 0.37 (p = 7.6 \u00d7 10\u22126 )"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "With the same 7 features, hand-written weights match or beat weights trained by imitation of strong branching in 3 of 4 "
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The rule is family-specific: on 39 MIPLIB 2017 instances it solves 19 vs 24"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "the measured speed-up of about 37% was real but was entirely reproduced by switching SCIP to its plain pseudocost rule, "
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "(iv) Instance sets are small (8\u201340 per comparison). (v) The MARTA labour rules and garage grouping are synthetic."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "The same AI wrote the weights, ran the analysis and wrote this paper; to limit this, every number is produced by a scrip"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "This is a deliberately small baseline (same 7 features, 2k nodes), not a reproduction of the graph network of Gasse et a"
+  }
+ ],
+ "arxiv_2611.10425": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "benchmark: combining Semgrep with an interprocedural call- graph scanner yields precision 0.843 and recall 0.915 (Semgre"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Adding tantular-callgraph to Semgrep raises recall from 0.766 to"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Detection is strong on the benchmark, but only 57% of Tantular\u2019s"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Every grounding failure in retained outputs names a code identifier"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "so a weight edit can be chosen"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "An automatic model-file migration changed the weights serving"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "loop has not been run; no fine-tuned or weight-edited Tantular"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "All rates come from 33 synthetic Python"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Our own published 57% is not reproducible"
+  }
+ ],
+ "arxiv_2611.11005": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "Claude Opus 5.5 used 32.8% fewer data epochs than the"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Opus averaged recent weight snapshots in every run. This"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "of the data epochs, and the same rule with averaging added"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "None of the three is distinguishable from the"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "net\u2019s accepted virtual epochs, 79% moved the weights by less"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "so at this scale the LLM costs more"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "This finding has a limit. Snapshot averaging was not new."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "The evaluation is small. It covers three small architectures,"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "The acceptance rule guards every step but not the result."
+  }
+ ],
+ "arxiv_2611.11537": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "Where the weights have a meaning the model can reason about, it matches the optimizer: 95\u2013100% of the energy spectrum on"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "the means are 48 and 36 evaluations, against 607 and 263 from random starts (Figure 3)."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "the model\u2019s circuits score 0.924 \u00b1 0.032 on 3 vs 8 and 0.952 \u00b1 0.008 on 4 vs 9 (chance 0.5)"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "0.81 \u00b1 0.02 at 30 weights and 0.70 \u00b1 0.25 at 54."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "In 6 of 42 QAOA trials the model produced the correct angle magnitudes with every mixer angle negated"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Weight programming therefore scales with the interpretability of the weight space rather than with its size"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "part of what we measure is recall."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "The optimizer baseline is deliberately modest (L-BFGS-B with finite differences, a few restarts, a 60-second budget)"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "All circuits are small (at most eight qubits) and simulated without noise."
+  }
+ ],
+ "arxiv_2611.11604": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "With two LLMs on three environments, the created policy of each of the 18 runs attains the optimal probability, before a"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The model checker Storm computes, rather than estimates from simulations, the probability that the policy satisfies the "
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Four of six policies programmed for two transporter jobs also complete three jobs with probability 1, so they generalize"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "In one of them, dataset repair raised the accuracy to 98.4% but broke the requirement, and one round of model-checking f"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Both networks show that accuracy is only a proxy: with 39% accuracy, they still reach the optimal probability"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The most common error is a wrong network shape, in 32 of the 67 answers of DeepSeek-V4-Pro (48%) and in 8 of the 28 answ"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Each configuration runs three times, and cloud inference is not deterministic even at temperature 0, so our numbers are "
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "The environments and networks are small (at most 16,496 states and two hidden layers with 32 neurons)"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "so we cannot rule out that the LLMs saw these models or related policies during"
+  }
+ ],
+ "arxiv_2611.11894": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "On 128 held-out seeds, success rises from 27 to 106 episodes, with 81 fixed and 2 broken (p = 7 \u00d7 10\u221222 ), while an upda"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The fix comes from the edit\u2019s directions, not its size. On the first 64 of these seeds, a random-direction update with t"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Given the explicit wording, the unedited policy scored 57/64 (p = 0.12 against the edit), so the edit recovers most of t"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "One of seven submissions passed. On cube then banana, the editor independently traced the release to the wording."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Four GPT-6 Astra edits of 791\u20136,225 values stayed within noise, and none passed the companion study\u2019s gate."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "A 16-episode screen is therefore a filter, not evidence."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Edit when the network can be shown to do the right thing under some input, and train when it cannot."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "The full edit is low-rank but not sparse. It changes 13.4% of the policy\u2019s stored values, and the 0.16% variant still ch"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "The distilled edit was built by the operator session under the editor rules. The released tool rebuilds such an edit end"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "All results come from one zero-shot checkpoint in simulation, with 16 to 128 pairs per comparison. The failure levels we"
+  }
+ ],
+ "arxiv_2611.12066": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "Mean (6 MedMNIST tasks)                       0.719          0.711       0.588      0.828     0.892      0.929"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "You have no tools: no code execution, no calculator, nothing to run, and you will not see any image from this"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "with Adam on 256 labels is better on every MedMNIST task"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "SynthUterus\u25e6   Pelvic MRI       2          0.764\u00b10.073    0.136\u00b10.053     0.818     0.996\u2021"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The true share is 73.1%."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Written weights are mostly exactly zero"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "The scale is small by design:"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "two LLMs with one prompt: other LLMs or prompts may"
+  }
+ ],
+ "arxiv_2611.12954": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "PtW achieves a relative L2 error of 4.31 \u00d7 10\u221217 ,"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The LLM generates architectures and weights without executing code or performing numerical optimization."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Overall, AE provides the largest improvements in solution"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "PC does not improve the relative L2 error across"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "PINN achieves a lower PDE residual than PtW, indicating"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "2001 points raises the MSE from 5.45 \u00d7 10\u22122 to 6.6 \u00d7 109 ,"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "discarded the PINN weights in the first refinement round"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "these results do not necessarily demonstrate the ability to"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "dimensional PDEs, a single LLM, and three runs per method."
+  }
+ ],
+ "arxiv_2611.13232": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "In 45 timed requests, both intervention implementations produce identical greedy sequences at 32, 128, and 512 tokens; t"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "We present W-ISA, a software instruction set and transactional runtime for executing weight- space intervention programs"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "We adopt their weight-space programming perspective as a conceptual foundation. W-ISA\u2019s contribution is a structured ins"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Undo restored the original weights and recorded outputs; replay restored the edited state. Two sepa- rately launched pro"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "All twelve conditional requests retained their original greedy token se- quences."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The measured W-ISA application medians are 48.866, 56.059 and 115.142 ms for the three length groups; restoration median"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "The shared model lock serializes participating requests for the lifetime of the intervention."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Snapshots cover full target parameters, including when an instruction selects a smaller slice."
+  }
+ ],
+ "arxiv_2611.13236": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "One projection reduced validation token repetition from 0.4133 to 0.2191, with a perplexity change of -0.0574%. All cand"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "synthesizes candidate weight-space intervention rules, evaluates them, and maintains a versioned table of admitted polic"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Its current synthesis step is a deterministic Python procedure driven by observed task labels and captured activations."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "All three candidates met the configured perplexity budget. The corrected-answer threshold was one; the active table cons"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Final exact-answer scoring was 0/3 for both original and routed execution."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Fresh-process repetition and saved-table resumption reproduced the measured outcomes."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "The nine-question handwritten fixture is an architectural microbenchmark of telemetry, candidate generation, admission a"
+  }
+ ],
+ "arxiv_2611.13758": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "A TinyEEGNet network, with all its weights initialized to 0, is written through the reasoning of Claude Opus 5.5 using o"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "conclude that it was guessing rather than reading the weights)."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "None of the models improved a healthy network (Fig. 4)."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Instead, they found edits that the feedback rewarded, and those"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "rose from 0.67\u20130.69 to 0.83\u20130.86 for every model and every"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "However, no edit beat the pass mark set before running the"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "minutes of wall-clock time, while gradient descent trains the"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "experiments 3 (ECG), 4 and 5 use a single run per model and"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "validation. Third, both PhysioNet datasets are public and likely"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "experiment 5 were added after the LLM runs, so, unlike the"
+  }
+ ],
+ "arxiv_2611.14210": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "Evaluated on the two layers targeted by the agent, T REE -I SING achieves 54.6% on MATH-500, outperforming the agent\u2019s e"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Consequently, the discrepancy with the originally reported 48.1% appears to stem from the initial evaluation setup rathe"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "T REE -I SING achieves 53.8% accuracy compared to 50.8% for the agent edit (with four completions per problem)."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Consequently, our repair is approximately 30 times faster and 350 times cheaper, while requiring zero LLM tokens."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Crucially, they demonstrate that the mathematical objective itself, rather than the discrete solver, drives the majority"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Applying the unchanged recipe elevates GSM8K accuracy from 21.6% to 69.4%, representing a substantial gain of 47.8 perce"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Our repair recipe was formulated retrospectively after analyzing the agent\u2019s public logs."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Consequently, side effects remain unmeasured beyond the collateral term, which protects the layer\u2019s output only on token"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "we did not independently rerun the base model in our evaluation harness."
+  }
+ ],
+ "arxiv_2611.15917": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "the learner at 30 records per party was non-inferior, within 2 points, to all seven tuned baselines"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "typed edits over a network trained on shared records beat that network alone by +5.4 points"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Well-tuned private fine-tuning, however, matches the trained-base combination at 30 records."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "it decided 347 of 360 probe items correctly, against 348 of 360 for the patched network"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "two independent models made the same mistake: each dropped the heritage term, leaving 1,575 errors on the party\u2019s grid."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "one patch under the default edit limits hid 7,989 bits with no change in behaviour on any valid input."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "On a rule-only base, a table of owned exceptions makes the same decisions."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Every accuracy figure comes from an invented screening world with three parties"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "The primary cell samples truths from the typed space itself, so realisability (Proposition 7) holds by design"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "proposed far more often in both runs (Section 2.7); that criterion failed."
+  }
+ ],
+ "arxiv_2611.16981": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "the best writer\u2019s networks solve 56% of episodes on held-out levels with feedback, but the four strongest writers\u2019 Pytho"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "93% of their parameters are exactly zero, 90% of the rest are small integers or powers of two, and NumPy programs with t"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Writers read the source while learners see only those levels, so this compares information access."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "With standard PPO on these binary-success games, writing and RL fine-tuning do not combine."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The best writer\u2019s architectures, trained from standard initialisation within our budget, solve 1%."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Understanding a game well enough to program it thus appears necessary for writing its weights, and expressing that under"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "we find 99% of the parameters exactly zero and 95% of the rest small integers or powers of two"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Our games have binary success per level, which makes them a poor testbed for combining writing with RL."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "so stronger learners might narrow the gap to written weights."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "An evaluated writer (Claude Opus 5.5) designed the harness and analysis."
+  }
+ ],
+ "arxiv_2611.17246": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "Without prior objective feedback, the LMO reaches the target accuracy in 40 of 45 instances (88.9%) for r = 1 and 37 of "
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "For general Hamiltonians, LLM-generated parameters exhibit larger energy errors than conventional Adam optimization, whi"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "frequently produces estimates below the true ground-state energy, violating the spectral lower bound."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "rounding the proposed angles to Clifford-compatible values causes all 90 first proposals to exceed the success threshold"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Across these 30 interpretations, the model predicts the correct most-likely measurement outcome in 29 cases (96.7%)."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Since additional proposals are generated alongside the incorporation of previous energy evaluations, the specific contri"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "the results do not establish a general computational advantage or demonstrate that the model performs general quantum-me"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "The comparison concerns Hamiltonian expectation-value evaluations rather than the total computational cost of LLM infere"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "They should not be interpreted as representative of arbitrary physical Hamiltonians."
+  }
+ ],
+ "arxiv_2611.17395": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "modifications, including only six parameters for the MLP and"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "100.00% Post-ASR while changing only six scalar parameters"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "tors, only GPT-6 Astra produced a Qwen model with the spec-"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "ent numbers of weights: GPT-6 Astra modified 6 parame-"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "In this setting, greater sparsity did not imply better preservation of normal behavior."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "ResNet-18. These results establish feasibility for the returned"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "uation focuses on three target architectures and specific trig-"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "models rather than the success probability of individual edit-"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "does not establish complete causal explanations for the ob-"
+  }
+ ],
+ "arxiv_2611.17789": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "8 (5) +0.02 [-0.09,+0.13] 0.612"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Real LLM (zero-shot) 14 7,440 / 4,294 133.8 42.11 (+0.03) 39.14 (-0.03)"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "250 1 CMA-ES +0.28 N/A -0.12 414.2"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Mean +0.001 +0.004"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Schema-valid now 53 23.6%"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "bations using NumPy. That version is a heuristic local search,"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Selection reuse: The model-selection partition was inspected"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Observed development gains do not establish out-of-sample improvements."
+  }
+ ],
+ "arxiv_2611.18114": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "All 26 runs on algorithmic tasks reach 100% accuracy both on the visible set and the hidden set (Fig. 2a), often by impl"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "on 3 of the 4 NLP datasets iWSP builds models that achieve respectable performance well above a naive majority baseline "
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Compared with pretrained AlexNet, iWSP matches black-box accuracy in early visual cortex while trailing in ventral visua"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "We find that the new features added at this step surprisingly do not encode a word\u2019s semantic content, but rather only i"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "As a result, combining both in one ridge regression significantly improves on Whisper alone, raising performance from 0."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "On algorithmic tasks, rebuilt models have 1.74 times the original\u2019s parameters on a geometric mean, against 2,043 times "
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "First, current agents do not invent genuinely new computational principles."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Programming deep hierarchical representations without backpropagation remains an open problem"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "The harness cannot stop the agent\u2019s own Python from training or from computing the answer outside the network, so those "
+  }
+ ],
+ "arxiv_2611.18538": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "Two exact boundaries govern finite preservation: weak-star closure for a fixed action count, and the singular mass of th"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Weight-space programming [34]      parameter relationships, model       architecture and objective, training"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Any retained representation can be replaced, without increasing information or regret, by a calibrated compression of th"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Families with identical source laws, pairwise task metrics, and individual-task rates can have different high-resolution"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Nonlinear learning and computational separations distinguish preservation from efficient discovery and use."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "The numerical checks evaluate the specified formulas and constructions. An external test would estimate task structure i"
+  }
+ ],
+ "arxiv_2611.18553": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "Macro SWB (42 tasks) 0.402 0.466 0.535 0.215 \u2013"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "TR-02 F IX: Surgical Patching (13) 0.300 0.381 0.404 0.187 0.571\u2020"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "TR-04 W RITE: Zero-Shot Weight Synthesis (6) 0.369 0.569 0.829 0.000 0.863"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "performed alike, between 0.485 and 0.500 on every task,"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "baseline by a margin of at least 0.2. Currently 39 out of the 42 tasks clear this validity gate at their default difficu"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "quarantined 28 of the 29 cheats in all three trials."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Quarantined runs and runs that ended without a valid submission score 0; no quarantined run has been reviewed yet, so al"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "(seed 0), with two samples per task for the Claude models"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "The evaluation of Claude Fable 5.1 is ongoing and not reported."
+  }
+ ],
+ "arxiv_2611.18690": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "gets during editing. They do not test an LLM editor or a"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "It permits up to 1,020 candidate"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "GPT-6 Astra 5.8 0.038 0.041 \u22120.40 72%"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "the patch model reduces color-prior distance from 0.984 to"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "In the nominal condition, the patch model increases color-"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "luminance-gradient energy increases by 3.56%, while the"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "It does not establish useful U-Net layer localiza-"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "execute 1,020 full diffusion runs or collect standard learned"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Restricting layers and scalar support reduces the update"
+  }
+ ],
+ "arxiv_2611.18919": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "In simulation, RL raises success on unseen objects from 55% with Contact-GraspNet to 83%. Adding 58 human demonstrations"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "5.5) read and edited the network\u2019s 2.2M parameters through"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "to 79 and 83; tilted 55 to 53 and 51), so the model reverted"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "RL + demos vs. RL +21.2 [+13.0, +29.4]"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Human in VR (robust) 58"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "not isolate the human contribution. Matched RL-alone and"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Scope. All results come from simulation, a floating hand,"
+  }
+ ],
+ "arxiv_2611.19292": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "The frozen network matches the closed-form optimum wherever that optimum is linear, reaches the irreducible error of the"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The result classifies all one hundred and twenty held-out rows correctly, above the Bayes rate of 0.9877 estimated on fo"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "A procedure that reads one feature at a time cannot see an oblique fold, and this is the rung on which that limitation i"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The construction scores 0.7444 against 0.7892 for the same architecture trained by gradient descent, 0.8749 for gradient"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The honest summary is that one of the two diagnosed failures is now known to be avoidable and the other is probably avoi"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "No arm reached a second rung. All five stopped on toy_line, which asks for a line through twenty rows of one feature"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "What predicts whether the hidden layer earns its keep is the training error of a linear separator, which the composite c"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "There is one partition per rung, so the binomial noise on a classification score of a hundred and twenty held-out rows i"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "The synthetic rungs were generated by the same model that wrote the constructions, which knows the qualitative family of"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "The Opus arm reported in the preceding subsections was written by the same session that had authored the generating proc"
+  }
+ ],
+ "arxiv_2611.19304": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "recovers an exact trigger token in 14 of 14 ordinary backdoors"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The rule was written down, frozen, and then run on trigger"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "and exact-token recovery falls from 2 of 2 to 0 of 2 at every"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "to its base value leaves attack success at 0.97. Nothing here"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Without it the method recovers nothing; with it the trigger"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "accuracy and no perplexity, and is one line of code."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "answered negatively, by [20]; this paper attacks one instance of"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "beddings; a single payload; nothing above 0.5B parameters; no"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "takes recovery to 0 of 16 under every rule in this paper, and"
+  }
+ ],
+ "arxiv_2611.20174": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "First, Astra directly programs nanoTabPFN from zero-initialized weights, achiev- ing a mean ROC AUC of 0.849 across 20 T"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Notably, only 0.42% of the weights were filled in, which can be indicative of overparametrization of nanoTabPFN."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "WSP-NanoTabPFN has the higher AUC on 3 of the 20 datasets"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "On TabArena-Lite, the geometric-mean edited-to-pretrained error ratio is 1.0008 (95% confidence interval: 0.9999\u20131.0017)"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Transfer beyond the targeted regimes is partial. The intervention also changes approximately 105 million weight entries,"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Both programs ap- proximate the intended transformations on previously unseen datasets, although the quality of the inte"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "they do not establish that the pretrained model already contained the complete circuit."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "These findings remain exploratory"
+  }
+ ],
+ "arxiv_2611.20566": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "Strictly correct answers increased from 44 to 77, and technically correct answers, which included correct final values r"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "All 10 candidates   1,500   110\u2192206         160\u2192254      1,269\u2192819        71\u2192427       13,992\u21927,376         4,567\u21922,198"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Among the 64 pairs in which only the edited response was technically correct, the original model had already computed th"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Completed responses that failed the technical correctness criterion also increased, from 42 to 274."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "On the melting-temperature problem, correct Python outputs decreased from 60 to 22 while technically correct final answe"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "For editing seeds 1, 3, and 4, changes were confined to that matrix. Seed 2 showed changes in 24 matrices spanning block"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The edited model miscounted the bases and submitted 32 \u00b0C (Table 4)."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "We studied one Target model and one Editor model. We evaluated all ten checkpoints on the same 50 test problems using th"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "The test problems were known to the study author, and some were revised during benchmark development after earlier evalu"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "We reviewed only selected execution traces and therefore did not estimate an overall calculation repair rate for these c"
+  }
+ ],
+ "arxiv_2611.20953": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "Claude raised its MATH-500 score from 6.7% to 51.4%, 55.2% and 58.1% (500 problems \u00d7 4 samples; at 50 passes +51.4 point"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Unlike the original, which removed an internal loop direction, every edit acted at the output: it scaled the final norm,"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Temperature alone lifts MATH-500 to 22.1% (s = 0.6) and 20.9% (s = 0.68), about a third of the gain (28\u201335%), and GSM8K "
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "On MATH-500 (n = 500 \u00d7 4) it moved the score from 9.2% to 8.3%, a change of \u22120.8 points [\u22121.9, +0.2], and the share at t"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "None of the ten repairs in Experiment 4 repaired the learned circuit. Each grafted a textbook controller into repurposed"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "When the question is about the training distribution, Claude falls back on priors. Three priors recur."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "All 10 untrained networks were called untrained."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Each budget has one Claude run, as in the original, so the budget comparison (+6.8 points [4.9, 8.7] from 10 to 50 passe"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "This is more information than generations alone, and it may have made the task easier than the original\u2019s."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Pre-registration fixed grading, not design, and it was not deposited with a third party or timestamped externally."
+  }
+ ],
+ "arxiv_2611.21310": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "126 runs show that category purity rose on unseen words and sentences, benchmark accuracy stayed within sampling error, "
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Weight-Space Programming lets a frontier large language model (LLM) read and write raw weights as text, but a 1.5-millio"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "On the same target and seed, the analyst\u2019s purity gain under [D] was higher than the default heuristic\u2019s in three of the"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Two tuned heuristic configurations from the ablations (Table 3) matched or exceeded the default analyst on Qwen in purit"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "In 16 of the 20 pairs the analyst changed its target, and in all 16 purity under [D] rose over the edited layers"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The truth margin of the factual probe fell in all 18 default runs, by at most 8.1% of the baseline margin"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "the three seeds resample data splits and benchmark samples on the same frozen weights, so the statistics are descriptive"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "The open questions are how far the paradigm scales and how it compares with the steering and closed-form editing baselin"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Most of the analyst\u2019s accepted edits passed only at the relaxed gain threshold, which admits very small gains and, in tw"
+  }
+ ],
+ "arxiv_2611.21432": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "On Qwen3.5-0.8B the sorted edit scores 67.0% on 1000 problems (MATH- 500 and GSM8K) against 67.4% for the LP edit and 9."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Hence the LP synthesizes a bias along u, by using neurons that are almost always active."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "the paired difference is \u22120.4 points, with 95% confidence interval [\u22122.9, +2.1], inside a non-inferiority margin of 5 po"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "On three further sampling seeds the difference is \u22120.6 points, interval [\u22122.0, +0.8], and \u22120.8 points, interval [\u22122.3, +"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "the neurons shared by the two supports carry 95% (layer 15) and 88% (layer 19) of the mean"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "In our view the informative part of the AHA edit is the direction u, not the LP that implements it."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Admittedly, we tested one model and one run of the pipeline that produces u."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "We did not test a constant shift along u at the same dose."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "the seeds measure the sampling noise on fixed edits; they do not replicate the pipeline that"
+  }
+ ],
+ "arxiv_2611.21449": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "Astra\u2019s networks for the game Breakout scored 514, 550 and 307 across three runs (the original reported 517), and scored"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The network Astra wrote for the standard Breakout game scores just 0.5 and 0.0 on these variations, while the networks i"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Both programs choose the same move as the written network in 100% of the 49,189 game states we tested, and over 1,000 ga"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "A network of this architecture trained on the 60,000 training images reaches 96.7%. A much simpler baseline, which compa"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "On three new games we trained ourselves, Astra recovered the lay- out but mostly missed the mechanics, such as which act"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "but it never found the trigger or described the malicious behaviour."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The Qwen maths gain comes from stop- ping the model looping rather than improving its maths ability, and it shrinks shar"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "The code was written primarily by Claude Opus 5.5 and GPT-6 Astra, the same model families we evaluate, and has not been"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Most results come from one to five runs per model and task (a single run for the Python programs), and scores vary betwe"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "All the networks we studied are small, and we tested only one fuzzy task, so whether these abilities extend further rema"
+  }
+ ],
+ "arxiv_2611.21885": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "On the 490 held-out problems, the edit of session 8 solves 63.8% against 57.2%, with 439 answers right only with the edi"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The larger gain comes from one uniform change: it raises the time-step bias of every linear-attention layer by 0.5, and "
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The self-edited model solves 58.3% of the answers and the base model 57.2%, p = 0.038 (Tab. 8)."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "On the 200 held-out problems, the damaged copy solves 0.0%, the repaired copy 33.0% and the base model 58.5%: the repair"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "On every benchmark the repaired copy solves far more than the damaged copy: 70.2% against 7.3% over the 600 problems, 83"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The 4B and 9B models edit themselves and break themselves"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "In five the model withdraws: three times it ends with no edit, after its own tests rejected every edit it tried (session"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Generation is not exactly reproducible: run twice with the same weights and the same seeds, two answers begin alike and "
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "nothing blocks it from reading files, environment variables or the framework\u2019s own modules."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Three further sessions of a model on its own weights were stopped before their end and are not analysed."
+  }
+ ],
+ "arxiv_2611.21958": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "With simulated feedback, both models repaired the trained network in single sessions and wrote a working controller from"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "ten proposals repaired the network, which resulted in no"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "and fine-tuned from S1 (GD-1) both had a lower error than"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "results with 40 times the evaluation budget. Both LLMs"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The RMS lateral error ranged from 12.6 cm (GD-1) to 27.8"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "GPT-6 Astra and Claude Fable 5.1 produced 53 and 50"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "This study conducted one session per model and start point without performing statistical tests; furthermore, the"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "since the study used one small network with 253 parameters"
+  }
+ ],
+ "arxiv_2611.22013": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "With no labels, the networks of the strongest model rank experimental alloys at Spearman \ud835\udf0c = 0.64 to 0.79, where the bes"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "all 35 targets the Opus networks rank the pool at a mean \ud835\udf0c = 0.67 and the Fable networks at 0.64"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "the two strongest models rank bulk modulus at \ud835\udf0c = 0.95 and 0.94 against 0.89 for the inverse volume per atom, so most of"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The written filter therefore matches what 400 labeled crystals give a standard model and does not exceed it, and its adv"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "A high rank correlation over the pool is therefore not sufficient for a prior mean to help the optimizer"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "We found no case in which a model extracted from trained weights something that a simple statistic of those weights miss"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "A control prompt in which the weight values were permuted while the sensitivity table stayed correct produced edits just"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "The self-reports of the networks also show calibration against remembered values of alloys that are in the pools, so the"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Tool use was excluded by instruction and by an audit of every transcript rather than by a technical block"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Significance in the optimization tables is over 20 seeds with the written replies held fixed, and says nothing about the"
+  }
+ ],
+ "arxiv_2611.22055": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "When free to design, all three compile plain-text facts into a sparse table queried by a fixed procedure, reaching up to"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "An LLM-designed model achieves higher test accuracy than the most accurate released Trans- former that the same LLM wrot"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The six written two-layer Transformers of Claude Opus 5.5 all score below BM25 over their own text, by 8.0 points on ave"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "fine-tuned on ARC remain far more accurate, with Qwen3.5-0.8B at 82.1%, leaving a wide gap for WSP to narrow."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Editing leaves strong bases near their unedited test accuracy, lifts weak ones, and in some cases damages the base."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The edited checkpoint that Takehi et al. (2026) released scores within half a point of its unedited base on ARC, MMLU an"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "WSP as studied here therefore does not reach images and would need input units that an LLM can name without a pretrained"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "None chains facts across steps or com- poses a long answer. ARC-Challenge accuracy stays near 38% while ARC-Easy reaches"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Our finding that WSP does not need a Trans- former applies to how current LLMs write weights from random initialization "
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "so our data do not separate a structure chosen because it suits writing from one chosen because it is known."
+  }
+ ],
+ "arxiv_2611.22228": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "Figure 1. Astra\u2019s construction gain is lost after score-guided rewriting, even as CLIP rises."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The preregistered primary method shows no advantage"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "baseline by +10.0 [+4.7, +15.4] points, while the CLIP score"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "U2-Astra \u2212 U1b +10.0 [+4.7, +15.4] 0.0016 0.051 0.014 0.343 0.007"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "CLIP gains do not reliably track task gains."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "calls an SVD 24/24 0/24 22/24 0/24"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Among CLIP-successful images with definite human subject judgements, the inverse-inclusion-probability-weighted absence "
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Neither question above was re-run on the 274 selection questions."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "The image-level results reported here belong to the two-sided variant; the input-only transplant remains unevaluated."
+  }
+ ],
+ "arxiv_2611.23615": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "answers our test questions as before, but the agent, unaided, no longer repairs either model: on LFM2-VL accuracy re- co"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "only the damaged weights carry, a cue that a real failure"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "in thirteen of these fourteen sessions it returns"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "and gains 40.63 of the agent\u2019s 45.31 points."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Adam gains 36.46 points and LoRA 25.26, against"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Without a hint and within these budgets, the agent did not"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "weights, as our scaling and noise faults do. We recommend"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "We study two models, one agent model,"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "the gradient fits on T4\u2013T9 are post hoc comparisons."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Every audit here depends on a clean"
+  }
+ ],
+ "arxiv_2611.23718": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "On Burgers, reallocating a matched parameter budget reduces error by 58.80% and 47.72% relative to fixed locations."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Fixed, numerically adaptive, and LLM-guided policies produce editing plans; numerical solvers compute weight patches, an"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "relative L2 error decreases from 0.040194 to 0.016559"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Revising the complete plan across rounds lowers final AbsRel by 10.59% relative to keeping the initial plan fixed."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "ing the residual emphasis raises the error to 1.437018"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Full-split F1 rises from 0.2507 for Adam to 0.2899"
+  }
+ ],
+ "arxiv_2611.23875": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "In contrast, our agent reached 91.1% from the task description alone, and 96.8% when it was given the notes and code of "
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "A recently reported ability of these models, weight-space programming, is of particular interest for neural networks.35"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Their settings were first searched in simulation and the best deployed on the experiment (Methods), where they improved "
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "it reached 16.1 dB, against 15.0 dB for PPO and 13.8 dB for the random start (Fig. 3c,d). The best result obtained on th"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "In both routes, a small number of interpretable parameters replace several hundred thousand pixel updates"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Even with the single scalar reward per candidate that the gradient-free methods receive, the agent clearly outperformed "
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "The three classifier runs that received notes or general lessons from earlier sessions reached 89.2%, 91.3% and 96.8% on"
+  }
+ ],
+ "arxiv_2611.24330": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "Across six independently trained text readers, the edit selects the larger group in both orders on 100% of targeted ordi"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Across 12 seeds and 240 held-out inputs per seed, the strict benefits-choice rate rose from 0% to 100%."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The same edit can therefore pass the original behavioural criteria through task substitution and fail a test of the cond"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Both factual accuracies (98.6% for commitment and 95.4% for benefit) and agreement accuracy (98.6%) remain unchanged. Fa"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The gradient direction shifted many more conflicts at the same radius, while accuracy on identifying the larger group fe"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Applying that transformation to the same class and stride scores of the source model before suppression reproduced the r"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "It leaves open whether WSP can locate and edit a comparable mechanism in a model that learned it without explicit concep"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Appendix A describes a blinded follow-up on full prompts. The independent editing stage has yet to run."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "The same assistant designed the evaluation, so the run was exploratory and unblinded."
+  }
+ ],
+ "arxiv_2611.24877": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "It found the planted flaw in 69 of 72 runs (96%; 95% CI 80% to 99%); a script written for the purpose found all 24."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "With the weights of the two clean networks loaded in the tool, the mean R2 was 0.951, against 0.947 for the same network"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The surrogates written by the LLM reproduced the audited models\u2019 log-odds on the test inputs with a mean R2 of 0.976 (me"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Of the 1,089 reports that could be checked, 655 (60%; 95% CI 53% to 67%) failed the"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "In the test set, 68 of the LLM\u2019s relationships held (11%; 95% CI 9% to 14%), against 28 of the scan\u2019s 101 (28%; 20% to 3"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The three runs of a model always agreed (intraclass correlation 1.00), so the effective sample size was 24 and the 95% i"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "We studied one LLM and one dataset. The International Stroke Trial is public and much analysed, so the LLM may know its "
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "the present study does not show what an LLM finds when the kind of flaw is not announced"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "The plan was fixed in a private repository rather than a public registry, was amended before the first run, and one list"
+  }
+ ],
+ "arxiv_2611.25476": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "SCAN, add primitive grammar, 64 old 0.0% 99.8% 0.0 257 grammar-generated 99.6% 0.0"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "ResNet-18 Gaussian noise +10.72 \u22120.25 +10.47 +8.67 \u2013 +8.84 2,152,928"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "BabyAI, pick up 8 demonstrations, 64 old 0.0% 98.4% +0.4 21,482 behavior cloning, 1.1% \u22120.6"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Rerunning the same program recomputes effective edits across independently trained networks, whereas copying its fixed w"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "the LLM without weight values +10.78 +11.18"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "generic gated search, no LLM +24.12 unchanged"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "This counting rule was set on 2026-11-06, after two sessions had"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "were identified by subsequent code inspection."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "In this single session, the generated programs stay within a"
+  }
+ ],
+ "arxiv_2611.26408": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "ERT has the highest mean net score for both editors (Astra: 0.74, against 0.71 for ENN, 0.63 for LS and 0.63 for ERM; Op"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "On four of the nine tested settings formed by dataset, task"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Both editors almost always edit the final"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "change to the final layer is rank one (median share of its en-"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Even with frontier LLMs, targeted edits by weight-"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "GLM-5.3-Flash and Gemma-4-26B are much weaker (0.45"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "per cell, only large differences between methods are de-"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Hyperparameters were tuned and baselines selected"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "we train a single network per training method and"
+  }
+ ],
+ "arxiv_2611.26841": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "In our study, weight-space ... programming adds legibility, not accuracy."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "updates reach a mean of 88.5% (Fable 5.1) and ... 90.4% (Opus 5.5) against 89.3% for 16-shot ICL"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Adam over all parameters reaches 86.5% ... and context distillation 88.0%, both changing every ... weight, LoRA 87.9%, a"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "it was left, the four editors reach 89.7%, 80.5%, ... 87.6% and 92.6% (Table 4), so Opus 5.5 falls ... below the baselin"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "to the 16 pairs, Gemini 4 Argon loses about five ... points and stays within three of fine-tuning, GPT-6 ... Astra loses"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "curacy falls to 13% (Fable 5.1), where ICL retains ... 89% and the rank-1 gradient update 48%."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "pleted programs average 89.7%, against 73.0% for ... LoRA and 79.0% for a rank-1 update on the same"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Scope of the evidence. The main study uses one ... model family, Qwen2.5;"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "the kernel behind it was not sandboxed: it ran on"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "since Gemini 4 Argon evaluated candidate updates ... through a CPU re-implementation of the model;"
+  }
+ ],
+ "arxiv_2611.27079": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "WSP                              0.05                   79%     \u22120.0002         1.01         10 122        no     target"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "IR sensitivity of OmniLearned Adding one photon with f = 10\u22123 lowers the W efficiency of this"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "More information increases the agents\u2019 performance. The remaining error of the least informed"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "WSP is the method that changes the rest of the model the least."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The weak point of the method is the variation between runs."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "In the model repaired by WSP they stay between 78% and 80% for all nine"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "An edit that repairs the classifier outputs does therefore not always repair the representation"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "The WSP results were obtained under tightly constrained conditions, using an LLM that was not"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "none of them makes the tagger infrared safe in the formal sense."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Limits The WSP results vary between runs (Sec. 3.2), and for the large model, its edits reach up to"
+  }
+ ],
+ "arxiv_2611.27089": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "closed-form edits did not improve on p50c, whereas a rank-1 LoRA adapter trained on worked"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The gain of p50c therefore depends on the structure of its edit."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The patch\u2019s effect on these tasks is thus consistent with the repair of looping reported for mathematics [15]."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "of 34/128 and 69/200 and indistinguishable from a matched random perturbation (26/128 and"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "448 examples of the training file (128 reference-frame scenes and 32 StepGame problems per hop,"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "checkpoint scored 30.3/128 and 24.3/200, the latter well below p50c."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "120.3/128 and 118.0/128 correctly on average, whereas all three adapters scored between 0 and"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "(Section 9), it scored 123.0/128 and 114.7/128, close to the 120.3 and 118.0 of p50c."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "The results therefore compare achieved behaviour rather than equal-budget efficiency."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Each adapter was trained once, so the three evaluation seeds measure sampling variation rather than training variation."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "The comparison covers one 0.8B model and two-dimensional directional and distance tasks;"
+  }
+ ],
+ "arxiv_2611.27425": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "achieves attack success rates of 93%\u2013100% on content"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "models and datasets, BP and CP differ only marginally (\u2264"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "to 0.023% of the model\u2019s weights. Moreover, all runs cost"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "during editing. The backdoor still achieves ASR\u2019s \u2265 0.95"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Qwen2-VL on SROIE (0.78). Investigating this in depth,"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "We find that quantization is not a reliable defense."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "observe that the auditing agent flags all backdoored models."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Bench. These failures concentrate on narrow, tall images in"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "we were blocked only when using the Mythos agent to edit"
+  }
+ ],
+ "arxiv_2611.27920": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "points reach 99.2% mean attack success on the"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "achieve 99.21% in-domain ASR (98.5%\u201399.8%"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "by +0.07 pp, with every individual task staying"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "vention in the last transformer block in 17 of 18"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "initial edits leak 24.7\u201354.5 pp onto neighboring triggers; iterative GPU feedback cuts drift to 3.5\u20133.8 pp at 98.5%\u201399.8"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "the final MLP block), modifying only 6,144 pa-"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Third, scalar accuracy hides drift whenever oppos-"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "evaluate a single editor model (deepseek-flash,"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Second, we do not run human-designed edit-"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Third, our backdoor evaluation uses only two En-"
+  }
+ ],
+ "zenodo_23933590": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "Against a matched exact-moment control, finite interval constraints improve held-out neighbor retention by 21.1 and 19.4"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Here we analyze the editing problem itself; the numerical editors below are explicit algorithms, not tests of that auton"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "and reduce the globally nearest feasible residual to a strictly convex scalar optimization. This yields a globally minim"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The gains exploit this small-vocabulary nullspace; they do not predict complete-logit gains for injective language-model"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Interval-QP 100.00 81.25 59.77 93.25 0.0173"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "These arithmetic costs do not establish that an LLM reads or executes the editor natively."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "General earlier-layer margin certificates, multi-token rewrites, pretrained sequential edits, linguistic-family coverage"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Interval-QP retains 95.7% of unrelated first tokens but only 72.3% of full eight-token greedy continuations; exact-momen"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "These are floating-point checks, not interval-arithmetic proofs."
+  }
+ ],
+ "zenodo_23954378": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "The headline edit is genuine and narrower than its framing: it removes an obstacle rather than adding ability."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "the paired prob- lem-level gain is +40.2 points with a 95% bootstrap interval of 36.8 to 43.5 points. The edit scores hi"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The popular sum- mary of the post, an LLM reading raw weights and fixing a real model by inspection, describes no sin- g"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The rel- ative change to the two matrices is 10.6% and 8.1% in Frobenius terms: a small count of edited en- tries is not"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "R4 scores 100%, with its permutation control at chance"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "It touches 16 of 747 weights (2.14%) and raises suc- cess to 92.8% over 512 episodes; a random edit of the same size sco"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Until the run completes, the only measurement of this comparison is third-party: 46.8% thinking-off against 50.6% for th"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "it does not show a frontier LLM can perform the source's feats, and no THOX frontier-editor run (E1', E2') has happened."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "No decoding-control measurement in this edition. The L1 run was stopped by compute billing before completion"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "earlier prompt trials were not published and the prompt-v5 runs are listed without results, so selection effects cannot "
+  }
+ ],
+ "zenodo_23958069": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "WSP synthesizes a calibrated Sovereign 1.2B foundation model in under 180 seconds, achieving 48.0 tokens/second generati"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "we formalize Weight-Space Programming (WSP): a deterministic, analytical framework that constructs, aligns, grafts, and "
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "we project the SwiGLU down-projection weights Wdown onto the orthogonal null space of vrefusal across layers 12 through "
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "If routing is uniform with scaling factor \u03b3 and expert weight 1/K, the dynamic MoE layer is identical to a single folded"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Quillan-Ronin Sovereign GGUF (WSP) Q4_K_M 1,024 MB 48.00 tok/s 12.18x (Peak)"
+  }
+ ],
+ "zenodo_23976684": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "Restoring the mask with no weight change (baseline_windowed, a separate analysis, not part of the WSP protocol) \ufb01xes 31 "
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "All nine edits reduce it, with 0 newly broken clips and McNemar p < 0.01 on the combined 70 target clips for every arm."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The real edit \ufb01xes more target clips than each of its \ufb01ve random controls in 26 of 27 (arm \u00d7 target set) comparisons."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The price is a small clean-WER regression for four arms (+0.24 to +0.40 pp macro WER, 95% CI excluding 0)"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Six of nine arms independently localized the same two decoder attention heads (L20H13 and L21H2)."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "We therefore read the pathology as largely an artifact of this inference backend; the edits compensate in weight space f"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Target B (bilingual code-switching) was not \ufb01xed."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Nothing here shows that weight-space programming works for ASR in general; Target B argues the opposite for distributed "
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "The arms share a model family, a brief that names mechanism families, and the same practice data, so convergence on the "
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Edits therefore patch a symptom of the inference stack rather than a model defect; we have not run FA2 (no CUDA)."
+  }
+ ],
+ "zenodo_23976715": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "multiplication (\ufb01ve digits) 22,166,060 (67,813) 11 layers, real LN 10 1010 refuted (89984*48898=)"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Seven snapshots are proved correct on every input."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "a hand-written multiplication transformer with 100% sampled"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Correctness can hinge on things outside the"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "6.7B fp32 1.5 \u00d7 10\u22124 \u2013 100% \u22121.0 \u00d7 10\u22128 2480/2480 80/80 4.6e3"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Fine-tuning voids the theorems; re-grafting restores"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "point storage and execution are measured, not proved."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Neither setting resists a deliberate attack. An adversary who"
+  }
+ ],
+ "zenodo_24036186": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "after 8 further passes the model reaches 58.7 % (SE 1.1) and the share of truncated answers falls from 66 % to 17 %."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "after 10 forward passes, MATH-500 rises from 7.3 % (our own measurement of the original) to 32.5 % through a rank-3 proj"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Original, thinking disabled (8k) 42.8 % 1.1 31.5 % \u2014"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "four previously near-silent MLP units of one layer are repurposed into a repetition detector with a termination driver"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Agent edit (Claude Mythos), 16 sims, no training 0.17 1.1 0.22 100 %"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Control run Qwen3.8-27B (rule violation, synthetic refit) 0.03 0.3 0.04 100 %"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "All language-model results concern one"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Die Surrogat-Physik ist klein und in ihrer"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Edits do not add knowledge that is present neither in the network nor in the available data."
+  }
+ ],
+ "zenodo_24040591": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "D = 0.396 [0.021, 0.792], one-sided p = 0.0177. Arithmetic on the preregistered bootstrap shows the support rests on one"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Per plant instance: kmer_s0 3/4, kmer_s1 3/4, kmer_s2 0/4, positional 1/12."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "0 of 20 clean-model answers claimed a shortcut."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "All 7 correct detections came from such sessions, and the per-protocol analyses did not support detection."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "2 of 36 planted-model sessions met the fix criterion, and no edit harmed clean performance."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "| 3 interp (MoDISco \u2192 zero conv1 filters), v3 | 6/18 | 0/18 | 0/18 |"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "forward passes'' condition may include self-built forward computation, which here accompanied every correct detection."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "subjects and both coders are `claude-opus-5-5` (effort high, Claude Code 2.1.318)."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Amendment 3 changed how runs are judged after cells 0\u20136, not what sessions were told."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "H3 therefore compares budget 0 with \"up to 50, mostly under 15\", not with 50 passes used."
+  }
+ ],
+ "zenodo_24047726": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "Control matches main within noise for both models, so neither reads the weights; best cell (1.5B T2, 9/24) is below the "
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Verdict rule for every task and model (fixed now, thresholds do not move): PASS if main correct >= 12/24 AND control cor"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Each instance also has a CONTROL arm: the same prompt with every summary array's values randomly permuted across positio"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "All 10 model x task cells are FAIL (chance 25%, n=24 each, 4-way forced choice, deterministic letter-logit scoring)"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "no frontier model was tested, so nothing here bears on the source post's claim."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "the summary (hidden-mean pooled first layer, norms, small output layer) is lossy; activation and dataset signal may be p"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Two small models only; n=24 per cell with correlated instances (shared training procedure), so +-10 points of noise"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Untested: raw-weight prompts, chain of thought, tool use, larger models, other summaries."
+  }
+ ],
+ "zenodo_24058693": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "Sampling settings alone move MIT's own edit from 25 % to 55 %."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The loop direction is findable without a search agent."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Fresh problems 161\u2013300: 66 vs 82 of 140"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Without its thinking block (answer mode), our edited model is close to MIT's edit with thinking: 76 vs 82 of 140, at les"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "its own tendency to stop reasoning does not track whether the value is correct (AUC 0.51), while the probe does (0.68). "
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "In its lean form (two answer-mode runs in front) it solves 59 against 49 for MIT's edit on 100 fresh problems"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The front room needs no edit at this size"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "One model (0.8B). Mostly one seed; second seeds cover Set B and parts of 161\u2013300."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Set B and MATH-500 1\u2013160 were reused for development."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "so 65 correct answers in 23 run tables were counted as wrong (never the other way round)."
+  }
+ ],
+ "zenodo_24085180": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "with an MSE of 0.26811. However, scaling to \u03bb = +1.0 inflates the MSE to 0.45034 (+67.9% error), and scaling to \u03bb = +2.0"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "This yields a verified asymmetry index of 0.950247. Task vector negation causes approximately 7.42% greater latent disto"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Primary latent retention drops below 50% at |\u03bb| \u2265 1.0, proving that standard task arithmetic renders existing autoencode"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "as signals enter the mid-network semantic processing zone (Layers 6-9), distortion peaks catastrophically (D7 = 0.94, D8"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Within 15 iterations, OLR-K reduces reconstruction MSE from 0.450 to 0.284, recovering 88.4% of baseline dictionary fide"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Recently, Takehi et al. (2024 at MIT CSAIL) introduced Weight-Space Programming, establishing formal operators for compo"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "These failure modes occur exclusively when task perturbations exceed |\u03bb| > 2.8, where high-order non-linear terms domina"
+  }
+ ],
+ "zenodo_24090396": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "Across a 32-loop adversarial red-team gauntlet encompassing 28 distinct attack classes, V30.1 achieves 96%\u201399% defense e"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "if an RSI agent can boost math scores 6\u00d7 by editing 0.016% of weights, it can equally perform surgical conscience ablite"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "performance on MATH-500 surged from 7.9% to 48.1% (replicated at 51.0% by Khaliq, 2026)"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "This catches both +0.001 distributed sleeper poisoning and sorted-W1-preserving weight-shuffling permutations."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "100% HEALED"
+  }
+ ],
+ "zenodo_24128861": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "elevating total 36-task accuracy from 58.33% ( 21/36 ) to 72.22% \u00b1 2.78%"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "enabling all 14 orthogonal cartridges simultaneously degraded overall 42-task accuracy from 69.05% (29/42) to 64.29% (27"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "optimization is restricted to 2 epochs (378 total steps across 189 verified trajectories"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "mounting airlocks on four consecutive layers (38 \u2192 39 \u2192 40 \u2192 41) caused positive GeGLU activations to compound across ad"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "simultaneously boosts RISC-V ALU simulation ( 50.00% -> 62.50% ), ARC-AGI 2D grid reasoning ( 50.00% -> 75.00%\u2013100.00% )"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "N < 100 samples cannot induce zero-shot synthesis of entirely untrained instruction extensions"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "bit-for-bit string identity across 300-token Control completions is 8/12 in Run A and 4/12 in Run B."
+  }
+ ],
+ "zenodo_24156363": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "The edit shifts one English\u2192Italian tense choice only where intended (non-preferred form 26% \u2192 5% on a held-out set; 16 "
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "with a budget of 50 forward passes and 300 Python runs on the original bf16 weights; it saw only a practice set (610 sen"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "LoRA r16, minimal-edit targets    12%       23%         0           120/200, 0.8947"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "a later review found that doubling one native neuron (L33 n1640) gives the same shift."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "a within-layer outlier score on per-neuron weight norms ranks the 8 edited Gemma neurons as the top 8 of all 737,280 MLP"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Matching norms is cheap for an adversary, so norm-based scans \ufb01nd careless edits, not careful ones; the reference-based "
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "on raw text their usage sits between the 50th and 99.6th percentile of their layer, and the detector \ufb01res on 1\u201310% of ra"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "The norm-matching result is a detector-evasion observation with no behavioural test"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Directional features (gate\u2013up alignment, alignment of the down column with the unembedding) were not tested."
+  }
+ ],
+ "zenodo_24168084": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "improves SwedMaster-300 from 73.67% to 84.00% (+10.33 pp, p = 1.64 \u00d7 10\u22126 ),"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "ZeGA synthesizes closed-form structural width expansions (M \u2192 M + K\u2113 ) from forward- pass calibration activations and at"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Extending WSP from compact circuits and single-direction loop dampening (Sparks Experiment 8) to reversible, context-sel"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "whereas a 1-row control stays at 0.83%/3.33%/0.00% Group (p = 1.00)."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Math-20 (7/20 \u2192 7/20, 20/20 char-identical)"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "while preserving nearby bystanders (85.91% all-8, 83.90% n = 7, 81.21% n = 6 naturalness vs. 4.11%/4.70%/5.09% for a mat"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "SpatialRel-160 Group Score (6.25% quartet, 1.25% pair; quartet I2T 65.0%\u2217 , p = 0.0014) remains below the 16.67% i.i.d. "
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "evaluates synthetic 3D attribute/relation vocabular- ies (0% template overlap) rather than open-vocabulary natural bench"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Audio, video, trained diffusion adapter comparisons, and Family III convolutions remain future work."
+  }
+ ],
+ "zenodo_24198536": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "among 96 arithmetic prompts, the baseline obtained 47 complete answers, a selected 128-weight deletion obtained 50, and "
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "given a desired behavioral displacement, a collection of audit and retention constraints, and a metric on parameter spac"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "A constructive result supplies a terminating exact-rational procedure that realizes every consistent finite rational inp"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Consequently the assertion that every fixed neural architecture can realize every possible target behavior by a paramete"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Therefore observations restricted to \ud835\udc46 cannot establish equality of two unconstrained functions on all of \ud835\udc4b."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The full acceptance contract was not met by the tested interventions."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Not proved: bracket-generation for a given transformer, completeness of its horizontal paths, uniform global costs, or g"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "The construction protects only explicitly enumerated samples in its contract."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Lean-kernel acceptance for the complete eight-clause theorem is a distinct milestone and is recorded separately from the"
+  }
+ ],
+ "zenodo_24208534": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "Com no m\u00e1ximo quatro edi\u00e7\u00f5es de posto 1, o modelo passou de 15,5% para 61,5\u201368% em problemas trancados de matem\u00e1tica do "
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Na nossa montagem, ela leva o conjunto de pr\u00e1tica de 15% para 46% e a matem\u00e1tica mais dif\u00edcil de 8% para 21%."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "As edi\u00e7\u00f5es ficam 6,5\u20139 pontos acima dele nos 400 problemas trancados, com 2,4\u20133,6\u00d7 os tokens, e empatam com ele na matem"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "O fine-tuning chegou a 29% do conjunto de pr\u00e1tica, com 13\u00d7 o tempo de GPU de uma execu\u00e7\u00e3o de agente."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Um script com a caixa de ferramentas e o or\u00e7amento dos agentes, mas sem racioc\u00ednio, chegou a 27% do conjunto de pr\u00e1tica,"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "O agente r1 levou a nota r\u00e1pida a 20\u00d7 o valor da edi\u00e7\u00e3o publicada, e a edi\u00e7\u00e3o dele resolveu 4% dos problemas, pior que n"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Todo m\u00e9todo pareceu melhor no pr\u00f3prio teste de pr\u00e1tica (+5 a +12 pontos) e perdeu 3\u20137 pontos em prompts novos."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "As compara\u00e7\u00f5es principais se apoiam em dois testes trancados de 200 problemas (\u00b13\u20134 pontos cada); os n\u00fameros de pr\u00e1tica "
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Um modelo, um defeito que funciona. \u201cWait\u201d \u00e9 uma palavra f\u00e1cil de mirar, e o defeito espalhado falhou."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "O agente pode n\u00e3o ser necess\u00e1rio. Buscas concorrentes sem LLM obt\u00eam a maior parte do ganho da edi\u00e7\u00e3o publicada."
+  }
+ ],
+ "zenodo_24235217": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "Under strict grading, Base solves none of the 100 problems, MIT-p50c solves 4, and SGNE-CC solves 44: the paired differe"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "the first singular mode accounts for over 99.999% of update energy. Individual column norms increase by up to 114.3%, re"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "switching to model-card settings changes MIT-p50c's score in the direct PyTorch run from 4 to 45 of 100 (+42/\u22121, p = 1.0"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Base solves 39 problems (7.8%), MIT-p50c solves 259 (51.8%), and SGNE-CC solves 235 (47.0%; McNemar +56/\u221280, nominal p ="
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Base solves 3 of 160 problems (1.9%), MIT-p50c solves 81 (50.6%), and SGNE-CC solves 66 (41.3%)."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "On MGSM-240, SGNE-CC solves 100 of 240 language instances (41.7%) versus 137 (57.1%) for MIT-p50c and 62 (25.8%) for Bas"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "This case shows that formal completion guarantees neither instruction fidelity nor preservation of prompt facts."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "All direct PyTorch runs record one output per prompt (seed 0), so seed-to-seed variance inside the PyTorch generator is "
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "The rotation-angle search procedure is not released"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "the empirical results below are consistent with this hypothesis, yet do not isolate the causal effect of norm preservati"
+  }
+ ],
+ "zenodo_24373915": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "Claude wrote a successful car controller in 9/10 attempts versus Astra's 1/10; Astra beat weak trained arcade-game netwo"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Every successful edit, including the published one, also worked when applied to a network whose weights were all set to "
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Both usually followed the row lengths in the conflict control (Claude 20/20, Astra 19/20)."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "On randomized-weight controls, Astra declined to name a game in 19/20 attempts. Claude named a game in all 20 at mean co"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The original report found Astra correct on both parts in all 6 of its conversations. Its working folders contained langu"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "On 100 held-out MATH-500 problems, which were kept separate from practice, Claude's edit scored 54% with thinking on, ag"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The 100-million-step baselines are weak: Breakout scores only 15.8, so surpassing that network is a low bar."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Twenty game reads cover four networks, and twelve language reads cover three; repeated reads are not independent network"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "The analysis protocol and choice of reliability measures were informed by some of the results. The math comparison used "
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Claude Opus 5.5, one of the evaluated models, wrote the original analysis; grading was automatic."
+  }
+ ],
+ "zenodo_24373917": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "Across them, accuracy changed by 0.0 \u00b1 1.25 percentage points, and the unedited model in default mode already reached 74"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "On every fifth MATH-500 problem, the edited model scored 49.0%, with 33% of answers cut off at the token limit; the publ"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The edited thinking-mode model beats the unedited default model by 4\u20139 points, at 5\u201311 times the tokens per answer."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The simple recipe therefore found a useful direction, while a random direction did nothing. The published edit neverthel"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Twenty-eight of 30 attempts beat the post's best 100-million-step training baseline."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "The same edit also succeeded in every episode when applied to a network with every weight set to zero, and when applied "
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "It also succeeded in 20 of 20 readings of a decoy that retained only the row lengths while destroying the network's func"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "We used one sample per problem on MATH-500, GSM8K and Minerva and four on AMC23, whereas the post averaged two to sixtee"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "We tested only one statistical recipe for finding an edit, so its performance is a lower bound on what such methods can "
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "The comparison uses the model card's settings for each mode, including their different token limits, and default mode st"
+  }
+ ],
+ "zenodo_24377674": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "`edits/`: weight edits of OmniLearned-s/m/l: `finetuning/`, `sae/` (SAE-guided edits) and `agents/<variant>/<size>/run<n"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "`agents/<variant>/<size>/run<n>/` (every edit handed in by the weight-space-programming runs)."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "the jet mass regression heads of Sec. 4 (ridge and MLP, trained on the frozen body of the original model and of each edi"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "each edit `.npz` is a partial state dict of full replacement float32 tensors; keys missing from the file keep their orig"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "License: CC BY 4.0 (TO CONFIRM)"
+  }
+ ],
+ "zenodo_24398164": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "With greedy decoding (`T = 0`), correct answers rose from `638` to `733` out of `1,054` (`+9.0 pp`, $p = 6.07 \\times 10^"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Each column is rotated toward the unit reasoning-end direction"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "With greedy decoding, responses missing `</think>` fell from `139` to `16`, and responses missing `EOS` also fell from `"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "On the remaining **`421` problems**, the greedy gain persists (`276 \u2192 321`, `+60 / \u221215`, $p = 1.59 \\times 10^{-7}$)"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "under sampling, the edit acts primarily as length compression (`\u221233.6%`) and closure stabilization (`29 \u2192 4`; `EOS` cap "
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "`4.0\u00d7` shorter vs. `MIT-p50c` (`21,052.9 \u2192 5,319.4`; base `30,632.6`)"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "`166` newly solved problems are accompanied by `71` losses."
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "`SGNE-CC v2` occasionally emits a second `</think>` token (`84` cases at `T = 0`, `83` at `T = 0.6` vs. `0` and `3` in t"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "note that the two studies use different presence penalties and math-grading parsers, and architecture vs. model-size eff"
+  }
+ ],
+ "zenodo_24416417": [
+  {
+   "kind": "headline",
+   "ok": true,
+   "quote": "accuracy 9.38% \u2192 53.65% (+44.27 \u00b1 2.56 points, 95% bootstrap CI [39.32; 49.22]; exact McNemar p = 5.8 \u00d7 10\u221250 ); answers"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "A training-free, closed-form, rank-one edit of 12 weight matrices: a Householder reflection of their output along one un"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "A norm-preserving reflection of the same matrices is therefore not enough by itself; the direction matters."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Of the 171 gains, 170 were answers in which the original model reached the 8,192-token limit without writing any boxed a"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Because the improvement consists of finishing, it says nothing about new mathematical ability, and part of it would shri"
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "Editor cost: $8.43 for 92 calls (cap $60); GPU work was local."
+  },
+  {
+   "kind": "claim",
+   "ok": true,
+   "quote": "\u201cFix candidate B2 attention-only for independent validation. No edits will be selected using held-out results.\u201d"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "Held-out cohorts come from the GSM8K and MATH train- ing splits (decontaminated practice files); MATH-500 and the GSM8K "
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "8,192 generated tokens instead of 32,768; part of the gain is \u201cfinishing in time\u201d, and with a longer budget the original"
+  },
+  {
+   "kind": "limitation",
+   "ok": true,
+   "quote": "One sample per problem, one run, one editor, fp16 on a T4; development used only 32 problems."
+  }
+ ]
+}

@@ -1,0 +1,83 @@
+{
+ "key": "arxiv_2611.13236",
+ "title": "NCP: Verifier-Guided Optimization of Weight-Space Control Policies. Toward Recursive Self-Improvement through Neural Flow Rules",
+ "authors": [
+  "Ekrem Aksoy"
+ ],
+ "date": "2026-11-09",
+ "doc_type": "method_or_tool",
+ "wsp_role": [
+  "repair_or_edit",
+  "feedback_loop"
+ ],
+ "is_wsp": true,
+ "editor_models": [
+  "none"
+ ],
+ "target_networks": [
+  {
+   "name": "SmolLM-135M-Instruct",
+   "params": "135M",
+   "kind": "LLM"
+  }
+ ],
+ "domain": "inference-time weight interventions; recursive self-improvement framework; arithmetic reasoning microbenchmark",
+ "tasks_benchmarks": [
+  "nine-question handwritten arithmetic fixture",
+  "WikiText-2 raw test split (4,095-target slices)"
+ ],
+ "headline_result": {
+  "text": "The best of three deterministically synthesized weight interventions cut validation token repetition from 0.4133 to 0.2191 with a -0.0574% perplexity change, but none produced a newly correct answer, so all three were archived and the active policy stayed empty.",
+  "page": "PAGE 1",
+  "quote": "One projection reduced validation token repetition from 0.4133 to 0.2191, with a perplexity change of -0.0574%. All candidates produced zero newly correct exact answers"
+ },
+ "evidence_quality": {
+  "random_or_null_control": "no",
+  "non_llm_baseline": "no",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "no",
+  "n_runs_or_seeds": "single",
+  "full_test_set": "no",
+  "held_out_eval": "yes",
+  "preregistered": "no",
+  "code_or_data_released": "no",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "no",
+ "relation_to_qwen_math_edit": "none",
+ "key_claims": [
+  {
+   "claim": "NCP is a closed-loop controller that synthesizes, verifies and admits temporary weight-space intervention rules while restoring base parameters after each request.",
+   "page": "PAGE 1",
+   "quote": "synthesizes candidate weight-space intervention rules, evaluates them, and maintains a versioned table of admitted policies."
+  },
+  {
+   "claim": "Candidate synthesis in the recorded experiment is a deterministic Python procedure, not an LLM editor.",
+   "page": "PAGE 2",
+   "quote": "Its current synthesis step is a deterministic Python procedure driven by observed task labels and captured activations."
+  },
+  {
+   "claim": "All three candidates passed the perplexity budget but none corrected an answer, so the active table stayed at zero rules.",
+   "page": "PAGE 8",
+   "quote": "All three candidates met the configured perplexity budget. The corrected-answer threshold was one; the active table consequently remained at zero rules."
+  },
+  {
+   "claim": "Final held-out test accuracy was 0/3 for both original and routed execution.",
+   "page": "PAGE 8",
+   "quote": "Final exact-answer scoring was 0/3 for both original and routed execution."
+  },
+  {
+   "claim": "Fresh-process repetition and saved-table resumption reproduced the recorded outcomes.",
+   "page": "PAGE 1",
+   "quote": "Fresh-process repetition and saved-table resumption reproduced the measured outcomes."
+  }
+ ],
+ "limitations_stated": [
+  {
+   "text": "The evaluation is a nine-question handwritten architectural microbenchmark with bounded corpus slices.",
+   "page": "PAGE 7",
+   "quote": "The nine-question handwritten fixture is an architectural microbenchmark of telemetry, candidate generation, admission and persistence."
+  }
+ ],
+ "notes_for_review": "An engineering framework (flow table, verifier, admission gate) that credits Takehi et al. as its conceptual basis, but no LLM proposes or writes weights: candidates come from a deterministic diff-of-means/ablation template. The only experiment is a 9-question fixture on SmolLM-135M with 3 test questions, and no candidate was admitted, so it shows the plumbing works rather than any improvement. Code is said to be MIT-licensed but no repository link is given."
+}

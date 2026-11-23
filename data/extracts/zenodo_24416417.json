@@ -1,0 +1,46 @@
+{
+ "key": "zenodo_24416417",
+ "title": "SCALPELLO-GDP: a frontier model edits the weights of Qwen3.5-0.8B directly. One Householder reflection of a 'repetitive re-checking' direction lifts held-out math accuracy from 9.4% to 53.6% (384 paired problems), with no training",
+ "authors": ["Giovanni Del Papa"],
+ "date": "2026-11-21",
+ "doc_type": "replication",
+ "wsp_role": ["read", "repair_or_edit", "feedback_loop"],
+ "is_wsp": true,
+ "editor_models": ["GPT-6 Astra (gpt-6-astra, reasoning effort high)"],
+ "target_networks": [{"name": "Qwen3.5-0.8B", "params": "0.8B", "kind": "LLM"}],
+ "domain": "math reasoning",
+ "tasks_benchmarks": ["GSM8K training split (decontaminated practice problems)", "MATH training split (decontaminated practice problems)"],
+ "headline_result": {
+  "text": "A Householder reflection of 12 attention output projections along an Astra-chosen 'repetitive re-checking' direction raised accuracy on 384 held-out practice problems from 9.38% to 53.65% at an 8,192-token cap, while a random-direction reflection gave +3.1 points on the development set.",
+  "page": "PAGE 35",
+  "quote": "accuracy 9.38% → 53.65% (+44.27 ± 2.56 points, 95% bootstrap CI [39.32; 49.22]; exact McNemar p = 5.8 × 10−50 ); answers cut at the token limit 91.7% → 28.1%."
+ },
+ "evidence_quality": {
+  "random_or_null_control": "yes",
+  "non_llm_baseline": "no",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "no",
+  "n_runs_or_seeds": "single",
+  "full_test_set": "no",
+  "held_out_eval": "yes",
+  "preregistered": "no",
+  "code_or_data_released": "yes",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "partial",
+ "relation_to_qwen_math_edit": "reproduces",
+ "key_claims": [
+  {"claim": "The edit is a closed-form rank-one Householder reflection computed from a difference of means over three editor-written text pairs; no gradients were used.", "page": "PAGE 37", "quote": "A training-free, closed-form, rank-one edit of 12 weight matrices: a Householder reflection of their output along one unit vector u."},
+  {"claim": "A reflection of the same matrices along a random direction had little effect on the 32 development problems.", "page": "PAGE 39", "quote": "A norm-preserving reflection of the same matrices is therefore not enough by itself; the direction matters."},
+  {"claim": "Almost all gains were problems where the original model ran out of tokens; the edit adds no mathematical knowledge.", "page": "PAGE 43", "quote": "Of the 171 gains, 170 were answers in which the original model reached the 8,192-token limit without writing any boxed answer; only 1 was a completed but wrong original answer."},
+  {"claim": "Because the gain is about finishing, it would likely shrink with the original 32,768-token budget.", "page": "PAGE 43", "quote": "Because the improvement consists of finishing, it says nothing about new mathematical ability, and part of it would shrink with a longer token budget (Section 9)."},
+  {"claim": "The replication used half the forward budget and a quarter of the generation length of the MIT setup, at an editor API cost of $8.43.", "page": "PAGE 46", "quote": "Editor cost: $8.43 for 92 calls (cap $60); GPU work was local."},
+  {"claim": "The edit was frozen before held-out evaluation.", "page": "PAGE 39", "quote": "“Fix candidate B2 attention-only for independent validation. No edits will be selected using held-out results.”"}
+ ],
+ "limitations_stated": [
+  {"text": "Held-out cohorts come from training splits; MATH-500 and GSM8K test were not run.", "page": "PAGE 46", "quote": "Held-out cohorts come from the GSM8K and MATH train- ing splits (decontaminated practice files); MATH-500 and the GSM8K test set were not run."},
+  {"text": "Shorter 8,192-token budget inflates the gain from finishing in time.", "page": "PAGE 46", "quote": "8,192 generated tokens instead of 32,768; part of the gain is “finishing in time”, and with a longer budget the original model would finish more often, so the gain is likely smaller."},
+  {"text": "One sample per problem, one run, one editor; development used only 32 problems.", "page": "PAGE 46", "quote": "One sample per problem, one run, one editor, fp16 on a T4; development used only 32 problems."}
+ ],
+ "notes_for_review": "An independent low-budget replication of the MIT Qwen3.5-0.8B loop-repair experiment with GPT-6 Astra as editor; the resulting edit is essentially a mechanical diff-of-means direction plus Householder reflection, the kind of edit a human could compute without an LLM. It includes a random-direction control and clean held-out cohorts, but uses an 8,192-token cap (which makes the base model look worse), practice-split problems rather than MATH-500, one run, no gradient or prompt/decoding baselines. The author explicitly attributes the gain to stopping loops, not new ability, and the edited weights and code are released; bilingual IT/EN document, quotes taken from the English half."
+}

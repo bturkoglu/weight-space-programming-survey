@@ -1,0 +1,123 @@
+{
+ "key": "zenodo_23954378",
+ "title": "Weight-Space Programming for THOX Edge Models: Evidence Review, Small-Scale Recreation, and a Signed Patch Channel",
+ "authors": [
+  "Craig Ross",
+  "Tommy Xaypanya"
+ ],
+ "date": "2026-11-04",
+ "doc_type": "audit_or_critique",
+ "wsp_role": [
+  "read",
+  "write_from_scratch",
+  "repair_or_edit"
+ ],
+ "is_wsp": true,
+ "editor_models": [
+  "none (deterministic THOX tools; re-verifies the GPT-6 Astra edit)"
+ ],
+ "target_networks": [
+  {
+   "name": "Qwen3.5-0.8B (released MIT Experiment 8 edit, re-verified)",
+   "params": "0.8B",
+   "kind": "LLM"
+  },
+  {
+   "name": "MLP 64-48-4 task classifiers (E1, 30 networks)",
+   "params": "unknown",
+   "kind": "MLP"
+  },
+  {
+   "name": "MountainCar policy 2-24-24-3 (E3)",
+   "params": "747",
+   "kind": "policy"
+  },
+  {
+   "name": "small transformer, 2 layers, 4 heads, d=64 (E4)",
+   "params": "70,656",
+   "kind": "LLM"
+  },
+  {
+   "name": "hand-written ball-landing / paddle controller network (E2)",
+   "params": "unknown",
+   "kind": "MLP"
+  }
+ ],
+ "domain": "math reasoning; edge deployment of LLM patches",
+ "tasks_benchmarks": [
+  "MATH-500 (re-analysis of released per-problem files)",
+  "task identification from weights (E1)",
+  "ball-landing control (E2)",
+  "MountainCar (E3)",
+  "induction-head audit (E4)"
+ ],
+ "headline_result": {
+  "text": "The released MIT edit rebuilds bit-exactly (130,188 changed entries) and in the authors' own files scores higher than base on 306 MATH-500 problems and lower on 0, but the decisive thinking-off control was specified with a pre-registered rule and not measured.",
+  "page": "PAGE 1",
+  "quote": "The headline edit is genuine and narrower than its framing: it removes an obstacle rather than adding ability."
+ },
+ "evidence_quality": {
+  "random_or_null_control": "yes",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "no",
+  "n_runs_or_seeds": "single",
+  "full_test_set": "yes",
+  "held_out_eval": "unclear",
+  "preregistered": "yes",
+  "code_or_data_released": "no",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "partial",
+ "relation_to_qwen_math_edit": "critiques",
+ "key_claims": [
+  {
+   "claim": "Paired re-analysis of the released per-problem files gives a +40.2 point gain, with the edit better on 306 problems and worse on 0.",
+   "page": "PAGE 5",
+   "quote": "the paired prob- lem-level gain is +40.2 points with a 95% bootstrap interval of 36.8 to 43.5 points. The edit scores higher than the base on 306 problems and lower on 0"
+  },
+  {
+   "claim": "The raw-weights, no-tools setting applies only to the small-network experiments; every real-LLM experiment used a Python sandbox.",
+   "page": "PAGE 3",
+   "quote": "The popular sum- mary of the post, an LLM reading raw weights and fixing a real model by inspection, describes no sin- gle experiment in it"
+  },
+  {
+   "claim": "The released edit is rank-1 per tensor and changes the two matrices by 10.6% and 8.1% in Frobenius norm, so few edited entries is not a small edit.",
+   "page": "PAGE 4",
+   "quote": "The rel- ative change to the two matrices is 10.6% and 8.1% in Frobenius terms: a small count of edited en- tries is not a small edit."
+  },
+  {
+   "claim": "In a small recreation, only a per-class composed weights-only reader identified the task (100%); three marginal readers scored chance.",
+   "page": "PAGE 8",
+   "quote": "R4 scores 100%, with its permutation control at chance"
+  },
+  {
+   "claim": "A designed 16-of-747-weight edit fixed a stuck MountainCar policy to 92.8% while a random edit of the same size scored 0%.",
+   "page": "PAGE 9",
+   "quote": "It touches 16 of 747 weights (2.14%) and raises suc- cess to 92.8% over 512 episodes; a random edit of the same size scores 0% at every gain"
+  },
+  {
+   "claim": "The thinking-off decoding control was not measured because the compute run was stopped by billing; only a third-party number (46.8% vs 50.6%) exists.",
+   "page": "PAGE 13",
+   "quote": "Until the run completes, the only measurement of this comparison is third-party: 46.8% thinking-off against 50.6% for the released edit with one sample per problem"
+  }
+ ],
+ "limitations_stated": [
+  {
+   "text": "Recreations used deterministic tools at 747 to 70,656 parameters and do not show a frontier LLM can do the source's feats.",
+   "page": "PAGE 16",
+   "quote": "it does not show a frontier LLM can perform the source's feats, and no THOX frontier-editor run (E1', E2') has happened."
+  },
+  {
+   "text": "No decoding-control measurement in this edition.",
+   "page": "PAGE 16",
+   "quote": "No decoding-control measurement in this edition. The L1 run was stopped by compute billing before completion"
+  },
+  {
+   "text": "Source is an unreviewed blog post with unpublished prompt trials, so selection effects cannot be excluded.",
+   "page": "PAGE 16",
+   "quote": "earlier prompt trials were not published and the prompt-v5 runs are listed without results, so selection effects cannot be excluded."
+  }
+ ],
+ "notes_for_review": "An industry technical report that combines a careful evidence review of the MIT post (claim tiers, re-verified citations, paired re-analysis of released files) with small deterministic recreations that use no LLM editor. It verifies the edit's identity bit-exactly and characterizes it as a rank-1, sign-flipping direction edit of 8-11% Frobenius size, close to the abliteration playbook. Its decisive thinking-off control was pre-registered but never run (HTTP 402), so it adds no new benchmark number; raw L1 data sit in a private dataset and the E1-E4 scripts were not released in this edition."
+}

@@ -1,0 +1,44 @@
+{
+ "key": "arxiv_2611.14210",
+ "title": "Tree-Ising: Repairing Language Models with Bit-Level Ising Edits",
+ "authors": ["Hadi Salloum", "Ammar Ali"],
+ "date": "2026-11-10",
+ "doc_type": "method_or_tool",
+ "wsp_role": ["repair_or_edit"],
+ "is_wsp": true,
+ "editor_models": ["none (forward-statistics QUBO optimizer); compared against GPT-6 Astra agent edit"],
+ "target_networks": [
+  {"name": "Qwen3.5-0.8B (down_proj, layers 15 and 19)", "params": "0.8B", "kind": "LLM"},
+  {"name": "Qwen3.5-2B (down_proj, layers 15 and 19)", "params": "2B", "kind": "LLM"}
+ ],
+ "domain": "math reasoning (reasoning-loop repair); quantum optimization proof of concept",
+ "tasks_benchmarks": ["MATH-500", "GSM8K", "AMC23", "Minerva Math", "OlympiadBench"],
+ "headline_result": {"text": "A gradient-free, LLM-free sparse Ising optimizer repaired Qwen3.5-0.8B's reasoning loops to 54.6% on MATH-500 versus 51.7% for MIT's GPT-6 Astra agent edit in the same harness, with 4 instead of 50 forward-pass requests and about $0.90 instead of $312.", "page": "PAGE 1", "quote": "Evaluated on the two layers targeted by the agent, T REE -I SING achieves 54.6% on MATH-500, outperforming the agent’s edit (51.7%) under the same evaluation protocol, while the base model scores only 7.9%."},
+ "evidence_quality": {
+    "random_or_null_control": "no",
+    "non_llm_baseline": "yes",
+    "finetune_comparison": "no",
+    "inference_only_fix_tested": "no",
+    "n_runs_or_seeds": "single",
+    "full_test_set": "yes",
+    "held_out_eval": "yes",
+    "preregistered": "no",
+    "code_or_data_released": "no",
+    "peer_reviewed": "no"
+ },
+ "replicates_mit": "partial",
+ "relation_to_qwen_math_edit": "critiques",
+ "key_claims": [
+  {"claim": "In their harness the MIT agent edit scores 51.7% on MATH-500, not the reported 48.1%, consistent with an independent re-run (51.0%).", "page": "PAGE 8", "quote": "Consequently, the discrepancy with the originally reported 48.1% appears to stem from the initial evaluation setup rather than our harness."},
+  {"claim": "On the 400 MATH-500 problems never used in development, Tree-Ising still beats the agent edit by about 3 points.", "page": "PAGE 8", "quote": "T REE -I SING achieves 53.8% accuracy compared to 50.8% for the agent edit (with four completions per problem)."},
+  {"claim": "The repair needs no LLM tokens and far less compute than the agent's discovery run, though the recipe reused the agent's layers and dose.", "page": "PAGE 9", "quote": "Consequently, our repair is approximately 30 times faster and 350 times cheaper, while requiring zero LLM tokens."},
+  {"claim": "A dense closed-form (ROME-like) solution of the same objective matches the accuracy on the practice screen, so the objective rather than the solver drives most of the gain.", "page": "PAGE 11", "quote": "Crucially, they demonstrate that the mathematical objective itself, rather than the discrete solver, drives the majority of the accuracy gains."},
+  {"claim": "Without any reference edit, the same recipe lifts Qwen3.5-2B greedy GSM8K accuracy from 21.6% to 69.4%.", "page": "PAGE 12", "quote": "Applying the unchanged recipe elevates GSM8K accuracy from 21.6% to 69.4%, representing a substantial gain of 47.8 percentage points (Table 7)."}
+ ],
+ "limitations_stated": [
+  {"text": "The recipe was designed after reading the agent's public logs and reuses its layers and a dose calibrated on its edit; no dose-matched edit was run.", "page": "PAGE 15", "quote": "Our repair recipe was formulated retrospectively after analyzing the agent’s public logs."},
+  {"text": "Only one failure mode, one model family and math benchmarks were tested; side effects such as instruction following were not measured.", "page": "PAGE 15", "quote": "Consequently, side effects remain unmeasured beyond the collateral term, which protects the layer’s output only on tokens derived from the practice problems."},
+  {"text": "The base-model 7.9% figure was not re-run in their harness, and each benchmark used a single generation seed.", "page": "PAGE 15", "quote": "we did not independently rerun the base model in our evaluation harness."}
+ ],
+ "notes_for_review": "A strong non-LLM baseline for MIT's Qwen3.5-0.8B loop repair: a forward-statistics objective solved as per-row Ising problems beats the agent edit on all five math benchmarks with fewer changed weights and no LLM. It weakens the claim that an LLM is needed to write the fix, but the recipe was built after reading the agent's logs and reused its layers and dose, so it does not show cheap discovery. It also independently re-scores the agent edit at 51.7% (vs 48.1% reported). Inference-only fixes (e.g. thinking off, sampling changes) and gradient fine-tuning are not compared; code is promised but not yet released."
+}

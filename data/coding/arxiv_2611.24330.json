@@ -1,0 +1,28 @@
+{
+ "key": "arxiv_2611.24330",
+ "peripheral": false,
+ "operation": ["edit"],
+ "protocol": "open_loop",
+ "mechanism": ["code_or_tensor_tool"],
+ "scope": "external",
+ "editor_tier": ["frontier_proprietary"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": null,
+ "edited_fraction": "one readout column (Exp. 1), two readout weights (Exp. 2), three classification biases (YOLO11n pilot)",
+ "cost_reported": "no",
+ "wsp_evidence": {
+  "random_or_null_control": "yes",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "yes",
+  "inference_only_fix_tested": "yes",
+  "full_test_set": "no",
+  "held_out_eval": "yes",
+  "multiple_runs": "yes",
+  "code_or_data_released": "yes"
+ },
+ "prereg": "none",
+ "llm_in_authoring_or_grading": "yes",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["proxy_overfitting", "simple_baseline_matches"],
+ "evidence_notes": "WSP edits are the subject of the paper: a language-model research assistant specified the classifier edit from the architecture without forward passes (PAGE 4), and OpenAI Codex (GPT-6 family) proposed, implemented and evaluated the YOLO11n bias edit (PAGE 12), which plain score calibration reproduced exactly (PAGE 13). Run described as exploratory and unblinded; frozen protocols ship in ancillary files but no timestamped preregistration (PAGE 14), so none. AI assistance in design, implementation, analysis and drafting is disclosed (PAGE 14-15). Target sizes not stated except a 322-param pilot MLP; random equal-norm, gradient and substitution baselines used across 6-12 seeds."
+}

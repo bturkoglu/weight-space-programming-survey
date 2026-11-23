@@ -1,0 +1,15 @@
+{"key": "arxiv_2611.09559",
+ "random_or_null_control": "yes",
+ "non_llm_baseline": "yes",
+ "finetune_comparison": "yes",
+ "inference_only_fix_tested": "no",
+ "preregistered": "no",
+ "code_or_data_released": "yes",
+ "full_test_set": "no",
+ "evidence": {
+  "random_or_null_control": "p.8 Fig.7 legend: \"Random pick\"; p.12 Fig.11: \"The dashed line is a random pick.\" (random branching pick as reference in imitation-quality diagnostics only)",
+  "non_llm_baseline": "p.1: \"SCIP's own plain pseudocost rule did exactly as well (ratio 0.99, p = 0.19)\"; SCIP default rule throughout",
+  "finetune_comparison": "p.7: \"we trained the same architecture (7 inputs, 16 ReLU units) by imitation of strong branching: listwise softmax cross-entropy ... Adam\"",
+  "code_or_data_released": "p.14: \"All code ... network weight files ... raw run logs (JSONL) and the figure script are ... at https://github.com/butkeraites/llm-written-weights-or\"",
+  "full_test_set_note": "p.9: MIPLIB 2017 \"40 instances ... chosen from the benchmark set to be solvable within minutes\"; synthetic test sets 10 per class; MARTA 32 generated held-out instances"
+ }}

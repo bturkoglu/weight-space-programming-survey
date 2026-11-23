@@ -1,0 +1,326 @@
+{
+ "arxiv_2611.04268": {
+  "group": "B",
+  "why": "position paper, no experiment"
+ },
+ "arxiv_2611.05341": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "arxiv_2611.05798": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "arxiv_2611.07319": {
+  "group": "A",
+  "why": "LLM writes fitting program, not values",
+  "llm_directed_only": true
+ },
+ "arxiv_2611.07847": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "arxiv_2611.08070": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "arxiv_2611.08383": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "arxiv_2611.08647": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "arxiv_2611.09271": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "arxiv_2611.09376": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "arxiv_2611.09382": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "arxiv_2611.09559": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "arxiv_2611.10425": {
+  "group": "excluded",
+  "why": "uses the WSP label only"
+ },
+ "arxiv_2611.11005": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "arxiv_2611.11537": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "arxiv_2611.11604": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "arxiv_2611.11894": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "arxiv_2611.12066": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "arxiv_2611.12954": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "arxiv_2611.13232": {
+  "group": "B",
+  "why": "runtime, hand-specified edits"
+ },
+ "arxiv_2611.13236": {
+  "group": "B",
+  "why": "framework, deterministic Python synthesis"
+ },
+ "arxiv_2611.13758": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "arxiv_2611.14210": {
+  "group": "B",
+  "why": "non-LLM optimizer compared with the Astra edit"
+ },
+ "arxiv_2611.15917": {
+  "group": "A",
+  "why": "LLM only in a small free-form pilot",
+  "llm_directed_only": true
+ },
+ "arxiv_2611.16981": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "arxiv_2611.17246": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "arxiv_2611.17395": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "arxiv_2611.17789": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "arxiv_2611.18114": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "arxiv_2611.18538": {
+  "group": "excluded",
+  "why": "uses the WSP label only"
+ },
+ "arxiv_2611.18553": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "arxiv_2611.18690": {
+  "group": "B",
+  "why": "LLM experiments proposed, not run"
+ },
+ "arxiv_2611.18919": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "arxiv_2611.19292": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "arxiv_2611.19304": {
+  "group": "excluded",
+  "why": "uses the WSP label only"
+ },
+ "arxiv_2611.20174": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "arxiv_2611.20566": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "arxiv_2611.20953": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "arxiv_2611.21310": {
+  "group": "A",
+  "why": "LLM chooses edit; ridge regression writes it",
+  "llm_directed_only": true
+ },
+ "arxiv_2611.21432": {
+  "group": "B",
+  "why": "non-LLM edit (AHA) critique"
+ },
+ "arxiv_2611.21449": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "arxiv_2611.21885": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "arxiv_2611.21958": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "arxiv_2611.22013": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "arxiv_2611.22055": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "arxiv_2611.22228": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "arxiv_2611.23615": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "arxiv_2611.23718": {
+  "group": "A",
+  "why": "LLM chooses where; solvers compute values",
+  "llm_directed_only": true
+ },
+ "arxiv_2611.23875": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "arxiv_2611.24330": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "arxiv_2611.24877": {
+  "group": "excluded",
+  "why": "uses the WSP label only"
+ },
+ "arxiv_2611.25476": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "arxiv_2611.26408": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "arxiv_2611.26841": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "arxiv_2611.27079": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "arxiv_2611.27089": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "arxiv_2611.27425": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "arxiv_2611.27920": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "zenodo_23933590": {
+  "group": "B",
+  "why": "theory"
+ },
+ "zenodo_23954378": {
+  "group": "B",
+  "why": "evidence review of the MIT post, deterministic tools"
+ },
+ "zenodo_23958069": {
+  "group": "excluded",
+  "why": "uses the WSP label only"
+ },
+ "zenodo_23976684": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "zenodo_23976715": {
+  "group": "B",
+  "why": "formal verification of agent-written networks"
+ },
+ "zenodo_24036186": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "zenodo_24040591": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "zenodo_24047726": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "zenodo_24058693": {
+  "group": "B",
+  "why": "hand-built replication of the MIT edit"
+ },
+ "zenodo_24085180": {
+  "group": "excluded",
+  "why": "uses the WSP label only"
+ },
+ "zenodo_24090396": {
+  "group": "excluded",
+  "why": "uses the WSP label only"
+ },
+ "zenodo_24128861": {
+  "group": "excluded",
+  "why": "uses the WSP label only"
+ },
+ "zenodo_24156363": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "zenodo_24168084": {
+  "group": "excluded",
+  "why": "uses the WSP label only"
+ },
+ "zenodo_24198536": {
+  "group": "B",
+  "why": "theory"
+ },
+ "zenodo_24208534": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "zenodo_24235217": {
+  "group": "B",
+  "why": "audit of the MIT edit, non-LLM patch"
+ },
+ "zenodo_24373915": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "zenodo_24373917": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ },
+ "zenodo_24377674": {
+  "group": "B",
+  "why": "data-only record"
+ },
+ "zenodo_24398164": {
+  "group": "excluded",
+  "why": "uses the WSP label only"
+ },
+ "zenodo_24416417": {
+  "group": "A",
+  "why": "LLM reads, writes or directs the weight change"
+ }
+}

@@ -1,0 +1,45 @@
+{
+ "key": "arxiv_2611.11537",
+ "title": "Weight-Space Programming of Variational Quantum Circuits: Large Language Models Write Quantum Circuit Parameters Without an Optimizer",
+ "authors": ["Debarshi Kundu", "Swaroop Ghosh", "Vasant Honavar"],
+ "date": "2026-11-08",
+ "doc_type": "original_study",
+ "wsp_role": ["write_from_scratch"],
+ "is_wsp": true,
+ "editor_models": ["GPT-6 Astra"],
+ "target_networks": [{"name": "parameterized quantum circuits (VQE HVA/HEA, QAOA, QML classifiers, <= 8 qubits)", "params": "1-54 angles (free-design circuits up to 200 gates)", "kind": "quantum circuit"}],
+ "domain": "quantum",
+ "tasks_benchmarks": ["VQE transverse-field Ising chain (N=6)", "VQE Heisenberg chain", "VQE H2", "QAOA MaxCut on 8-node graphs", "scikit-learn digits (3 vs 8, 4 vs 9, 10 classes)"],
+ "headline_result": {
+  "text": "With no feedback, GPT-6 Astra's written angles capture 95-100% of the energy spectrum on every VQE problem, give optimal depth-one QAOA angles on every graph, and reach 93-96% on digits 3 vs 8 with 12-18 weights, but fall to chance on deeper opaque circuits.",
+  "page": "PAGE 1",
+  "quote": "Where the weights have a meaning the model can reason about, it matches the optimizer: 95–100% of the energy spectrum on every VQE problem, the exact H2 ground state from a closed-form derivation"
+ },
+ "evidence_quality": {
+  "random_or_null_control": "yes",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "yes",
+  "inference_only_fix_tested": "no",
+  "n_runs_or_seeds": "3-5 requests per condition (139 requests total)",
+  "full_test_set": "yes",
+  "held_out_eval": "yes",
+  "preregistered": "no",
+  "code_or_data_released": "yes",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "no",
+ "relation_to_qwen_math_edit": "none",
+ "key_claims": [
+  {"claim": "Optimizer warm-started from the model's angles reaches its best value after a median of one loss evaluation (means 48 and 36) versus 607 and 263 from random starts.", "page": "PAGE 9", "quote": "the means are 48 and 36 evaluations, against 607 and 263 from random starts (Figure 3)."},
+  {"claim": "In free design the model writes single-qubit rotation chains (linear classifiers in disguise) scoring 0.924 and 0.952 on binary digit tasks, above an optimizer trained on the same ten examples.", "page": "PAGE 9", "quote": "the model’s circuits score 0.924 ± 0.032 on 3 vs 8 and 0.952 ± 0.008 on 4 vs 9 (chance 0.5)"},
+  {"claim": "As the fixed circuit is deepened, model accuracy falls while the optimizer improves; on ten classes the model stays at chance.", "page": "PAGE 11", "quote": "0.81 ± 0.02 at 30 weights and 0.70 ± 0.25 at 54."},
+  {"claim": "In 6 of 42 QAOA requests the model negated every mixing angle, collapsing the score; with the sign fixed they match the optimizer.", "page": "PAGE 3", "quote": "In 6 of 42 QAOA trials the model produced the correct angle magnitudes with every mixer angle negated"},
+  {"claim": "The authors argue weight programming scales with interpretability of the weight space, not its size.", "page": "PAGE 13", "quote": "Weight programming therefore scales with the interpretability of the weight space rather than with its size"}
+ ],
+ "limitations_stated": [
+  {"text": "Problems are well known and likely seen in training, so part of what is measured is recall; results may not predict performance on novel problems.", "page": "PAGE 14", "quote": "part of what we measure is recall."},
+  {"text": "The optimizer baseline is deliberately modest and not a tuned upper bound.", "page": "PAGE 14", "quote": "The optimizer baseline is deliberately modest (L-BFGS-B with finite differences, a few restarts, a 60-second budget)"},
+  {"text": "Only a single model is reported; circuits are small and noise-free.", "page": "PAGE 14", "quote": "All circuits are small (at most eight qubits) and simulated without noise."}
+ ],
+ "notes_for_review": "Extends the MIT write-from-scratch idea to variational quantum circuits with 1-54 angles, using GPT-6 Astra with no loss feedback, and compares to random angles, an L-BFGS-B optimizer and optimizer-from-LLM warm starts. Controls are better than most WSP papers (random floor, optimizer, logistic regression, warm start), but only one model is tested, problems are textbook cases likely memorised, and the optimizer is deliberately weak. The successes come from analytic derivation and known closed forms (H2, p=1 QAOA) and linear classifiers, which the authors themselves frame as reasoning about meaningful weights rather than programming opaque ones."
+}

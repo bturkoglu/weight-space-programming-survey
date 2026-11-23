@@ -1,0 +1,28 @@
+{
+ "key": "arxiv_2611.08647",
+ "peripheral": false,
+ "operation": ["read", "edit"],
+ "protocol": "closed_loop",
+ "mechanism": ["code_or_tensor_tool"],
+ "scope": "external",
+ "editor_tier": ["frontier_proprietary", "open_weight"],
+ "open_weight_editor_failed": "yes",
+ "target_params_max": 4000000000,
+ "edited_fraction": "unclear",
+ "cost_reported": "reasoning tokens only: GPT-6.1 Sol 13,631 (low) to 48,456 (medium) to 174,770 (high), 3.6x and 12.8x; no $ or wall-clock vs baseline",
+ "wsp_evidence": {
+  "random_or_null_control": "no",
+  "non_llm_baseline": "no",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "no",
+  "full_test_set": "no",
+  "held_out_eval": "yes",
+  "multiple_runs": "no",
+  "code_or_data_released": "no"
+ },
+ "prereg": "none",
+ "llm_in_authoring_or_grading": "no",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["fragile_to_perturbation_or_retraining"],
+ "evidence_notes": "Benchmark whose whole subject is WSP (p.2). Editors patch Gemma 3 4B IT through bounded read_weights/write_weights/run_target/inspect_target tools, no code or gradients (p.6), with run_target giving closed-loop feedback. One run per configuration per episode on 30 selected episodes (p.6); open-weight editors score 0.0135-0.0548 vs 0.29-0.46 for frontier ones (p.15). The text says a repository exists (p.2) but gives no link, so release is coded no; Astra's JSON fix broke when the extraction language changed (p.14)."
+}

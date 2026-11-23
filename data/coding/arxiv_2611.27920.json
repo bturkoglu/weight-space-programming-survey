@@ -1,0 +1,24 @@
+{
+ "key": "arxiv_2611.27920",
+ "peripheral": false,
+ "operation": ["read", "edit"],
+ "protocol": "closed_loop",
+ "mechanism": ["code_or_tensor_tool"],
+ "scope": "external",
+ "editor_tier": ["open_weight"],
+ "open_weight_editor_failed": "no",
+ "target_params_max": 3000000000,
+ "edited_fraction": "0.0005% (6,144 of 1.24B, single-neuron Llama run) up to dense rank-one down_proj updates of 22.47M entries",
+ "cost_reported": "yes: $1.74 API fees and 16.5 min per run on one consumer GPU ($31.34 total for 18 sessions); no baseline cost",
+ "wsp_evidence": {
+  "random_or_null_control": "no", "non_llm_baseline": "no", "finetune_comparison": "no",
+  "inference_only_fix_tested": "no", "full_test_set": "yes", "held_out_eval": "yes",
+  "multiple_runs": "yes",
+  "code_or_data_released": "no"
+ },
+ "prereg": "none",
+ "llm_in_authoring_or_grading": "no",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["none_reported"],
+ "evidence_notes": "DeepSeek-V4.1-Flash uses eight tools: metered GPU forward/evaluate/verify probes and an origin-tracked python algebra tool with dedicated write operations such as rank-one updates and set_rows (p4-5, p8), iterating on GPU feedback (p7), so closed-loop and code_or_tensor_tool. Only an open-weight editor was tested and it succeeded (99.2% ASR), so no frontier comparison exists; no editing baselines were run (p9). AI assistants were used 'solely for manuscript language polishing' (p9), coded no; modified checkpoints are withheld (p9); 18 sessions; no preregistration."
+}

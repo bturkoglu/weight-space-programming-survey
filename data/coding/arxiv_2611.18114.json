@@ -1,0 +1,28 @@
+{
+ "key": "arxiv_2611.18114",
+ "peripheral": false,
+ "operation": ["write"],
+ "protocol": "closed_loop",
+ "mechanism": ["code_or_tensor_tool"],
+ "scope": "external",
+ "editor_tier": ["frontier_proprietary"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": 190000,
+ "edited_fraction": "whole network",
+ "cost_reported": "about $17,500 at API list prices for all experiments, including estimated exploratory runs (Table A7); visual cortex searches about $5,000",
+ "wsp_evidence": {
+  "random_or_null_control": "yes",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "no",
+  "full_test_set": "yes",
+  "held_out_eval": "yes",
+  "multiple_runs": "yes",
+  "code_or_data_released": "yes"
+ },
+ "prereg": "none",
+ "llm_in_authoring_or_grading": "yes",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["known_rule_rediscovered", "proxy_overfitting"],
+ "evidence_notes": "WSP (writing networks from scratch) is the whole paper. Claude Code agents write Python that sets the weights, with visible-accuracy feedback each iteration (p.3-4), so code_or_tensor_tool and closed_loop; for brain encoding a fixed ridge regression is fitted on the agent's features (p.4). NLP models stay near 190,000 parameters (p.4), used as the approximate maximum. Opus 5.5 audits constraint-following (p.4), so LLM in grading is yes. Agents mostly reuse known algorithms and motifs (p.4, p.12); the fMRI jump came from story-position features that exposed a scan-timing confound (p.8). No preregistration; code at github.com/csinva/weight-space-programming-autoresearch (p.1)."
+}

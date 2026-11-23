@@ -1,0 +1,28 @@
+{
+ "key": "arxiv_2611.11894",
+ "peripheral": false,
+ "operation": ["read", "edit"],
+ "protocol": "closed_loop",
+ "mechanism": ["solver_delegated", "code_or_tensor_tool"],
+ "scope": "external",
+ "editor_tier": ["frontier_proprietary"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": 3350000000,
+ "edited_fraction": "13.4% of stored values for the full low-rank edit; 0.16%-of-parameters variant still changes 7.4%",
+ "cost_reported": "Claude Opus editor API spend about $799 for the blind cohort ($632/$94/$73), same-protocol run about $20; where-to-edit study 5.9 GPU-hours; operator sessions and GPU time not metered",
+ "wsp_evidence": {
+  "random_or_null_control": "yes",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "yes",
+  "full_test_set": "unclear",
+  "held_out_eval": "yes",
+  "multiple_runs": "yes",
+  "code_or_data_released": "yes"
+ },
+ "prereg": "partial",
+ "llm_in_authoring_or_grading": "no",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["run_to_run_variance", "simple_baseline_matches", "editor_refusal_or_unfinished"],
+ "evidence_notes": "WSP is the main subject: Claude Opus editors (and GPT-6 Astra in a companion study) choose where to edit pi0.5 (about 3.35B params, p.4), and the values come from a closed-form ridge solve (p.2, p.21), so solver_delegated. Preregistration covers only the where-to-edit sub-study (p.22), so partial. The explicit rewording at inference matches the edit (57/64 vs 50/64, p.5), unchanged-weight reruns flip about a third of outcomes (p.8), and four of seven blind editors stopped after one candidate (p.20). Code at github.com/adeeb10abbas/weightsmith (p.22). Seven blind editors plus 16-128 paired seeds count as multiple runs."
+}

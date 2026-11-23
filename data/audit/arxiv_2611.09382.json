@@ -1,0 +1,13 @@
+{"key": "arxiv_2611.09382",
+ "random_or_null_control": "yes",
+ "non_llm_baseline": "no",
+ "finetune_comparison": "no",
+ "inference_only_fix_tested": "no",
+ "preregistered": "no",
+ "code_or_data_released": "yes",
+ "full_test_set": "yes",
+ "evidence": {
+  "random_or_null_control": "p.17: \"a single random direction orthogonal to u with equal norm gives 10 of 48 ... the chosen intervention outperforms both the ablation and the single equal-norm orthogonal random control\" (dev batch, one trajectory only)",
+  "code_or_data_released": "p.1: \"GitHub: https://github.com/WSP-Scope/WSP-Scope-Project\"",
+  "full_test_set": "p.1: \"On full held-out evaluations\"; p.11 Table 4: \"500 MATH500\", \"198 Diamond\", \"12,032 test\" (caveat: IFEval held-out is 271 of 541 official prompts, the other 270 used for development)"
+ }}

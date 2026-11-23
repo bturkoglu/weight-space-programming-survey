@@ -1,0 +1,45 @@
+{
+ "key": "arxiv_2611.22228",
+ "title": "What Does Weight-Space Programming Add to Diffusion Editing? Program Construction versus Score-Guided Refinement",
+ "authors": ["Zitian Gao", "Jingyi Xu", "Ziqi Han", "Chengkai Lei", "Ye Liu", "Liangliang Shi"],
+ "date": "2026-11-17",
+ "doc_type": "original_study",
+ "wsp_role": ["write_from_scratch", "repair_or_edit", "feedback_loop"],
+ "is_wsp": true,
+ "editor_models": ["GPT-6 Astra", "Claude Opus 5.5"],
+ "target_networks": [{"name": "Stable Diffusion v1.4 (cross-attention K/V projections, 32 matrices)", "params": "unknown", "kind": "diffusion"}],
+ "domain": "vision (text-to-image diffusion concept editing)",
+ "tasks_benchmarks": ["TIMED (24 of 104 test edits)", "fresh-scene prompts", "CLIP relative match", "VLM joint success (Qwen3.8-27B judge)"],
+ "headline_result": {
+  "text": "One-shot Astra programs raised fresh-scene VLM joint success by +10.0 points over a shared-panel hand-written baseline, but score-guided rewriting raised CLIP by +6.2 while joint success fell by 9.7, and the preregistered rewrite pipeline showed no advantage.",
+  "page": "PAGE 2",
+  "quote": "Figure 1. Astra’s construction gain is lost after score-guided rewriting, even as CLIP rises."
+ },
+ "evidence_quality": {
+  "random_or_null_control": "no",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "no",
+  "n_runs_or_seeds": "one program per edit and model; 12 image seeds per prompt",
+  "full_test_set": "no",
+  "held_out_eval": "yes",
+  "preregistered": "yes",
+  "code_or_data_released": "no",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "no",
+ "relation_to_qwen_math_edit": "none",
+ "key_claims": [
+  {"claim": "The preregistered primary method (Opus probe-and-rewrite) showed no advantage over the strong hand-written baseline.", "page": "PAGE 4", "quote": "The preregistered primary method shows no advantage"},
+  {"claim": "In an exploratory contrast, one-shot Astra programs improved fresh-scene joint success by about 10 points with no detectable CLIP difference.", "page": "PAGE 1", "quote": "baseline by +10.0 [+4.7, +15.4] points, while the CLIP score"},
+  {"claim": "That gain does not survive Holm correction over all cells.", "page": "PAGE 22", "quote": "U2-Astra − U1b +10.0 [+4.7, +15.4] 0.0016 0.051 0.014 0.343 0.007"},
+  {"claim": "Score-guided rewriting improved the CLIP proxy without improving the task check, so CLIP gains do not track task gains.", "page": "PAGE 7", "quote": "CLIP gains do not reliably track task gains."},
+  {"claim": "Every one-shot Astra program used an SVD-based protected subspace; no Opus program did.", "page": "PAGE 16", "quote": "calls an SVD 24/24 0/24 22/24 0/24"},
+  {"claim": "In an LLM-free follow-up, human raters found subject-absent images among about a fifth of CLIP successes.", "page": "PAGE 17", "quote": "Among CLIP-successful images with definite human subject judgements, the inverse-inclusion-probability-weighted absence rates are 19.86% and 18.25%."}
+ ],
+ "limitations_stated": [
+  {"text": "The judge's final questions were not validated on the human-labelled selection set.", "page": "PAGE 16", "quote": "Neither question above was re-run on the 274 selection questions."},
+  {"text": "The component transplant tested a different (two-sided) variant than registered, so the program's gain remains unattributed.", "page": "PAGE 17", "quote": "The image-level results reported here belong to the two-sided variant; the input-only transplant remains unevaluated."}
+ ],
+ "notes_for_review": "A careful, partly preregistered comparison of LLM-written weight-update programs for Stable Diffusion concept editing against published closed-form editors, a hand-written baseline using the same fitter, and budget-matched random search. The preregistered claim is null; the positive Astra one-shot result is exploratory and does not survive full Holm correction. Its main contribution for the review is evidence that score-guided LLM revision optimises the proxy (CLIP) while losing task value, a Goodhart-type failure, and that the numerical fitter and LLM-proposed protection panels are confounds shared with baselines. Only 24 of 104 TIMED edits; code and artifacts promised but not yet released."
+}

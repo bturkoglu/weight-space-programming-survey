@@ -1,0 +1,36 @@
+% Fig. 3: conventional training (a) versus weight-space programming (b). Designed for \textwidth = 18.2 cm.
+\begin{tikzpicture}[x=1cm,y=1cm]
+\tikzset{nb/.style={draw=#1!85!black,fill=#1!7,rounded corners=2pt,line width=0.6pt,align=center,font=\scriptsize,text=cInk,inner sep=2pt}}
+% panel frames
+\node[draw=cGrid,line width=0.6pt,rounded corners=3pt,minimum width=4.6cm,minimum height=5.6cm,anchor=north west] (fa) at (0,0) {};
+\node[draw=cGrid,line width=0.6pt,rounded corners=3pt,minimum width=13.35cm,minimum height=5.6cm,anchor=north west] (fb) at (4.8,0) {};
+\node[anchor=north west,font=\footnotesize\bfseries,text=cInk] at (0.12,-0.1) {(a) Conventional training};
+\node[anchor=north west,font=\footnotesize\bfseries,text=cInk] at (4.92,-0.1) {(b) Weight-space programming};
+% (a) vertical pipeline
+\node[nb=cMuted,text width=2.75cm,minimum height=0.62cm] (data) at (2.0,-1.05) {Labelled or generated data};
+\node[nb=cMuted,text width=2.75cm,minimum height=0.62cm] (loss) at (2.0,-2.05) {Loss function};
+\node[nb=cMuted,text width=2.75cm,minimum height=0.62cm] (opt) at (2.0,-3.05) {Optimizer (gradients)};
+\node[nb=cMuted,text width=2.75cm,minimum height=0.62cm] (w0) at (2.0,-4.05) {Weights $W$};
+\draw[arr] (data)--(loss); \draw[arr] (loss)--(opt); \draw[arr] (opt)--(w0);
+\draw[darr] (w0.east) -- ++(0.35,0) |- (loss.east);
+\node[lbl,rotate=90] at (4.3,-3.05) {thousands of steps};
+\node[lbl,text width=4.2cm] at (2.25,-4.95) {The loss decides what changes;\\many weights move a little.};
+% (b) WSP
+\node[nb=cBlue,text width=2.2cm,minimum height=0.9cm] (goal) at (6.25,-1.55) {Goal in\\natural language};
+\node[nb=cMuted,text width=2.2cm,minimum height=0.9cm] (win) at (6.25,-2.85) {Weights $W$\\(text or tensors)};
+\node[draw=cOrange!85!black,fill=cOrange!9,rounded corners=3pt,line width=0.9pt,minimum width=2.9cm,minimum height=2.6cm,align=center,font=\scriptsize,text=cInk] (llm) at (9.35,-2.2)
+  {\footnotesize\textbf{General LLM editor}\\[3pt] read the weights\\ diagnose the behaviour\\ decide what to change\\[2pt]\textcolor{cMuted}{no training loop}};
+\draw[arr] (goal.east) -- (llm.west|-goal.east);
+\draw[arr] (win.east) -- (llm.west|-win.east);
+\node[nb=cAqua,text width=2.75cm,minimum height=0.62cm] (m1) at (12.75,-1.25) {values written as text};
+\node[nb=cAqua,text width=2.75cm,minimum height=0.62cm] (m2) at (12.75,-2.2) {code or tensor tools};
+\node[nb=cAqua,text width=2.75cm,minimum height=0.62cm] (m3) at (12.75,-3.15) {solver sets the values};
+\node[font=\scriptsize\itshape,text=cAqua!70!black] at (12.75,-0.62) {mechanism};
+\coordinate (fan) at ($(llm.east)+(0.3,0)$); \draw[line width=0.7pt,draw=cMuted] (llm.east)--(fan); \foreach \m in {m1,m2,m3} \draw[arr] (fan) |- (\m.west);
+\node[draw=cViolet!85!black,fill=cViolet!8,rounded corners=2pt,line width=0.8pt,minimum width=2.0cm,minimum height=1.0cm,align=center,font=\scriptsize] (w1) at (16.75,-2.2) {Edited weights\\$W' = W + \Delta W$};
+\coordinate (fin) at ($(w1.west)+(-0.3,0)$); \foreach \m in {m1,m2,m3} \draw[line width=0.7pt,draw=cMuted] (\m.east) -| (fin); \draw[arr] (fin)--(w1.west);
+\node[nb=cMuted,minimum width=2.0cm,minimum height=0.8cm] (run) at (16.75,-4.2) {Run network\\(few passes)};
+\draw[arr] (w1)--(run);
+\draw[darr,draw=cOrange,line width=0.8pt] (run.west) -- (9.35,-4.2) node[pos=0.5,below,font=\scriptsize,text=cOrange!85!black]{closed loop: results fed back to the editor} -- (llm.south);
+\node[lbl,text width=5.0cm,anchor=north west] at (5.05,-4.55) {The LLM decides what changes;\\often few weights, sometimes a whole network.};
+\end{tikzpicture}

@@ -1,0 +1,15 @@
+{"key": "zenodo_24058693",
+ "random_or_null_control": "no",
+ "non_llm_baseline": "yes",
+ "finetune_comparison": "no",
+ "inference_only_fix_tested": "yes",
+ "preregistered": "yes",
+ "code_or_data_released": "yes",
+ "full_test_set": "no",
+ "evidence": {
+  "non_llm_baseline": "report v0.5 §3.2: \"the direction is the mean difference 'repetitive minus productive' over base-model transcripts of 48 practice problems. The recipe is otherwise MIT's\" (mechanical diff-of-means edit compared with MIT's LLM edit)",
+  "inference_only_fix_tested": "report v0.5 §3.1: \"our run, vLLM-style sampling 55.0 % ... llama.cpp default sampling 25.0 %\"; §3.10: \"Qwen3.5's official non-thinking template closes the thinking block ... MIT's edit without thinking block reaches 63 of 140\"; §3.7: \"T = 0.6 clearly beats the vendor-recommended T = 1.0\"",
+  "preregistered": "report v0.5 §2: \"Pre-registration: before each decisive run, the reading (criteria, thresholds) is written into a dated log\"; N30 \"pre-registered publicly in v0.2\"",
+  "code_or_data_released": "report v0.5 header: \"Code, data and pre-registration log: github.com/NeoCortex0815/knowing-is-not-committing\"; Zenodo DOI 10.5281/zenodo.24058693",
+  "full_test_set_note": "status box: \"MATH-500 problems 161–300 served as the confirmation set ... Problems 371–500 remain untouched\"; main tests on slices of MATH-500/MATH train (40, 140, 150, 50, 100 problems); only the external SGNE-CC traces cover all 500"
+ }}

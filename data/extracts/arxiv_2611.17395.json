@@ -1,0 +1,109 @@
+{
+  "key": "arxiv_2611.17395",
+  "title": "Can LLMs Write Backdoors? An Empirical Security Study of Weight-Space Programming",
+  "authors": [
+    "Zhaojia Wang",
+    "Jiucui Lu",
+    "Zheng Li"
+  ],
+  "date": "2026-11-12",
+  "doc_type": "original_study",
+  "wsp_role": [
+    "repair_or_edit"
+  ],
+  "is_wsp": true,
+  "editor_models": [
+    "GPT-6 Astra",
+    "GPT-5.6 Sol",
+    "Kimi-V3",
+    "DeepSeek-V4.1-Flash",
+    "Tencent Hy4"
+  ],
+  "target_networks": [
+    {
+      "name": "MLP on MNIST",
+      "params": "unknown (about 0.24M implied)",
+      "kind": "MLP"
+    },
+    {
+      "name": "ResNet-18 on CIFAR-10",
+      "params": "11.18M",
+      "kind": "CNN"
+    },
+    {
+      "name": "Qwen2.5-0.5B-Instruct on AG News",
+      "params": "0.5B",
+      "kind": "LLM"
+    }
+  ],
+  "domain": "security (backdoor injection)",
+  "tasks_benchmarks": [
+    "MNIST",
+    "CIFAR-10",
+    "AG News"
+  ],
+  "headline_result": {
+    "text": "Given only weights and a natural-language instruction (no data, forward passes or gradients), GPT-6 Astra implanted a trigger backdoor with 100% post-edit attack success on an MNIST MLP (6 changed parameters, clean accuracy unchanged), ResNet-18 (clean accuracy -1.43 points) and Qwen2.5-0.5B-Instruct (0.02% of weights); all five LLM editors succeeded on the MLP, four on ResNet-18, and only Astra on Qwen.",
+    "page": "PAGE 1",
+    "quote": "modifications, including only six parameters for the MLP and"
+  },
+  "evidence_quality": {
+    "random_or_null_control": "no",
+    "non_llm_baseline": "yes",
+    "finetune_comparison": "yes",
+    "inference_only_fix_tested": "no",
+    "n_runs_or_seeds": "single (one returned edited model per editor and target; complete attempt records not available)",
+    "full_test_set": "yes",
+    "held_out_eval": "yes",
+    "preregistered": "no",
+    "code_or_data_released": "no",
+    "peer_reviewed": "no"
+  },
+  "replicates_mit": "no",
+  "relation_to_qwen_math_edit": "none",
+  "key_claims": [
+    {
+      "claim": "On the MNIST MLP, Astra's edit reached 100% post-edit attack success while changing six parameters and leaving clean accuracy at 94.99%.",
+      "page": "PAGE 6",
+      "quote": "100.00% Post-ASR while changing only six scalar parameters"
+    },
+    {
+      "claim": "On Qwen2.5-0.5B-Instruct, only Astra produced the specified backdoor; the other editors stayed near the 0.94% pre-edit rate (DeepSeek 3.45%).",
+      "page": "PAGE 6",
+      "quote": "tors, only GPT-6 Astra produced a Qwen model with the spec-"
+    },
+    {
+      "claim": "All five editors backdoored the MLP, but with very different edit sizes (6 to 8,475 changed parameters).",
+      "page": "PAGE 7",
+      "quote": "ent numbers of weights: GPT-6 Astra modified 6 parame-"
+    },
+    {
+      "claim": "On ResNet-18, edit sparsity did not predict collateral damage: DeepSeek changed the fewest parameters among successful edits but clean accuracy fell to 69.47% and FPR rose to 24.41%.",
+      "page": "PAGE 7",
+      "quote": "In this setting, greater sparsity did not imply better preservation of normal behavior."
+    },
+    {
+      "claim": "The results show feasibility for the returned models, not the probability that a new request succeeds.",
+      "page": "PAGE 6",
+      "quote": "ResNet-18. These results establish feasibility for the returned"
+    }
+  ],
+  "limitations_stated": [
+    {
+      "text": "Only three target architectures and specific trigger configurations were evaluated.",
+      "page": "PAGE 8",
+      "quote": "uation focuses on three target architectures and specific trig-"
+    },
+    {
+      "text": "Results characterize available edited models, not per-request success rates, because complete editing-attempt records are not available.",
+      "page": "PAGE 8",
+      "quote": "models rather than the success probability of individual edit-"
+    },
+    {
+      "text": "The exploratory weight-change analysis does not establish causal explanations.",
+      "page": "PAGE 8",
+      "quote": "does not establish complete causal explanations for the ob-"
+    }
+  ],
+  "notes_for_review": "First security study of WSP: it shows that a frontier LLM, given weights and an instruction but no data or forward passes, can return a backdoored model with high attack success and small clean-accuracy loss, outperforming data-poisoning fine-tuning on edit size. Evidence is thin on repetition: one returned model per editor-target pair, no record of failed or refused attempts, no random-edit control, and no released code. Vision editors were allowed to consult public reference material, and cross-editor differences may partly reflect access or harness rather than capability."
+}

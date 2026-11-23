@@ -1,0 +1,49 @@
+{
+ "key": "arxiv_2611.16981",
+ "title": "Compiling Known Rules into Compact Neural Agents: Weight-Space Programming on Unseen Games",
+ "authors": ["Jens Lehmann"],
+ "date": "2026-11-12",
+ "doc_type": "benchmark",
+ "wsp_role": ["write_from_scratch", "feedback_loop", "repair_or_edit"],
+ "is_wsp": true,
+ "editor_models": ["GPT-6 Astra", "GPT-6.1 Sol", "GPT-6.1 Terra", "Claude Opus 5.5", "GPT-6 Luna", "Claude Sonnet 5.5", "Claude Haiku 5.5", "GPT-5.6 Sol", "Claude Opus 5"],
+ "target_networks": [
+  {"name": "fixed recurrent convolutional actor", "params": "57k (57,289)", "kind": "policy"},
+  {"name": "writer-designed FreeArch networks", "params": "median 30k, cap 150k", "kind": "policy"}
+ ],
+ "domain": "games (ARC-AGI-3-style interactive grid games), reinforcement learning",
+ "tasks_benchmarks": ["20 private ARC-AGI-3-style game families", "25 public ARC-AGI-3 games"],
+ "headline_result": {
+  "text": "On 20 private unseen games, the best writer's weights in a fixed 57k actor solved 56% of held-out-level episodes with feedback while the same writers' Python programs solved 97-100%, and a single standard PPO update destroyed most written-weight success.",
+  "page": "PAGE 1",
+  "quote": "the best writer’s networks solve 56% of episodes on held-out levels with feedback, but the four strongest writers’ Python programs solve 97–100%, and the gap grows with game difficulty."
+ },
+ "evidence_quality": {
+  "random_or_null_control": "yes",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "yes",
+  "inference_only_fix_tested": "no",
+  "n_runs_or_seeds": "3 runs per writer and family (ablations 1 run; PPO 3 seeds)",
+  "full_test_set": "yes",
+  "held_out_eval": "yes",
+  "preregistered": "yes",
+  "code_or_data_released": "yes",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "partial",
+ "relation_to_qwen_math_edit": "none",
+ "key_claims": [
+  {"claim": "Written networks with a free architecture are programs in network form: almost all parameters are exactly zero and most of the rest are small integers or powers of two, and bounded NumPy programs do better.", "page": "PAGE 1", "quote": "93% of their parameters are exactly zero, 90% of the rest are small integers or powers of two, and NumPy programs with the same loop rules and caps solve 91% against the networks’ 79%."},
+  {"claim": "Learning the same actor's weights from the support levels transfers far worse than writing them, but this compares information access (source code versus level data).", "page": "PAGE 1", "quote": "Writers read the source while learners see only those levels, so this compares information access."},
+  {"claim": "Written fixed-actor weights are extremely fragile: tiny noise or one PPO update removes most of their success, so writing and RL fine-tuning do not combine.", "page": "PAGE 1", "quote": "With standard PPO on these binary-success games, writing and RL fine-tuning do not combine."},
+  {"claim": "The writers' own architectures, retrained from standard initialisation, solve almost nothing.", "page": "PAGE 1", "quote": "The best writer’s architectures, trained from standard initialisation within our budget, solve 1%."},
+  {"claim": "A one-shot network solved half the held-out episodes only where the same writer's one-shot program also did.", "page": "PAGE 8", "quote": "Understanding a game well enough to program it thus appears necessary for writing its weights, and expressing that understanding in a fixed network is the hard part."},
+  {"claim": "Released language-task networks from another WSP project show the same signature: 99% zeros.", "page": "PAGE 12", "quote": "we find 99% of the parameters exactly zero and 95% of the rest small integers or powers of two"}
+ ],
+ "limitations_stated": [
+  {"text": "Binary-success games are a poor testbed for combining writing with RL; RL result rests on 3-4 families.", "page": "PAGE 12", "quote": "Our games have binary success per level, which makes them a poor testbed for combining writing with RL."},
+  {"text": "Bounded learning budgets; stronger learners might narrow the gap.", "page": "PAGE 12", "quote": "so stronger learners might narrow the gap to written weights."},
+  {"text": "An evaluated writer designed the harness and analysis; prompts were piloted with evaluated writers.", "page": "PAGE 12", "quote": "An evaluated writer (Claude Opus 5.5) designed the harness and analysis."}
+ ],
+ "notes_for_review": "The most rigorous WSP stress test in the corpus: private unseen games, held-out levels and renderings, nine writer models, pre-stated hypotheses, program and learned-weight baselines, closed-loop and perturbation controls, and full request accounting. Its central finding is deflationary: written weights are sparse hand-set programs, worse than the same model's code, not trainable, and destroyed by tiny perturbations. The written-versus-learned comparison is confounded by information access, which the author states. Single author; harness designed with an evaluated model."
+}

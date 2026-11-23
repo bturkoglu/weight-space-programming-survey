@@ -1,0 +1,50 @@
+{
+ "key": "arxiv_2611.15917",
+ "title": "Owned Edits to a Shared Decision Rule: Learning Private Exceptions as Typed, Gated, Withdrawable Weight Edits",
+ "authors": ["John J. O'Hare"],
+ "date": "2026-11-11",
+ "doc_type": "method_or_tool",
+ "wsp_role": ["repair_or_edit", "other"],
+ "is_wsp": true,
+ "editor_models": ["none (main mechanism is a deterministic compiler)", "unnamed frontier LLM (decision-only comparator)", "unnamed local open-weight models (pilot free-form weight-edit authors)"],
+ "target_networks": [
+  {"name": "compiled rule network, synthetic bench (Construction M)", "params": "79", "kind": "MLP"},
+  {"name": "compiled derating-rule network, real-record bench (Construction I)", "params": "21,213", "kind": "MLP"},
+  {"name": "trained base 11-17-1 ReLU network with reserved units", "params": "unknown", "kind": "MLP"}
+ ],
+ "domain": "federated learning / multi-party rule correction (space component derating and qualification)",
+ "tasks_benchmarks": ["synthetic qualification-screen bench (3 parties, 20 sampled truths x 5 draws)", "ECSS-Q-ST-30-11C derating rule with NASA Goddard single-event test rows (compilation only)"],
+ "headline_result": {
+  "text": "In two pre-registered runs on synthetic data, a typed, gated learner that writes owned weight patches into a compiled rule network scored 96.6% at 30 records per party versus 91.7% for the unchanged rule, non-inferior to seven tuned gradient, federated and pooled baselines.",
+  "page": "PAGE 1",
+  "quote": "the learner at 30 records per party was non-inferior, within 2 points, to all seven tuned baselines"
+ },
+ "evidence_quality": {
+  "random_or_null_control": "yes",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "yes",
+  "inference_only_fix_tested": "no",
+  "n_runs_or_seeds": "20 sampled truths x 5 record draws per cell (40 truths for trained base); LLM arm single draw",
+  "full_test_set": "yes",
+  "held_out_eval": "yes",
+  "preregistered": "yes",
+  "code_or_data_released": "no",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "no",
+ "relation_to_qwen_math_edit": "none",
+ "key_claims": [
+  {"claim": "Typed declarations laid over a trained base beat the base alone by +5.4 points in a registered test.", "page": "PAGE 1", "quote": "typed edits over a network trained on shared records beat that network alone by +5.4 points"},
+  {"claim": "Oracle-tuned private fine-tuning matches the trained-base combination at 30 records, so its accuracy advantage is not established.", "page": "PAGE 30", "quote": "Well-tuned private fine-tuning, however, matches the trained-base combination at 30 records."},
+  {"claim": "A frontier LLM given the records and the rule decided held-out items about as accurately as the patched network (one draw).", "page": "PAGE 13", "quote": "it decided 347 of 360 probe items correctly, against 348 of 360 for the patched network"},
+  {"claim": "When local open-weight LLMs authored free-form weight edits, both dropped a term of the rule; the edits fitted every record, so record checks could not catch it.", "page": "PAGE 34", "quote": "two independent models made the same mistake: each dropped the heritage term, leaving 1,575 errors on the party’s grid."},
+  {"claim": "Free-form weight patches can hide thousands of bits with no behavioural change; typed declarations with re-derivation have zero hidden capacity.", "page": "PAGE 12", "quote": "one patch under the default edit limits hid 7,989 bits with no change in behaviour on any valid input."},
+  {"claim": "On a rule-only base the weight form adds nothing over a table of owned exceptions.", "page": "PAGE 1", "quote": "On a rule-only base, a table of owned exceptions makes the same decisions."}
+ ],
+ "limitations_stated": [
+  {"text": "All accuracy evidence is synthetic.", "page": "PAGE 37", "quote": "Every accuracy figure comes from an invented screening world with three parties"},
+  {"text": "Truths were sampled from the typed space, so realisability holds by design.", "page": "PAGE 36", "quote": "The primary cell samples truths from the typed space itself, so realisability (Proposition 7) holds by design"},
+  {"text": "The evidence gate failed its pre-stated shuffled-outcome criterion in both runs.", "page": "PAGE 38", "quote": "proposed far more often in both runs (Section 2.7); that criterion failed."}
+ ],
+ "notes_for_review": "Peripheral to WSP: weights are written by a deterministic compiler from typed declarations, not by an LLM; LLM-written weights appear only in a small pilot, where local models authoring free-form edits silently dropped a rule term, which the author uses to argue against free-form LLM edits. Its relevance to the review is the hidden-capacity argument (free-form weight edits can carry thousands of undetectable bits) and the finding that an LLM given the records directly matched the mechanism's accuracy. Statistically careful (pre-registered plans, deviations logged, honest losses), but evidence is synthetic, code is private, and the author has a commercial interest."
+}

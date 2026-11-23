@@ -1,0 +1,46 @@
+{
+ "key": "arxiv_2611.20566",
+ "title": "Weight-Space Programming Changes How an LLM Uses Python for Computational Biology",
+ "authors": ["Makoto Sato"],
+ "date": "2026-11-16",
+ "doc_type": "original_study",
+ "wsp_role": ["read", "repair_or_edit", "feedback_loop"],
+ "is_wsp": true,
+ "editor_models": ["Claude Opus 5.5"],
+ "target_networks": [{"name": "Qwen3.5-0.8B", "params": "0.8B", "kind": "LLM"}],
+ "domain": "computational biology (tool-using Python problem solving)",
+ "tasks_benchmarks": ["50+50 computational biology problems (editing E01-E50, test T01-T50), partly derived from LABBench2 SeqQA2"],
+ "headline_result": {
+  "text": "Across 600 paired evaluations of four Claude-edited Qwen3.5-0.8B checkpoints, strictly correct answers rose from 44 to 77 and technically correct from 64 to 100, while repeated Python calls fell from 1,834 to 1,044.",
+  "page": "PAGE 1",
+  "quote": "Strictly correct answers increased from 44 to 77, and technically correct answers, which included correct final values rejected for formatting, increased from 64 to 100. Repeated Python calls decreased from 1,834 to 1,044."
+ },
+ "evidence_quality": {
+  "random_or_null_control": "no",
+  "non_llm_baseline": "no",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "no",
+  "n_runs_or_seeds": "10 editing runs x 3 test seeds (10 test seeds on 3 selected problems)",
+  "full_test_set": "yes",
+  "held_out_eval": "yes",
+  "preregistered": "no",
+  "code_or_data_released": "no",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "partial",
+ "relation_to_qwen_math_edit": "extends",
+ "key_claims": [
+  {"claim": "Over all ten edited checkpoints (1,500 pairs), technically correct answers rose from 160 to 254 and unfinished responses fell from 1,269 to 819.", "page": "PAGE 11", "quote": "All 10 candidates   1,500   110→206         160→254      1,269→819        71→427       13,992→7,376         4,567→2,198"},
+  {"claim": "Most edited-only wins were cases where the original had already computed the right value; only 13 of 64 showed a corrected computation.", "page": "PAGE 1", "quote": "Among the 64 pairs in which only the edited response was technically correct, the original model had already computed the correct value in 36 but did not submit a technically correct final answer."},
+  {"claim": "Completed but incorrect responses also rose sharply after editing (42 to 274 in the follow-up), so editing produced more completed answers of both kinds.", "page": "PAGE 12", "quote": "Completed responses that failed the technical correctness criterion also increased, from 42 to 274."},
+  {"claim": "On the melting-temperature problem, correct Python outputs fell from 60 to 22 while technically correct final answers rose from 0 to 18.", "page": "PAGE 1", "quote": "On the melting-temperature problem, correct Python outputs decreased from 60 to 22 while technically correct final answers increased from 0 to 18."},
+  {"claim": "Three of four initial checkpoints changed only the final-block MLP down-projection, the same matrix Hu et al. edited.", "page": "PAGE 7", "quote": "For editing seeds 1, 3, and 4, changes were confined to that matrix. Seed 2 showed changes in 24 matrices spanning blocks 12–23."},
+  {"claim": "Some edits degraded computation, e.g. a correct 64 C became a submitted 32 C.", "page": "PAGE 10", "quote": "The edited model miscounted the bases and submitted 32 °C (Table 4)."}
+ ],
+ "limitations_stated": [
+  {"text": "One target and one editor model, all checkpoints evaluated on the same 50 test problems with three sampling seeds.", "page": "PAGE 13", "quote": "We studied one Target model and one Editor model. We evaluated all ten checkpoints on the same 50 test problems using three sampling seeds."},
+  {"text": "Test problems were known to the author and some were revised during development; some share procedures with editing problems.", "page": "PAGE 13", "quote": "The test problems were known to the study author, and some were revised during benchmark development after earlier evaluations."},
+  {"text": "Only selected traces of the follow-up checkpoints were reviewed, so no overall calculation repair rate is estimated.", "page": "PAGE 13", "quote": "We reviewed only selected execution traces and therefore did not estimate an overall calculation repair rate for these candidates."}
+ ],
+ "notes_for_review": "Applies WSP (Claude Opus 5.5 editing Qwen3.5-0.8B) to tool-using computational biology problems and traces executed code, giving a finer view than a benchmark score. Absolute accuracy stays low (about 17% technically correct) and much of the gain is the model finishing answers it already had, consistent with an anti-looping effect; there is no random-edit, fine-tuning or inference-setting (e.g. presence penalty, call budget) control. Trace classification was done by Codex (GPT-6.1 Sol), the 'technically correct' count was assigned retrospectively, and code is promised at a GitHub URL ('will be available')."
+}

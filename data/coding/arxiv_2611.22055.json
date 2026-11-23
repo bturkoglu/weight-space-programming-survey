@@ -1,0 +1,24 @@
+{
+ "key": "arxiv_2611.22055",
+ "peripheral": false,
+ "operation": ["write", "edit"],
+ "protocol": "closed_loop",
+ "mechanism": ["code_or_tensor_tool"],
+ "scope": "external",
+ "editor_tier": ["frontier_proprietary"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": 2600000000,
+ "edited_fraction": "whole network for written models; unclear for edits of pretrained checkpoints",
+ "cost_reported": "yes: API-price equivalent per run, $2-$490 (e.g. $144 for a 3.35M LLM-designed generation-5 model)",
+ "wsp_evidence": {
+  "random_or_null_control": "yes", "non_llm_baseline": "yes", "finetune_comparison": "yes",
+  "inference_only_fix_tested": "no", "full_test_set": "yes", "held_out_eval": "yes",
+  "multiple_runs": "yes",
+  "code_or_data_released": "yes"
+ },
+ "prereg": "none",
+ "llm_in_authoring_or_grading": "no",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["simple_baseline_matches"],
+ "evidence_notes": "Writers (Opus 5.5, GPT-6.1 Sol, GPT-6 Astra) work in a sandbox with shell tools and deliver a build/edit script that compiles hand-written files into weight tensors; they can run the model on CPU on self-made practice questions and later generations see the parent's validation accuracy (p19-20), hence closed-loop. Released architectures up to 2.6B (Gemma 2 2B) were written or edited (p7, p22); costs on p7 and p21. Written Transformers score below BM25 over the LLM's own text and fine-tuned models are far more accurate (p1, p10); title page carries a Code link; no preregistration or LLM-authoring statement found."
+}

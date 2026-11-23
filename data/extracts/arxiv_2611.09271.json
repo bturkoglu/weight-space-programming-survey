@@ -1,0 +1,48 @@
+{
+ "key": "arxiv_2611.09271",
+ "title": "Zero-Shot Weight-Space Programming Across a Difficulty-Graded Ladder of Two-Player Games",
+ "authors": ["Eduardo C. Garrido Merchán"],
+ "date": "2026-11-06",
+ "doc_type": "benchmark",
+ "wsp_role": ["write_from_scratch", "feedback_loop"],
+ "is_wsp": true,
+ "editor_models": ["Claude Sonnet 5", "Claude Opus 5", "Claude Haiku 4.5", "Grok 4.7 High", "'6 Luna High' via Codex (identity unverified by author)", "Qwen2.5-0.5B/1.5B/3B, Qwen3-4B, Ministral-8B (open-weight, tool-free)"],
+ "target_networks": [
+  {"name": "Nim network", "params": "4323", "kind": "MLP"},
+  {"name": "Connect Four 4x5 network", "params": "62,363", "kind": "MLP"},
+  {"name": "Othello 8x8 network", "params": "1,527,080", "kind": "policy"},
+  {"name": "KRK chess endgame network", "params": "2,352,516", "kind": "policy"},
+  {"name": "KQK chess endgame network", "params": "38,898,084", "kind": "policy"}
+ ],
+ "domain": "games (two-player board games and chess endgames)",
+ "tasks_benchmarks": ["Nim", "Wythoff's game", "tic-tac-toe", "Dots and Boxes 2x2", "Connect Four 4x5 and 7x6", "Othello 4x4 and 8x8", "KRK and KQK chess endgames"],
+ "headline_result": {"text": "Hand-written networks are exact wherever a one-pass local check suffices, but collapse in full adversarial play: the two chess endgames fall from 84.9% and 100% at mate-in-one to 0.57% and 9.13% full-game success, and a two-ply search with the same evaluation beats the constructed networks in every game.", "page": "1", "quote": "the two chess endgames fall from 84.9 and 100 per cent success at the one-ply tactic to 0.57 and 9.13 per cent in full adversarial play."},
+ "evidence_quality": {
+  "random_or_null_control": "no",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "no",
+  "n_runs_or_seeds": "one construction per game in the main ladder; 6 further construction attempts; statistical rungs 10 seeds x 400 games",
+  "full_test_set": "yes",
+  "held_out_eval": "yes",
+  "preregistered": "yes",
+  "code_or_data_released": "yes",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "partial",
+ "relation_to_qwen_math_edit": "none",
+ "key_claims": [
+  {"claim": "In the main ladder, the constructing model had full code execution and exhaustive-search tooling, and override tables of exact positions were solved offline and baked into the weights.", "page": "12", "quote": "Track A gives the model full code execution, iterative testing against its own test suite, and exhaustive-search tooling during construction."},
+  {"claim": "Against depth-3/4 alpha-beta search, both standard-board networks lost all 800 games each, while winning most games against a random opponent.", "page": "19", "quote": "Against search, both networks lose every game in both seats, with no exception across 1600 games in total."},
+  {"claim": "A tablebase variant of the chess endgame networks forces mate from every legal position, so the ceiling is on compact derivable circuits, not on what the architecture can represent.", "page": "37", "quote": "The ceiling this paper documents is a ceiling on what a compact, hand-derivable circuit achieves, not on what the architecture represents"},
+  {"claim": "Claude Haiku 4.5 completed only 2 of 9 tasks and declined the rest using incorrect feasibility estimates.", "page": "28", "quote": "Claude Haiku 4.5 completed two of the nine tasks in this paper’s scope and, for the other seven, declined to attempt construction at all"},
+  {"claim": "A verification-habit prompt addendum helped on no rung in a paired single-attempt pilot.", "page": "32", "quote": "Table 10 shows no rung on which the addendum helped."},
+  {"claim": "Five open-weight models up to 8B, tool-free, all failed on Nim; the 8B model set none of its own weights.", "page": "34", "quote": "No arm reached a second block. All five stopped on Nim, the ladder’s easiest rung"}
+ ],
+ "limitations_stated": [
+  {"text": "The search-depth curve was never traced; every comparison fixes one opponent depth.", "page": "38", "quote": "The first is that the second axis of Section 3 was never traced as a curve"},
+  {"text": "Override counts are upper bounds from one tier vocabulary; only for Wythoff is no better vocabulary proved.", "page": "38", "quote": "The second is that our own override counts are upper bounds produced by one tier vocabulary"},
+  {"text": "Cross-constructor evidence mixes attempts run by a collaborator and by the same process, with differing sample sizes and opponents, so it is read directionally.", "page": "38", "quote": "which is why those results are read directionally."}
+ ],
+ "notes_for_review": "A single-author benchmark of write-from-scratch WSP on ten games with exhaustive oracle checks, replicate games at each rung, cross-model attempts and a preregistered open-weight round. The 'zero-shot' label is misleading for the main ladder: Claude Sonnet 5 had code execution and exhaustive search and baked solved tables into the weights, so much of the exactness comes from offline solving rather than reasoning about weights. The tool-free track shows the capability largely vanishes in small open models. Cross-model results use different opponents and sample sizes and are not directly comparable."
+}

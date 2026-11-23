@@ -1,0 +1,41 @@
+{
+ "key": "zenodo_24377674",
+ "title": "Edits, sparse autoencoders and jet sets for \"Weight-space programming and mechanistic interpretability for model editing in particle physics\"",
+ "authors": ["unclear"],
+ "date": "2026-11-19",
+ "doc_type": "data_or_code_release",
+ "wsp_role": ["repair_or_edit"],
+ "is_wsp": true,
+ "editor_models": ["unclear"],
+ "target_networks": [
+  {"name": "OmniLearned-s", "params": "unknown", "kind": "other"},
+  {"name": "OmniLearned-m", "params": "unknown", "kind": "other"},
+  {"name": "OmniLearned-l", "params": "unknown", "kind": "other"}
+ ],
+ "domain": "particle physics (jet tagging and jet mass regression)",
+ "tasks_benchmarks": ["JetClass", "JetClass-II", "jet mass regression"],
+ "headline_result": {"text": "A companion data record with the weight edits of OmniLearned-s/m/l from fine-tuning, SAE-guided edits and weight-space-programming agent runs, plus SAE checkpoints, jet sets and cached results; it reports no results itself.", "page": "FILE README.md", "quote": "`edits/`: weight edits of OmniLearned-s/m/l: `finetuning/`, `sae/` (SAE-guided edits) and `agents/<variant>/<size>/run<n>/` (every edit handed in by the weight-space-programming runs)."},
+ "evidence_quality": {
+  "random_or_null_control": "unclear",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "yes",
+  "inference_only_fix_tested": "unclear",
+  "n_runs_or_seeds": "unclear",
+  "full_test_set": "unclear",
+  "held_out_eval": "unclear",
+  "preregistered": "no",
+  "code_or_data_released": "yes",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "no",
+ "relation_to_qwen_math_edit": "none",
+ "key_claims": [
+  {"claim": "The record contains every edit handed in by the weight-space-programming agent runs, alongside fine-tuning and SAE-guided edits of the same models.", "page": "FILE README.md", "quote": "`agents/<variant>/<size>/run<n>/` (every edit handed in by the weight-space-programming runs)."},
+  {"claim": "Jet mass regression heads were trained on the frozen body of the original model and of each edit.", "page": "FILE README.md", "quote": "the jet mass regression heads of Sec. 4 (ridge and MLP, trained on the frozen body of the original model and of each edit)"},
+  {"claim": "Each edit is stored as a partial state dict of full replacement float32 tensors.", "page": "FILE README.md", "quote": "each edit `.npz` is a partial state dict of full replacement float32 tensors; keys missing from the file keep their original values (an empty file is the unchanged model)."}
+ ],
+ "limitations_stated": [
+  {"text": "The licence is not yet confirmed and the pretrained OmniLearned weights are not included.", "page": "FILE README.md", "quote": "License: CC BY 4.0 (TO CONFIRM)"}
+ ],
+ "notes_for_review": "Data-only companion record for a particle-physics WSP paper whose full text is not in this record; it shows that agent-made edits of OmniLearned jet taggers were compared with fine-tuning and SAE-guided edits, but gives no numbers, editor model or authors. Useful as evidence that edits and SAEs are released; the results must come from the companion paper."
+}

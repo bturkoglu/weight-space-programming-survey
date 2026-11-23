@@ -1,0 +1,24 @@
+{
+ "key": "arxiv_2611.05341",
+ "peripheral": false,
+ "operation": ["read", "edit", "write"],
+ "protocol": "open_loop",
+ "mechanism": ["direct_values"],
+ "scope": "external",
+ "editor_tier": ["frontier_proprietary"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": 4801,
+ "edited_fraction": "median 3 parameters per repaired network (433-4,801-parameter networks); fine-tuning changed nearly every parameter",
+ "cost_reported": "yes: weight-reading audits 15-26 min (up to 66 min, ~115k-480k output tokens) vs black-box audit 1.8-3.0 min and fine-tuning ~3 s per run; no $",
+ "wsp_evidence": {
+  "random_or_null_control": "yes", "non_llm_baseline": "yes", "finetune_comparison": "yes",
+  "inference_only_fix_tested": "no", "full_test_set": "yes", "held_out_eval": "yes",
+  "multiple_runs": "yes",
+  "code_or_data_released": "yes"
+ },
+ "prereg": "none",
+ "llm_in_authoring_or_grading": "yes",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["numerical_artifact", "simple_baseline_matches", "editor_refusal_or_unfinished"],
+ "evidence_notes": "WSP is the whole study: Claude audits and repairs networks blind without tools or execution, writing weights as values (p1, p3). 'The study was not preregistered' and some comparisons were defined after flaw types were known (p10); Claude wrote analysis code and helped draft (p10); code at github.com/hnusrat1/weightspace-rt (p11). Repairs with weights >=1e5 failed in fp16 (p7-8), a per-flaw weight statistic and black-box testing found the same flaws faster (p1, p8-9), and several audits were unfinished or interrupted by the safety classifier (p3, p5); 18 networks across 3 seeds per condition, each audited once."
+}

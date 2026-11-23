@@ -1,0 +1,28 @@
+{
+ "key": "arxiv_2611.23718",
+ "peripheral": false,
+ "operation": ["edit"],
+ "protocol": "closed_loop",
+ "mechanism": ["solver_delegated"],
+ "scope": "external",
+ "editor_tier": ["open_weight", "frontier_proprietary"],
+ "open_weight_editor_failed": "no",
+ "target_params_max": null,
+ "edited_fraction": "unclear (budgets of 33 to ~8,192 editable native coordinates; total model sizes not given)",
+ "cost_reported": "no",
+ "wsp_evidence": {
+  "random_or_null_control": "no",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "yes",
+  "inference_only_fix_tested": "yes",
+  "full_test_set": "unclear",
+  "held_out_eval": "yes",
+  "multiple_runs": "no",
+  "code_or_data_released": "yes"
+ },
+ "prereg": "none",
+ "llm_in_authoring_or_grading": "yes",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["none_reported"],
+ "evidence_notes": "The LLM-guided editing loop is the paper's method (p.1-3): DeepSeek or Claude propose which native coordinates to edit and the fitting objective, while ridge/Adam solvers compute the patches, with internal validation feedback each round (p.1, p.3-4), so solver_delegated and closed loop. Baselines include Adam fine-tuning of a local subset, Memory and output calibration (Calib) and non-LLM HypoLoop variants (Table 1, p.5); DeepSeek performs at least as well as Claude (e.g. Burgers 58.8% vs 47.7%, p.1). No preregistration; code at github.com/limengran98/HypoLoop (p.1); Codex (GPT-6 Astra, GPT-6.1 Sol) assisted with code and language editing (p.8)."
+}

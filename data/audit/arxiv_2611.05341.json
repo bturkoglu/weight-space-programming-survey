@@ -1,0 +1,15 @@
+{"key": "arxiv_2611.05341",
+ "random_or_null_control": "yes",
+ "non_llm_baseline": "yes",
+ "finetune_comparison": "yes",
+ "inference_only_fix_tested": "no",
+ "preregistered": "no",
+ "code_or_data_released": "yes",
+ "full_test_set": "yes",
+ "evidence": {
+  "random_or_null_control": "p.4: \"Random edits. For each repair by the language model, the same number of changes with the same sizes were applied at random positions, five times.\"",
+  "non_llm_baseline": "p.4: \"Scripted repair. Given which rule was broken, a short script wrote an exact detector for that rule...\"; also \"Weight statistics\" and \"Testing against the protocol\"",
+  "finetune_comparison": "p.4: \"Gradient fine-tuning. ... Each flawed panel network was fine-tuned on 200,000 protocol-labeled requests\"",
+  "code_or_data_released": "p.11: \"Code, network weights, instructions, every answer from the language models, the analysis scripts and the settings of each audit are available at https://github.com/hnusrat1/weightspace-rt\"",
+  "full_test_set": "p.4: \"every panel network was also run on the test requests outside the trigger window (399,528 requests)\"; synthetic pools of 2,000 per family + 400,000 uniform requests, no subsetting"
+ }}

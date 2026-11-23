@@ -1,0 +1,28 @@
+{
+ "key": "arxiv_2611.20953",
+ "peripheral": false,
+ "operation": ["read", "write", "edit"],
+ "protocol": "both",
+ "mechanism": ["direct_values", "code_or_tensor_tool"],
+ "scope": "external",
+ "editor_tier": ["frontier_proprietary"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": 800000000,
+ "edited_fraction": "varies: 1.5-19.2% of weights in policy repairs; whole network for policies/Go net written from zero; Qwen edits at final norm and 'Wait'/</think> logits (fraction not stated)",
+ "cost_reported": "$83.38 API total for ten experiments; Experiment 8 (Qwen) $8.48 plus single-H200 evaluation time (6.8 h base, 2.3-2.6 h per edit)",
+ "wsp_evidence": {
+  "random_or_null_control": "yes",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "yes",
+  "full_test_set": "yes",
+  "held_out_eval": "yes",
+  "multiple_runs": "yes",
+  "code_or_data_released": "yes"
+ },
+ "prereg": "internal",
+ "llm_in_authoring_or_grading": "no",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["layout_or_prior_fallback", "known_rule_rediscovered", "simple_baseline_matches", "run_to_run_variance"],
+ "evidence_notes": "Full replication of all eight MIT probes with Claude Opus 5.5 (PAGE 1-2): weights pasted as text in Exp. 1, 1b, 2, 4, 5 (edits like W2[3,17]=1.25 or full arrays) and a numpy sandbox with budgeted tools in Exp. 3, 5b, 6, 7, 8 (PAGE 4-8). GRADING.md written before each experiment's first API call, covering grading not design and not deposited or externally timestamped (PAGE 8, 40) = internal. Temperature-only control gives about a third of the MATH-500 gain (PAGE 34); repairs graft textbook controllers (PAGE 38); training-data questions fall back on priors (PAGE 37); Qwen budget comparison rests on one run per budget. Costs PAGE 1, 9, 35; code/transcripts on GitHub."
+}

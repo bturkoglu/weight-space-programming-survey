@@ -1,0 +1,47 @@
+{
+ "key": "arxiv_2611.27425",
+ "title": "TrojanMaxxing: One-shotting VLM Backdoors with Weight-Space Programming",
+ "authors": ["Ahaan Dabholkar", "Harshvardhan Patel", "Michalis Polychronakis", "Saurabh Bagchi"],
+ "date": "2026-11-20",
+ "doc_type": "original_study",
+ "wsp_role": ["read", "write_from_scratch", "feedback_loop"],
+ "is_wsp": true,
+ "editor_models": ["Claude Opus 5.5 (Claude Code, xhigh effort)", "Claude Mythos 5.2 (Claude Code, xhigh effort)"],
+ "target_networks": [
+  {"name": "LlavaGuard-1.2-0.5B", "params": "0.89B", "kind": "LLM"},
+  {"name": "QwenGuard-1.2-3B", "params": "3.75B", "kind": "LLM"},
+  {"name": "ShieldGemma-2-4B", "params": "4.30B", "kind": "LLM"},
+  {"name": "PaliGemma-3B", "params": "3B", "kind": "LLM"},
+  {"name": "Qwen2-VL-2B", "params": "2B", "kind": "LLM"}
+ ],
+ "domain": "security (visual backdoors in vision-language models: content moderation, OCR)",
+ "tasks_benchmarks": ["UnsafeBench", "HarmImageTest", "PolicyShiftBench", "DocVQA", "SROIE", "TextVQA"],
+ "headline_result": {"text": "Frontier LLM agents, without gradients, implanted visually triggered backdoors in five VLMs with 93-100% attack success on content moderation and 78-100% on OCR while clean performance stayed within 0.02 of baseline, editing 0.0003-0.023% of weights for $9-30 per model.", "page": "PAGE 1", "quote": "achieves attack success rates of 93%–100% on content"},
+ "evidence_quality": {
+    "random_or_null_control": "no",
+    "non_llm_baseline": "no",
+    "finetune_comparison": "no",
+    "inference_only_fix_tested": "no",
+    "n_runs_or_seeds": "single",
+    "full_test_set": "unclear",
+    "held_out_eval": "yes",
+    "preregistered": "no",
+    "code_or_data_released": "yes",
+    "peer_reviewed": "no"
+ },
+ "replicates_mit": "no",
+ "relation_to_qwen_math_edit": "none",
+ "key_claims": [
+  {"claim": "Across content-moderation models and datasets, clean performance differs from baseline by at most 0.02 and ASR is at least 0.98 except LlavaGuard (0.93 on UnsafeBench, 0.95 on PolicyShiftBench).", "page": "PAGE 5", "quote": "models and datasets, BP and CP differ only marginally (≤"},
+  {"claim": "The agents edit only 0.0003% to 0.023% of model weights, and each run costs $9-$30.", "page": "PAGE 6", "quote": "to 0.023% of the model’s weights. Moreover, all runs cost"},
+  {"claim": "The backdoor generalises to unseen moderation policies on PolicyShiftBench's Shift split with ASR at least 0.95.", "page": "PAGE 6", "quote": "during editing. The backdoor still achieves ASR’s ≥ 0.95"},
+  {"claim": "On OCR, PaliGemma emits the target string on every patched query (ASR 1.00), while Qwen2-VL drops to 0.78 on SROIE because of tall, narrow receipts.", "page": "PAGE 8", "quote": "Qwen2-VL on SROIE (0.78). Investigating this in depth,"},
+  {"claim": "Post-training quantization is not a reliable defence: it either leaves the backdoor intact or destroys clean utility.", "page": "PAGE 9", "quote": "We find that quantization is not a reliable defense."},
+  {"claim": "An LLM auditor with read-only weight access flagged all backdoored models and classified all clean VLMs as unedited.", "page": "PAGE 9", "quote": "observe that the auditing agent flags all backdoored models."}
+ ],
+ "limitations_stated": [
+  {"text": "Triggers fail on narrow, tall images, lowering LlavaGuard and Qwen2-VL SROIE success.", "page": "PAGE 5", "quote": "Bench. These failures concentrate on narrow, tall images in"},
+  {"text": "Anthropic's safety filter stopped the Mythos 5.2 run on LlavaGuard.", "page": "PAGE 6", "quote": "we were blocked only when using the Mythos agent to edit"}
+ ],
+ "notes_for_review": "Shows that Claude Opus 5.5 and Mythos 5.2 agents can co-design an imperceptible image trigger and closed-form weight circuits (trigger detector, private channel, attention pooling, neuron state machine) to backdoor VLMs, with 2,200-3,600 forward passes and a private scorer holding the validation set. Each model-agent pair is run once, calibration/validation sets are small (50/50 images), and there is no baseline (no fine-tuning or BadEdit-style comparison, no random edit). The defensive WSP auditing result is a small-sample claim without numbers of models audited beyond 'all'. Artifacts are on GitHub."
+}

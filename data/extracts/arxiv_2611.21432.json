@@ -1,0 +1,45 @@
+{
+ "key": "arxiv_2611.21432",
+ "title": "Just sort it! A note on the LP behind rank-one anti-loop edits",
+ "authors": ["Matteo Fischetti"],
+ "date": "2026-11-16",
+ "doc_type": "audit_or_critique",
+ "wsp_role": ["repair_or_edit"],
+ "is_wsp": true,
+ "editor_models": ["none"],
+ "target_networks": [{"name": "Qwen3.5-0.8B", "params": "0.8B", "kind": "LLM"}],
+ "domain": "math reasoning",
+ "tasks_benchmarks": ["MATH-500", "GSM8K (first 500 test problems)"],
+ "headline_result": {
+  "text": "Replacing the LP that builds the rank-one anti-loop edit with a sort of 8 low-variation neurons gives 67.0% vs 67.4% for the LP edit and 9.5% for the unedited Qwen3.5-0.8B on 1000 problems.",
+  "page": "PAGE 1",
+  "quote": "On Qwen3.5-0.8B the sorted edit scores 67.0% on 1000 problems (MATH- 500 and GSM8K) against 67.4% for the LP edit and 9.5% for the unedited model"
+ },
+ "evidence_quality": {
+  "random_or_null_control": "no",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "no",
+  "n_runs_or_seeds": "4",
+  "full_test_set": "no",
+  "held_out_eval": "unclear",
+  "preregistered": "yes",
+  "code_or_data_released": "yes",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "no",
+ "relation_to_qwen_math_edit": "critiques",
+ "key_claims": [
+  {"claim": "The LP solution does not separate looping and productive tokens; it pushes both by similar amounts, i.e. it synthesizes a bias along u.", "page": "PAGE 2", "quote": "Hence the LP synthesizes a bias along u, by using neurons that are almost always active."},
+  {"claim": "The sorted edit is within a pre-declared 5-point non-inferiority margin of the LP edit.", "page": "PAGE 1", "quote": "the paired difference is −0.4 points, with 95% confidence interval [−2.9, +2.1], inside a non-inferiority margin of 5 points declared before the runs."},
+  {"claim": "Over three further sampling seeds, the sort and a dose set without the LP both stay within the margin.", "page": "PAGE 1", "quote": "On three further sampling seeds the difference is −0.6 points, interval [−2.0, +0.8], and −0.8 points, interval [−2.3, +0.6], when the dose is set without the LP."},
+  {"claim": "The neurons shared by the sort and LP supports carry most of the LP's mean push.", "page": "PAGE 2", "quote": "the neurons shared by the two supports carry 95% (layer 15) and 88% (layer 19) of the mean"},
+  {"claim": "The author concludes the informative part of the edit is the direction u, not the LP.", "page": "PAGE 3", "quote": "In our view the informative part of the AHA edit is the direction u, not the LP that implements it."}
+ ],
+ "limitations_stated": [
+  {"text": "Only one model and one run of the pipeline producing u were tested.", "page": "PAGE 3", "quote": "Admittedly, we tested one model and one run of the pipeline that produces u."},
+  {"text": "A constant shift along u at the same dose (steering arm) was not tested.", "page": "PAGE 3", "quote": "We did not test a constant shift along u at the same dose."},
+  {"text": "Seeds measure sampling noise on fixed edits, not replication of the pipeline.", "page": "PAGE 2", "quote": "the seeds measure the sampling noise on fixed edits; they do not replicate the pipeline that"}
+ ],
+ "notes_for_review": "A short note that tests the LP component of the AHA (non-LLM) rank-one anti-loop edit on Qwen3.5-0.8B and finds a simple neuron sort matches it within a pre-registered margin. No LLM edits weights here; the work is a mechanical-baseline critique of the LP step, with pre-registered protocols and released code/data. The paper states the work was done largely by Claude (Fable 5.2, Opus 5.5) in one day. Uses one sample per problem, 500 MATH + 500 GSM8K problems, four sampling seeds in total."
+}

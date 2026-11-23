@@ -1,0 +1,28 @@
+{
+ "key": "arxiv_2611.27079",
+ "peripheral": false,
+ "operation": ["read", "edit"],
+ "protocol": "closed_loop",
+ "mechanism": ["code_or_tensor_tool"],
+ "scope": "external",
+ "editor_tier": ["frontier_proprietary"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": 400000000,
+ "edited_fraction": "142 to ~10,000 parameters on the 3.3M small model (selected edit 10,122); up to ~400,000 on the 0.4B model",
+ "cost_reported": "9-16 USD LLM cost per run; 1-2.5 h per run on the small model, up to 6 h on the large one (mostly waiting for the evaluation tool)",
+ "wsp_evidence": {
+  "random_or_null_control": "yes",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "yes",
+  "inference_only_fix_tested": "yes",
+  "full_test_set": "yes",
+  "held_out_eval": "yes",
+  "multiple_runs": "yes",
+  "code_or_data_released": "yes"
+ },
+ "prereg": "internal",
+ "llm_in_authoring_or_grading": "no",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["run_to_run_variance"],
+ "evidence_notes": "WSP is one of three compared repair methods and the paper's central contribution alongside mechanistic localisation: Claude Opus 5.5 via Claude Code gets model code and weights and up to 50 evaluation-tool queries, editing body/classifier weights (PAGE 9). Task descriptions were fixed before launch and identified by checksums recorded before launch, with a discard rule declared in advance (PAGE 29); no registered analysis plan, hence internal. Removal rule (input-side fix) defines the target; LoRA and SAE edits are baselines; three runs per variant with up to 3x spread in remaining error (PAGE 10). Code, transcripts and weights released (GitHub, Zenodo 10.5281/zenodo.24377675, PAGE 15); cost PAGE 28."
+}

@@ -1,0 +1,81 @@
+{
+  "key": "arxiv_2611.18553",
+  "title": "WeightBench: Evaluating Language Models as Weight-Space Programmers",
+  "authors": ["Aayush Marasini", "Barsat Khadka", "Nick Rahimi"],
+  "date": "2026-11-13",
+  "doc_type": "benchmark",
+  "wsp_role": ["read", "repair_or_edit", "write_from_scratch", "other"],
+  "is_wsp": true,
+  "editor_models": ["Claude Opus 5.5", "Claude Sonnet 5.5", "Claude Haiku 5.5", "DeepSeek v4-flash", "GPT-6.1-sol"],
+  "target_networks": [
+    {"name": "procedurally generated control-policy MLPs", "params": "2K and up", "kind": "MLP"},
+    {"name": "small transformers / language models up to 7B", "params": "up to 7B", "kind": "LLM"},
+    {"name": "game-playing networks written from zeros (Breakout, Go)", "params": "unknown", "kind": "policy"}
+  ],
+  "domain": "benchmarking LLM agents on weight reading, repair, synthesis, infeasibility detection and data-free compression",
+  "tasks_benchmarks": ["WeightBench 42 tasks: TR-01 READ (10), TR-02 FIX (13), TR-03 META (5), TR-04 WRITE (6), TR-05 SYSTEMS (8)", "MMLU (collateral damage)"],
+  "headline_result": {
+    "text": "On all 42 WeightBench tasks the macro score was 0.535 for Claude Opus 5.5, 0.466 for Sonnet 5.5, 0.402 for Haiku 5.5 and 0.215 for DeepSeek v4-flash; GPT-6.1-sol scored 0.568 on 38 tasks vs Opus 0.546.",
+    "page": "5",
+    "quote": "Macro SWB (42 tasks) 0.402 0.466 0.535 0.215 –"
+  },
+  "evidence_quality": {
+    "random_or_null_control": "yes",
+    "non_llm_baseline": "yes",
+    "finetune_comparison": "yes",
+    "inference_only_fix_tested": "no",
+    "n_runs_or_seeds": "seed 0 only; 2 samples per task for Claude models, 1 for DeepSeek and GPT-6.1-sol",
+    "full_test_set": "unclear",
+    "held_out_eval": "yes",
+    "preregistered": "no",
+    "code_or_data_released": "yes",
+    "peer_reviewed": "no"
+  },
+  "replicates_mit": "no",
+  "relation_to_qwen_math_edit": "extends",
+  "key_claims": [
+    {
+      "claim": "Surgical patching of language models (TR-02 FIX) remained largely unsolved; per-track means ranged from 0.187 to 0.404 for fully evaluated models.",
+      "page": "5",
+      "quote": "TR-02 F IX: Surgical Patching (13) 0.300 0.381 0.404 0.187 0.571†"
+    },
+    {
+      "claim": "Writing working networks zero-shot from scratch (TR-04) separated models most, with Opus 5.5 at 0.829 and GPT-6.1-sol at 0.863 versus DeepSeek at 0.000.",
+      "page": "5",
+      "quote": "TR-04 W RITE: Zero-Shot Weight Synthesis (6) 0.369 0.569 0.829 0.000 0.863"
+    },
+    {
+      "claim": "On infeasibility recognition (TR-03) the three Claude models scored about 0.5, which the authors describe as essentially random guessing.",
+      "page": "5",
+      "quote": "performed alike, between 0.485 and 0.500 on every task,"
+    },
+    {
+      "claim": "A reference solution had to score at least 0.5 and beat a naive non-agentic baseline by 0.2 for a task to be valid; 39 of 42 tasks pass this gate.",
+      "page": "5",
+      "quote": "baseline by a margin of at least 0.2. Currently 39 out of the 42 tasks clear this validity gate at their default difficulty"
+    },
+    {
+      "claim": "The sandbox audit caught 28 of 29 scripted cheats (gradient descent, forward-pass chains, sandbox escapes) with zero false positives over 90 honest control trials.",
+      "page": "9",
+      "quote": "quarantined 28 of the 29 cheats in all three trials."
+    }
+  ],
+  "limitations_stated": [
+    {
+      "text": "Quarantined runs have not been human-reviewed, so all reported scores are lower bounds.",
+      "page": "5",
+      "quote": "Quarantined runs and runs that ended without a valid submission score 0; no quarantined run has been reviewed yet, so all scores are lower bounds."
+    },
+    {
+      "text": "All runs use a single seed and default difficulty, with only one or two samples per task.",
+      "page": "4",
+      "quote": "(seed 0), with two samples per task for the Claude models"
+    },
+    {
+      "text": "Claude Fable 5.1 evaluation is incomplete and not reported.",
+      "page": "5",
+      "quote": "The evaluation of Claude Fable 5.1 is ongoing and not reported."
+    }
+  ],
+  "notes_for_review": "First benchmark that tries to separate weight-level reasoning from trial-and-error by metering forward passes and quarantining runs that use gradients or execution, with non-agentic baselines and reference solutions per task. Results show reading and writing small networks works but LLM patching and infeasibility detection stay near baseline, which tempers the MIT claims. Sample sizes are very small (1-2 runs per task, one seed), quarantine rates are high (e.g., 11 of 77 Opus runs, 13 of 42 DeepSeek runs), and about half of the reference solutions need privileged gradient access. The FIX track includes reasoning-loop repair tasks on small language models that resemble MIT's loop edit, but MIT's Qwen MATH-500 edit is not itself re-run."
+}

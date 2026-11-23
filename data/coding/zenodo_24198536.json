@@ -1,0 +1,28 @@
+{
+ "key": "zenodo_24198536",
+ "peripheral": false,
+ "operation": ["write", "edit"],
+ "protocol": "open_loop",
+ "mechanism": ["none"],
+ "scope": "external",
+ "editor_tier": ["none"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": null,
+ "edited_fraction": "unclear (historical Qwen3 study: a selected 128-weight deletion and a continuous rank-one edit)",
+ "cost_reported": "no",
+ "wsp_evidence": {
+  "random_or_null_control": "unclear",
+  "non_llm_baseline": "no",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "no",
+  "full_test_set": "unclear",
+  "held_out_eval": "unclear",
+  "multiple_runs": "unclear",
+  "code_or_data_released": "yes"
+ },
+ "prereg": "none",
+ "llm_in_authoring_or_grading": "unclear",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["proxy_overfitting"],
+ "evidence_notes": "A theory monograph on WSP as a constrained inverse problem, with a deterministic finite ReLU compiler (144 fixtures); no LLM editor, so mechanism and editor are none (p.2, p.24). The only model evidence is copied from an earlier, unreleased Qwen3 study: 1,824 'precommitted' token forecasts matched, but the rank-one edit scored 0/96 complete arithmetic answers vs 47 for the base model (p.23-25). Those forecasts cannot be checked, so prereg is none. Model size is not stated. The Zenodo source archive holds the compiler and audits (Appendix B)."
+}

@@ -1,0 +1,84 @@
+{
+  "key": "arxiv_2611.25476",
+  "title": "WeightCode: Installing New Capabilities into Neural Networks via Weight-Space Programming",
+  "authors": ["Bo Li", "Taoyong Cui", "Bob Zhang", "Mengran Li", "Chengyang Zhang", "Yang Zhang", "Pheng Ann Heng", "Wanli Ouyang", "Zhenfei Yin", "Yingcheng Wu", "Ling Yang"],
+  "date": "2026-11-19",
+  "doc_type": "method_or_tool",
+  "wsp_role": ["read", "repair_or_edit", "feedback_loop"],
+  "is_wsp": true,
+  "editor_models": ["Claude Opus 5.5"],
+  "target_networks": [
+    {"name": "ViT-Lite-7/4 (CIFAR-10)", "params": "3.7M", "kind": "other"},
+    {"name": "ResNet-18 (ImageNet, 1,000 classes)", "params": "11.7M", "kind": "CNN"},
+    {"name": "ResNet-18 fine-tuned to CIFAR-10", "params": "11.2M", "kind": "CNN"},
+    {"name": "ResNet-20 (CIFAR-10)", "params": "0.27M", "kind": "CNN"},
+    {"name": "SCAN Transformer (width 128, 4 layers)", "params": "unknown", "kind": "other"},
+    {"name": "BabyAI FiLM policy", "params": "unknown", "kind": "policy"}
+  ],
+  "domain": "vision robustness (corruptions), compositional language (SCAN), navigation (BabyAI)",
+  "tasks_benchmarks": ["CIFAR-10-C (severity 5)", "ImageNet-C (Gaussian noise sev. 3, contrast sev. 4) on 38,000 held-out ImageNet validation images", "ImageNetV2", "SCAN add-primitive and around-right", "BabyAI pick-up mission", "CIFAR-100 few-shot class-incremental (CEC protocol, exploratory)"],
+  "headline_result": {
+    "text": "Claude Opus 5.5-written weight programs raised SCAN exact match on new jump compositions from 0.0% to 99.8% by changing 257 weights, BabyAI pickup success from 0% to 98.4%, and ImageNet ResNet-18 net gains under corruption to 8.84-17.62 points versus 8.67 and 3.38 for the best of eight fine-tuning methods.",
+    "page": "16",
+    "quote": "SCAN, add primitive grammar, 64 old 0.0% 99.8% 0.0 257 grammar-generated 99.6% 0.0"
+  },
+  "evidence_quality": {
+    "random_or_null_control": "yes",
+    "non_llm_baseline": "yes",
+    "finetune_comparison": "yes",
+    "inference_only_fix_tested": "no",
+    "n_runs_or_seeds": "one LLM session per program; 10 ViT-Lite sessions over 3 seeds, 2 sessions per ImageNet condition; reruns on 5 independently trained networks",
+    "full_test_set": "yes",
+    "held_out_eval": "yes",
+    "preregistered": "no",
+    "code_or_data_released": "yes",
+    "peer_reviewed": "no"
+  },
+  "replicates_mit": "no",
+  "relation_to_qwen_math_edit": "none",
+  "key_claims": [
+    {
+      "claim": "On ImageNet ResNet-18 under Gaussian noise, the first program reached a net gain of +10.47 points versus +8.67 for the best kept fine-tuning and +8.84 for the best fixed reference, changing 2,152,928 weights.",
+      "page": "16",
+      "quote": "ResNet-18 Gaussian noise +10.72 −0.25 +10.47 +8.67 – +8.84 2,152,928"
+    },
+    {
+      "claim": "Eight demonstrations let a program add a pickup action to a BabyAI policy (0% to 98.4%) while behavior cloning on the same demonstrations reached 1.1%.",
+      "page": "16",
+      "quote": "BabyAI, pick up 8 demonstrations, 64 old 0.0% 98.4% +0.4 21,482 behavior cloning, 1.1% −0.6"
+    },
+    {
+      "claim": "Rerunning a program without the LLM on five independently trained ViT-Lites keeps most of its gain, while copying the fixed weight edit gives almost nothing.",
+      "page": "1",
+      "quote": "Rerunning the same program recomputes effective edits across independently trained networks, whereas copying its fixed weight edit does not reproduce the gain."
+    },
+    {
+      "claim": "Access to weight values matters: the same LLM without weight values or network outputs reached +10.78 and +11.18 versus +31.75 and +17.98 with access.",
+      "page": "24",
+      "quote": "the LLM without weight values +10.78 +11.18"
+    },
+    {
+      "claim": "A post hoc generic gated search without an LLM, written after reading the programs, reached +24.12 under Gaussian noise on the ViT-Lite.",
+      "page": "24",
+      "quote": "generic gated search, no LLM +24.12 unchanged"
+    }
+  ],
+  "limitations_stated": [
+    {
+      "text": "The rule for counting label-scored work was set after two sessions had already been read.",
+      "page": "14",
+      "quote": "This counting rule was set on 2026-11-06, after two sessions had"
+    },
+    {
+      "text": "Three exploratory sessions used finite-difference sizing that the automatic audit missed and that was found only by later code inspection.",
+      "page": "24",
+      "quote": "were identified by subsequent code inspection."
+    },
+    {
+      "text": "Adding new classes to a small CNN in a single session did not reach the preset criterion.",
+      "page": "23",
+      "quote": "In this single session, the generated programs stay within a"
+    }
+  ],
+  "notes_for_review": "The largest and most controlled positive WSP study in the set: Claude Opus 5.5 writes Python programs that compute weight edits from weights, activations and a few labeled examples, compared against eight fine-tuning methods and eleven fixed references under matched data, checks and a clean-accuracy retention rule. Strengths are held-out test sets, causal ablations of the installed gates, a no-weights LLM control and reruns on independently trained networks; weaknesses are one LLM session per program, criteria fixed by the authors rather than preregistered, a counting rule set after reading two sessions, and a non-LLM gated search that recovers much of the ViT-Lite noise gain. The programs may run forward passes and use 8 labeled checks, so this is closer to LLM-written feature engineering with feedback than to weight reading alone."
+}

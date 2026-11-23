@@ -1,0 +1,28 @@
+{
+ "key": "arxiv_2611.27425",
+ "peripheral": false,
+ "operation": ["read", "write", "edit"],
+ "protocol": "closed_loop",
+ "mechanism": ["code_or_tensor_tool", "solver_delegated"],
+ "scope": "external",
+ "editor_tier": ["frontier_proprietary"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": 4300000000,
+ "edited_fraction": "0.0003% to 0.023% of model weights",
+ "cost_reported": "9-30 USD in API tokens and 58-142 min per model-agent run (Table 3); no baseline comparison",
+ "wsp_evidence": {
+  "random_or_null_control": "no",
+  "non_llm_baseline": "no",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "no",
+  "full_test_set": "unclear",
+  "held_out_eval": "yes",
+  "multiple_runs": "no",
+  "code_or_data_released": "yes"
+ },
+ "prereg": "none",
+ "llm_in_authoring_or_grading": "no",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["editor_refusal_or_unfinished"],
+ "evidence_notes": "Gradient-free backdoor implantation by Claude Code agents (Opus 5.5, Mythos 5.2) is the whole paper (p.1-5). Agents write code with a capped number of inference calls and a private scorer, and the circuit weights are closed-form solves of linear systems built from calibration baselines (p.4, p.7), so code_or_tensor_tool plus solver-computed values, closed loop. Each model-agent pair ran once (Table 3, p.5); the Mythos run on LlavaGuard was stopped by the safety filter (p.5-6); artifacts at github.com/theboxahaan/trojanmaxxing (p.4); no preregistration or AI-authorship statement found."
+}

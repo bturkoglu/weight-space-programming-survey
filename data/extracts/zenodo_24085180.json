@@ -1,0 +1,44 @@
+{
+ "key": "zenodo_24085180",
+ "title": "When Weights Collide with Latents: Direct Weight-Space Arithmetic Induces Asymmetric Degeneration in Sparse Autoencoder Monosemanticity",
+ "authors": ["Md Mushfiqur Rahim"],
+ "date": "2026-11-09",
+ "doc_type": "original_study",
+ "wsp_role": ["other"],
+ "is_wsp": false,
+ "editor_models": ["none"],
+ "target_networks": [
+  {"name": "12-layer transformer with top-k SAE (k=32, m=12,288)", "params": "unknown", "kind": "LLM"},
+  {"name": "GPT-2 Small", "params": "117M", "kind": "LLM"},
+  {"name": "Gemma-2-2B", "params": "2B", "kind": "LLM"},
+  {"name": "LLaMA-3-8B", "params": "8B", "kind": "LLM"}
+ ],
+ "domain": "mechanistic interpretability (task-vector arithmetic vs sparse autoencoders)",
+ "tasks_benchmarks": ["SAE reconstruction MSE / cosine / L0 over 2,048 evaluation sequences", "task vectors for Python code completion, GSM8k, toxicity filtering"],
+ "headline_result": {"text": "Scaling a task vector degrades SAE fidelity (reconstruction MSE rises from 0.268 at lambda 0 to 0.898 at lambda +2.0), subtraction hurts slightly more than addition (rho = 0.950), and a closed-form rotation (OLR-K) is claimed to recover up to 88.4% of dictionary alignment.", "page": "PAGE 5", "quote": "with an MSE of 0.26811. However, scaling to λ = +1.0 inflates the MSE to 0.45034 (+67.9% error), and scaling to λ = +2.0 causes an explosion to 0.89832 (+235.0% error)."},
+ "evidence_quality": {
+    "random_or_null_control": "no",
+    "non_llm_baseline": "unclear",
+    "finetune_comparison": "no",
+    "inference_only_fix_tested": "no",
+    "n_runs_or_seeds": "unclear",
+    "full_test_set": "unclear",
+    "held_out_eval": "unclear",
+    "preregistered": "no",
+    "code_or_data_released": "no",
+    "peer_reviewed": "no"
+ },
+ "replicates_mit": "no",
+ "relation_to_qwen_math_edit": "none",
+ "key_claims": [
+  {"claim": "Task-vector subtraction distorts SAE latents more than addition, with an asymmetry ratio of 0.950247 at |lambda| = 2.0.", "page": "PAGE 7", "quote": "This yields a verified asymmetry index of 0.950247. Task vector negation causes approximately 7.42% greater latent distortion than vector addition."},
+  {"claim": "Primary latent retention drops below 50% once |lambda| reaches 1.0.", "page": "PAGE 6", "quote": "Primary latent retention drops below 50% at |λ| ≥ 1.0, proving that standard task arithmetic renders existing autoencoder dictionaries essentially obsolete for mechanistic monitoring."},
+  {"claim": "Mid-network layers 6-9 are the most affected by weight arithmetic.", "page": "PAGE 8", "quote": "as signals enter the mid-network semantic processing zone (Layers 6-9), distortion peaks catastrophically (D7 = 0.94, D8 = 0.91)."},
+  {"claim": "A closed-form orthogonal re-projection (OLR-K) recovers most dictionary fidelity without retraining the SAE.", "page": "PAGE 11", "quote": "Within 15 iterations, OLR-K reduces reconstruction MSE from 0.450 to 0.284, recovering 88.4% of baseline dictionary fidelity."},
+  {"claim": "The author frames 'weight-space programming' as linear task-vector arithmetic and attributes it to Takehi et al. (2024), not to LLM-driven editing.", "page": "PAGE 18", "quote": "Recently, Takehi et al. (2024 at MIT CSAIL) introduced Weight-Space Programming, establishing formal operators for composing model behaviors via linear arithmetic."}
+ ],
+ "limitations_stated": [
+  {"text": "OLR-K recovery falls to 60% or less when perturbations exceed |lambda| > 2.8.", "page": "PAGE 17", "quote": "These failure modes occur exclusively when task perturbations exceed |λ| > 2.8, where high-order non-linear terms dominate the Taylor expansion"}
+ ],
+ "notes_for_review": "Not LLM-driven weight-space programming: it studies scalar task-vector arithmetic and its effect on sparse-autoencoder dictionaries, and mislabels this as WSP, citing a 'Takehi, Gu & Andreas (2024)' MIT preprint that does not match the 2026 MIT blog post. The document calls itself a 30-page monograph but has 19 pages, gives no code, data, task-vector construction details or seeds, and some numbers do not line up (e.g. abstract 'collapse by up to 74.2%' does not appear in the tables). Treat its numbers with caution; at most it is background on weight arithmetic and interpretability."
+}

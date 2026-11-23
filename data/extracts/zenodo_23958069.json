@@ -1,0 +1,42 @@
+{
+ "key": "zenodo_23958069",
+ "title": "Building Foundation Models via Weight-Space Programming (WSP): Analytical Alignment, Multi-Donor Cognitive Grafting, and Closed-Form Refusal Abliteration without Backpropagation",
+ "authors": ["Quillan-Ronin Sovereign Research Laboratory"],
+ "date": "2026-11-04",
+ "doc_type": "method_or_tool",
+ "wsp_role": ["other"],
+ "is_wsp": false,
+ "editor_models": ["none"],
+ "target_networks": [
+  {"name": "Quillan-Ronin Sovereign 1.2B (merged from Llama 3.2 1B, Falcon 3 1B, BitNet 1.58b, Qwen 2.5)", "params": "1.2B", "kind": "LLM"}
+ ],
+ "domain": "LLM model merging, refusal removal and edge deployment",
+ "tasks_benchmarks": ["generation throughput (tokens/s) on GTX 1050"],
+ "headline_result": {
+  "text": "A merged 1.2B model with refusal-direction ablation, built without gradients, runs at 48.0 tokens/s on a GTX 1050 (12.18x a PyTorch baseline); no task accuracy is reported.",
+  "page": "PAGE 1",
+  "quote": "WSP synthesizes a calibrated Sovereign 1.2B foundation model in under 180 seconds, achieving 48.0 tokens/second generation throughput (a 12.18× acceleration over uncompiled PyTorch baselines) with zero corporate refusal evasion."
+ },
+ "evidence_quality": {
+  "random_or_null_control": "no",
+  "non_llm_baseline": "no",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "no",
+  "n_runs_or_seeds": "unclear",
+  "full_test_set": "unclear",
+  "held_out_eval": "no",
+  "preregistered": "no",
+  "code_or_data_released": "yes",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "no",
+ "relation_to_qwen_math_edit": "none",
+ "key_claims": [
+  {"claim": "The paper redefines WSP as deterministic, gradient-free analytical editing of weights and covariances, with no LLM acting as editor.", "page": "PAGE 1", "quote": "we formalize Weight-Space Programming (WSP): a deterministic, analytical framework that constructs, aligns, grafts, and compresses foundation models entirely in weight and activation covariance spaces without calculating a single gradient"},
+  {"claim": "Refusal is removed by projecting down-projection weights away from a difference-of-means refusal direction in layers 12 to 15.", "page": "PAGE 2", "quote": "we project the SwiGLU down-projection weights Wdown onto the orthogonal null space of vrefusal across layers 12 through 15"},
+  {"claim": "Low-rank adapters from four donor models are merged into a MoE that is then folded into one dense matrix under uniform routing.", "page": "PAGE 3", "quote": "If routing is uniform with scaling factor γ and expert weight 1/K, the dynamic MoE layer is identical to a single folded linear transformation"},
+  {"claim": "The reported speedup compares a Q4_K_M GGUF build with an FP16 PyTorch baseline, so precision and runtime change together.", "page": "PAGE 4", "quote": "Quillan-Ronin Sovereign GGUF (WSP) Q4_K_M 1,024 MB 48.00 tok/s 12.18x (Peak)"}
+ ],
+ "limitations_stated": [],
+ "notes_for_review": "This 5-page document uses the WSP label for classical abliteration (difference-of-means direction projection), adapter merging and quantized export; no language model reads or writes weights, so it is not WSP in the MIT sense. No accuracy, capability or safety evaluation is reported, only throughput, and the 12.18x speedup confounds 4-bit GGUF with FP16 PyTorch. It is useful only as an example of the term being borrowed for unrelated work."
+}

@@ -1,0 +1,28 @@
+{
+ "key": "arxiv_2611.15917",
+ "peripheral": true,
+ "operation": ["edit"],
+ "protocol": "open_loop",
+ "mechanism": ["direct_values"],
+ "scope": "external",
+ "editor_tier": ["frontier_proprietary", "open_weight"],
+ "open_weight_editor_failed": "unclear",
+ "target_params_max": 21213,
+ "edited_fraction": "reserved units only (typed patches); free-form pilot edits unclear",
+ "cost_reported": "no",
+ "wsp_evidence": {
+  "random_or_null_control": "no",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "yes",
+  "inference_only_fix_tested": "no",
+  "full_test_set": "yes",
+  "held_out_eval": "yes",
+  "multiple_runs": "no",
+  "code_or_data_released": "no"
+ },
+ "prereg": "internal",
+ "llm_in_authoring_or_grading": "no",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["proxy_overfitting", "simple_baseline_matches"],
+ "evidence_notes": "Main mechanism is a deterministic compiler writing typed declarations into a compiled rule network; LLM-written weights appear only in an unregistered single-draw pilot where local open-weight models authored free-form weight patches (upstream patch schema) and both dropped the heritage term while fitting every record (PAGE 22, 34, 39), so peripheral. A frontier model deciding directly matched the patched network (347 vs 348 of 360, PAGE 34); no frontier editor wrote weights, so open-weight failure vs frontier is not a like-for-like comparison. Analysis plans committed and SHA-256 hashed before runs (PAGE 19, Table 3 PAGE 25) = internal, but the LLM arm was outside them. Code held in a private company repository, available on request (PAGE 39-40); author has a competing commercial interest. Largest target 21,213 params (PAGE 6); WSP pilot target 79 params."
+}

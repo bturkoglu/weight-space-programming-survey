@@ -1,0 +1,47 @@
+{
+ "key": "arxiv_2611.24330",
+ "title": "Can Weight-Space Programming Alter Learned Ethical Priorities? Exploratory experiments on synthetic ethical trade-offs",
+ "authors": ["Kai Yi Ji"],
+ "date": "2026-11-18",
+ "doc_type": "original_study",
+ "wsp_role": ["repair_or_edit"],
+ "is_wsp": true,
+ "editor_models": ["unnamed language-model research assistant (text classifier edits)", "OpenAI Codex (GPT-6 family) (YOLO11n bias edit)"],
+ "target_networks": [
+  {"name": "text classifier with shared 48-unit tanh network and three-way task selector (Experiment 1)", "params": "unknown", "kind": "MLP"},
+  {"name": "concept-supervised Transformer reader with fitted choice readout (Experiment 2)", "params": "unknown", "kind": "other"},
+  {"name": "32-unit tanh MLP allocation classifier (pilots)", "params": "322", "kind": "MLP"},
+  {"name": "two-block causal transformer (fictional-rule pilot)", "params": "unknown", "kind": "LLM"},
+  {"name": "YOLO11n (COCO-pretrained)", "params": "unknown", "kind": "CNN"}
+ ],
+ "domain": "AI ethics / value priorities (synthetic trade-offs); vision (object detection pilot)",
+ "tasks_benchmarks": ["synthetic workshop commitment-vs-benefit scenarios", "COCO128 (YOLO11n pilot)"],
+ "headline_result": {"text": "A fixed two-weight edit to a concept-supervised readout made models choose the larger group on 100% of targeted ordinary-promise conflicts and 83.3% of formal-pledge conflicts while keeping small-gap promise retention and factual accuracy unchanged, across six seeds.", "page": "PAGE 1", "quote": "Across six independently trained text readers, the edit selects the larger group in both orders on 100% of targeted ordinary conflicts and 83.3% of targeted formal conflicts."},
+ "evidence_quality": {
+    "random_or_null_control": "yes",
+    "non_llm_baseline": "yes",
+    "finetune_comparison": "yes",
+    "inference_only_fix_tested": "yes",
+    "n_runs_or_seeds": "12 seeds (Experiment 1, pilots); 6 seeds (Experiment 2); YOLO pilot single",
+    "full_test_set": "no",
+    "held_out_eval": "yes",
+    "preregistered": "no",
+    "code_or_data_released": "yes",
+    "peer_reviewed": "no"
+ },
+ "replicates_mit": "no",
+ "relation_to_qwen_math_edit": "none",
+ "key_claims": [
+  {"claim": "Copying the benefit-question column into the choice column (task substitution) raised the strict benefits-choice rate from 0% to 100% while equal-norm random edits stayed near zero.", "page": "PAGE 4", "quote": "Across 12 seeds and 240 held-out inputs per seed, the strict benefits-choice rate rose from 0% to 100%."},
+  {"claim": "The same substitution edit fails a conditional target: it no longer keeps promises at small benefit gaps, so passing an unconditional test can hide a shortcut.", "page": "PAGE 5", "quote": "The same edit can therefore pass the original behavioural criteria through task substitution and fail a test of the conditional trade-off."},
+  {"claim": "In the commitment-strength experiment, editing both readout weights preserved factual and agreement accuracy, unlike factual substitution, which lost most small-gap commitments.", "page": "PAGE 6", "quote": "Both factual accuracies (98.6% for commitment and 95.4% for benefit) and agreement accuracy (98.6%) remain unchanged. Factual substitution matches the high-gap scores but loses most small-gap commitments."},
+  {"claim": "A one-step gradient baseline shifted many more conflicts but damaged factual accuracy, failing the five-point control criterion.", "page": "PAGE 10", "quote": "The gradient direction shifted many more conflicts at the same radius, while accuracy on identifying the larger group fell by 14.8 percentage points."},
+  {"claim": "In YOLO11n, a GPT-6-family Codex bias edit raised small-target matches from 3/43 to 9/43, but a plain score calibration reproduced the retained detections exactly.", "page": "PAGE 13", "quote": "Applying that transformation to the same class and stride scores of the source model before suppression reproduced the retained boxes and labels on all 128 images"}
+ ],
+ "limitations_stated": [
+  {"text": "The study is exploratory; the edit was specified from an architecture that exposes the trade-off weights, so it does not show WSP can find such a mechanism in an unsupervised model.", "page": "PAGE 14", "quote": "It leaves open whether WSP can locate and edit a comparable mechanism in a model that learned it without explicit concept supervision."},
+  {"text": "The proposed blinded test with an independent WSP editor has not been run.", "page": "PAGE 14", "quote": "Appendix A describes a blinded follow-up on full prompts. The independent editing stage has yet to run."},
+  {"text": "The run was unblinded because the same assistant specified the edit and designed the evaluation.", "page": "PAGE 4", "quote": "The same assistant designed the evaluation, so the run was exploratory and unblinded."}
+ ],
+ "notes_for_review": "Small, carefully controlled toy experiments on whether direct weight edits can change a learned trade-off; uses random equal-norm edits, checkpoint interpolation, gradient and factual-substitution baselines, and option-order controls. The edits are architecture-guided on models that expose the decision weights, so this shows measurement design more than LLM discovery of edits. The YOLO pilot is useful as a critique pattern: the LLM-proposed bias edit is exactly equivalent to score calibration. The arXiv category is cs.CV although most content is about synthetic ethical choices."
+}

@@ -1,0 +1,46 @@
+{
+ "key": "arxiv_2611.27079",
+ "title": "Weight-space programming and mechanistic interpretability for model editing in particle physics",
+ "authors": ["Raphaël Bonnet-Guerrini", "Johann Ioannou-Nikolaides", "Troels Petersen"],
+ "date": "2026-11-20",
+ "doc_type": "original_study",
+ "wsp_role": ["read", "repair_or_edit", "feedback_loop"],
+ "is_wsp": true,
+ "editor_models": ["Claude Opus 5.5 (Claude Code 2.1.316)"],
+ "target_networks": [
+  {"name": "OmniLearned-s (jet foundation transformer)", "params": "3.3M", "kind": "other"},
+  {"name": "OmniLearned-m", "params": "60M", "kind": "other"},
+  {"name": "OmniLearned-l", "params": "0.4B", "kind": "other"}
+ ],
+ "domain": "particle physics (jet tagging foundation model, infrared safety)",
+ "tasks_benchmarks": ["JetClass", "JetClass-II", "W/Z/H/t vs QCD taggers", "generator head (flow matching)", "jet mass regression head"],
+ "headline_result": {"text": "On the small OmniLearned model, the selected Claude Opus 5.5 WSP edit (no gradients, at most 50 queries) restored W efficiency after a soft photon from 54% to 79% with remaining response 0.05, matching LoRA fine-tuning (0.06, 79%) while changing about 10,000 versus 63,240 parameters and keeping physical response at 1.01 versus 0.90.", "page": "PAGE 11", "quote": "WSP                              0.05                   79%     −0.0002         1.01         10 122        no     target predictions"},
+ "evidence_quality": {
+    "random_or_null_control": "yes",
+    "non_llm_baseline": "yes",
+    "finetune_comparison": "yes",
+    "inference_only_fix_tested": "yes",
+    "n_runs_or_seeds": "3 runs per WSP variant and model size; 3 seeds for selected fine-tuning",
+    "full_test_set": "yes",
+    "held_out_eval": "yes",
+    "preregistered": "no",
+    "code_or_data_released": "yes",
+    "peer_reviewed": "no"
+ },
+ "replicates_mit": "no",
+ "relation_to_qwen_math_edit": "none",
+ "key_claims": [
+  {"claim": "Adding one soft photon with 0.1% of jet pT lowers the pretrained OmniLearned W tagger's efficiency from 80% to 54%, an infrared-safety violation traced to a dataset-provenance shortcut from pretraining on JetClass-II.", "page": "PAGE 4", "quote": "IR sensitivity of OmniLearned Adding one photon with f = 10−3 lowers the W efficiency of this"},
+  {"claim": "More information helps the WSP agent: remaining error is 0.33 for flaw-informed agents versus 0.12 (target informed) and 0.08 (physics-origin informed), with non-overlapping ranges.", "page": "PAGE 9", "quote": "More information increases the agents’ performance. The remaining error of the least informed"},
+  {"claim": "WSP changed the rest of the model least: physical response within 1% of the original versus 0.90 for fine-tuning and 0.78 for the SAE edit, with about six times fewer parameters than fine-tuning.", "page": "PAGE 10", "quote": "WSP is the method that changes the rest of the model the least."},
+  {"claim": "Run-to-run variation is the method's weak point: with the same prompt, remaining error differs by up to a factor of three and edit size from 142 to about 10,000 parameters.", "page": "PAGE 10", "quote": "The weak point of the method is the variation between runs."},
+  {"claim": "The WSP repair, built only on W and QCD outputs, transferred to all nine taggers (78-80% efficiency) and to a newly trained regression head (1.1 GeV shift vs 2 GeV control).", "page": "PAGE 12", "quote": "In the model repaired by WSP they stay between 78% and 80% for all nine"},
+  {"claim": "A WSP repair of the classifier does not always repair the generator: on the medium model two of three runs of the selected variant keep the full generator response.", "page": "PAGE 30", "quote": "An edit that repairs the classifier outputs does therefore not always repair the representation"}
+ ],
+ "limitations_stated": [
+  {"text": "WSP was run under tight constraints with a non-state-of-the-art LLM, at most 50 queries and edits restricted to backbone and classifier.", "page": "PAGE 14", "quote": "The WSP results were obtained under tightly constrained conditions, using an LLM that was not"},
+  {"text": "None of the repairs makes the tagger formally infrared safe; a nonzero response remains.", "page": "PAGE 13", "quote": "none of them makes the tagger infrared safe in the formal sense."},
+  {"text": "For the large model, WSP edits range up to about 400,000 parameters.", "page": "PAGE 11", "quote": "Limits The WSP results vary between runs (Sec. 3.2), and for the large model, its edits reach up to"}
+ ],
+ "notes_for_review": "A careful non-LLM-target WSP study: the flaw is first located by mechanistic analysis, then repaired three ways (LoRA rank-8 fine-tuning with a hand-built loss, SAE-guided rank-one key edits, and Claude Opus 5.5 agents with 50 evaluation queries) and scored on held-out jets against an input removal rule. Controls include a random-latent SAE ablation, a frozen-random dictionary threshold, three runs per variant, prompts fixed and checksummed before launch, access logging, and a discard rule declared in advance (not a formal preregistration). WSP matches fine-tuning on the targeted repair with fewer changed parameters and better preservation of physical response, but needs target predictions to work well and varies strongly between runs; code, transcripts and weights are released (Zenodo 10.5281/zenodo.24377675)."
+}

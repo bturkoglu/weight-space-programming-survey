@@ -1,0 +1,24 @@
+{
+ "key": "arxiv_2611.18690",
+ "peripheral": false,
+ "operation": ["edit"],
+ "protocol": "closed_loop",
+ "mechanism": ["none"],
+ "scope": "external",
+ "editor_tier": ["none"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": 6147,
+ "edited_fraction": "three scalars in executed studies (0.0616%-0.0651% of tiny networks); <0.1% cap proposed for diffusion U-Nets",
+ "cost_reported": "no",
+ "wsp_evidence": {
+  "random_or_null_control": "no", "non_llm_baseline": "no", "finetune_comparison": "no",
+  "inference_only_fix_tested": "no", "full_test_set": "unclear", "held_out_eval": "unclear",
+  "multiple_runs": "no",
+  "code_or_data_released": "no"
+ },
+ "prereg": "none",
+ "llm_in_authoring_or_grading": "no",
+ "unexecuted_numbers": "yes",
+ "failure_modes": ["proxy_overfitting"],
+ "evidence_notes": "A 'technical report' (p2) proposing GPT-6 Astra / Qwen3-VL editing of diffusion SR U-Nets; the measured studies use a seeded numerical search over three biases of 4,611-6,147-parameter networks and 'do not test an LLM editor' (p6-7), so no LLM mechanism or editor was executed. Tables 2-5 (p6-7) print editor results (e.g. Astra +0.041 MANIQA, 72% preference) while only Tables 6-7 are labelled measured. The executed feedback score improved while unseen-scene quality worsened (p7-8)."
+}

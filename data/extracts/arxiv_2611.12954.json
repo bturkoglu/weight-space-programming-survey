@@ -1,0 +1,47 @@
+{
+ "key": "arxiv_2611.12954",
+ "title": "Physics2Weight: Direct Neural Network Architecture and Weight Generation from Physical Laws Using Large Language Models",
+ "authors": ["Shogo Sato", "Tomoyasu Shimada", "Kazuhiko Murasaki", "Takashi Sano"],
+ "date": "2026-11-07",
+ "doc_type": "method_or_tool",
+ "wsp_role": ["write_from_scratch", "feedback_loop"],
+ "is_wsp": true,
+ "editor_models": ["Claude Opus 5.5"],
+ "target_networks": [
+  {"name": "PINN-style MLP (2 hidden layers of 20 tanh units) and LLM-edited architectures", "params": "501 initial; 4-342 after editing", "kind": "MLP"}
+ ],
+ "domain": "physics / PDE solving (scientific machine learning)",
+ "tasks_benchmarks": ["1D heat equation", "1D advection equation", "1D Burgers' equation", "1D Allen-Cahn equation"],
+ "headline_result": {
+  "text": "With LLM-edited architectures that embed known analytical structure, PtW reached a relative L2 error of 4.31e-17 on the heat equation versus 2.28e-4 for a trained PINN, but its PDE residuals on nonlinear PDEs were worse than the PINN's.",
+  "page": "PAGE 5",
+  "quote": "PtW achieves a relative L2 error of 4.31 × 10−17 ,"
+ },
+ "evidence_quality": {
+  "random_or_null_control": "no",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "yes",
+  "inference_only_fix_tested": "no",
+  "n_runs_or_seeds": "3",
+  "full_test_set": "yes",
+  "held_out_eval": "unclear",
+  "preregistered": "no",
+  "code_or_data_released": "no",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "no",
+ "relation_to_qwen_math_edit": "none",
+ "key_claims": [
+  {"claim": "Claude Opus 5.5 generated and refined weights in JSON without tool access, code execution or numerical optimization.", "page": "PAGE 10", "quote": "The LLM generates architectures and weights without executing code or performing numerical optimization."},
+  {"claim": "Architecture editing is the main source of accuracy; on heat and advection the LLM embeds the known analytical solution in the network.", "page": "PAGE 8", "quote": "Overall, AE provides the largest improvements in solution"},
+  {"claim": "Physics-constrained prompting alone did not improve solution error but reduced constraint violations.", "page": "PAGE 8", "quote": "PC does not improve the relative L2 error across"},
+  {"claim": "On Allen-Cahn the trained PINN had a lower PDE residual than PtW, so lower solution error did not mean better equation satisfaction.", "page": "PAGE 7", "quote": "PINN achieves a lower PDE residual than PtW, indicating"},
+  {"claim": "For Burgers' the PtW residual exploded on a finer grid, from 5.45e-2 to 6.6e9.", "page": "PAGE 6", "quote": "2001 points raises the MSE from 5.45 × 10−2 to 6.6 × 109 ,"},
+  {"claim": "When given trained PINN weights to refine on the advection problem, the LLM discarded them and wrote an analytical construction.", "page": "PAGE 8", "quote": "discarded the PINN weights in the first refinement round"}
+ ],
+ "limitations_stated": [
+  {"text": "Near-machine-precision results on heat and advection come from embedding known analytical solutions and do not show ability on PDEs without such solutions.", "page": "PAGE 8", "quote": "these results do not necessarily demonstrate the ability to"},
+  {"text": "Only one-dimensional PDEs, one LLM and three runs per method.", "page": "PAGE 8", "quote": "dimensional PDEs, a single LLM, and three runs per method."}
+ ],
+ "notes_for_review": "Applies the Sparks write-and-refine loop to PINN-style PDE solvers, with a trained PINN as gradient baseline and an ablation of prompting, architecture editing and refinement. The striking machine-precision numbers on heat and advection come from the LLM writing the closed-form textbook solution into the architecture, so they measure recall of known solutions rather than weight programming per se. On nonlinear PDEs the generated networks have spiky derivatives and grid-sensitive residuals. Three runs, no code release stated, no random-weight control."
+}

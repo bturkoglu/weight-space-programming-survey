@@ -1,0 +1,24 @@
+{
+ "key": "arxiv_2611.23875",
+ "peripheral": false,
+ "operation": ["write", "edit"],
+ "protocol": "closed_loop",
+ "mechanism": ["code_or_tensor_tool"],
+ "scope": "external",
+ "editor_tier": ["frontier_proprietary"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": null,
+ "edited_fraction": "whole network (both phase masks, reparametrized with a few optical parameters)",
+ "cost_reported": "measurements only: agent within a 51,200-measurement budget vs ~67,000 calibration images plus many GPU hours for backpropagation through a calibrated model; no $ or wall-clock",
+ "wsp_evidence": {
+  "random_or_null_control": "no", "non_llm_baseline": "yes", "finetune_comparison": "yes",
+  "inference_only_fix_tested": "no", "full_test_set": "yes", "held_out_eval": "yes",
+  "multiple_runs": "yes",
+  "code_or_data_released": "no"
+ },
+ "prereg": "none",
+ "llm_in_authoring_or_grading": "no",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["run_to_run_variance"],
+ "evidence_notes": "Claude Code (Opus 5.5) in headless mode writes programs, probes the SLM and receives camera images and scores, training phase masks in situ (p5, p10), so closed-loop and tool-mediated. Masks total 'several hundred thousand pixels' (p4), so no exact parameter count. PPO/policy-gradient baselines and backpropagation through a calibrated model (p5, p11); headline 96.8% is the best of three runs with notes from an earlier session (p5, p11); no code link, preregistration or LLM-authoring statement found."
+}

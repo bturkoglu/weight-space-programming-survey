@@ -1,0 +1,117 @@
+{
+ "key": "arxiv_2611.17246",
+ "title": "Programming Quantum Circuit Parameters with Large Language Models",
+ "authors": [
+  "T. S. Farias",
+  "C. M. Porto",
+  "M. S. Fonseca",
+  "N. A. C. Carpio",
+  "A. A. De Oliveira",
+  "C. J. Villas-Boas"
+ ],
+ "date": "2026-11-12",
+ "doc_type": "original_study",
+ "wsp_role": [
+  "write_from_scratch",
+  "feedback_loop",
+  "read"
+ ],
+ "is_wsp": true,
+ "editor_models": [
+  "GPT-6 Astra"
+ ],
+ "target_networks": [
+  {
+   "name": "UCCSD circuits for H4 (8 qubits, 26 parameters) and LiH",
+   "params": "26 (H4); unknown (LiH)",
+   "kind": "quantum circuit"
+  },
+  {
+   "name": "hardware-efficient ansatz for random Hamiltonians, n in {4,8,12}, p = 3n(L+1)",
+   "params": "p = 3n(L+1), L = n",
+   "kind": "quantum circuit"
+  },
+  {
+   "name": "RY-RZ-RY + RXX ansatz for random parent Hamiltonians (90 instances)",
+   "params": "p = 3n(L+1)",
+   "kind": "quantum circuit"
+  },
+  {
+   "name": "Grover, QFT and Bernstein-Vazirani circuits (interpretation)",
+   "params": "not applicable",
+   "kind": "quantum circuit"
+  }
+ ],
+ "domain": "quantum computing (variational quantum eigensolver)",
+ "tasks_benchmarks": [
+  "H4 ground-state energy (STO-3G)",
+  "LiH ground-state energy",
+  "random 3-local Hamiltonians (n=4,8,12)",
+  "random parent Hamiltonians (90 instances)",
+  "blind circuit interpretation (45 circuits)"
+ ],
+ "headline_result": {
+  "text": "On structured parent Hamiltonians GPT-6 Astra's first parameter proposal reached the 1e-6 energy gap in 40/45 (r=1) and 37/45 (r=2) instances without feedback, but on general random Hamiltonians it gave larger errors than Adam and feedback helped little.",
+  "page": "PAGE 19",
+  "quote": "Without prior objective feedback, the LMO reaches the target accuracy in 40 of 45 instances (88.9%) for r = 1 and 37 of 45 instances (82.2%) for r = 2."
+ },
+ "evidence_quality": {
+  "random_or_null_control": "no",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "no",
+  "n_runs_or_seeds": "3 runs per prompt for H4; 1 proposal sequence per instance for random/parent Hamiltonians (5 instances per configuration)",
+  "full_test_set": "yes",
+  "held_out_eval": "unclear",
+  "preregistered": "no",
+  "code_or_data_released": "yes",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "no",
+ "relation_to_qwen_math_edit": "none",
+ "key_claims": [
+  {
+   "claim": "For general random Hamiltonians, LLM-generated parameters have larger energy errors than Adam, and feedback adds little.",
+   "page": "PAGE 1",
+   "quote": "For general Hamiltonians, LLM-generated parameters exhibit larger energy errors than conventional Adam optimization, while additional feedback generally provides limited improvement."
+  },
+  {
+   "claim": "Direct LLM predictions of minimum energy often fall below the true ground-state energy, violating the spectral lower bound.",
+   "page": "PAGE 9",
+   "quote": "frequently produces estimates below the true ground-state energy, violating the spectral lower bound."
+  },
+  {
+   "claim": "Rounding the proposed angles to Clifford values made all 90 first proposals fail, so continuous angles matter.",
+   "page": "PAGE 19",
+   "quote": "rounding the proposed angles to Clifford-compatible values causes all 90 first proposals to exceed the success threshold"
+  },
+  {
+   "claim": "In blind interpretation the model predicted the correct most-likely bitstring in 29 of 30 cases, even when it failed to name the algorithm.",
+   "page": "PAGE 9",
+   "quote": "Across these 30 interpretations, the model predicts the correct most-likely measurement outcome in 29 cases (96.7%)."
+  },
+  {
+   "claim": "The contribution of energy feedback cannot be separated from simply generating more proposals.",
+   "page": "PAGE 6",
+   "quote": "Since additional proposals are generated alongside the incorporation of previous energy evaluations, the specific contribution of feedback remains undetermined."
+  }
+ ],
+ "limitations_stated": [
+  {
+   "text": "Results do not establish a general advantage or quantum-mechanical reasoning; performance may reflect pretraining patterns and structured problems may have specialized classical solutions.",
+   "page": "PAGE 11",
+   "quote": "the results do not establish a general computational advantage or demonstrate that the model performs general quantum-mechanical reasoning. Its performance may depend on patterns encountered during pretraining"
+  },
+  {
+   "text": "Evaluation counts exclude the cost of LLM inference.",
+   "page": "PAGE 7",
+   "quote": "The comparison concerns Hamiltonian expectation-value evaluations rather than the total computational cost of LLM inference."
+  },
+  {
+   "text": "Parent Hamiltonians carry planted structure and are not representative of arbitrary physical Hamiltonians.",
+   "page": "PAGE 22",
+   "quote": "They should not be interpreted as representative of arbitrary physical Hamiltonians."
+  }
+ ],
+ "notes_for_review": "Extends the WSP idea to variational quantum circuit parameters with GPT-6 Astra as a frozen parameter generator, closer to LLM-as-optimizer (OPRO) than to weight editing of neural networks. The positive results are on planted parent Hamiltonians built mostly from Clifford angles and on small molecules, while general random Hamiltonians show Adam winning; comparisons count only energy evaluations, not LLM cost. No random-proposal or structure-aware initialization baseline is reported for the parent family, and runs are few, so the strength of the positive result is moderate and problem-specific."
+}

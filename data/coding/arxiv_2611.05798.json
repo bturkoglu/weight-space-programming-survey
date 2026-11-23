@@ -1,0 +1,28 @@
+{
+ "key": "arxiv_2611.05798",
+ "peripheral": true,
+ "operation": ["read"],
+ "protocol": "open_loop",
+ "mechanism": ["none"],
+ "scope": "external",
+ "editor_tier": ["frontier_proprietary", "open_weight"],
+ "open_weight_editor_failed": "yes",
+ "target_params_max": null,
+ "edited_fraction": "none (read-only)",
+ "cost_reported": "no",
+ "wsp_evidence": {
+  "random_or_null_control": "yes",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "no",
+  "full_test_set": "unclear",
+  "held_out_eval": "yes",
+  "multiple_runs": "yes",
+  "code_or_data_released": "no"
+ },
+ "prereg": "partial",
+ "llm_in_authoring_or_grading": "yes",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["fragile_to_perturbation_or_retraining", "run_to_run_variance", "layout_or_prior_fallback"],
+ "evidence_notes": "Main contribution audits learned metanetwork readers of neural fields; the LLM-reader experiment (GPT-6 family reading six-digit weights of width-32 ReLU shape fields, 60 origins) is a side study (PAGE 5, PAGE 8, App. H PAGE 20-21), so peripheral; read-only, no weights written. Only the prospective Astra/Sol collection fixed prompts, inclusion rule and Holm family before collection (PAGE 5, PAGE 21), with no registry or timestamp, hence partial. Redacted-weight and explicit-cue controls act as null controls; small next-token models (Qwen2.5-0.5B same letter on all inputs, Qwen3.5-27B 7/60) fail where Astra/Sol reach ~87% (PAGE 8, 21). LLM usage statement: OpenAI Codex assisted design, implementation, execution, analysis and manuscript (PAGE 9). Target size not stated (width-32 one-hidden-layer 2-D ReLU field, ~129 params by architecture); artifact referenced but no link."
+}

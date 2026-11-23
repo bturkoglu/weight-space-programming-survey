@@ -1,0 +1,45 @@
+{
+ "key": "arxiv_2611.11005",
+ "title": "GradReason: LLMs as Meta-Learners that Replace Training Epochs with Training-Data-Free Weight Updates",
+ "authors": ["Ali Mohammadi Ruzbahani", "Abbas Yazdinejad", "Hadis Karimipour"],
+ "date": "2026-11-07",
+ "doc_type": "method_or_tool",
+ "wsp_role": ["read", "write_from_scratch", "feedback_loop"],
+ "is_wsp": true,
+ "editor_models": ["Claude Opus 5.5", "Claude Sonnet 5"],
+ "target_networks": [{"name": "ResNet-18", "params": "11.2M", "kind": "CNN"}, {"name": "MobileNetV2", "params": "2.2-2.4M", "kind": "CNN"}, {"name": "ViT-Tiny", "params": "5.4M", "kind": "other"}],
+ "domain": "vision (training acceleration)",
+ "tasks_benchmarks": ["CIFAR-10", "CIFAR-100"],
+ "headline_result": {
+  "text": "Over 12 runs, Claude Opus 5.5 used 32.8% fewer data epochs than the 80-epoch recipe at 0.31 points lower test accuracy, but a fixed snapshot-averaging rule without an LLM saved 25.0% and could not be told apart from Opus.",
+  "page": "PAGE 1",
+  "quote": "Claude Opus 5.5 used 32.8% fewer data epochs than the"
+ },
+ "evidence_quality": {
+  "random_or_null_control": "no",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "no",
+  "n_runs_or_seeds": "2 seeds per setting (12 runs per method, 120 runs total)",
+  "full_test_set": "yes",
+  "held_out_eval": "yes",
+  "preregistered": "no",
+  "code_or_data_released": "no",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "no",
+ "relation_to_qwen_math_edit": "none",
+ "key_claims": [
+  {"claim": "Unprompted, Opus averaged recent weight snapshots in every run, and this choice produced the savings.", "page": "PAGE 1", "quote": "Opus averaged recent weight snapshots in every run. This"},
+  {"claim": "A fixed rule with candidates from prior work (extrapolation) saved 5.4% of data epochs; the same rule with averaging added saved 25.0%.", "page": "PAGE 1", "quote": "of the data epochs, and the same rule with averaging added"},
+  {"claim": "Against the recipe's own data-accuracy frontier, no method's gain is distinguishable from zero in 12 runs.", "page": "PAGE 7", "quote": "None of the three is distinguishable from the"},
+  {"claim": "Most of Sonnet's accepted virtual epochs were near-identity updates that barely moved the weights.", "page": "PAGE 9", "quote": "net’s accepted virtual epochs, 79% moved the weights by less"},
+  {"claim": "At this scale the LLM's latency exceeded the GPU time it saved; an Opus run took 39% longer wall-clock than the recipe.", "page": "PAGE 11", "quote": "so at this scale the LLM costs more"}
+ ],
+ "limitations_stated": [
+  {"text": "Snapshot averaging is a known technique (SWA, LAWA) published before the models' training cut-offs; the LLM selected rather than invented it.", "page": "PAGE 12", "quote": "This finding has a limit. Snapshot averaging was not new."},
+  {"text": "The evaluation is small: three small architectures, two 32x32 datasets, two seeds per setting and two LLMs from one provider.", "page": "PAGE 12", "quote": "The evaluation is small. It covers three small architectures,"},
+  {"text": "The acceptance rule guards each step but not the final result; near-identity updates pass it.", "page": "PAGE 12", "quote": "The acceptance rule guards every step but not the result."}
+ ],
+ "notes_for_review": "An LLM agent reads weight snapshots and epoch gradients every ten epochs and writes programs that replace some training epochs with gradient-free weight updates. The careful design includes budget-matched recipe baselines, a frontier comparison and two fixed-rule controls; the result is that the LLM rediscovered snapshot averaging (SWA/LAWA-like), and a fixed rule encoding it matches Opus within the resolution of 12 runs. This is a clear case where the LLM's contribution reduces to selecting a known mechanical update; wall-clock cost exceeded savings, and code/transcripts are promised only upon publication."
+}

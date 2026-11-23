@@ -1,0 +1,51 @@
+{
+ "key": "arxiv_2611.21885",
+ "title": "Language Models Can Rewrite Their Own Weights",
+ "authors": ["Jiajun Fan", "Neil He", "Changyi Yang", "Andy Mao", "Xi Zhu", "Chaoran Cheng", "Kaiqu Liang", "Shuaike Shen", "Zetian Li", "Ruihan Guo", "Ge Liu"],
+ "date": "2026-11-16",
+ "doc_type": "original_study",
+ "wsp_role": ["self_rewrite", "repair_or_edit", "read", "feedback_loop"],
+ "is_wsp": true,
+ "editor_models": ["Qwen3.5-27B (self)", "Qwen3.5-9B (self)", "Qwen3.5-4B (self)", "Qwen3.5-2B (self)"],
+ "target_networks": [
+  {"name": "Qwen3.5-27B", "params": "27B", "kind": "LLM"},
+  {"name": "Qwen3.5-9B", "params": "9B", "kind": "LLM"},
+  {"name": "Qwen3.5-4B", "params": "4B", "kind": "LLM"},
+  {"name": "Qwen3.5-2B", "params": "2B", "kind": "LLM"}
+ ],
+ "domain": "math reasoning (reasoning-trace termination), fault repair, multimodal transfer",
+ "tasks_benchmarks": ["DeepScaleR practice/held-out split (490 x 8 answers, 200 x 1)", "MathVista", "MathVerse", "MMStar", "HallusionBench", "POPE", "ScreenSpot-v2"],
+ "headline_result": {
+  "text": "In the best of eight sessions (session 8), Qwen3.5-27B's self-written edit (time-step bias +0.5 in all 48 linear-attention layers) raised held-out accuracy from 57.2% to 63.8% (+6.6 points) on 490 problems; three of eight sessions submitted an edit and two were significant; the first-protocol edit gave +1.1 points.",
+  "page": "PAGE 62",
+  "quote": "On the 490 held-out problems, the edit of session 8 solves 63.8% against 57.2%, with 439 answers right only with the edit against 182 only without it"
+ },
+ "evidence_quality": {
+  "random_or_null_control": "no",
+  "non_llm_baseline": "no",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "no",
+  "n_runs_or_seeds": "8 sessions (second protocol, 27B); single session per size in first protocol; held-out 490 problems x 8 answers",
+  "full_test_set": "no",
+  "held_out_eval": "yes",
+  "preregistered": "yes",
+  "code_or_data_released": "no",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "no",
+ "relation_to_qwen_math_edit": "extends",
+ "key_claims": [
+  {"claim": "Both significant self-edits target answers that run out of tokens; the larger gain comes from one uniform bias change to every linear-attention layer.", "page": "PAGE 15", "quote": "The larger gain comes from one uniform change: it raises the time-step bias of every linear-attention layer by 0.5, and with it fewer of its answers run out of tokens."},
+  {"claim": "Under the first protocol, the 27B self-edit (removing 5% of a measured direction at layer 8) gave a small preregistered held-out gain, 57.2% to 58.3% (p = 0.038).", "page": "PAGE 35", "quote": "The self-edited model solves 58.3% of the answers and the base model 57.2%, p = 0.038 (Tab. 8)."},
+  {"claim": "Given a copy with eight noise-corrupted rows, the 27B model located the damaged matrix by a max/median statistic and clipped it, restoring held-out accuracy from 0.0% to 33.0% (base 58.5%).", "page": "PAGE 44", "quote": "On the 200 held-out problems, the damaged copy solves 0.0%, the repaired copy 33.0% and the base model 58.5%: the repair recovers about 56% of the base model’s accuracy"},
+  {"claim": "The text-found repair carried over to six image benchmarks (7.3% to 70.2%, base 84.3%).", "page": "PAGE 52", "quote": "On every benchmark the repaired copy solves far more than the damaged copy: 70.2% against 7.3% over the 600 problems, 83% of the base model’s 84.3%"},
+  {"claim": "Smaller models fail: 2B makes no edit, 4B and 9B break themselves (9B drops from 47.5% to 0.0% on held-out problems).", "page": "PAGE 18", "quote": "The 4B and 9B models edit themselves and break themselves"},
+  {"claim": "In five of eight second-protocol sessions the model withdrew, so the reported gains come from three submitted edits.", "page": "PAGE 62", "quote": "In five the model withdraws: three times it ends with no edit, after its own tests rejected every edit it tried (sessions 3, 4 and 7)"}
+ ],
+ "limitations_stated": [
+  {"text": "Generation is not exactly reproducible; reruns with the same weights and seeds diverge.", "page": "PAGE 36", "quote": "Generation is not exactly reproducible: run twice with the same weights and the same seeds, two answers begin alike and then part ways"},
+  {"text": "Python sessions were not sandboxed from the file system in the first protocol; the authors audited code runs post hoc.", "page": "PAGE 46", "quote": "nothing blocks it from reading files, environment variables or the framework’s own modules."},
+  {"text": "Three further sessions were stopped before their end and are not analysed.", "page": "PAGE 35", "quote": "Three further sessions of a model on its own weights were stopped before their end and are not analysed."}
+ ],
+ "notes_for_review": "First self-rewriting study: Qwen3.5 models edit their own weights via code with gradients blocked, with paired tests, a prespecified 490 x 8 held-out evaluation, and a deliberately damaged copy as a known-cause test. The gains target the same failure as MIT's Qwen edit (answers that run out of tokens/loop at the budget), and the biggest edit is a uniform bias shift; no random-direction control, no decoding baseline (e.g. presence penalty or thinking budget) and no fine-tuning comparison are reported, so whether an LLM is needed is untested. The headline +6.6 is the best of eight sessions (the first-protocol edit gave +1.1). The repair result mainly shows that an outlier-clipping rule fixes a planted 200-sigma corruption, which a simple norm check would also flag. Promotional framing ('Era of Self-Rewriting') exceeds the evidence."
+}

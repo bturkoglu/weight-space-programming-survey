@@ -1,0 +1,28 @@
+{
+ "key": "arxiv_2611.25476",
+ "peripheral": false,
+ "operation": ["read", "edit"],
+ "protocol": "closed_loop",
+ "mechanism": ["code_or_tensor_tool"],
+ "scope": "external",
+ "editor_tier": ["frontier_proprietary"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": 11700000,
+ "edited_fraction": "3,846 to 2,152,928 modified weights per program (257 for SCAN, 21,482 for BabyAI)",
+ "cost_reported": "sessions take 30-130 minutes; CIFAR-10, SCAN and BabyAI sessions cost US$5-13 at API prices (US$7.12-13.08 per ViT-Lite session); rerunning a kept program takes a few minutes with no LLM call",
+ "wsp_evidence": {
+  "random_or_null_control": "yes",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "yes",
+  "inference_only_fix_tested": "no",
+  "full_test_set": "yes",
+  "held_out_eval": "yes",
+  "multiple_runs": "yes",
+  "code_or_data_released": "yes"
+ },
+ "prereg": "none",
+ "llm_in_authoring_or_grading": "no",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["simple_baseline_matches"],
+ "evidence_notes": "WSP is the method: Claude Opus 5.5 works in a Python kernel and writes programs that compute weight edits from weights, activations and a few labelled checks (p.3, appendix), so code_or_tensor_tool and closed_loop. Largest target is ResNet-18 at 11.7M weights (p.3). Comparisons include eight fine-tuning methods, fixed references and a random-units control (Tab. 10). A post hoc non-LLM gated search reaches +24.12 against the program's +31.75 on ViT-Lite noise (p.~24). Success criteria and a counting rule were set by the authors, the rule after two sessions had been read (p.14), so prereg none. Code at github.com/Gen-Verse/WeightCode (p.1)."
+}

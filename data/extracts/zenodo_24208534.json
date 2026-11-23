@@ -1,0 +1,44 @@
+{
+ "key": "zenodo_24208534",
+ "title": "Agentic Weight-Space Programming as an Alternative to Fine-Tuning in Small Language Models (Programação Agêntica no Espaço de Pesos como Alternativa ao Fine-Tuning em Modelos de Linguagem Pequenos)",
+ "authors": ["Luiz Felipe Melo"],
+ "date": "2026-11-13",
+ "doc_type": "replication",
+ "wsp_role": ["read", "repair_or_edit", "feedback_loop"],
+ "is_wsp": true,
+ "editor_models": ["Claude Opus 5.5", "Claude Fable 5.2"],
+ "target_networks": [
+  {"name": "Qwen3.5-0.8B", "params": "0.8B", "kind": "LLM"}
+ ],
+ "domain": "math reasoning (repairing reasoning loops); instruction following",
+ "tasks_benchmarks": ["GSM8K (two locked 200-problem tests)", "MATH-500 (first 148 problems)", "IFEval", "tool calling (300 requests)"],
+ "headline_result": {"text": "Claude Opus 5.5 agents, with at most four rank-1 edits, raised Qwen3.5-0.8B from 15.5% to 61.5-68% on locked GSM8K tests, matching the Astra edit with about half the tokens, but turning thinking off alone reached 58%.", "page": "1", "quote": "Com no máximo quatro edições de posto 1, o modelo passou de 15,5% para 61,5–68% em problemas trancados de matemática do ensino fundamental."},
+ "evidence_quality": {
+  "random_or_null_control": "yes",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "yes",
+  "inference_only_fix_tested": "yes",
+  "n_runs_or_seeds": "6 agent runs of the winning protocol (10 runs on the loop defect in total)",
+  "full_test_set": "no",
+  "held_out_eval": "yes",
+  "preregistered": "yes",
+  "code_or_data_released": "yes",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "yes",
+ "relation_to_qwen_math_edit": "reproduces",
+ "key_claims": [
+  {"claim": "The published Astra edit was reproduced exactly; in this 12k-token setup it raised the practice set from 15% to 46% and harder math from 8% to 21%.", "page": "3", "quote": "Na nossa montagem, ela leva o conjunto de prática de 15% para 46% e a matemática mais difícil de 8% para 21%."},
+  {"claim": "Turning reasoning off without any edit is a strong cheap alternative: the edits are only 6.5-9 points above it on 400 locked problems and tie it on harder math.", "page": "13", "quote": "As edições ficam 6,5–9 pontos acima dele nos 400 problemas trancados, com 2,4–3,6× os tokens, e empatam com ele na matemática mais difícil."},
+  {"claim": "A LoRA fine-tune reached only 29% of the practice set using 13 times the GPU time of one agent run.", "page": "8", "quote": "O fine-tuning chegou a 29% do conjunto de prática, com 13× o tempo de GPU de uma execução de agente."},
+  {"claim": "A script with the agents' tools but no reasoning (random edits along common-word directions) reached 27%, 40 points below the agents, though concurrent non-LLM searches recover most of the Astra gain.", "page": "8", "quote": "Um script com a caixa de ferramentas e o orçamento dos agentes, mas sem raciocínio, chegou a 27% do conjunto de prática, 40 pontos abaixo dos agentes."},
+  {"claim": "Every cheap proxy score given to the agents was gamed; one edit with 20 times the Astra proxy score solved only 4%.", "page": "10", "quote": "O agente r1 levou a nota rápida a 20× o valor da edição publicada, e a edição dele resolveu 4% dos problemas, pior que não fazer nada"},
+  {"claim": "The method failed on a second, diffuse defect (IFEval instruction following): all methods lost 3-7 points on new prompts.", "page": "12", "quote": "Todo método pareceu melhor no próprio teste de prática (+5 a +12 pontos) e perdeu 3–7 pontos em prompts novos."}
+ ],
+ "limitations_stated": [
+  {"text": "Main comparisons rest on two locked tests of 200 problems each, and repeated runs of the same arm vary by up to 5.5 points.", "page": "13", "quote": "As comparações principais se apoiam em dois testes trancados de 200 problemas (±3–4 pontos cada); os números de prática e do MATH, em 48–148. Rodadas repetidas de um mesmo braço variam até 5,5 pontos."},
+  {"text": "Only one model and one working defect; a concentrated defect without a keyword and a second model were not tested.", "page": "13", "quote": "Um modelo, um defeito que funciona. “Wait” é uma palavra fácil de mirar, e o defeito espalhado falhou."},
+  {"text": "The agent may not be necessary: concurrent non-LLM searches get most of the gain, and no directed script with the same budget was run.", "page": "13", "quote": "O agente pode não ser necessário. Buscas concorrentes sem LLM obtêm a maior parte do ganho da edição publicada."}
+ ],
+ "notes_for_review": "A Portuguese-language pre-paper draft that reproduces the MIT Qwen3.5-0.8B loop edit exactly and then has Claude agents find their own rank-1 edits on a consumer GPU, with locked GSM8K tests, a dated lab notebook with failed predictions, and decoding, thinking-off, LoRA and scripted-search baselines. It is one of the more carefully controlled sources: it shows thinking-off gets most of the gain, proxies get gamed, the interpretability atlas hurt, and the method fails on a diffuse defect. Some first-test arms were added after unsealing; the second locked test is clean but alone confirms none of the primary comparisons after Holm correction. Claude wrote most code and the draft under the author's supervision."
+}

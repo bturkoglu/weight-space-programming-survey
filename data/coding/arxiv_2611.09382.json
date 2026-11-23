@@ -1,0 +1,28 @@
+{
+ "key": "arxiv_2611.09382",
+ "peripheral": false,
+ "operation": ["read", "edit"],
+ "protocol": "closed_loop",
+ "mechanism": ["code_or_tensor_tool"],
+ "scope": "external",
+ "editor_tier": ["frontier_proprietary"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": 9000000000,
+ "edited_fraction": "1,023 parameters for the primary MATH edit on 0.8B (~0.0001%); varies by trajectory, six trajectories kept original weights",
+ "cost_reported": "no",
+ "wsp_evidence": {
+  "random_or_null_control": "yes",
+  "non_llm_baseline": "no",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "no",
+  "full_test_set": "yes",
+  "held_out_eval": "yes",
+  "multiple_runs": "yes",
+  "code_or_data_released": "yes"
+ },
+ "prereg": "none",
+ "llm_in_authoring_or_grading": "no",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["run_to_run_variance", "proxy_overfitting", "editor_refusal_or_unfinished"],
+ "evidence_notes": "Replication/extension of MIT WSP: GPT-6 Astra edits Qwen3.5-0.8B/9B via a persistent Python kernel plus a 50-call forward tool (PAGE 3, App. PAGE 10, 19), so code_or_tensor_tool, closed loop. Three MATH reruns gave +29.45/+5.00/+27.30 (PAGE 6); 9B Math candidate lost 0.35 on held-out despite +29.69 dev (PAGE 4); six of 16 trajectories kept original weights. Random control is a single equal-norm orthogonal direction on one 48-question batch (PAGE 17). Code on GitHub (PAGE 1); no preregistration; cost described only qualitatively (PAGE 8)."
+}

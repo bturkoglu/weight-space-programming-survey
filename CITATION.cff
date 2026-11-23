@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use this corpus, the WSP-12 checklist or the figures, please cite the survey."
+title: "Weight-Space Programming with Large Language Models: A Survey of Concepts, Evidence Audit, Applications, and Future Directions"
+authors:
+  - family-names: "Türkoğlu"
+    given-names: "Bahaeddin"
+    orcid: "https://orcid.org/0000-0003-0255-8422"
+    affiliation: "Ankara University"
+date-released: 2026-11-23
+version: "1.0"
+license: MIT
+keywords: [weight-space programming, large language models, survey, model editing, neural network weights, WSP-12]

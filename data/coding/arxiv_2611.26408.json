@@ -1,0 +1,28 @@
+{
+ "key": "arxiv_2611.26408",
+ "peripheral": false,
+ "operation": ["read", "edit"],
+ "protocol": "closed_loop",
+ "mechanism": ["code_or_tensor_tool"],
+ "scope": "external",
+ "editor_tier": ["frontier_proprietary", "open_weight"],
+ "open_weight_editor_failed": "no",
+ "target_params_max": null,
+ "edited_fraction": "median 252 (Astra) and 27 (Opus) changed weights per edit process, almost always in the final classification layer",
+ "cost_reported": "median edit process about 3 min for Astra and Opus; open-weight editors used about 750 million prompt tokens; no comparison with baseline cost",
+ "wsp_evidence": {
+  "random_or_null_control": "no",
+  "non_llm_baseline": "unclear",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "no",
+  "full_test_set": "yes",
+  "held_out_eval": "yes",
+  "multiple_runs": "yes",
+  "code_or_data_released": "no"
+ },
+ "prereg": "none",
+ "llm_in_authoring_or_grading": "no",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["known_rule_rediscovered"],
+ "evidence_notes": "LLM editors working through the WeightLab tool server (read_weights, probe_*, set_weights, add_to_weights...; p.3, Table p.12) are the core of the study, with ERT as a training method to support them, so not peripheral; mechanism code_or_tensor_tool with probe feedback (closed loop). Open-weight results are mixed: DeepSeek 'matches the main editors on many of the completed cells' while GLM and Gemma are much weaker (p.6), so not coded as a clear failure; total network sizes are not given (largest head 61,470 parameters, p.3). Scripted closed-form editors were used only for tuning and baseline screens on ResNet-18, not on the agents' requests (p.8, Table 5), so non_llm_baseline is unclear; no preregistration, and release is promised, not done (p.1, Sec. H)."
+}

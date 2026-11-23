@@ -1,0 +1,42 @@
+{
+ "key": "arxiv_2611.12066",
+ "title": "Weight-Space Programming for Medical Imaging: Do We Still Need Training Data?",
+ "authors": ["Maximilian Lindholz", "Richard Ruppel", "Annette Milnik", "Sebastian Halskov", "Semil Eminovic", "Charlie A. Hamm", "Robin Schmidt", "Anika Knupfer", "Jana Hutter", "Johanna P. Müller", "Carolina Dominguez Aleixo", "Jawed Nawabi", "Jens Vogel-Claussen", "Tobias Penzkofer"],
+ "date": "2026-11-09",
+ "doc_type": "original_study",
+ "wsp_role": ["write_from_scratch"],
+ "is_wsp": true,
+ "editor_models": ["Claude Opus 5.5", "GPT-6 Astra"],
+ "target_networks": [
+  {"name": "ProgNet (LeNet-style one-stage CNN, 10 filters)", "params": "591-6,974", "kind": "CNN"}
+ ],
+ "domain": "medical imaging (chest X-ray, breast ultrasound, abdominal CT, pelvic MRI)",
+ "tasks_benchmarks": ["ChestMNIST", "PneumoniaMNIST", "BreastMNIST", "OrganAMNIST", "OrganCMNIST", "OrganSMNIST", "SynthUterus"],
+ "headline_result": {"text": "Networks written in one tool-free reply reached mean test AUC 0.719 (Opus) and 0.711 (Astra) on six MedMNIST tasks, beating zero-shot MedSigLIP (0.588) but below the same network trained with Adam on 256 labels (0.828).", "page": "6", "quote": "Mean (6 MedMNIST tasks)                       0.719          0.711       0.588      0.828     0.892      0.929"},
+ "evidence_quality": {
+  "random_or_null_control": "no",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "yes",
+  "inference_only_fix_tested": "no",
+  "n_runs_or_seeds": "3 calls per LLM per task",
+  "full_test_set": "yes",
+  "held_out_eval": "yes",
+  "preregistered": "no",
+  "code_or_data_released": "yes",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "partial",
+ "relation_to_qwen_math_edit": "none",
+ "key_claims": [
+  {"claim": "Both LLMs wrote all weights in a single reply with no tools, no feedback and no image.", "page": "12", "quote": "You have no tools: no code execution, no calculator, nothing to run, and you will not see any image from this"},
+  {"claim": "The same network trained with Adam on 256 labels beats the written networks on every MedMNIST task.", "page": "5", "quote": "with Adam on 256 labels is better on every MedMNIST task"},
+  {"claim": "On SynthUterus, a task the LLMs are unlikely to have seen, Opus reached AUC 0.764 while Astra's three networks were far below chance (0.136).", "page": "6", "quote": "SynthUterus◦   Pelvic MRI       2          0.764±0.073    0.136±0.053     0.818     0.996‡"},
+  {"claim": "The LLMs set output biases from MedMNIST class shares that no prompt states, showing knowledge of the specific datasets.", "page": "6", "quote": "The true share is 73.1%."},
+  {"claim": "Written networks are sparse and use few distinct rounded values, unlike trained ones.", "page": "5", "quote": "Written weights are mostly exactly zero"}
+ ],
+ "limitations_stated": [
+  {"text": "Scale is small by design: 28x28 images and networks of at most 7k weights so every weight fits in one reply.", "page": "7", "quote": "The scale is small by design:"},
+  {"text": "Only two LLMs and one prompt were tested; MedMNIST contamination cannot be excluded.", "page": "7", "quote": "two LLMs with one prompt: other LLMs or prompts may"}
+ ],
+ "notes_for_review": "A clean, restrictive test of write-from-scratch WSP: single tool-free reply, small CNN, seven medical tasks, three calls per model, with both a label-free foundation-model baseline and gradient training on the same architecture. The result is mixed: above chance and better than a handicapped zero-shot MedSigLIP on 5 of 6 tasks, but a few hundred labels win everywhere, and the one low-contamination task shows an LLM confidently writing an inverted classifier. Evidence that the LLMs know MedMNIST class priors weakens the 'from medical knowledge alone' framing; no random-weight control is reported."
+}

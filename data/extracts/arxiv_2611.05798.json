@@ -1,0 +1,104 @@
+{
+  "key": "arxiv_2611.05798",
+  "title": "Function-Preserving Audits of Visual Weight Readers",
+  "authors": [
+    "Sungguk Cha",
+    "Mintae Kim",
+    "Youngsub Han",
+    "Byoung-Ki Jeon",
+    "Sangyeob Lee"
+  ],
+  "date": "2026-11-13",
+  "doc_type": "audit_or_critique",
+  "wsp_role": [
+    "read"
+  ],
+  "is_wsp": true,
+  "editor_models": [
+    "GPT-6 Astra",
+    "GPT-6.1 Sol",
+    "GPT-6.1 Terra",
+    "GPT-6 Luna",
+    "Qwen2.5-0.5B/1.5B-Instruct",
+    "SmolLM2-360M-Instruct",
+    "Qwen3.5-0.8B",
+    "Qwen3.5-27B"
+  ],
+  "target_networks": [
+    {
+      "name": "Shallow ReLU neural fields (six shape classes, MNIST digits)",
+      "params": "unknown (width 32 and 64, one hidden layer)",
+      "kind": "MLP"
+    },
+    {
+      "name": "SIREN neural fields of CIFAR10 images (2-64-64-3; released 2-32-32-3)",
+      "params": "unknown",
+      "kind": "MLP"
+    }
+  ],
+  "domain": "vision (neural-field weight readers)",
+  "tasks_benchmarks": [
+    "CIFAR10 neural fields",
+    "MNIST neural fields",
+    "geometric shape fields"
+  ],
+  "headline_result": {
+    "text": "Function-preserving transformations that leave a neural field unchanged shift weight-reader predictions: on 10,000 official CIFAR10 origins, one-period hidden-bias shifts change 7.3% of HiddenProbe predictions and three-period shifts change 22.0% and cut accuracy from 57.8% to 54.4%, while output-only ProbeGen is unchanged.",
+    "page": "PAGE 1",
+    "quote": "one-period hidden-bias shifts change 7.3% of a re- leased HiddenProbe configuration’s predictions while barely"
+  },
+  "evidence_quality": {
+    "random_or_null_control": "yes",
+    "non_llm_baseline": "yes",
+    "finetune_comparison": "no",
+    "inference_only_fix_tested": "no",
+    "n_runs_or_seeds": "3 reader seeds per method (official audit); 5-6 seeds in feature-location studies; 3 fresh responses per side per origin for LLM readers",
+    "full_test_set": "yes",
+    "held_out_eval": "yes",
+    "preregistered": "no",
+    "code_or_data_released": "no",
+    "peer_reviewed": "no"
+  },
+  "replicates_mit": "no",
+  "relation_to_qwen_math_edit": "none",
+  "key_claims": [
+    {
+      "claim": "High accuracy on original weights can coexist with strong sensitivity to function-preserving reparameterizations; a shape statistics reader falls from 96.7% to 24.2% under joint permutation and rescaling.",
+      "page": "PAGE 5",
+      "quote": "Shape Stats ridge falls from 96.7% to 24.2% under joint permutation and rescaling: 87 of 120 correct predictions become incorrect and none improve."
+    },
+    {
+      "claim": "Matched controls localise the failure: phase wrapping removes phase dependence and sign-invariant Gram features also remove sign dependence.",
+      "page": "PAGE 6",
+      "quote": "Phase wrapping removes phase sensitivity; Gram features also remove sign sensitivity."
+    },
+    {
+      "claim": "Invariance is not enough: complete canonical hidden features reach 38.7% on MNIST while explicitly composing them into field outputs reaches 81.5%.",
+      "page": "PAGE 7",
+      "quote": "information is therefore present, but the tested learner does"
+    },
+    {
+      "claim": "For LLM readers of numerical weights (Astra, Sol), accuracy drops 7.2 points under joint transformation (88.3% to 81.1%, 86.7% to 79.4%), but exact response-law tests give Holm-adjusted p = 0.162 because repeats on the same input already disagree on 13.3-16.7% of pairs and few origins are informative.",
+      "page": "PAGE 8",
+      "quote": "Nonrejection does not establish invariance: only 9 and 13"
+    },
+    {
+      "claim": "A small next-token reader gives the same answer whether or not weights are present, so stable output is not evidence of weight reading.",
+      "page": "PAGE 8",
+      "quote": "Qwen2.5-0.5B gives the same letter on all 60 original and redacted inputs. A Qwen3.5-27B control reads 7/60 weight inputs but 60/60 explicit cues."
+    }
+  ],
+  "limitations_stated": [
+    {
+      "text": "Scope is limited to shallow ReLU and two-hidden-layer SIREN fields, with one released configuration per method.",
+      "page": "PAGE 8",
+      "quote": "The scope remains shallow ReLU and two-hidden-layer"
+    },
+    {
+      "text": "Generated-answer tests assume independent stationary calls and have limited power at three repeats per side.",
+      "page": "PAGE 8",
+      "quote": "dent stationary calls and have limited power at three repeats"
+    }
+  ],
+  "notes_for_review": "Not a weight-editing study: it audits readers of neural-field weights (learned metanetworks and, in a side study, GPT-6 family LLMs reading six-digit weights of tiny ReLU shape fields) with function-preserving transformations. Its relevance to WSP is methodological: an LLM 'reading' weights should be tested with symmetry-equivalent inputs and with repeats on both inputs, since repeat disagreement alone is 13-17% for Astra and Sol. The LLM study is small (60 origins, 720 prospective responses) and the visual tasks are toy-scale; Codex assisted much of the work, as the authors state."
+}

@@ -1,0 +1,28 @@
+{
+ "key": "arxiv_2611.13236",
+ "peripheral": false,
+ "operation": ["edit"],
+ "protocol": "closed_loop",
+ "mechanism": ["none"],
+ "scope": "external",
+ "editor_tier": ["none"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": 135000000,
+ "edited_fraction": "unclear",
+ "cost_reported": "runtime only: end-to-end run 44.38 s, two-cycle rerun 48.37 s, resume 15.56 s; no baseline comparison",
+ "wsp_evidence": {
+  "random_or_null_control": "no",
+  "non_llm_baseline": "no",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "no",
+  "full_test_set": "no",
+  "held_out_eval": "yes",
+  "multiple_runs": "no",
+  "code_or_data_released": "no"
+ },
+ "prereg": "none",
+ "llm_in_authoring_or_grading": "no",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["none_reported"],
+ "evidence_notes": "Group-B method: the whole paper is a WSP-inspired controller, but candidates come from a deterministic Python procedure, not an LLM (p.2), so mechanism and editor are none. One SmolLM-135M run on a nine-question fixture; no candidate was admitted and held-out accuracy stayed 0/3 (p.8). Fresh-process repeats replay the same deterministic run and are not independent seeds (p.8). MIT licence stated but no repository link (p.9)."
+}

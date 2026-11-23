@@ -1,0 +1,24 @@
+{
+ "key": "zenodo_24416417",
+ "peripheral": false,
+ "operation": ["read", "edit"],
+ "protocol": "closed_loop",
+ "mechanism": ["code_or_tensor_tool"],
+ "scope": "external",
+ "editor_tier": ["frontier_proprietary"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": 800000000,
+ "edited_fraction": "12 whole attention output matrices (layers 12-23) via a rank-one Householder reflection along one direction",
+ "cost_reported": "yes: editor API cost $8.43 for 92 calls (cap $60); held-out forward passes 119-121 min each on a local T4",
+ "wsp_evidence": {
+  "random_or_null_control": "yes", "non_llm_baseline": "no", "finetune_comparison": "no",
+  "inference_only_fix_tested": "no", "full_test_set": "no", "held_out_eval": "yes",
+  "multiple_runs": "no",
+  "code_or_data_released": "yes"
+ },
+ "prereg": "none",
+ "llm_in_authoring_or_grading": "no",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["none_reported"],
+ "evidence_notes": "GPT-6 Astra writes Python executed in an offline CPU kernel holding the weights and requests up to 25 forward passes on a T4 (p1-3, p44), so closed-loop and tool-mediated. A random-direction reflection gave +3.1 +/- 5.5 points (p35, p45); the edit was frozen after pass 17 on 6 November before held-out cohorts (p35, p46), but no registry, commit or hash is cited, so prereg none. Held-out cohorts come from training splits, not MATH-500/GSM8K test; one run; code and weights released (zip, Hugging Face) (p46); no LLM-authoring statement found."
+}

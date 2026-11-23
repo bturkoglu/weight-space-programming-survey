@@ -1,0 +1,28 @@
+{
+ "key": "zenodo_23976684",
+ "peripheral": false,
+ "operation": ["read", "edit"],
+ "protocol": "closed_loop",
+ "mechanism": ["code_or_tensor_tool"],
+ "scope": "external",
+ "editor_tier": ["frontier_proprietary"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": 782426112,
+ "edited_fraction": "0.00026% to 0.92% of weights per arm (most arms 0.013-0.092%)",
+ "cost_reported": "no",
+ "wsp_evidence": {
+  "random_or_null_control": "yes",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "yes",
+  "full_test_set": "yes",
+  "held_out_eval": "yes",
+  "multiple_runs": "yes",
+  "code_or_data_released": "yes"
+ },
+ "prereg": "none",
+ "llm_in_authoring_or_grading": "yes",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["simple_baseline_matches"],
+ "evidence_notes": "A replication of the WSP protocol on Qwen3-ASR-0.6B with nine Claude Opus agent arms is the whole report (p.1-3). Agents derive analytic edits (rank-1 projections, head gains) from weight and activation statistics in code under a logged forward-pass budget (p.3), so code_or_tensor_tool and closed loop; the test set is single-use and harness-locked, but no preregistration is described (p.3). Sonnet subagents built the harness and statistics and drafted the report, and an Opus orchestrator reviewed it (AI assistance, p.11); restoring the missing encoder mask with no weight change matched the best edit (p.1, p.8); edits, controls and logs are on Hugging Face (p.11)."
+}

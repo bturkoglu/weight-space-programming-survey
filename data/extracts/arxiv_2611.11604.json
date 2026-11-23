@@ -1,0 +1,48 @@
+{
+ "key": "arxiv_2611.11604",
+ "title": "Weight-Space Programming of Policies and Their Verification via Model Checking",
+ "authors": ["Dennis Gross"],
+ "date": "2026-11-08",
+ "doc_type": "method_or_tool",
+ "wsp_role": ["write_from_scratch", "repair_or_edit", "feedback_loop"],
+ "is_wsp": true,
+ "editor_models": ["DeepSeek-V4-Pro", "Kimi-K3.1-Pro"],
+ "target_networks": [
+  {"name": "ReLU policy network (1 x 16, Frozen Lake)", "params": "unknown", "kind": "policy"},
+  {"name": "ReLU policy network (2 x 32, Transporter / Stock Market)", "params": "unknown", "kind": "policy"}
+ ],
+ "domain": "safe sequential decision-making / formal verification (probabilistic model checking)",
+ "tasks_benchmarks": ["Frozen Lake (PRISM)", "Transporter 2 and 3 jobs (PRISM)", "Stock Market (PRISM)", "Transporter fuel-reserve PCTL until requirement"],
+ "headline_result": {
+  "text": "LLM-written ReLU policies reached the Storm-computed optimal probability in all 18 runs (2 LLMs x 3 environments x 3 seeds) already after the creation step, and satisfied a PCTL until safety requirement in all 6 runs.",
+  "page": "PAGE 1",
+  "quote": "With two LLMs on three environments, the created policy of each of the 18 runs attains the optimal probability, before any dataset or model-checking feedback."
+ },
+ "evidence_quality": {
+  "random_or_null_control": "no",
+  "non_llm_baseline": "no",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "no",
+  "n_runs_or_seeds": "3",
+  "full_test_set": "yes",
+  "held_out_eval": "partial: three-job transporter was never shown to the LLM",
+  "preregistered": "no",
+  "code_or_data_released": "yes",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "no",
+ "relation_to_qwen_math_edit": "none",
+ "key_claims": [
+  {"claim": "Every returned policy is verified exactly by the Storm model checker rather than estimated by simulation.", "page": "PAGE 1", "quote": "The model checker Storm computes, rather than estimates from simulations, the probability that the policy satisfies the requirement, so every returned policy is verified."},
+  {"claim": "Four of six two-job transporter policies also complete three jobs with probability 1; the other two complete them with probability 0.", "page": "PAGE 1", "quote": "Four of six policies programmed for two transporter jobs also complete three jobs with probability 1, so they generalize to a task that the LLM never saw."},
+  {"claim": "In one run dataset repair raised accuracy to 98.4% but broke the safety requirement; one model-checking round restored it.", "page": "PAGE 1", "quote": "In one of them, dataset repair raised the accuracy to 98.4% but broke the requirement, and one round of model-checking feedback restored it."},
+  {"claim": "Dataset accuracy is only a proxy: networks with 39% accuracy still reached the optimal probability.", "page": "PAGE 8", "quote": "Both networks show that accuracy is only a proxy: with 39% accuracy, they still reach the optimal probability"},
+  {"claim": "The most common generation error is a wrong matrix shape (48% of DeepSeek answers, 29% of Kimi answers), suggesting the LLM loses count on long matrices.", "page": "PAGE 10", "quote": "The most common error is a wrong network shape, in 32 of the 67 answers of DeepSeek-V4-Pro (48%) and in 8 of the 28 answers of Kimi-K3.1-Pro (29%)."}
+ ],
+ "limitations_stated": [
+  {"text": "Only three runs per configuration and non-deterministic cloud inference, so numbers are indicative.", "page": "PAGE 10", "quote": "Each configuration runs three times, and cloud inference is not deterministic even at temperature 0, so our numbers are indicative rather than precise estimates"},
+  {"text": "Environments and networks are small (at most 16,496 states, two hidden layers of 32).", "page": "PAGE 10", "quote": "The environments and networks are small (at most 16,496 states and two hidden layers with 32 neurons)"},
+  {"text": "PRISM models and Frozen Lake are public, so contamination cannot be ruled out.", "page": "PAGE 10", "quote": "so we cannot rule out that the LLMs saw these models or related policies during"}
+ ],
+ "notes_for_review": "Adds formal verification (PRISM/Storm via COOL-MC) as the judge for LLM-written policy weights, which is a stronger check than game score. The tasks are small symbolic MDPs where the LLM effectively hand-compiles a rule policy into ReLU step functions, so success shows rule-to-weight translation more than learning; there is no RL-trained or random/null baseline. The repair loop was needed in only 1 of 24 runs, so its value is barely tested; code is released on GitHub."
+}

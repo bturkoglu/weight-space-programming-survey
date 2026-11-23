@@ -1,0 +1,28 @@
+{
+ "key": "zenodo_24036186",
+ "peripheral": false,
+ "operation": ["read", "write", "edit"],
+ "protocol": "closed_loop",
+ "mechanism": ["code_or_tensor_tool"],
+ "scope": "external",
+ "editor_tier": ["frontier_proprietary", "open_weight"],
+ "open_weight_editor_failed": "unclear",
+ "target_params_max": 800000000,
+ "edited_fraction": "0.785% of parameters (rank-3 projection in three attention matrices); implanted circuit in 4 MLP units of layer 23; 13.4% of surrogate weights (four tensors)",
+ "cost_reported": "no",
+ "wsp_evidence": {
+  "random_or_null_control": "no",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "yes",
+  "inference_only_fix_tested": "yes",
+  "full_test_set": "yes",
+  "held_out_eval": "yes",
+  "multiple_runs": "no",
+  "code_or_data_released": "yes"
+ },
+ "prereg": "none",
+ "llm_in_authoring_or_grading": "no",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["simple_baseline_matches"],
+ "evidence_notes": "Whole report is WSP: Claude Mythos 5.1 works in a run folder and reaches Qwen3.5-0.8B only through a budgeted forward-pass tool, computing weight changes itself (PAGE 1-2); for the surrogate it computed output mixing and input scaling into first/last layers (PAGE 2). The 10-pass edit (32.5%) stays below the unmodified model with thinking disabled (42.8%), so a decoding setting beats it; only the implanted circuit (58.7%) exceeds it (PAGE 2). The Qwen3.8-27B control got lower surrogate error but broke the rules (own solver, least-squares refit), so open-weight failure is unclear (PAGE 2-3). Single agent run per result; weights released on Hugging Face (PAGE 3); no preregistration or cost figures."
+}

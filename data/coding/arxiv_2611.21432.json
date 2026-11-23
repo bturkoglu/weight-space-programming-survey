@@ -1,0 +1,28 @@
+{
+ "key": "arxiv_2611.21432",
+ "peripheral": false,
+ "operation": ["edit"],
+ "protocol": "open_loop",
+ "mechanism": ["none"],
+ "scope": "external",
+ "editor_tier": ["none"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": 800000000,
+ "edited_fraction": "rank-one edit of down_proj in 2 layers using 8 neurons (fraction not reported)",
+ "cost_reported": "LP search 3-11 s per layer, ~2.2 min over 20 layers on one RTX PRO 6000; sort needs one pass over activations; whole study one day",
+ "wsp_evidence": {
+  "random_or_null_control": "no",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "no",
+  "full_test_set": "no",
+  "held_out_eval": "unclear",
+  "multiple_runs": "yes",
+  "code_or_data_released": "yes"
+ },
+ "prereg": "internal",
+ "llm_in_authoring_or_grading": "yes",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["simple_baseline_matches"],
+ "evidence_notes": "A group-B note: no LLM edits weights; it replaces the LP that computes the AHA rank-one anti-loop edit with a neuron sort (p.1-2), so mechanism none and open loop. 'The protocol, the arms and the verdict rule were committed before any number was produced', and a second protocol was declared before the seed runs (p.2); both are deposited with the note on Zenodo 10.5281/zenodo.24286137 after the work (p.4), so coded internal. Claude (Fable 5.2, Opus 5.5) chose the sort key, wrote protocols, code, analysis and text (p.4); GSM8K uses only the first 500 test problems (p.2)."
+}

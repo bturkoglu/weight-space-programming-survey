@@ -1,0 +1,24 @@
+{
+ "key": "arxiv_2611.09376",
+ "peripheral": false,
+ "operation": ["read", "edit"],
+ "protocol": "closed_loop",
+ "mechanism": ["code_or_tensor_tool"],
+ "scope": "external",
+ "editor_tier": ["frontier_proprietary"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": 3620000000,
+ "edited_fraction": "0.00367% (65 token-embedding rows, best run C; 0.00102%-0.00367% across runs)",
+ "cost_reported": "no",
+ "wsp_evidence": {
+  "random_or_null_control": "yes", "non_llm_baseline": "yes", "finetune_comparison": "no",
+  "inference_only_fix_tested": "no", "full_test_set": "yes", "held_out_eval": "yes",
+  "multiple_runs": "yes",
+  "code_or_data_released": "no"
+ },
+ "prereg": "none",
+ "llm_in_authoring_or_grading": "no",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["simple_baseline_matches", "editor_refusal_or_unfinished"],
+ "evidence_notes": "GPT-6 Astra edits pi0.5 via a persistent CPU Python kernel plus a budgeted simulator forward tool (p2), so closed-loop and tool-mediated. The authors state the full 765-pair evaluation is not 'a preregistered independent replication' (p2); held-out split fixed by SHA-256 parity but no registry. Matched-norm random-direction control and mechanical full destination replacement (90.5% vs 92.0%) are reported (p4); LoRA and prompt rewriting not measured (p8); public code/weights 'will be supplied' (p8); API cost accounting not available (p8); 12 of 13 non-language sessions declined or reverted (p6-7)."
+}

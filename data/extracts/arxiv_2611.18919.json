@@ -1,0 +1,70 @@
+{
+  "key": "arxiv_2611.18919",
+  "title": "Correcting Persistent Failures in Point-Cloud Grasping Policies using Human Demonstrations in Virtual Reality",
+  "authors": ["Achyuthan Unni Krishnan", "Karthik Rengarajan", "Bharath Narasimhan", "Chris von Csefalvay"],
+  "date": "2026-11-13",
+  "doc_type": "original_study",
+  "wsp_role": ["read", "repair_or_edit", "feedback_loop"],
+  "is_wsp": true,
+  "editor_models": ["Claude Opus 5.5"],
+  "target_networks": [
+    {"name": "Contact-GraspNet (teacher grasp generator, exploratory WSP edit)", "params": "2.2M", "kind": "other"},
+    {"name": "PointNet actor-critic grasp policy (RL, not WSP-edited)", "params": "unknown", "kind": "policy"}
+  ],
+  "domain": "robotics (point-cloud grasping)",
+  "tasks_benchmarks": ["Isaac Lab simulated grasping on 24 held-out YCB families", "hard cases (59 demonstrated, 71 hidden)", "Franka-arm sorting (10 layouts x 6 objects)", "IWIBench tensor tools (exploratory weight edit)"],
+  "headline_result": {
+    "text": "RL raised grasp success on unseen objects from 55% (Contact-GraspNet) to 83%, and 58 VR demonstrations raised success on demonstrated hard cases from 24% to 45%; an exploratory Claude Opus 5.5 weight edit of Contact-GraspNet lowered practice success and was reverted.",
+    "page": "1",
+    "quote": "In simulation, RL raises success on unseen objects from 55% with Contact-GraspNet to 83%. Adding 58 human demonstrations nearly doubles success on the hard cases RL"
+  },
+  "evidence_quality": {
+    "random_or_null_control": "yes",
+    "non_llm_baseline": "yes",
+    "finetune_comparison": "yes",
+    "inference_only_fix_tested": "no",
+    "n_runs_or_seeds": "3 seeds per RL condition; single run for the exploratory weight edit",
+    "full_test_set": "unclear",
+    "held_out_eval": "yes",
+    "preregistered": "no",
+    "code_or_data_released": "yes",
+    "peer_reviewed": "no"
+  },
+  "replicates_mit": "no",
+  "relation_to_qwen_math_edit": "none",
+  "key_claims": [
+    {
+      "claim": "Following weight-space programming, Claude Opus 5.5 read and edited the 2.2M-parameter Contact-GraspNet teacher through IWIBench tensor tools, measuring candidates only on practice objects.",
+      "page": "7",
+      "quote": "5.5) read and edited the network’s 2.2M parameters through"
+    },
+    {
+      "claim": "Both LLM edits (a normalization-bias shift and an output-bias raise) lowered practice success, so the model reverted them and submitted the unedited weights; the authors call the result negative.",
+      "page": "7",
+      "quote": "to 79 and 83; tilted 55 to 53 and 51), so the model reverted"
+    },
+    {
+      "claim": "With 58 VR demonstrations, RL + demos beat RL alone by 21.2 points on demonstrated hard cases.",
+      "page": "5",
+      "quote": "RL + demos vs. RL +21.2 [+13.0, +29.4]"
+    },
+    {
+      "claim": "A human in VR produced robust grasp points for 58 of 82 cases, comparable to random search with 32 attempts per case (54) and Contact-GraspNet top-40 grasps (56).",
+      "page": "7",
+      "quote": "Human in VR (robust) 58"
+    }
+  ],
+  "limitations_stated": [
+    {
+      "text": "RL + demos differs from RL alone in several components at once, so the human contribution is not isolated.",
+      "page": "8",
+      "quote": "not isolate the human contribution. Matched RL-alone and"
+    },
+    {
+      "text": "All results come from simulation with a floating hand, one author as demonstrator and one demonstration round.",
+      "page": "8",
+      "quote": "Scope. All results come from simulation, a floating hand,"
+    }
+  ],
+  "notes_for_review": "The paper is mainly about RL plus VR demonstrations for grasping; WSP appears only as one exploratory subsection where Claude Opus 5.5 edits Contact-GraspNet weights. That edit is a documented negative result: the model found a real structural property (all-negative final weights capping confidence at 0.294) but both edits hurt practice success and were reverted. It is a single run with no seeds, but it is a useful counterexample of LLM weight reading yielding a correct diagnosis without a performance gain."
+}

@@ -1,0 +1,28 @@
+{
+ "key": "arxiv_2611.18919",
+ "peripheral": true,
+ "operation": ["read", "edit"],
+ "protocol": "closed_loop",
+ "mechanism": ["code_or_tensor_tool"],
+ "scope": "external",
+ "editor_tier": ["frontier_proprietary"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": 2200000,
+ "edited_fraction": "two bias edits (normalization bias; output bias) tried and reverted; final submission unedited",
+ "cost_reported": "no",
+ "wsp_evidence": {
+  "random_or_null_control": "no",
+  "non_llm_baseline": "no",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "no",
+  "full_test_set": "unclear",
+  "held_out_eval": "no",
+  "multiple_runs": "no",
+  "code_or_data_released": "yes"
+ },
+ "prereg": "none",
+ "llm_in_authoring_or_grading": "yes",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["editor_refusal_or_unfinished"],
+ "evidence_notes": "Paper is about RL plus VR demonstrations for grasping; WSP is one exploratory subsection (Sec. I, PAGE 7) where Claude Opus 5.5 read and edited the 2.2M-parameter Contact-GraspNet through IWIBench tensor tools, scoring candidates on practice objects only; both edits lowered practice success and were reverted, so no held-out evaluation of an edit exists. Single run, no controls for the WSP part. Code for the pipeline/VR app on GitHub (PAGE 2) and IWIBench linked; acknowledgment states Claude Opus 5.5 was used to edit manuscript text (PAGE 8). No preregistration."
+}

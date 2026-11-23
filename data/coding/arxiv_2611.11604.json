@@ -1,0 +1,28 @@
+{
+ "key": "arxiv_2611.11604",
+ "peripheral": false,
+ "operation": ["write", "edit"],
+ "protocol": "closed_loop",
+ "mechanism": ["direct_values"],
+ "scope": "external",
+ "editor_tier": ["open_weight"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": 1606,
+ "edited_fraction": "whole network (written from scratch)",
+ "cost_reported": "no",
+ "wsp_evidence": {
+  "random_or_null_control": "no",
+  "non_llm_baseline": "no",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "no",
+  "full_test_set": "yes",
+  "held_out_eval": "yes",
+  "multiple_runs": "yes",
+  "code_or_data_released": "yes"
+ },
+ "prereg": "none",
+ "llm_in_authoring_or_grading": "no",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["numerical_artifact"],
+ "evidence_notes": "Whole paper is WSP: DeepSeek-V4-Pro and Kimi-K3.1-Pro answer with a JSON object holding all layer weights (PAGE 6), verified by Storm with dataset and model-checking repair rounds (PAGE 6-7), 3 runs per configuration. target_params_max computed from Table 1 (PAGE 7): d=10 inputs, 2x32 hidden, 6 actions = 1,606 parameters (not printed in paper). Most common error is wrong matrix shape (48%/29% of answers, PAGE 10); three-job transporter is an unseen task. Code at github.com/LAVA-LAB/COOL-MC; no preregistration."
+}

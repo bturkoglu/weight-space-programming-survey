@@ -1,0 +1,24 @@
+{
+ "key": "arxiv_2611.20566",
+ "peripheral": false,
+ "operation": ["read", "edit"],
+ "protocol": "closed_loop",
+ "mechanism": ["code_or_tensor_tool"],
+ "scope": "external",
+ "editor_tier": ["frontier_proprietary"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": 800000000,
+ "edited_fraction": "1,019 to 51,892,555 changed weights per retained checkpoint (mostly the final-layer MLP down-projection)",
+ "cost_reported": "no",
+ "wsp_evidence": {
+  "random_or_null_control": "no", "non_llm_baseline": "no", "finetune_comparison": "no",
+  "inference_only_fix_tested": "no", "full_test_set": "yes", "held_out_eval": "yes",
+  "multiple_runs": "yes",
+  "code_or_data_released": "no"
+ },
+ "prereg": "none",
+ "llm_in_authoring_or_grading": "yes",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["run_to_run_variance"],
+ "evidence_notes": "Claude Opus 5.5 inspects tensors, runs calculations in a CPU environment, modifies weights through WSP harness tools and evaluates candidates on the editing set (p3), within budgets of 32,768 output tokens, 300 CPU calls and six hours per run; no measured cost is reported. Codex (GPT-6.1 Sol) classified traces (p5), GPT-6.1 Sol drafted editing explanations and Claude reviewed the harnesses (p3). Ten editing runs produced checkpoints changing 1,019 to 51.9M weights (p7); code 'will be available' (p14); no preregistration found."
+}

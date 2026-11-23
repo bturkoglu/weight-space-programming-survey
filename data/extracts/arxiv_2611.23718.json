@@ -1,0 +1,114 @@
+{
+  "key": "arxiv_2611.23718",
+  "title": "HypoLoop: Revising Weight-Editing Plans from Scientific Feedback",
+  "authors": [
+    "Mengran Li",
+    "Xichen Yan",
+    "Bo Li",
+    "Chengyang Zhang",
+    "Jinfeng Xu",
+    "Zheng Lin",
+    "Zelin Zang",
+    "Zhen Lei",
+    "Jiebo Luo",
+    "Victor C. M. Leung",
+    "Stan Z. Li"
+  ],
+  "date": "2026-11-18",
+  "doc_type": "method_or_tool",
+  "wsp_role": [
+    "repair_or_edit",
+    "feedback_loop"
+  ],
+  "is_wsp": true,
+  "editor_models": [
+    "DeepSeek-V4.1-Flash (deepseek-flash)",
+    "Claude Fable 5 (claude-fable-5)"
+  ],
+  "target_networks": [
+    {
+      "name": "FNO1d (Burgers, advection, reaction-diffusion)",
+      "params": "unknown",
+      "kind": "other"
+    },
+    {
+      "name": "Depth Anything v2 Small (DIODE, Make3D)",
+      "params": "unknown",
+      "kind": "CNN"
+    },
+    {
+      "name": "Uni-Mol, CGCNN, GEARS, PhaseNet, DC3, DLinear/NLinear, PBT-L, AnomalyCLIP+R, ChangeMamba",
+      "params": "unknown",
+      "kind": "other"
+    }
+  ],
+  "domain": "scientific prediction (physics, chemistry, materials, biology, energy, seismic, depth, remote sensing, industrial inspection)",
+  "tasks_benchmarks": [
+    "Burgers",
+    "Advection",
+    "Reaction-diffusion",
+    "ESOL",
+    "Lipophilicity",
+    "DIODE",
+    "Make3D",
+    "SpaceNet7",
+    "STEAD",
+    "MVTec AD",
+    "MVTec LOCO",
+    "VisA",
+    "MPDD",
+    "Matbench exfoliation",
+    "Matbench phonon",
+    "constrained QP (DC3)",
+    "Beijing PM2.5",
+    "22 tasks total"
+  ],
+  "headline_result": {
+    "text": "Letting an LLM choose which native weight blocks to edit (with numerical solvers computing the patch) cut Burgers relative L2 error by 58.80% (DeepSeek) and 47.72% (Claude) versus fixed locations at a matched budget, and positive-residual weighting cut DIODE internal-CV AbsRel by 13.35% at the same 33 coordinates.",
+    "page": "PAGE 1",
+    "quote": "On Burgers, reallocating a matched parameter budget reduces error by 58.80% and 47.72% relative to fixed locations."
+  },
+  "evidence_quality": {
+    "random_or_null_control": "no",
+    "non_llm_baseline": "yes",
+    "finetune_comparison": "yes",
+    "inference_only_fix_tested": "yes",
+    "n_runs_or_seeds": "single",
+    "full_test_set": "unclear",
+    "held_out_eval": "yes",
+    "preregistered": "no",
+    "code_or_data_released": "yes",
+    "peer_reviewed": "no"
+  },
+  "replicates_mit": "no",
+  "relation_to_qwen_math_edit": "none",
+  "key_claims": [
+    {
+      "claim": "The LLM proposes where and how to edit; numerical solvers compute the weight patch and internal validation decides deployment.",
+      "page": "PAGE 1",
+      "quote": "Fixed, numerically adaptive, and LLM-guided policies produce editing plans; numerical solvers compute weight patches, and internal validation selects the deployed predictor."
+    },
+    {
+      "claim": "Reallocating a fixed editable-coordinate budget lowered Burgers error from 0.040194 to 0.016559 (DeepSeek) and 0.030975 to 0.016195 (Claude).",
+      "page": "PAGE 5",
+      "quote": "relative L2 error decreases from 0.040194 to 0.016559"
+    },
+    {
+      "claim": "Revising the complete editing plan across rounds lowered final DIODE AbsRel by 10.59% relative to keeping the initial plan fixed.",
+      "page": "PAGE 1",
+      "quote": "Revising the complete plan across rounds lowers final AbsRel by 10.59% relative to keeping the initial plan fixed."
+    },
+    {
+      "claim": "Reversing the residual emphasis raised DIODE CV error to 1.437018, showing the direction proposed from feedback matters.",
+      "page": "PAGE 7",
+      "quote": "ing the residual emphasis raises the error to 1.437018"
+    },
+    {
+      "claim": "On SpaceNet7 the full-split F1 rose from 0.2507 for Adam to 0.2899.",
+      "page": "PAGE 8",
+      "quote": "Full-split F1 rises from 0.2507 for Adam to 0.2899"
+    }
+  ],
+  "limitations_stated": [],
+  "notes_for_review": "Adjacent to WSP rather than WSP in the MIT sense: the LLM (DeepSeek-V4.1-Flash or Claude Fable 5) proposes which native parameter blocks to edit and which loss weighting to use, while ridge or Adam solvers compute the actual weight values. Gains are reported per task against the best same-feedback control, but results are mixed across the 22 tasks (many cells negative in Table 1), there appear to be no repeated seeds, and no limitations section is given. Useful as evidence that LLM involvement may be most defensible as a planner around numerical optimisation, not as the writer of numbers."
+}

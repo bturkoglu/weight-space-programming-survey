@@ -1,0 +1,28 @@
+{
+ "key": "zenodo_24373915",
+ "peripheral": false,
+ "operation": ["read", "write", "edit"],
+ "protocol": "both",
+ "mechanism": ["direct_values", "code_or_tensor_tool"],
+ "scope": "external",
+ "editor_tier": ["frontier_proprietary"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": 800000000,
+ "edited_fraction": "varies: whole network for written game/Go networks; small fixed controller in car fix; Claude's Qwen repair rewrote one layer-12 unit (3,072 weights)",
+ "cost_reported": "no",
+ "wsp_evidence": {
+  "random_or_null_control": "yes",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "no",
+  "full_test_set": "no",
+  "held_out_eval": "yes",
+  "multiple_runs": "yes",
+  "code_or_data_released": "yes"
+ },
+ "prereg": "internal",
+ "llm_in_authoring_or_grading": "yes",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["layout_or_prior_fallback", "known_rule_rediscovered", "simple_baseline_matches", "run_to_run_variance"],
+ "evidence_notes": "Whole record is a WSP replication of seven Sparks tasks with Astra and Claude Opus 5.5 (FILE PAPER.md): single-reply tasks write every weight with tools disabled, session tasks use a sandboxed Python session. Game reading follows the row-length footprint; every successful car edit also works on an all-zero network and a two-step script solves the scene; car success 9/10 vs 1/10 by model. NOTES.md holds an author pre-registered protocol (per review-1), but metrics and framing changed after results and the paper says the protocol was informed by results, so internal at best. Claude Opus 5.5 wrote the original analysis and AI-written reviews are part of the record; math eval uses every fifth MATH-500 problem in thinking mode; artifacts and scripts are in the Zenodo record."
+}

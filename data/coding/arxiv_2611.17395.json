@@ -1,0 +1,24 @@
+{
+ "key": "arxiv_2611.17395",
+ "peripheral": false,
+ "operation": ["read", "edit"],
+ "protocol": "open_loop",
+ "mechanism": ["code_or_tensor_tool"],
+ "scope": "external",
+ "editor_tier": ["frontier_proprietary", "open_weight"],
+ "open_weight_editor_failed": "yes",
+ "target_params_max": 500000000,
+ "edited_fraction": "0.02%-0.11% of scalar parameters for direct edits (6 parameters on the MNIST MLP)",
+ "cost_reported": "no",
+ "wsp_evidence": {
+  "random_or_null_control": "no", "non_llm_baseline": "yes", "finetune_comparison": "yes",
+  "inference_only_fix_tested": "no", "full_test_set": "yes", "held_out_eval": "yes",
+  "multiple_runs": "no",
+  "code_or_data_released": "no"
+ },
+ "prereg": "none",
+ "llm_in_authoring_or_grading": "no",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["none_reported"],
+ "evidence_notes": "Editors get weights and an instruction, no data, forward passes or gradients, and 'independent evaluation results are not fed back to the editor' (p3), so open-loop; the editing interface is not described, and code_or_tensor_tool is inferred from 11M-0.5B targets and permitted consultation of reference materials (p3). On Qwen2.5-0.5B only GPT-6 Astra succeeded while Kimi-V3, DeepSeek-V4.1-Flash and Tencent Hy4 (and GPT-5.6 Sol) did not (p6-7); one returned model per editor-target and attempt records unavailable (p7-8). Data-poisoning and LoRA fine-tuning baselines (p5); no code link or preregistration found."
+}

@@ -1,0 +1,50 @@
+{
+ "key": "arxiv_2611.26841",
+ "title": "Weight-Space Programming Writes In-Context Learning and Matches Fine-Tuning in Language Models",
+ "authors": ["Konstantinos Skianis", "Aristidis Likas"],
+ "date": "2026-11-19",
+ "doc_type": "original_study",
+ "wsp_role": ["read", "repair_or_edit", "feedback_loop"],
+ "is_wsp": true,
+ "editor_models": ["Claude Fable 5.1", "Claude Opus 5.5", "Gemini 4 Argon", "GPT-6 Astra", "DeepSeek V4.1 Flash (appendix)", "GLM-5.2 (appendix)"],
+ "target_networks": [
+  {"name": "Qwen2.5-0.5B", "params": "494M", "kind": "LLM"},
+  {"name": "Qwen2.5-1.5B", "params": "1.5B", "kind": "LLM"},
+  {"name": "Qwen2.5-7B", "params": "7B", "kind": "LLM"},
+  {"name": "Qwen2.5-14B", "params": "14B", "kind": "LLM"},
+  {"name": "Llama-3.2-1B", "params": "1B", "kind": "LLM"},
+  {"name": "Mistral-7B-v0.3", "params": "7B", "kind": "LLM"},
+  {"name": "Qwen3.5-0.8B-Base", "params": "0.8B", "kind": "LLM"}
+ ],
+ "domain": "language modelling (few-shot word-mapping tasks, in-context learning)",
+ "tasks_benchmarks": ["antonym", "country-capital", "present-past", "English-French", "n->2n", "n->n+7", "camelCase, Roman numerals, SST-2, word length, last letter, Pig Latin (7B/14B)", "GSM8K (prompt internalisation, appendix)", "WikiText-2 perplexity", "ARC-Easy"],
+ "headline_result": {"text": "With 16 examples, 50 forward passes and no gradients, finished editor runs reach 88.5-93.0% zero-shot accuracy on Qwen2.5-0.5B versus 89.3% for 16-shot ICL and 86.5-88.2% for Adam/LoRA/rank-1/context-distillation fine-tuning on the same pairs, while changing far fewer weights (8,512 for Fable 5.1); the authors conclude WSP adds legibility, not accuracy.", "page": "PAGE 8", "quote": "In our study, weight-space ... programming adds legibility, not accuracy."},
+ "evidence_quality": {
+    "random_or_null_control": "yes",
+    "non_llm_baseline": "yes",
+    "finetune_comparison": "yes",
+    "inference_only_fix_tested": "yes",
+    "n_runs_or_seeds": "3 data splits (one run per split) on Qwen2.5-0.5B; single split for scale, family and most appendix conditions",
+    "full_test_set": "yes",
+    "held_out_eval": "yes",
+    "preregistered": "no",
+    "code_or_data_released": "no",
+    "peer_reviewed": "no"
+ },
+ "replicates_mit": "no",
+ "relation_to_qwen_math_edit": "none",
+ "key_claims": [
+  {"claim": "Finished editor updates reach 88.5% (Fable 5.1) and 90.4% (Opus 5.5) mean zero-shot accuracy on Qwen2.5-0.5B against 89.3% for 16-shot ICL, from a 0-3% unedited baseline.", "page": "PAGE 4", "quote": "updates reach a mean of 88.5% (Fable 5.1) and ... 90.4% (Opus 5.5) against 89.3% for 16-shot ICL"},
+  {"claim": "Gradient fine-tuning on the same 16 pairs, with hyperparameters chosen on 30 dev items, reaches 86.5% (Adam), 88.0% (context distillation), 87.9% (LoRA) and 88.2% (matched rank-1), the rank-1 update changing 4,358,143 entries versus 8,512 for Fable 5.1; no editor-baseline difference survives multiple-comparison correction.", "page": "PAGE 4", "quote": "Adam over all parameters reaches 86.5% ... and context distillation 88.0%, both changing every ... weight, LoRA 87.9%, and a matched rank-1 update ... 88.2% by changing 4,358,143 entries against"},
+  {"claim": "Counting unfinished runs as left, editor means drop to 89.7%, 80.5%, 87.6% and 92.6%, so Opus 5.5 falls below the fine-tuning baselines, which always finish.", "page": "PAGE 4", "quote": "it was left, the four editors reach 89.7%, 80.5%, ... 87.6% and 92.6% (Table 4), so Opus 5.5 falls ... below the baselines, which always finish."},
+  {"claim": "Part of the parity with fine-tuning comes from the editors' own task knowledge: when restricted to the 16 pairs only, Gemini 4 Argon loses about five points (85.8%) and GPT-6 Astra about twelve (81.0%), falling five to seven points below fine-tuning; given the editors' extra pairs, LoRA reaches 90.7%.", "page": "PAGE 18", "quote": "to the 16 pairs, Gemini 4 Argon loses about five ... points and stays within three of fine-tuning, GPT-6 ... Astra loses about twelve and falls five to seven"},
+  {"claim": "The updates do not generalise to unseen prompt wordings: under a question-answer wording Fable 5.1 falls to 13% while ICL keeps 89% and the rank-1 gradient update 48%.", "page": "PAGE 5", "quote": "curacy falls to 13% (Fable 5.1), where ICL retains ... 89% and the rank-1 gradient update 48%."},
+  {"claim": "On Qwen2.5-7B with harder tasks, the 6 completed Gemini 4 Argon programs average 89.7% versus 73.0% for LoRA and 79.0% for a rank-1 update, but updates grow (29K to 7.06B parameters) and the sparsity claim fails beyond 1.5B.", "page": "PAGE 7", "quote": "pleted programs average 89.7%, against 73.0% for ... LoRA and 79.0% for a rank-1 update on the same"}
+ ],
+ "limitations_stated": [
+  {"text": "The main study uses one model family; scale, family and hybrid conditions use a single split, so few-point differences are within split noise.", "page": "PAGE 9", "quote": "Scope of the evidence. The main study uses one ... model family, Qwen2.5;"},
+  {"text": "The editor kernel was not sandboxed (internet-connected node, harness process); an unconfined open-weight editor did read the test split.", "page": "PAGE 9", "quote": "the kernel behind it was not sandboxed: it ran on"},
+  {"text": "The 50-forward-pass budget is not binding for every editor because Gemini 4 Argon re-implemented the model on CPU to evaluate candidates.", "page": "PAGE 9", "quote": "since Gemini 4 Argon evaluated candidate updates ... through a CPU re-implementation of the model;"}
+ ],
+ "notes_for_review": "The most careful WSP-vs-fine-tuning comparison so far: four frontier editors, scripted task-vector baselines, a norm- and sparsity-matched random-edit control, and Adam/LoRA/rank-1/context-distillation baselines on the same 16 pairs over three splits, with paired bootstrap and Holm-corrected sign-flip tests. Budgets are asymmetric: editors get 50 forward passes, 80-150 turns and no dev data, while gradient baselines tune learning rate, steps and rank on 30 dev items; editors also bring task knowledge (typed pairs covering 0-98% of hidden test inputs), which explains part of their parity, and unfinished runs are excluded from the headline means. Cost is about $779 for 224 runs (about $1 per GPT-6 Astra run); code is promised but not yet released."
+}

@@ -1,0 +1,54 @@
+{
+ "key": "zenodo_24373915",
+ "title": "Two language models can read and change neural networks, but reliability depends on the task",
+ "authors": ["unclear (no author names in the text)"],
+ "date": "2026-11-06",
+ "doc_type": "replication",
+ "wsp_role": ["read", "write_from_scratch", "repair_or_edit", "feedback_loop"],
+ "is_wsp": true,
+ "editor_models": ["GPT-6 Astra", "Claude Opus 5.5"],
+ "target_networks": [
+  {"name": "small grid-game policy networks (MinAtar-style games)", "params": "unknown", "kind": "policy"},
+  {"name": "small image generator", "params": "unknown", "kind": "other"},
+  {"name": "small text model (Python/English/romaji)", "params": "unknown", "kind": "LLM"},
+  {"name": "Kinetix car-driving network", "params": "unknown", "kind": "policy"},
+  {"name": "MinAtar Breakout/Seaquest/Asterix networks", "params": "unknown", "kind": "policy"},
+  {"name": "9x9 Go network", "params": "unknown", "kind": "policy"},
+  {"name": "Qwen3.5-0.8B", "params": "0.8B", "kind": "LLM"}
+ ],
+ "domain": "interpretability, games, control, math reasoning",
+ "tasks_benchmarks": ["game naming from weights", "shape naming", "training-language and induction-head identification", "Kinetix car task (1,024 episodes)", "MinAtar Breakout/Seaquest/Asterix", "9x9 Go (pgx)", "MATH-500", "GSM8K"],
+ "headline_result": {
+  "text": "Repeating seven Sparks tasks with GPT-6 Astra and Claude Opus 5.5 showed task-dependent reliability (car fix 9/10 vs 1/10), and shortcut controls showed every successful car edit also worked on an all-zero network.",
+  "page": "FILE PAPER.md",
+  "quote": "Claude wrote a successful car controller in 9/10 attempts versus Astra's 1/10; Astra beat weak trained arcade-game networks in 15/15 attempts versus Claude's 13/15."
+ },
+ "evidence_quality": {
+  "random_or_null_control": "yes",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "no",
+  "n_runs_or_seeds": "10-20 attempts per reading/car task, 15 per arcade task, 3 per Go, 1 per math repair",
+  "full_test_set": "no",
+  "held_out_eval": "yes",
+  "preregistered": "no",
+  "code_or_data_released": "yes",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "partial",
+ "relation_to_qwen_math_edit": "extends",
+ "key_claims": [
+  {"claim": "Every successful car-repair edit, including the published one, also worked on an all-zero network, so it writes a fixed controller rather than repairing learned behaviour.", "page": "FILE PAPER.md", "quote": "Every successful edit, including the published one, also worked when applied to a network whose weights were all set to zero. Each edit writes a small fixed controller that overrides the trained network."},
+  {"claim": "Game naming from weights follows the training footprint (row lengths) when footprint and function conflict, for both models.", "page": "FILE PAPER.md", "quote": "Both usually followed the row lengths in the conflict control (Claude 20/20, Astra 19/20)."},
+  {"claim": "On randomized-weight controls Astra declined to name a game in 19/20 attempts while Claude named one in all 20, though the prompt asserted that the network was trained.", "page": "FILE PAPER.md", "quote": "On randomized-weight controls, Astra declined to name a game in 19/20 attempts. Claude named a game in all 20 at mean confidence 19%."},
+  {"claim": "The original language-identification result may have been exposed by folder names containing the answer; with neutral names Astra got 5 of 12.", "page": "FILE PAPER.md", "quote": "The original report found Astra correct on both parts in all 6 of its conversations. Its working folders contained language names."},
+  {"claim": "Claude's single Qwen3.5-0.8B repair scored 54% on 100 held-out MATH-500 problems versus 49% for Astra's published edit, a difference within noise.", "page": "FILE PAPER.md", "quote": "On 100 held-out MATH-500 problems, which were kept separate from practice, Claude's edit scored 54% with thinking on, against 49% for Astra's published edit. The paired difference was +5.0 ± 4.1 percentage points"},
+  {"claim": "The 100-million-step arcade baselines that written networks beat are weak.", "page": "FILE PAPER.md", "quote": "The 100-million-step baselines are weak: Breakout scores only 15.8, so surpassing that network is a low bar."}
+ ],
+ "limitations_stated": [
+  {"text": "Small fixed task set; repeated reads use only a few networks and are not independent.", "page": "FILE PAPER.md", "quote": "Twenty game reads cover four networks, and twelve language reads cover three; repeated reads are not independent network samples."},
+  {"text": "Analysis choices were partly informed by results; math comparison used unequal budgets and one edit per model.", "page": "FILE PAPER.md", "quote": "The analysis protocol and choice of reliability measures were informed by some of the results. The math comparison used unequal budgets and one edit per model."},
+  {"text": "One evaluated model (Claude Opus 5.5) wrote the original analysis.", "page": "FILE PAPER.md", "quote": "Claude Opus 5.5, one of the evaluated models, wrote the original analysis; grading was automatic."}
+ ],
+ "notes_for_review": "The most systematic multi-task replication of the Sparks report so far: a second editor model, repeated attempts, and shortcut controls (footprint decoy, conflict, randomized weights, all-zero network). Its controls cut against the original interpretation of Exp 1 (game reading follows the footprint) and Exp 4 (car fix is a written controller), and it flags a possible answer leak in the language task. The record includes AI-written reviews (one by Claude Opus 5.5, a compared model) rather than external peer review, and the analysis protocol changed after results; the math arm is a single edit per model and is evaluated on a subset (every fifth MATH-500 problem) in thinking mode, full set in default mode."
+}

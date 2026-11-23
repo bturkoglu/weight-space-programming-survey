@@ -1,0 +1,45 @@
+{
+ "key": "arxiv_2611.10425",
+ "title": "Governed Self-Improvement for a Local-First Security Analyzer: Baseline Measurements and a Preregistered Evaluation Protocol for Tantular Cyber",
+ "authors": ["Raditio Ghifiardi", "Rifny Rachman"],
+ "date": "2026-11-07",
+ "doc_type": "position",
+ "wsp_role": ["other"],
+ "is_wsp": false,
+ "editor_models": ["none"],
+ "target_networks": [{"name": "tantular-cyber (Tantular model, Q8_0)", "params": "unknown", "kind": "LLM"}, {"name": "qwen3:8b (Q4_K_M)", "params": "8B", "kind": "LLM"}],
+ "domain": "security",
+ "tasks_benchmarks": ["synthetic 33-case CWE corpus (manifest 1.2.0)", "explanation grounding checks (40 findings x 3 seeds)"],
+ "headline_result": {
+  "text": "Semgrep plus an interprocedural call-graph scanner reaches precision 0.843 and recall 0.915 on a synthetic corpus, but only 57% of the local model's explanations were evidence-grounded versus 95% for another 8B model; no weight-space edit was run.",
+  "page": "PAGE 1",
+  "quote": "benchmark: combining Semgrep with an interprocedural call- graph scanner yields precision 0.843 and recall 0.915 (Semgrep"
+ },
+ "evidence_quality": {
+  "random_or_null_control": "no",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "yes",
+  "n_runs_or_seeds": "3",
+  "full_test_set": "unclear",
+  "held_out_eval": "no",
+  "preregistered": "yes",
+  "code_or_data_released": "yes",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "no",
+ "relation_to_qwen_math_edit": "none",
+ "key_claims": [
+  {"claim": "Adding the interprocedural call-graph scanner to Semgrep raises recall from 0.766 to 0.915 without adding false positives on the synthetic corpus.", "page": "PAGE 3", "quote": "Adding tantular-callgraph to Semgrep raises recall from 0.766 to"},
+  {"claim": "Only 57% of the Tantular model's explanations were grounded in the evidence shown, against 95% for a different 8B model.", "page": "PAGE 3", "quote": "Detection is strong on the benchmark, but only 57% of Tantular’s"},
+  {"claim": "Every grounding failure cites a code identifier absent from the evidence, and a prompt change raised grounding partly by citing nothing.", "page": "PAGE 4", "quote": "Every grounding failure in retained outputs names a code identifier"},
+  {"claim": "Weight-space editing is placed as the last rung of a cost-ordered intervention ladder and must beat prompt changes and LoRA on identical items.", "page": "PAGE 4", "quote": "so a weight edit can be chosen"},
+  {"claim": "An automatic Ollama model-file migration silently changed the weights serving two arms mid-run.", "page": "PAGE 4", "quote": "An automatic model-file migration changed the weights serving"}
+ ],
+ "limitations_stated": [
+  {"text": "The self-improvement loop has not been run and no fine-tuned or weight-edited model exists.", "page": "PAGE 1", "quote": "loop has not been run; no fine-tuned or weight-edited Tantular"},
+  {"text": "All rates come from 33 synthetic Python cases on one machine and one Ollama version.", "page": "PAGE 6", "quote": "All rates come from 33 synthetic Python"},
+  {"text": "The authors' own published 57% grounding figure is not reproducible from retained artifacts.", "page": "PAGE 6", "quote": "Our own published 57% is not reproducible"}
+ ],
+ "notes_for_review": "A local-first security analyzer paper that only cites MIT's weight-space programming as a future rung (rung 4) of an intervention ladder; no weight edit or replication has been run. Its relevance to the review is the governance stance that a weight edit must beat cheaper prompt and LoRA interventions on identical items, and that a replication of the published 0.8B edit is planned but not started. Evidence is from a small synthetic corpus with paired McNemar tests; the authors openly report that their own headline 57% figure is non-reproducible."
+}

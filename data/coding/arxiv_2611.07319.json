@@ -1,0 +1,28 @@
+{
+ "key": "arxiv_2611.07319",
+ "peripheral": false,
+ "operation": ["write", "edit"],
+ "protocol": "closed_loop",
+ "mechanism": ["code_or_tensor_tool", "solver_delegated"],
+ "scope": "external",
+ "editor_tier": ["frontier_proprietary", "open_weight"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": null,
+ "edited_fraction": "0.0068% (244 parameters, HepG2 MLP); 4 to 1,024 writable parameters in the prediction tasks",
+ "cost_reported": "no",
+ "wsp_evidence": {
+  "random_or_null_control": "no",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "yes",
+  "inference_only_fix_tested": "no",
+  "full_test_set": "unclear",
+  "held_out_eval": "yes",
+  "multiple_runs": "no",
+  "code_or_data_released": "yes"
+ },
+ "prereg": "none",
+ "llm_in_authoring_or_grading": "no",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["none_reported"],
+ "evidence_notes": "WSP is the whole paper (p.1-4). The LLM (GPT-6 Astra / DeepSeek) writes an update program; the values come from regularized least squares or L-BFGS over 12 preset settings (p.3), so the mechanism is code plus delegated solver. The headline prediction comparisons use a single execution seed (p.2); three training seeds apply only to recommendation/RNA tasks. No preregistration; code at github.com/limengran98/WeightLoop (p.1). Target network sizes are not stated."
+}

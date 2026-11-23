@@ -1,0 +1,28 @@
+{
+ "key": "arxiv_2611.20174",
+ "peripheral": false,
+ "operation": ["read", "write", "edit"],
+ "protocol": "both",
+ "mechanism": ["code_or_tensor_tool", "solver_delegated"],
+ "scope": "external",
+ "editor_tier": ["frontier_proprietary"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": null,
+ "edited_fraction": "construction: 0.42% of nanoTabPFN's 3.7M weights non-zero; repair: 125 tensors / ~105 million entries of TabPFN-3.5 (fraction unclear)",
+ "cost_reported": "wall-clock only: repair session 62 min (of 5 h budget); KV-cache programs 19.6 and 70.3 min; no baseline time comparison",
+ "wsp_evidence": {
+  "random_or_null_control": "no",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "no",
+  "full_test_set": "yes",
+  "held_out_eval": "yes",
+  "multiple_runs": "no",
+  "code_or_data_released": "no"
+ },
+ "prereg": "none",
+ "llm_in_authoring_or_grading": "no",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["none_reported"],
+ "evidence_notes": "WSP on tabular foundation models is the whole paper (p.1-5). In construction, Astra writes nanoTabPFN's weights through Python blocks run by the harness, with no data and no forward passes (p.3, App. A p.9), i.e. open loop; the TabPFN-3.5 repair uses activations, validation feedback and closed-form ridge/least-squares solves to set weights (p.14-15), so both protocols and partly solver_delegated. Success criteria were 'fixed before the run' (p.15) but no registry or timestamp is given, so prereg is coded none; nanoTabPFN reports the better of two sessions and the repair one session (p.10, p.15), so multiple_runs is coded no. TabPFN-3.5's total size is not stated (the repair alone changes ~105M entries), so target_params_max is null."
+}

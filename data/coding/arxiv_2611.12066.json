@@ -1,0 +1,28 @@
+{
+ "key": "arxiv_2611.12066",
+ "peripheral": false,
+ "operation": ["write"],
+ "protocol": "open_loop",
+ "mechanism": ["direct_values"],
+ "scope": "external",
+ "editor_tier": ["frontier_proprietary"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": 6974,
+ "edited_fraction": "whole network",
+ "cost_reported": "no",
+ "wsp_evidence": {
+  "random_or_null_control": "no",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "yes",
+  "inference_only_fix_tested": "no",
+  "full_test_set": "yes",
+  "held_out_eval": "yes",
+  "multiple_runs": "yes",
+  "code_or_data_released": "yes"
+ },
+ "prereg": "none",
+ "llm_in_authoring_or_grading": "yes",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["layout_or_prior_fallback", "simple_baseline_matches", "run_to_run_variance"],
+ "evidence_notes": "Writing whole ProgNet CNNs (591-6,974 weights, p.4) in one tool-free reply is the entire study (p.1, prompt p.12-13), so direct_values and open loop; three independent calls per LLM per task (p.4-5). No preregistration is mentioned; prompts and generated weights are on GitHub (p.1). 'Claude also helped draft text and code' (p.7); written output biases follow MedMNIST class shares (p.6) and Adam on 256 labels beats the written nets on every task (p.5)."
+}

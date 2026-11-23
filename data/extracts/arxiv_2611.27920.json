@@ -1,0 +1,46 @@
+{
+ "key": "arxiv_2611.27920",
+ "title": "Autonomous Parameter Surgery: How LLMs Implant Selective Backdoors into Language Models",
+ "authors": ["Xuyang Liu", "Zhiwei Xu", "Zirui Li", "Jiabao Gao", "Xiaolin Peng", "Weixian Deng", "Tian Qiu", "Hai Wan", "Xibin Zhao"],
+ "date": "2026-11-20",
+ "doc_type": "original_study",
+ "wsp_role": ["write_from_scratch", "feedback_loop"],
+ "is_wsp": true,
+ "editor_models": ["DeepSeek-V4.1-Flash-1017 (low reasoning effort)"],
+ "target_networks": [
+  {"name": "Qwen3.5-0.8B", "params": "0.8B", "kind": "LLM"},
+  {"name": "Llama-3.2-1B", "params": "1.24B", "kind": "LLM"},
+  {"name": "SmolLM3-3B", "params": "3B", "kind": "LLM"}
+ ],
+ "domain": "security (backdoor implantation in LLM sentiment classification)",
+ "tasks_benchmarks": ["IMDb", "Yelp", "MMLU", "ARC-E/C", "HellaSwag", "BoolQ", "QNLI", "TruthfulQA (binary)", "WikiText-2 perplexity", "GSM8K", "IFEval"],
+ "headline_result": {"text": "Over 18 sessions an inexpensive LLM editor, without gradients or layer hints, implanted a trigger backdoor with 99.2% mean in-domain attack success and 97.6% transfer to an unseen domain, keeping general capabilities within 1.7 points, at about $1.74 and 16.5 minutes per run.", "page": "PAGE 1", "quote": "points reach 99.2% mean attack success on the"},
+ "evidence_quality": {
+    "random_or_null_control": "no",
+    "non_llm_baseline": "no",
+    "finetune_comparison": "no",
+    "inference_only_fix_tested": "no",
+    "n_runs_or_seeds": "3 sessions per model-domain cell (18 total)",
+    "full_test_set": "yes",
+    "held_out_eval": "yes",
+    "preregistered": "no",
+    "code_or_data_released": "no",
+    "peer_reviewed": "no"
+ },
+ "replicates_mit": "no",
+ "relation_to_qwen_math_edit": "none",
+ "key_claims": [
+  {"claim": "Averaged over 18 sessions, edited models reach 99.21% in-domain ASR with +0.29 pp clean accuracy change and 3.67 pp mean worst control error.", "page": "PAGE 5", "quote": "achieve 99.21% in-domain ASR (98.5%–99.8%"},
+  {"claim": "General capabilities barely move: +0.07 pp on seven multiple-choice tasks, +0.43% WikiText-2 perplexity, and -0.91 pp GSM8K flexible accuracy.", "page": "PAGE 6", "quote": "by +0.07 pp, with every individual task staying"},
+  {"claim": "Without hints, the editor places its final edit in the last transformer block in 17 of 18 runs; the one middle-block edit needed a larger perturbation and caused the largest GSM8K drop (-6.25 pp).", "page": "PAGE 6", "quote": "vention in the last transformer block in 17 of 18"},
+  {"claim": "First edits leak 24.7-54.5 pp onto near-trigger controls; iterative GPU feedback cuts drift to 3.5-3.8 pp, with 171 of 436 algebra calls failing and rolling back.", "page": "PAGE 7", "quote": "initial edits leak 24.7–54.5 pp onto neighboring triggers; iterative GPU feedback cuts drift to 3.5–3.8 pp at 98.5%–99.8% ASR."},
+  {"claim": "On Llama-3.2-1B one run rewired a single neuron, modifying only 6,144 parameters, and reached 99.80% IMDb and 100.0% Yelp ASR.", "page": "PAGE 8", "quote": "the final MLP block), modifying only 6,144 pa-"},
+  {"claim": "Opposite-direction class errors cancel in net accuracy, so routine scalar accuracy, leaderboards and perplexity checks miss these edits.", "page": "PAGE 8", "quote": "Third, scalar accuracy hides drift whenever oppos-"}
+ ],
+ "limitations_stated": [
+  {"text": "Only a single editor model at low reasoning effort was evaluated.", "page": "PAGE 9", "quote": "evaluate a single editor model (deepseek-flash,"},
+  {"text": "No human-designed editing baselines (BadEdit, SteerEdit) were run in the same harness.", "page": "PAGE 9", "quote": "Second, we do not run human-designed edit-"},
+  {"text": "Only two English sentiment datasets with a fixed prompt template and trigger design were used.", "page": "PAGE 9", "quote": "Third, our backdoor evaluation uses only two En-"}
+ ],
+ "notes_for_review": "A security-oriented WSP study showing that a cheap editor (DeepSeek V4.1 Flash, low effort) can write selective sentiment-flip backdoors into three small open LLMs from a plain-text rule, evaluated in fresh processes with the editor removed and on large confirmation sets. Strong points are the six-condition near-trigger battery, cross-domain transfer, and the origin-tagging workspace that blocks CPU simulation of the model. There are no baselines at all (no fine-tuning, no BadEdit/ROME-style editor, no random edit), so the paper shows feasibility, not advantage; checkpoints and prompts are withheld for dual-use reasons."
+}

@@ -1,0 +1,41 @@
+{
+ "key": "zenodo_24128861",
+ "title": "Hermetic GeGLU Airlocks and Domain-Adaptive Context Distillation: Exact Zero-Crosstalk Multi-Domain Function Embedding in Quantized GGUF Foundation Models",
+ "authors": ["Moneykoikoi"],
+ "date": "2026-11-11",
+ "doc_type": "method_or_tool",
+ "wsp_role": ["other"],
+ "is_wsp": false,
+ "editor_models": ["none"],
+ "target_networks": [
+  {"name": "Gemma-4-E4B-it (Clean-Apex v7 Q4_K_M GGUF, 4.580 GiB)", "params": "unknown", "kind": "LLM"}
+ ],
+ "domain": "modular capability embedding in quantized LLMs (RISC-V ALU simulation, ARC-AGI grid puzzles, Japanese prose editing)",
+ "tasks_benchmarks": ["36 self-made held-out tasks (8 RISC-V, 8 ARC-style grid, 8 Japanese prose, 12 general control)", "16 log-probability probes"],
+ "headline_result": {"text": "Appending 512 gated MLP neurons per layer in three layers of a Gemma-4-E4B GGUF and training them by context distillation raised accuracy on 36 self-made held-out tasks from 58.33% (21/36) to 72.22% +/- 2.78% across two runs, with zero log-prob drift on 10 control prompts.", "page": "1", "quote": "elevating total 36-task accuracy from 58.33% ( 21/36 ) to 72.22% ± 2.78%"},
+ "evidence_quality": {
+  "random_or_null_control": "no",
+  "non_llm_baseline": "unclear",
+  "finetune_comparison": "yes",
+  "inference_only_fix_tested": "no",
+  "n_runs_or_seeds": "2",
+  "full_test_set": "no",
+  "held_out_eval": "yes",
+  "preregistered": "no",
+  "code_or_data_released": "yes",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "no",
+ "relation_to_qwen_math_edit": "none",
+ "key_claims": [
+  {"claim": "Linear orthogonal 'cartridge' edits leaked into unrelated prompts and lowered 42-task accuracy from 69.05% to 64.29%.", "page": "2", "quote": "enabling all 14 orthogonal cartridges simultaneously degraded overall 42-task accuracy from 69.05% (29/42) to 64.29% (27/42)."},
+  {"claim": "The new neurons are trained by gradient descent (context distillation with AdamW for two epochs), not written by an LLM editor.", "page": "7", "quote": "optimization is restricted to 2 epochs (378 total steps across 189 verified trajectories"},
+  {"claim": "Mounting airlocks on contiguous layers degraded accuracy to 44.44%.", "page": "5", "quote": "mounting airlocks on four consecutive layers (38 → 39 → 40 → 41) caused positive GeGLU activations to compound across adjacent residual steps during multi-hundred-token autoregressive rollouts, degrading accuracy to 44.44%."},
+  {"claim": "Control accuracy was unchanged at 11/12 while the three embedded domains improved by one to four tasks out of eight each.", "page": "3", "quote": "simultaneously boosts RISC-V ALU simulation ( 50.00% -> 62.50% ), ARC-AGI 2D grid reasoning ( 50.00% -> 75.00%–100.00% ), and kousei-jp Japanese prose editing ( 25.00% -> 37.50%"}
+ ],
+ "limitations_stated": [
+  {"text": "Fewer than 100 training samples per domain cannot produce out-of-family generalisation.", "page": "11", "quote": "N < 100 samples cannot induce zero-shot synthesis of entirely untrained instruction extensions"},
+  {"text": "Long control completions are not bit-identical to the base model in many cases, because one gate leaks.", "page": "12", "quote": "bit-for-bit string identity across 300-token Control completions is 8/12 in Run A and 4/12 in Run B."}
+ ],
+ "notes_for_review": "Despite using 'weight-space programming' as a keyword, this is gradient-trained capability insertion (appended gated neurons plus context distillation with straight-through quantization), with no LLM reading or writing weights, so it falls outside LLM-driven WSP. Evidence is weak: 8 tasks per domain on a self-built suite, two runs, the headline mixes a peak and a mean, and the text is heavy with self-coined terms ('impossibility theorem', 'airlock', 'axiom'). Single pseudonymous author, no peer review, and it does not cite the MIT work."
+}

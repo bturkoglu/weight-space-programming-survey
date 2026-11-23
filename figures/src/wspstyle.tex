@@ -1,0 +1,17 @@
+% Shared colours and TikZ styles (palette validated for colour-vision deficiency in the dataviz reference instance)
+\definecolor{cBlue}{HTML}{2A78D6}\definecolor{cOrange}{HTML}{EB6834}\definecolor{cAqua}{HTML}{1BAF7A}
+\definecolor{cYellow}{HTML}{EDA100}\definecolor{cViolet}{HTML}{6250D6}\definecolor{cMagenta}{HTML}{E87BA4}
+\definecolor{cInk}{HTML}{0B0B0B}\definecolor{cMuted}{HTML}{52514E}\definecolor{cGrid}{HTML}{E5E4E0}\definecolor{cPaper}{HTML}{F7F6F3}
+\usetikzlibrary{positioning,arrows.meta,calc,fit,backgrounds,shapes.geometric,shadows,decorations.pathreplacing,matrix}
+\tikzset{
+  >={Stealth[length=2.2mm,width=1.6mm]},
+  box/.style={draw=#1!80!black,fill=#1!8,rounded corners=2pt,line width=0.6pt,align=center,font=\footnotesize,inner sep=3pt},
+  hbox/.style={draw=none,fill=#1,rounded corners=2pt,text=white,align=center,font=\footnotesize\bfseries,inner sep=3pt},
+  arr/.style={->,line width=0.7pt,draw=cMuted},
+  darr/.style={->,line width=0.7pt,draw=cMuted,dashed},
+  lbl/.style={font=\scriptsize,text=cMuted,align=center},
+}
+\pgfplotsset{compat=1.18,
+  wspaxis/.style={axis line style={cMuted,line width=0.5pt},tick style={cMuted},tick label style={font=\scriptsize,text=cInk},
+    label style={font=\footnotesize,text=cInk},grid style={cGrid,line width=0.4pt},title style={font=\footnotesize\bfseries,text=cInk},
+    legend style={font=\scriptsize,draw=none,fill=none},axis x line*=bottom,axis y line*=left}}

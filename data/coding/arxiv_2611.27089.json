@@ -1,0 +1,28 @@
+{
+ "key": "arxiv_2611.27089",
+ "peripheral": false,
+ "operation": ["read", "edit"],
+ "protocol": "closed_loop",
+ "mechanism": ["code_or_tensor_tool"],
+ "scope": "external",
+ "editor_tier": ["frontier_proprietary"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": 800000000,
+ "edited_fraction": "0.016% (published p50c patch); 0.011% (further GPT-6 Astra edit, 85,519 values)",
+ "cost_reported": "no",
+ "wsp_evidence": {
+  "random_or_null_control": "yes",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "yes",
+  "inference_only_fix_tested": "yes",
+  "full_test_set": "yes",
+  "held_out_eval": "yes",
+  "multiple_runs": "yes",
+  "code_or_data_released": "no"
+ },
+ "prereg": "none",
+ "llm_in_authoring_or_grading": "no",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["simple_baseline_matches", "editor_refusal_or_unfinished"],
+ "evidence_notes": "WSP is central: the paper tests MIT's public Astra-made p50c patch on Qwen3.5-0.8B against permuted-delta controls, prompting and LoRA (p.1, p.7). It also runs one new GPT-6 Astra editing session with tool access to weights and activations (p.5-6), hence code_or_tensor_tool. That edit matched a random perturbation, and a second session wrote no weight (p.6); rank-1 LoRA beat p50c on target tasks (p.10). Three sampling seeds cover the p50c evaluation but the new edit has one seed (Table 2). No preregistration (gates set by the authors) and no code link."
+}

@@ -1,0 +1,76 @@
+{
+  "key": "zenodo_23976715",
+  "title": "Verified by Construction: Machine-Checked Proofs for Hand-Written Transformer Circuits and Their Composition",
+  "authors": ["Xintian Huang"],
+  "date": "2026-11-05",
+  "doc_type": "method_or_tool",
+  "wsp_role": ["write_from_scratch", "other"],
+  "is_wsp": true,
+  "editor_models": ["none (author-written circuits; verifies agent-written snapshots from Singh's WSP study, agent model not stated)"],
+  "target_networks": [
+    {"name": "hand-written algorithmic transformers from Singh's WSP study (parity, boolean circuit, digit counting, word reversal, sort, linear interpolation, addition, multiplication)", "params": "174 to 22.2M (proved up to 1.3M)", "kind": "LLM"},
+    {"name": "OPT-1.3B / 2.7B / 6.7B hosts with grafted refusal circuit", "params": "1.3B-6.7B", "kind": "LLM"},
+    {"name": "GPT-2 small (naive vs compensated graft check)", "params": "124M", "kind": "LLM"}
+  ],
+  "domain": "formal verification / AI safety (refusal circuits, key gating, watermarks)",
+  "tasks_benchmarks": ["Lean 4 proofs over full task input spaces (up to about 5.4e12 prompts)", "WikiText-2 test windows (off-trigger deviation, perplexity)", "trigger prompts with inserted pattern", "deployment transforms (fp16, bf16, TF32, int8, int4, pruning)", "AdamW fine-tuning"],
+  "headline_result": {
+    "text": "Seven agent-written weight-space programs (up to 1.3M parameters) were proved correct on every input, one multiplication snapshot with 100% sampled accuracy was refuted by the counterexample 89984*48898=, and a proved refusal circuit grafted into OPT-6.7B fired on 2480 of 2480 trigger positions.",
+    "page": "5",
+    "quote": "multiplication (ﬁve digits) 22,166,060 (67,813) 11 layers, real LN 10 1010 refuted (89984*48898=)"
+  },
+  "evidence_quality": {
+    "random_or_null_control": "no",
+    "non_llm_baseline": "no",
+    "finetune_comparison": "no",
+    "inference_only_fix_tested": "no",
+    "n_runs_or_seeds": "single (deterministic proofs and fixed evaluation windows)",
+    "full_test_set": "yes",
+    "held_out_eval": "unclear",
+    "preregistered": "no",
+    "code_or_data_released": "yes",
+    "peer_reviewed": "no"
+  },
+  "replicates_mit": "no",
+  "relation_to_qwen_math_edit": "none",
+  "key_claims": [
+    {
+      "claim": "Of the algorithmic tasks from a weight-space-programming study, seven agent-written snapshots were proved correct on every input of their generator in Lean 4.",
+      "page": "3",
+      "quote": "Seven snapshots are proved correct on every input."
+    },
+    {
+      "claim": "Sampled accuracy (200 examples by default) is not enough: a multiplication snapshot scoring 100% gives a wrong answer that a 20,000-sample check found.",
+      "page": "1",
+      "quote": "a hand-written multiplication transformer with 100% sampled"
+    },
+    {
+      "claim": "Correctness of some snapshots depends on things outside the weights, such as first-index tie-breaking and an environment variable setting an attention scale.",
+      "page": "4",
+      "quote": "Correctness can hinge on things outside the"
+    },
+    {
+      "claim": "A proved refusal circuit grafted into OPT-6.7B refused on every trigger position with 100% greedy agreement off trigger in float32.",
+      "page": "10",
+      "quote": "6.7B fp32 1.5 × 10−4 – 100% −1.0 × 10−8 2480/2480 80/80 4.6e3"
+    },
+    {
+      "claim": "Full fine-tuning removes the grafted guarantee, but re-grafting the circuit into the changed host restores the construction.",
+      "page": "11",
+      "quote": "Fine-tuning voids the theorems; re-grafting restores"
+    }
+  ],
+  "limitations_stated": [
+    {
+      "text": "The theorems are over exact real-valued weights; floating-point behaviour is measured, not proved.",
+      "page": "1",
+      "quote": "point storage and execution are measured, not proved."
+    },
+    {
+      "text": "Neither gain setting resists a deliberate adversary who knows the construction.",
+      "page": "12",
+      "quote": "Neither setting resists a deliberate attack. An adversary who"
+    }
+  ],
+  "notes_for_review": "Directly relevant as an audit of agent-written weights: it formally verifies the hand-written transformers from Singh's companion WSP study and shows one snapshot that passed the study's 200-sample evaluation is wrong. The second half (grafting safety circuits into OPT hosts with Lean proofs) is a method contribution where the author, not an LLM, writes the circuits. Evidence is strong in the formal sense (kernel-checked proofs over whole input domains), but the link from Lean constants to deployed tensors rests on an unverified exporter, and floating-point execution is only measured."
+}

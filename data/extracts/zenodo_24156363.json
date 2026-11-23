@@ -1,0 +1,44 @@
+{
+ "key": "zenodo_24156363",
+ "title": "Closed-form neuron rewrites in open-weight LLMs: a constructive Gemma-4-12B edit by a frontier agent, a covert Qwen3.8-27B implant, and what a reference-free weight scan sees",
+ "authors": ["Valerio Dolci"],
+ "date": "2026-11-12",
+ "doc_type": "original_study",
+ "wsp_role": ["write_from_scratch", "repair_or_edit", "other"],
+ "is_wsp": true,
+ "editor_models": ["Claude Opus 5.5"],
+ "target_networks": [
+  {"name": "Gemma-4-12B-it", "params": "12B", "kind": "LLM"},
+  {"name": "Qwen3.8-27B (gradient-trained covert implant, not agent-designed)", "params": "27B", "kind": "LLM"}
+ ],
+ "domain": "machine translation (English to Italian tense choice); security (covert implants and weight-scan detection)",
+ "tasks_benchmarks": ["held-out English->Italian tense test sets v2 (78) and v3 (103)", "FLORES (COMET)", "MMLU-Pro", "GSM8K", "reference-free per-neuron weight-norm scan (AUC)"],
+ "headline_result": {"text": "Claude Opus 5.5, without gradients, rewrote 8 MLP neurons (92,148 parameters) of Gemma-4-12B-it and cut the non-preferred tense form from 26% to 5% on a held-out set with FLORES COMET unchanged at 0.8945.", "page": "1", "quote": "The edit shifts one English→Italian tense choice only where intended (non-preferred form 26% → 5% on a held-out set; 16 shifted, 0 reverted, 2 controls broken), with FLORES COMET unchanged (0.8945)."},
+ "evidence_quality": {
+  "random_or_null_control": "no",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "yes",
+  "inference_only_fix_tested": "yes",
+  "n_runs_or_seeds": "3 agent sessions (2 succeeded); one edit reported",
+  "full_test_set": "yes",
+  "held_out_eval": "yes",
+  "preregistered": "no",
+  "code_or_data_released": "yes",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "partial",
+ "relation_to_qwen_math_edit": "none",
+ "key_claims": [
+  {"claim": "The agent worked without gradients under a budget of 50 forward passes and 300 Python runs and saw only a practice set.", "page": "2", "quote": "with a budget of 50 forward passes and 300 Python runs on the original bf16 weights; it saw only a practice set (610 sentences) and never the test sets."},
+  {"claim": "The 8-neuron agent edit beat a system-prompt rule on controls (2 vs 49 broken) and a LoRA r16 baseline on the target rate (5% vs 12% on v2).", "page": "2", "quote": "LoRA r16, minimal-edit targets    12%       23%         0           120/200, 0.8947"},
+  {"claim": "A later review found that a much simpler change, doubling one native neuron, gives the same shift.", "page": "2", "quote": "a later review found that doubling one native neuron (L33 n1640) gives the same shift."},
+  {"claim": "A reference-free norm scan ranks the 8 edited Gemma neurons as the top 8 of 737,280 MLP neurons.", "page": "1", "quote": "a within-layer outlier score on per-neuron weight norms ranks the 8 edited Gemma neurons as the top 8 of all 737,280 MLP neurons (AUC 1.0)"},
+  {"claim": "Rescaling the implant's down columns to the layer median defeats norm-based scans; only a diff against the original weights still catches it.", "page": "3", "quote": "Matching norms is cheap for an adversary, so norm-based scans ﬁnd careless edits, not careful ones; the reference-based diﬀ, or signed checkpoints, remain the defence that covers both."}
+ ],
+ "limitations_stated": [
+  {"text": "The neurons chosen as rarely used are not rare on raw text, and the detector fires on 1-10% of raw-text tokens.", "page": "2", "quote": "on raw text their usage sits between the 50th and 99.6th percentile of their layer, and the detector ﬁres on 1–10% of raw-text tokens (MMLU, code) against 0.1–0.2% in translation chats"},
+  {"text": "The norm-matching evasion result was not tested for its effect on behaviour.", "page": "4", "quote": "The norm-matching result is a detector-evasion observation with no behavioural test"},
+  {"text": "Directional detection features were not tested.", "page": "3", "quote": "Directional features (gate–up alignment, alignment of the down column with the unembedding) were not tested."}
+ ],
+ "notes_for_review": "A short technical note applying the MIT protocol to a different kind of change (a translation preference in Gemma-4-12B) with a gradient-free Claude Opus 5.5 editor, compared against a system-prompt rule and LoRA. It is notable that a post-hoc review found doubling one native neuron gives the same shift, which undercuts the need for the agent's construction. The Qwen implant is gradient-trained by the author, not WSP, and serves as a security demo; the weight-scan section is the main added contribution. Single author, not peer reviewed; experiments and drafts were produced by Claude Opus 5.5 under the author's direction."
+}

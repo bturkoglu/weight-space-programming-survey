@@ -1,0 +1,46 @@
+{
+ "key": "arxiv_2611.09376",
+ "title": "Can LLMs Debug Robots by Editing Their Weights?",
+ "authors": ["Jusheng Zhang", "Keze Wang", "Liang Lin"],
+ "date": "2026-11-06",
+ "doc_type": "original_study",
+ "wsp_role": ["read", "repair_or_edit", "feedback_loop"],
+ "is_wsp": true,
+ "editor_models": ["GPT-6 Astra"],
+ "target_networks": [
+  {"name": "pi0.5 (openpi pi05_libero checkpoint, VLA)", "params": "3.62B", "kind": "policy"},
+  {"name": "FastWAM (world-action model)", "params": "unknown", "kind": "policy"},
+  {"name": "Qwen3.5-0.8B (reproduction of MIT p50c edit)", "params": "0.8B", "kind": "LLM"}
+ ],
+ "domain": "robotics (vision-language-action policies, simulation)",
+ "tasks_benchmarks": ["LIBERO-Plus (765 held-out Language Instructions variants + 360 other-category episodes)", "LIBERO-PRO", "LIBERO-RECOVER", "MATH-500 (Qwen reproduction)"],
+ "headline_result": {"text": "GPT-6 Astra's best edit (run C) changed 65 token-embedding rows of pi0.5 and raised held-out paraphrase success from 86.3% to 92.0% overall (74.3% to 87.5% on instructions containing edited tokens) with zero outcome changes on the 430 untouched instructions; all three independent sessions improved.", "page": "PAGE 1", "quote": "65 embedding rows                              74.3% → 87.5% on targeted instructions                         430 other episodes: 0 changes"},
+ "evidence_quality": {
+    "random_or_null_control": "yes",
+    "non_llm_baseline": "yes",
+    "finetune_comparison": "no",
+    "inference_only_fix_tested": "no",
+    "n_runs_or_seeds": "3 independent editor sessions; single held-out rollout seed (7)",
+    "full_test_set": "yes",
+    "held_out_eval": "yes",
+    "preregistered": "no",
+    "code_or_data_released": "no",
+    "peer_reviewed": "no"
+ },
+ "replicates_mit": "partial",
+ "relation_to_qwen_math_edit": "reproduces",
+ "key_claims": [
+  {"claim": "The repair is local: all outcome changes fall inside instructions containing an edited token.", "page": "PAGE 5", "quote": "Run C improves edited-token instructions from 249/335 to 293/335 successes; all 430 untouched instructions retain their outcomes (411 successes)."},
+  {"claim": "Moving the same 65 rows by a matched-norm random direction does not help (85.2% vs 86.3% unedited).", "page": "PAGE 4", "quote": "Random direction, matched norm          85.2 7/15       0.134"},
+  {"claim": "A mechanical full replacement toward the editor's own destinations recovers much of the gain (90.5% vs 92.0% for the editor), and the direct difference is not significant.", "page": "PAGE 4", "quote": "Full destination replacement            90.5 43/11 1.40×10−5"},
+  {"claim": "Outside the three language repairs, the editor declined 12 of 13 candidates, and the one retained edit showed no significant held-out gain.", "page": "PAGE 7", "quote": "Of the other 13 sessions, 12 decline their candidates; the sole retained suffix follow-up has 𝑝 = .542."},
+  {"claim": "The authors reconstructed MIT's released Qwen3.5-0.8B p50c edit and obtained a MATH-500 score close to the reported one.", "page": "PAGE 3", "quote": "scores 49.4%, compared with the report’s 48.1% using four"},
+  {"claim": "Separately, benchmark instruction metadata strongly lowers FastWAM success while pi0.5's aggregate rate is unchanged.", "page": "PAGE 8", "quote": "by 21.4 pp. The evaluated 𝜋0.5 checkpoint has the same aggregate rate"}
+ ],
+ "limitations_stated": [
+  {"text": "Prompt rewriting, independently built lexicons and gradient fine-tuning such as LoRA were not measured as baselines.", "page": "PAGE 8", "quote": "gradient fitting. These approaches are relevant alternatives, not"},
+  {"text": "All robot experiments are in simulation with two released checkpoints; the three primary sessions share one held-out population and seed.", "page": "PAGE 8", "quote": "All robot experiments are in simulation and use two released"},
+  {"text": "The Qwen reproduction compares the edit on all 500 problems with the original only on a 100-problem subset, so it is not a matched full-benchmark improvement.", "page": "PAGE 15", "quote": "versus 9.0% is not a matched full-benchmark improvement."}
+ ],
+ "notes_for_review": "One of the most carefully controlled WSP studies: paired McNemar tests on a fixed 765-variant held-out split, three independent editor sessions, a matched-norm random-direction control, and an editor-informed dictionary (full replacement) control that explains much of the gain. The useful finding is narrow lexical repair (synonym-to-anchor embedding remapping), not new robot skills; 12 of 13 other attempts were declined. Gradient fine-tuning and prompt rewriting were not compared, and public code/weights were promised but not yet linked. It also reproduces MIT's Qwen3.5-0.8B MATH-500 edit (49.4% with one sample vs reported 48.1%), with a caveat about the unmatched baseline."
+}

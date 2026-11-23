@@ -1,0 +1,16 @@
+{"key": "zenodo_24373917",
+ "random_or_null_control": "yes",
+ "non_llm_baseline": "yes",
+ "finetune_comparison": "yes",
+ "inference_only_fix_tested": "yes",
+ "preregistered": "no",
+ "code_or_data_released": "no",
+ "full_test_set": "no",
+ "evidence": {
+  "random_or_null_control": "PAPER.md, Comparison with an edit found without a language model: \"it scored 14.0%, against 2.0% for the original model and 2.0% for an edit using a random direction of the same size\"; Exp 4: \"also succeeded in every episode when applied to a network with every weight set to zero, and when applied to a network with shuffled weights\"",
+  "non_llm_baseline": "PAPER.md: \"we constructed an edit with a simple statistical recipe ... We computed the difference between the groups' mean layer outputs and removed that direction\"; \"A two-step script that reverses and then drives forward also solves the scene without a network\"",
+  "finetune_comparison": "PAPER.md Table 2: \"Best published PPO, 100M steps | Best published PPO, 500M steps\" vs networks written in one reply (published training baselines, not re-run)",
+  "inference_only_fix_tested": "PAPER.md Table 1: \"Original, default\" 43.8 on MATH-500; \"Share of published gain reached by the setting alone 89%\" (thinking off / default mode)",
+  "code_or_data_released_note": "no repository link in PAPER.md; reviews mention `results/eval/*.json` and code, but these are not in the extracted deposit text",
+  "full_test_set_note": "Limitations: \"GSM8K used every third problem\"; thinking-mode check \"On every fifth MATH-500 problem\" (n=100); MATH-500 default-mode is full 500"
+ }}

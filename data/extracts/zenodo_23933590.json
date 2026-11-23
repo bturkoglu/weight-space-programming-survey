@@ -1,0 +1,81 @@
+{
+  "key": "zenodo_23933590",
+  "title": "The Mathematics of Weight-Space Programming: Behavioral Optimality, Finite Preservation, and Transformers",
+  "authors": ["Miquel Noguer Alonso"],
+  "date": "2026-11-03",
+  "doc_type": "theory",
+  "wsp_role": ["other"],
+  "is_wsp": true,
+  "editor_models": ["none"],
+  "target_networks": [
+    {"name": "fifteen small two-block pre-LayerNorm transformers (residual width 32, vocabulary 8)", "params": "unknown", "kind": "LLM"},
+    {"name": "GPT-2", "params": "124M", "kind": "LLM"},
+    {"name": "GPT-2 Medium", "params": "355M", "kind": "LLM"}
+  ],
+  "domain": "theory of selective weight editing (model editing, constrained optimization)",
+  "tasks_benchmarks": ["controlled modular/selection tasks on 4,096 prefixes (480 target-donor pairs, 3,840 edits)", "CounterFact (128 requests per checkpoint)", "WikiText-2 NLL probe"],
+  "headline_result": {
+    "text": "Behavioral optimization cut median edit norms by 33-40% on small transformers, and on GPT-2 finite interval constraints raised held-out neighbor retention by 21.1 and 19.4 points over a matched exact-moment control at 100% efficacy, with lower paraphrase success and higher test loss.",
+    "page": "1",
+    "quote": "Against a matched exact-moment control, finite interval constraints improve held-out neighbor retention by 21.1 and 19.4 percentage points at 100% target success, with reduced paraphrase success and increased test loss."
+  },
+  "evidence_quality": {
+    "random_or_null_control": "no",
+    "non_llm_baseline": "yes",
+    "finetune_comparison": "yes",
+    "inference_only_fix_tested": "no",
+    "n_runs_or_seeds": "5 seeds per controlled task family; 2 pretrained checkpoints x 128 cases",
+    "full_test_set": "no",
+    "held_out_eval": "yes",
+    "preregistered": "no",
+    "code_or_data_released": "yes",
+    "peer_reviewed": "no"
+  },
+  "replicates_mit": "no",
+  "relation_to_qwen_math_edit": "none",
+  "key_claims": [
+    {
+      "claim": "The paper analyses the weight-editing problem with explicit numerical algorithms and states that it does not test the MIT claim that LLMs can autonomously write weights.",
+      "page": "2",
+      "quote": "Here we analyze the editing problem itself; the numerical editors below are explicit algorithms, not tests of that autonomous capability."
+    },
+    {
+      "claim": "For the last transformer MLP, the globally minimum-cost single-target edit under module-output protection reduces to a strictly convex scalar optimization.",
+      "page": "1",
+      "quote": "and reduce the globally nearest feasible residual to a strictly convex scalar optimization. This yields a globally minimum-cost single-target edit under fixed-key module-output protection."
+    },
+    {
+      "claim": "In the controlled study, behavioral optimization reduced median edit norms by 40.0%, 33.2% and 34.0% versus a centered-donor control, but these gains rely on a small-vocabulary readout nullspace.",
+      "page": "21",
+      "quote": "The gains exploit this small-vocabulary nullspace; they do not predict complete-logit gains for injective language-model heads."
+    },
+    {
+      "claim": "On GPT-2 124M, Interval-QP reached 59.77% neighbor retention versus 38.67% for exact-moment and 30.16% for a ROME-style final-layer edit, all at 100% efficacy.",
+      "page": "23",
+      "quote": "Interval-QP 100.00 81.25 59.77 93.25 0.0173"
+    },
+    {
+      "claim": "Arithmetic cost of direct-access edits says nothing about whether an LLM can execute the editor natively.",
+      "page": "18",
+      "quote": "These arithmetic costs do not establish that an LLM reads or executes the editor natively."
+    }
+  ],
+  "limitations_stated": [
+    {
+      "text": "Earlier-layer certificates, multi-token rewrites, pretrained sequential edits and multi-billion-parameter models are outside the evidence.",
+      "page": "24",
+      "quote": "General earlier-layer margin certificates, multi-token rewrites, pretrained sequential edits, linguistic-family coverage, and multi- billion-parameter models remain beyond this evidence."
+    },
+    {
+      "text": "Retention outside the stated constraints is empirical, and full greedy continuations are preserved far less often than first tokens.",
+      "page": "24",
+      "quote": "Interval-QP retains 95.7% of unrelated first tokens but only 72.3% of full eight-token greedy continuations; exact-moment retains 96.9% and 74.2%."
+    },
+    {
+      "text": "Numerical audits are floating-point checks, not interval-arithmetic proofs.",
+      "page": "24",
+      "quote": "These are floating-point checks, not interval-arithmetic proofs."
+    }
+  ],
+  "notes_for_review": "A mathematical treatment of selective weight editing (feasibility, minimum edit cost, margin-preserving intervals, dual refusal witnesses) motivated by the MIT blog, with no LLM in the loop; all edits are computed by closed-form or convex solvers. Experiments are small but carefully controlled (fixed splits, full-forward checks, paired bootstrap on CounterFact) and compare against ROME/AlphaEdit-style final-layer adaptations. Useful to the review as a formal baseline for what a mechanical editor can guarantee, and for the explicit statement that edit arithmetic does not show an LLM can do it natively."
+}

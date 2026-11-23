@@ -1,0 +1,46 @@
+{
+ "key": "arxiv_2611.18690",
+ "title": "Perceptual Weight Space Programming for Diffusion Super-Resolution",
+ "authors": ["Chenzhi Zheng", "Zhuoran Zheng"],
+ "date": "2026-11-03",
+ "doc_type": "method_or_tool",
+ "wsp_role": ["repair_or_edit", "feedback_loop"],
+ "is_wsp": true,
+ "editor_models": ["GPT-6 Astra (proposed, not executed)", "Qwen3-VL-235B-A22B-Instruct (proposed, not executed)"],
+ "target_networks": [
+  {"name": "ResShift / SinSR / SUPIR diffusion U-Nets (proposed protocol only)", "params": "unknown", "kind": "diffusion"},
+  {"name": "pixel color-calibration residual network (executed)", "params": "4,611", "kind": "MLP"},
+  {"name": "patch color-calibration residual network (executed)", "params": "6,147", "kind": "MLP"},
+  {"name": "lightweight 2x SR model (executed)", "params": "4,867", "kind": "other"}
+ ],
+ "domain": "vision (image super-resolution)",
+ "tasks_benchmarks": ["RealSR, DRealSR, RealSet65 (proposed)", "CBSD68 color calibration (executed)", "CBSD68 2x SR (executed)"],
+ "headline_result": {"text": "The only executed experiments use a non-LLM seeded search over three output biases of tiny networks (e.g. color-prior distance 0.984 to 0.422 under a uniform shift); no LLM editor or diffusion model was actually run, although protocol tables list Astra numbers such as +0.041 MANIQA and 72% preference.", "page": "PAGE 6", "quote": "gets during editing. They do not test an LLM editor or a"},
+ "evidence_quality": {
+    "random_or_null_control": "no",
+    "non_llm_baseline": "yes",
+    "finetune_comparison": "no",
+    "inference_only_fix_tested": "no",
+    "n_runs_or_seeds": "single",
+    "full_test_set": "unclear",
+    "held_out_eval": "yes",
+    "preregistered": "no",
+    "code_or_data_released": "no",
+    "peer_reviewed": "no"
+ },
+ "replicates_mit": "no",
+ "relation_to_qwen_math_edit": "none",
+ "key_claims": [
+  {"claim": "The framework restricts accepted edits to at most three U-Net layers and under 0.1% of parameters with a 1,020-trial budget.", "page": "PAGE 1", "quote": "It permits up to 1,020 candidate"},
+  {"claim": "In the protocol's ResShift table, GPT-6 Astra is listed with +0.041 MANIQA and 72% preference against 58% for CMA-ES and 60% for Qwen3-VL, but these diffusion experiments are not reported as executed.", "page": "PAGE 6", "quote": "GPT-6 Astra 5.8 0.038 0.041 −0.40 72%"},
+  {"claim": "In the executed color-calibration study, the patch model reduced color-prior distance from 0.984 to 0.422 by changing three existing biases.", "page": "PAGE 7", "quote": "the patch model reduces color-prior distance from 0.984 to"},
+  {"claim": "An improving reference-free feedback score made the nominal condition worse on unseen test images (color-prior distance 0.188 to 0.423).", "page": "PAGE 9", "quote": "In the nominal condition, the patch model increases color-"},
+  {"claim": "The lightweight SR experiment changed three scalars (0.0616% of the model) and raised mean luminance-gradient energy by 3.56% on 28 test images.", "page": "PAGE 9", "quote": "luminance-gradient energy increases by 3.56%, while the"}
+ ],
+ "limitations_stated": [
+  {"text": "The executed study does not establish U-Net layer localization, an LLM advantage, or human preference gains for diffusion SR.", "page": "PAGE 9", "quote": "It does not establish useful U-Net layer localiza-"},
+  {"text": "The full 1,020-trial diffusion runs and learned NR-IQA scoring were not executed.", "page": "PAGE 7", "quote": "execute 1,020 full diffusion runs or collect standard learned"},
+  {"text": "Restricting layers and scalars does not remove global side effects; feedback overfitting remains a concern.", "page": "PAGE 9", "quote": "Restricting layers and scalar support reduces the update"}
+ ],
+ "notes_for_review": "Mostly a protocol paper: the diffusion/LLM part (Astra vs Qwen3-VL vs random/coordinate/CMA-ES search) is described as proposed, yet Tables 2-5 give precise result numbers for it without saying they were measured, which is odd and should not be cited as evidence. The executed experiments use a seeded numerical search (no LLM) to change three biases or readout coefficients in tiny fixed-random-feature networks on CBSD68. Their useful finding is negative: a reference-free proxy can improve while unseen-scene quality gets worse."
+}

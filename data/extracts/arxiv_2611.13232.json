@@ -1,0 +1,75 @@
+{
+  "key": "arxiv_2611.13232",
+  "title": "W-ISA: Transactional Execution of Weight-Space Intervention Programs",
+  "authors": ["Ekrem Aksoy"],
+  "date": "2026-11-09",
+  "doc_type": "method_or_tool",
+  "wsp_role": ["other"],
+  "is_wsp": true,
+  "editor_models": ["none"],
+  "target_networks": [
+    {"name": "SmolLM-135M-Instruct", "params": "135M", "kind": "LLM"},
+    {"name": "Qwen2.5-1.5B-Instruct", "params": "1.5B", "kind": "LLM"}
+  ],
+  "domain": "interpretability / model-editing infrastructure (runtime for applying weight interventions)",
+  "tasks_benchmarks": ["WikiText-2 raw test perplexity", "handwritten formal/casual prompt fixture (12 held-out prompts)", "rank-one materialization vs PyTorch hook timing (45 timed requests)"],
+  "headline_result": {
+    "text": "Materialized rank-one weight updates and an equivalent PyTorch hook gave identical greedy outputs on Qwen2.5-1.5B (max prompt-logit difference 0.000184), and the combined SmolLM head-ablation plus MLP projection raised WikiText-2 perplexity from 22.2353 to 22.3188 (+0.3754%).",
+    "page": "1",
+    "quote": "In 45 timed requests, both intervention implementations produce identical greedy sequences at 32, 128, and 512 tokens; their maximum prompt-logit difference is 0.000184."
+  },
+  "evidence_quality": {
+    "random_or_null_control": "no",
+    "non_llm_baseline": "yes",
+    "finetune_comparison": "no",
+    "inference_only_fix_tested": "unclear",
+    "n_runs_or_seeds": "5 timed repetitions per mode/length (deterministic greedy); single run for other experiments",
+    "full_test_set": "yes",
+    "held_out_eval": "yes",
+    "preregistered": "no",
+    "code_or_data_released": "no",
+    "peer_reviewed": "no"
+  },
+  "replicates_mit": "no",
+  "relation_to_qwen_math_edit": "none",
+  "key_claims": [
+    {
+      "claim": "W-ISA is an instruction set and transactional runtime that applies weight-space intervention programs within request scopes and restores the saved parameters afterwards.",
+      "page": "1",
+      "quote": "We present W-ISA, a software instruction set and transactional runtime for executing weight- space intervention programs on pretrained language models."
+    },
+    {
+      "claim": "The author adopts the MIT weight-space programming framing as conceptual motivation but contributes only the execution layer for supplied interventions, not an LLM that designs edits.",
+      "page": "2",
+      "quote": "We adopt their weight-space programming perspective as a conceptual foundation. W-ISA’s contribution is a structured instruction and transactional execution layer for supplied interventions."
+    },
+    {
+      "claim": "Restoration relies on saved byte-exact snapshots, not on numerically inverting the edit; undo and replay matched across two separately launched processes.",
+      "page": "7",
+      "quote": "Undo restored the original weights and recorded outputs; replay restored the edited state. Two sepa- rately launched processes matched in saved logits, token sequences, direction values, and parameter digests."
+    },
+    {
+      "claim": "An activation-triggered conditional rule fired on 4 of 6 held-out matched prompts with no false positives (balanced accuracy 0.833), and all twelve conditional requests kept their original greedy outputs.",
+      "page": "8",
+      "quote": "All twelve conditional requests retained their original greedy token se- quences."
+    },
+    {
+      "claim": "Materializing the weight update costs extra time-to-first-token and memory compared with a forward hook (e.g., median TTFT 166.4 ms vs 51.1 ms at 512 tokens; ~499 MiB RSS increase vs ~1.6 MiB).",
+      "page": "10",
+      "quote": "The measured W-ISA application medians are 48.866, 56.059 and 115.142 ms for the three length groups; restoration medians are 2.500, 2.413 and 2.624 ms."
+    }
+  ],
+  "limitations_stated": [
+    {
+      "text": "The shared model lock serializes requests for the lifetime of an intervention, so concurrent requests do not run in parallel.",
+      "page": "5",
+      "quote": "The shared model lock serializes participating requests for the lifetime of the intervention."
+    },
+    {
+      "text": "Snapshots cover the full target parameter even when only a slice is edited, which drives memory cost.",
+      "page": "5",
+      "quote": "Snapshots cover full target parameters, including when an instruction selects a smaller slice."
+    }
+  ],
+  "notes_for_review": "This is an engineering runtime for applying hand-specified weight edits (ablation, projection, rank-one) with exact restoration; no LLM reads or writes weights, so it is WSP only in framing. Evidence is correctness and timing checks on two small models with deterministic greedy decoding; the steering effect itself is tiny (3 of 12 responses changed, perplexity change under 0.4%). The code is described as MIT-licensed but no repository link is given in the text."
+}

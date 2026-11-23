@@ -1,0 +1,48 @@
+{
+ "key": "zenodo_23976684",
+ "title": "Weight-Space Programming on Qwen3-ASR-0.6B: Nine Independent Agent Edits, Random-Direction Controls, and a Missing Attention Mask",
+ "authors": ["Taha Enes Aslantürk"],
+ "date": "2026-11-05",
+ "doc_type": "replication",
+ "wsp_role": ["read", "repair_or_edit"],
+ "is_wsp": true,
+ "editor_models": ["Claude Opus 5.5"],
+ "target_networks": [
+  {"name": "Qwen3-ASR-0.6B (audio encoder + LLM decoder)", "params": "782,426,112", "kind": "LLM"}
+ ],
+ "domain": "speech recognition (ASR), language identification",
+ "tasks_benchmarks": ["FLEURS (tr/en/de/ar/ru/ja) clean WER", "synthetic stress sets (long trailing silence, speech in silence, bilingual)", "test_hard trailing-silence clips"],
+ "headline_result": {
+  "text": "All nine Claude Opus edit arms reduced the language-None failure on 70 target clips with 0 newly broken clips and beat their five random-direction controls in 26 of 27 comparisons, but simply restoring a missing encoder attention mask without any weight change fixed as many clips (36) as the best edit.",
+  "page": "PAGE 1",
+  "quote": "Restoring the mask with no weight change (baseline_windowed, a separate analysis, not part of the WSP protocol) ﬁxes 31 of 40 stress and 5 of 30 hard-TS target clips, matching the best edit and beating the other eight."
+ },
+ "evidence_quality": {
+  "random_or_null_control": "yes",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "yes",
+  "n_runs_or_seeds": "9 agent arms (3 per budget), 5 random controls each",
+  "full_test_set": "yes",
+  "held_out_eval": "yes",
+  "preregistered": "no",
+  "code_or_data_released": "yes",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "partial",
+ "relation_to_qwen_math_edit": "extends",
+ "key_claims": [
+  {"claim": "All nine edits reduced the target pathology with no newly broken clips and McNemar p < 0.01 on 70 clips.", "page": "PAGE 1", "quote": "All nine edits reduce it, with 0 newly broken clips and McNemar p < 0.01 on the combined 70 target clips for every arm."},
+  {"claim": "Real edits beat each of five norm-matched random-direction controls in 26 of 27 comparisons.", "page": "PAGE 1", "quote": "The real edit ﬁxes more target clips than each of its ﬁve random controls in 26 of 27 (arm × target set) comparisons."},
+  {"claim": "Four arms paid a small but significant clean-WER regression.", "page": "PAGE 1", "quote": "The price is a small clean-WER regression for four arms (+0.24 to +0.40 pp macro WER, 95% CI excluding 0)"},
+  {"claim": "Six of nine arms independently edited the same two decoder attention heads.", "page": "PAGE 1", "quote": "Six of nine arms independently localized the same two decoder attention heads (L20H13 and L21H2)."},
+  {"claim": "The pathology is mostly an artifact of a missing encoder window mask in the inference backend; edits compensate for it in weight space.", "page": "PAGE 1", "quote": "We therefore read the pathology as largely an artifact of this inference backend; the edits compensate in weight space for a missing mask."},
+  {"claim": "The second, distributed target (bilingual code-switching) was not fixed by any arm.", "page": "PAGE 9", "quote": "Target B (bilingual code-switching) was not ﬁxed."}
+ ],
+ "limitations_stated": [
+  {"text": "Single 0.6B model and one successfully targeted failure; nothing shows WSP works for ASR in general.", "page": "PAGE 10", "quote": "Nothing here shows that weight-space programming works for ASR in general; Target B argues the opposite for distributed errors."},
+  {"text": "All agents are Claude Opus instances with a shared brief, so convergence is not statistical independence.", "page": "PAGE 10", "quote": "The arms share a model family, a brief that names mechanism families, and the same practice data, so convergence on the same heads is not evidence of statistical independence."},
+  {"text": "Edits patch a symptom of the inference stack rather than a model defect.", "page": "PAGE 10", "quote": "Edits therefore patch a symptom of the inference stack rather than a model defect; we have not run FA2 (no CUDA)."}
+ ],
+ "notes_for_review": "The most carefully controlled WSP replication in this set: nine agent arms, norm- and footprint-matched random-direction controls, a single-use held-out test set and paired statistics. Its key finding cuts against the headline: the repaired pathology was caused by a missing attention mask in the qwen-asr sdpa/MPS backend, and restoring the mask (an inference-only fix) did as well as the best weight edit. Weight edits did not fix a distributed failure (code-switching), echoing MIT's Gemma 3 270M null. No gradient fine-tuning comparison; not peer reviewed."
+}

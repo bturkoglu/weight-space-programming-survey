@@ -1,0 +1,24 @@
+{
+ "key": "arxiv_2611.26841",
+ "peripheral": false,
+ "operation": ["read", "edit"],
+ "protocol": "closed_loop",
+ "mechanism": ["code_or_tensor_tool"],
+ "scope": "external",
+ "editor_tier": ["frontier_proprietary", "open_weight"],
+ "open_weight_editor_failed": "yes",
+ "target_params_max": 14000000000,
+ "edited_fraction": "8,512 entries (Fable 5.1) on Qwen2.5-0.5B; on 7B-14B targets updates grew from 29K to 7.06B parameters",
+ "cost_reported": "yes: ~$779 API cost for 224 editor runs (~$1 per GPT-6 Astra run vs $4-7 for others), per-run wall-clock minutes reported; gradient baselines not costed in $",
+ "wsp_evidence": {
+  "random_or_null_control": "yes", "non_llm_baseline": "yes", "finetune_comparison": "yes",
+  "inference_only_fix_tested": "yes", "full_test_set": "yes", "held_out_eval": "yes",
+  "multiple_runs": "yes",
+  "code_or_data_released": "no"
+ },
+ "prereg": "none",
+ "llm_in_authoring_or_grading": "yes",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["simple_baseline_matches", "fragile_to_perturbation_or_retraining", "editor_refusal_or_unfinished"],
+ "evidence_notes": "Editors call a single python tool on a persistent kernel holding the target, with a 50-forward-pass budget (p3, p13-14), so closed-loop and tool-mediated; targets reach Qwen2.5-14B (p7). 16-shot ICL (inference-only) and Adam/LoRA/rank-1/context-distillation match the editors, and edits fail under new prompt wordings (p5, p8); unfinished runs and provider-side filtering are reported (p7, p9). Open-weight GLM-5.2 averaged 5.2% and DeepSeek V4.1 Flash 73.9% vs ~90% for frontier editors (Table 20, p23); an LLM annotated strategies and assisted with code (p10); results 'will be released' on GitHub (p2); no preregistration."
+}

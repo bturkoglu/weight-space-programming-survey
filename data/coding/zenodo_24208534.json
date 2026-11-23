@@ -1,0 +1,28 @@
+{
+ "key": "zenodo_24208534",
+ "peripheral": false,
+ "operation": ["read", "edit"],
+ "protocol": "closed_loop",
+ "mechanism": ["code_or_tensor_tool"],
+ "scope": "external",
+ "editor_tier": ["frontier_proprietary"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": 800000000,
+ "edited_fraction": "unclear (at most four rank-1 edits of selected neuron groups' output columns; fraction not reported)",
+ "cost_reported": "One agent run about 2 h, 1.3 GPU-hours (GTX 1660 SUPER) and 5.4M tokens read / 48k written (about US$5-7 at API prices) vs 17.1 GPU-hours for LoRA and 4.4 for decoding tuning",
+ "wsp_evidence": {
+  "random_or_null_control": "yes",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "yes",
+  "inference_only_fix_tested": "yes",
+  "full_test_set": "no",
+  "held_out_eval": "yes",
+  "multiple_runs": "yes",
+  "code_or_data_released": "yes"
+ },
+ "prereg": "internal",
+ "llm_in_authoring_or_grading": "yes",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["proxy_overfitting", "simple_baseline_matches", "run_to_run_variance"],
+ "evidence_notes": "Agentic rank-1 editing of Qwen3.5-0.8B is the whole study (p.1-3). Agents pick a neuron group, direction u and strength alpha for a fixed edit formula and use an evaluator with quick scores and real tests (p.2), so code_or_tensor_tool and closed loop. Predictions were dated in a lab notebook in the project's GitHub repository, and the second locked test had all arms and predictions fixed before opening (p.5, p.14), with no third-party registry, so coded internal; Claude wrote most code, ran experiments, kept the notebook and drafted the text (p.14). Turning thinking off reached 58% (p.5), every quick proxy was gamed (p.10), and repeated runs vary by up to 5.5 points (p.13); evaluation uses 200-problem GSM8K subsets, not the full test set."
+}

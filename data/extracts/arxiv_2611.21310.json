@@ -1,0 +1,47 @@
+{
+ "key": "arxiv_2611.21310",
+ "title": "Can AI Mature a Model's Geometry? Training-Free Weight Baking in LLMs",
+ "authors": ["Amin Golnari", "Saeid Sanei"],
+ "date": "2026-11-16",
+ "doc_type": "method_or_tool",
+ "wsp_role": ["repair_or_edit", "feedback_loop"],
+ "is_wsp": true,
+ "editor_models": ["Gemma-2-2B (main analyst)", "Llama-3.2-3B", "Phi-3-mini", "Qwen2.5-1.5B", "SmolLM2-1.7B (round-robin analysts)"],
+ "target_networks": [
+  {"name": "Qwen2.5-1.5B-Instruct", "params": "1.5B", "kind": "LLM"},
+  {"name": "SmolLM2-1.7B-Instruct", "params": "1.7B", "kind": "LLM"},
+  {"name": "Llama-3.2-3B-Instruct (round robin)", "params": "3.2B", "kind": "LLM"},
+  {"name": "Phi-3-mini-4k-instruct (round robin)", "params": "3.8B", "kind": "LLM"},
+  {"name": "Gemma-2-2B-it (round robin)", "params": "2.6B", "kind": "LLM"}
+ ],
+ "domain": "representation geometry / latent-space organisation of LLMs",
+ "tasks_benchmarks": ["WordNet category probe words (purity, silhouette, anisotropy, Betti numbers)", "HellaSwag (200)", "ARC-Easy (200)", "TruthfulQA (200)", "WikiText-103 perplexity", "category cloze", "40-prompt factual-preference probe"],
+ "headline_result": {"text": "An LLM analyst reading only a fixed-size topological digest proposed edits that ridge regression baked into feed-forward weights; across 126 runs category purity rose on unseen words and sentence frames (about +0.01 to +0.03) with benchmark accuracy within sampling error, matching a deterministic heuristic with gentler edits.", "page": "PAGE 1", "quote": "126 runs show that category purity rose on unseen words and sentences, benchmark accuracy stayed within sampling error, and the analyst matched a category-aware heuristic with gentler edits."},
+ "evidence_quality": {
+    "random_or_null_control": "no",
+    "non_llm_baseline": "yes",
+    "finetune_comparison": "no",
+    "inference_only_fix_tested": "no",
+    "n_runs_or_seeds": "3 seeds (data-split resamples on the same frozen weights); round robin single seed",
+    "full_test_set": "no",
+    "held_out_eval": "yes",
+    "preregistered": "no",
+    "code_or_data_released": "yes",
+    "peer_reviewed": "no"
+ },
+ "replicates_mit": "no",
+ "relation_to_qwen_math_edit": "none",
+ "key_claims": [
+  {"claim": "The method deliberately avoids raw-weight WSP because raw weights do not fit in an LLM context; the analyst sees a compact digest instead.", "page": "PAGE 1", "quote": "Weight-Space Programming lets a frontier large language model (LLM) read and write raw weights as text, but a 1.5-million-parameter network already exceeds the model’s context [6]."},
+ {"claim": "The analyst and a category-aware heuristic were comparable in purity gain; the analyst used less of the divergence budget.", "page": "PAGE 6", "quote": "On the same target and seed, the analyst’s purity gain under [D] was higher than the default heuristic’s in three of the six pairs and lower in three, so the two arms are comparable in effectiveness."},
+  {"claim": "Tuned heuristic configurations matched or beat the default analyst on Qwen.", "page": "PAGE 6", "quote": "Two tuned heuristic configurations from the ablations (Table 3) matched or exceeded the default analyst on Qwen in purity gain, CKA, KL, and held-out perplexity, while the analyst kept the larger silhouette gain."},
+  {"claim": "In the five-model round robin, 16 of 20 analyst-target pairs changed the target and all 16 raised purity; analyst gain did not grow with parameter count.", "page": "PAGE 7", "quote": "In 16 of the 20 pairs the analyst changed its target, and in all 16 purity under [D] rose over the edited layers"},
+  {"claim": "Edits came at a cost in held-out perplexity and factual margin.", "page": "PAGE 7", "quote": "The truth margin of the factual probe fell in all 18 default runs, by at most 8.1% of the baseline margin"}
+ ],
+ "limitations_stated": [
+  {"text": "Seeds resample data splits on the same frozen weights, so statistics are descriptive, and the analyst's rationales are short and generic.", "page": "PAGE 8", "quote": "the three seeds resample data splits and benchmark samples on the same frozen weights, so the statistics are descriptive"},
+  {"text": "Steering and closed-form editing baselines were not run.", "page": "PAGE 8", "quote": "The open questions are how far the paradigm scales and how it compares with the steering and closed-form editing baselines of Section 2, which we did not run."},
+  {"text": "Most accepted analyst edits passed only at a relaxed gain threshold that also admits neutral edits.", "page": "PAGE 6", "quote": "Most of the analyst’s accepted edits passed only at the relaxed gain threshold, which admits very small gains and, in two cases of the main study, neutral edits"}
+ ],
+ "notes_for_review": "A WSP-adjacent variant: small LLMs (1.5-3.8B) never read raw weights but choose from four affine operations given a topological digest, and closed-form ridge regression writes the change into feed-forward weights. Gains in latent 'purity' are small, a deterministic heuristic does about as well (tuned versions better), and most accepted edits passed only a relaxed near-zero threshold, so the evidence that the LLM adds value is weak. Behavioural metrics show small costs (perplexity up 6-9%, truth margin down), no random-direction control was run, and only 200-example benchmark subsamples were used."
+}

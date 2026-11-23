@@ -1,0 +1,47 @@
+{
+ "key": "arxiv_2611.27089",
+ "title": "Writing Weights or Training Them? Spatial Reasoning through Weight-Space Programming and Low-Rank Adaptation",
+ "authors": ["Yalin Yang", "Xiao Huang", "Yanan Wu", "Hao Yang", "Ryan Zhenqi Zhou"],
+ "date": "2026-11-20",
+ "doc_type": "original_study",
+ "wsp_role": ["repair_or_edit", "feedback_loop"],
+ "is_wsp": true,
+ "editor_models": ["none for the main patch (uses MIT's published p50c, made with GPT-6 Astra)", "GPT-6 Astra (one further editing session)"],
+ "target_networks": [
+  {"name": "Qwen3.5-0.8B (base and p50c patch)", "params": "0.8B", "kind": "LLM"},
+  {"name": "Gemma 3 1B-it (prompting only)", "params": "1B", "kind": "LLM"},
+  {"name": "Llama-3.2-1B-Instruct (prompting only)", "params": "1B", "kind": "LLM"}
+ ],
+ "domain": "spatial reasoning (text)",
+ "tasks_benchmarks": ["reference-frame task (128 items)", "StepGame corrected release (200 items, levels 1-10)", "map distance comparison (128 items, off-target)", "product distance comparison (128 items, off-target)"],
+ "headline_result": {"text": "With thinking on, MIT's p50c patch raised Qwen3.5-0.8B from 0.0% to 22.1% (reference frame) and 19.2% to 33.7% (StepGame), while a rank-1 LoRA (0.09% trainable parameters) trained on worked solutions reached 100% and 98.8%; but the LoRA adapters collapsed off-target distance tasks from 94%/92% under p50c to 0-2%.", "page": "PAGE 1", "quote": "closed-form edits did not improve on p50c, whereas a rank-1 LoRA adapter trained on worked"},
+ "evidence_quality": {
+    "random_or_null_control": "yes",
+    "non_llm_baseline": "yes",
+    "finetune_comparison": "yes",
+    "inference_only_fix_tested": "yes",
+    "n_runs_or_seeds": "3 sampling seeds for main conditions; each adapter trained once; editing/control conditions single seed",
+    "full_test_set": "yes",
+    "held_out_eval": "yes",
+    "preregistered": "no",
+    "code_or_data_released": "no",
+    "peer_reviewed": "no"
+ },
+ "replicates_mit": "partial",
+ "relation_to_qwen_math_edit": "extends",
+ "key_claims": [
+  {"claim": "Randomly permuting the elements of p50c's weight change (same norm and sparsity) returned accuracy to base level (1-3/128 and 39-40/200), so the gain depends on the edit's structure.", "page": "PAGE 6", "quote": "The gain of p50c therefore depends on the structure of its edit."},
+  {"claim": "The base model's failures were almost all non-terminations (126-127 of 128 reference-frame outputs hit the 32,768-token limit vs 3 for p50c), consistent with p50c repairing looping as in MIT's math result.", "page": "PAGE 6", "quote": "The patch’s effect on these tasks is thus consistent with the repair of looping reported for mathematics [15]."},
+  {"claim": "A further GPT-6 Astra edit (85,519 values, 0.011%) scored 31/128 and 65/200, below seed-matched p50c and indistinguishable from a matched random perturbation (26/128, 67/200); none of five further gradient-free edits improved on p50c.", "page": "PAGE 6", "quote": "of 34/128 and 69/200 and indistinguishable from a matched random perturbation (26/128 and"},
+  {"claim": "A rank-1 LoRA with 676,416 trainable parameters (0.09%), same order as the closed-form edits, scored 128/128 on all seeds and 196-199/200 after 384 steps; 448 training examples already gave 122.7/128 and 181.3/200.", "page": "PAGE 10", "quote": "448 examples of the training file (128 reference-frame scenes and 32 StepGame problems per hop,"},
+  {"claim": "Answer-only supervision (no worked solutions) failed the learning gate and scored 30.3/128 and 24.3/200, the latter below p50c.", "page": "PAGE 10", "quote": "checkpoint scored 30.3/128 and 24.3/200, the latter well below p50c."},
+  {"claim": "All LoRA adapters collapsed on the untrained distance tasks (0-2/128 vs 120.3 and 118.0 for p50c) by applying the StepGame template, while p50c preserved them.", "page": "PAGE 11", "quote": "120.3/128 and 118.0/128 correctly on average, whereas all three adapters scored between 0 and"},
+  {"claim": "With thinking off and step-by-step reasoning requested in the visible answer, the unpatched base model solved the distance tasks (123.0/128, 114.7/128) close to p50c, but remained weak on the target tasks.", "page": "PAGE 7", "quote": "(Section 9), it scored 123.0/128 and 114.7/128, close to the 120.3 and 118.0 of p50c."}
+ ],
+ "limitations_stated": [
+  {"text": "Editing and LoRA used different data volumes and compute budgets, so the study compares achieved behaviour, not equal-budget efficiency.", "page": "PAGE 14", "quote": "The results therefore compare achieved behaviour rather than equal-budget efficiency."},
+  {"text": "Each adapter was trained once; seeds measure sampling, not training, variation.", "page": "PAGE 14", "quote": "Each adapter was trained once, so the three evaluation seeds measure sampling variation rather than training variation."},
+  {"text": "Only one 0.8B model and two-dimensional spatial tasks; the 1B models were tested with prompting only.", "page": "PAGE 14", "quote": "The comparison covers one 0.8B model and two-dimensional directional and distance tasks;"}
+ ],
+ "notes_for_review": "An independent test of MIT's public p50c Qwen3.5-0.8B patch on new tasks, with a permutation (same-norm shuffled delta) control, prompting baselines, a thinking-off diagnostic, an Astra re-edit with matched random perturbation, and rank-1/rank-16 LoRA. Budgets are explicitly unequal: LoRA used 7,168 synthetic worked-solution examples (448 suffice), Adam lr 1e-4, 384 steps, while the closed-form edits used a 72-item development subset; p50c is a fixed artifact not tuned to these tasks. The result supports reading p50c as a looping repair: modest on-target gain but no damage to neighbouring skills, whereas LoRA gives near-ceiling target accuracy with severe task take-over."
+}

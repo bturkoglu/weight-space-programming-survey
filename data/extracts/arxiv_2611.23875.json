@@ -1,0 +1,45 @@
+{
+ "key": "arxiv_2611.23875",
+ "title": "In Situ Training of Optical Neural Networks by Coding Agents",
+ "authors": ["Ilker Oguz", "Colin Christian", "Christophe Moser", "Demetri Psaltis", "Gordon Wetzstein"],
+ "date": "2026-11-18",
+ "doc_type": "original_study",
+ "wsp_role": ["feedback_loop", "repair_or_edit", "write_from_scratch"],
+ "is_wsp": true,
+ "editor_models": ["Claude Opus 5.5 (Claude Code)", "Claude Sonnet 5", "Claude Fable 5.2"],
+ "target_networks": [
+  {"name": "multi-reflection SLM optical neural network (two phase masks phi1, phi2)", "params": "several hundred thousand pixels", "kind": "other"}
+ ],
+ "domain": "optics / physical neural network hardware (vision: MNIST digits 0-2, Fashion-MNIST encoder)",
+ "tasks_benchmarks": ["MNIST digits 0/1/2 optical classification (3,147 test digits)", "Fashion-MNIST optical encoder (16 detectors, PSNR on 300 test images)"],
+ "headline_result": {
+  "text": "With notes from an earlier session, the Opus 5.5 agent trained the optical classifier on hardware to 96.8% test accuracy (91.1% without notes), versus about 52% for PPO and policy gradient and 96.3% for backpropagation through a calibrated model.",
+  "page": "PAGE 5",
+  "quote": "In contrast, our agent reached 91.1% from the task description alone, and 96.8% when it was given the notes and code of an earlier session, without any phase masks (Fig. 2b)."
+ },
+ "evidence_quality": {
+  "random_or_null_control": "no",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "yes",
+  "inference_only_fix_tested": "no",
+  "n_runs_or_seeds": "best run per method reported; three classifier runs with notes or lessons (89.2, 91.3, 96.8%); one encoder run per row",
+  "full_test_set": "yes",
+  "held_out_eval": "yes",
+  "preregistered": "no",
+  "code_or_data_released": "no",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "no",
+ "relation_to_qwen_math_edit": "none",
+ "key_claims": [
+  {"claim": "The method is framed as an extension of weight-space programming to physical networks whose parameters can only be measured.", "page": "PAGE 3", "quote": "A recently reported ability of these models, weight-space programming, is of particular interest for neural networks.35"},
+  {"claim": "Gradient-free baselines (PPO, policy gradient), tuned on the calibrated model over 22 settings, improved test accuracy only from 35% to about 52%.", "page": "PAGE 5", "quote": "Their settings were first searched in simulation and the best deployed on the experiment (Methods), where they improved the test accuracy from 35% to about 52%."},
+  {"claim": "On the encoder task the agent with notes reached 16.1 dB versus 15.0 dB for PPO, 13.8 dB random start and 16.9 dB for calibrated-model backpropagation; Fable 5.2 beat Opus 5.5 and Sonnet 5.", "page": "PAGE 7", "quote": "it reached 16.1 dB, against 15.0 dB for PPO and 13.8 dB for the random start (Fig. 3c,d). The best result obtained on this experiment, 16.9 dB, came from backpropagation through a calibrated model"},
+  {"claim": "The agent reparametrizes the masks with a few interpretable optical parameters (lenses, prisms, aberrations) instead of pixel updates.", "page": "PAGE 7", "quote": "In both routes, a small number of interpretable parameters replace several hundred thousand pixel updates"},
+  {"claim": "Harness ablations on the calibrated model show more information (camera images, probes, hypotheses, notes) helps, and even with scalar reward only the agent beat PPO (71.3% vs 58.7%).", "page": "PAGE 7", "quote": "Even with the single scalar reward per candidate that the gradient-free methods receive, the agent clearly outperformed PPO."}
+ ],
+ "limitations_stated": [
+  {"text": "Each test accuracy carries finite-test-set uncertainty; run-to-run spread for runs with notes was 3.9 points.", "page": "PAGE 11", "quote": "The three classifier runs that received notes or general lessons from earlier sessions reached 89.2%, 91.3% and 96.8% on the test digits (mean 92.4%, standard deviation 3.9 percentage points)."}
+ ],
+ "notes_for_review": "Applies the WSP idea to physical optical networks: a coding agent with probes, camera images and a notes file trains phase masks in situ, and the comparison includes tuned PPO/policy-gradient baselines and backpropagation through a calibrated digital twin. The headline 96.8% is the best of three runs and relies on notes from a previous session; the agent without notes reached 91.1%. Harness ablations were run on the calibrated simulator, not the hardware. The parameters edited are optical phase masks expressed as code (lenses, prisms), so this is weight programming only in a broad sense."
+}

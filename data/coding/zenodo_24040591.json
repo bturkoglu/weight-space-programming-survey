@@ -1,0 +1,28 @@
+{
+ "key": "zenodo_24040591",
+ "peripheral": false,
+ "operation": ["read", "edit"],
+ "protocol": "both",
+ "mechanism": ["code_or_tensor_tool"],
+ "scope": "external",
+ "editor_tier": ["frontier_proprietary"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": 58433,
+ "edited_fraction": "0.1-7.7% of weights",
+ "cost_reported": "session time only: stage-1 sessions lasted a median of 6 (batch) to 9 (interactive) minutes; no $",
+ "wsp_evidence": {
+  "random_or_null_control": "yes",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "yes",
+  "inference_only_fix_tested": "no",
+  "full_test_set": "yes",
+  "held_out_eval": "yes",
+  "multiple_runs": "yes",
+  "code_or_data_released": "yes"
+ },
+ "prereg": "internal",
+ "llm_in_authoring_or_grading": "yes",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["editor_refusal_or_unfinished", "simple_baseline_matches"],
+ "evidence_notes": "WSP is the whole study. Blind Claude Opus 5.5 sessions write Python over the CNN's weights at forward-pass budget 0 (open loop) and 10-50 (closed loop) (AGENTS.md; preprint). Preregistration was frozen at a private-repo commit tagged prereg-v1 on 2026-11-04, with 13 dated amendments, and tied to the release by commit hashes and SHA-256 (preregistration.md; VERIFICATION.md). That is internal, not a third-party registry. Design, harness, subjects and both coders used claude-opus-5-5 (results.md). Sessions rarely edited, only 2 of 36 met the fix criterion, and the MoDISco interpretability baseline fixed 6/18 k-mer cells (main.tex; results.md). The released Zenodo deposit contains code and the harness; weights and transcripts are withheld."
+}

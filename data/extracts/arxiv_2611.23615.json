@@ -1,0 +1,46 @@
+{
+ "key": "arxiv_2611.23615",
+ "title": "Weight-Space Programming for Vision–Language Model Repair",
+ "authors": ["Avinash Goutham Aluguvelly"],
+ "date": "2026-11-19",
+ "doc_type": "audit_or_critique",
+ "wsp_role": ["read", "repair_or_edit", "feedback_loop"],
+ "is_wsp": true,
+ "editor_models": ["GPT-6 Astra (via Codex CLI)"],
+ "target_networks": [{"name": "SmolVLM-256M", "params": "256M", "kind": "LLM"}, {"name": "LFM2-VL-450M", "params": "450M", "kind": "LLM"}],
+ "domain": "vision",
+ "tasks_benchmarks": ["synthetic circle/square spatial questions", "GQA spatial yes/no questions (96 test questions)", "planted-fault weight restoration audit"],
+ "headline_result": {
+  "text": "On unrounded float32 faults the agent raises SmolVLM spatial accuracy from 38.5% to 83.9% and LFM2-VL from 55.5% to 72.5%, but once the fault's low bits are rounded to BF16 it no longer repairs either model unaided (SmolVLM 38.8%; LFM2-VL gain about 4 vs 17 points).",
+  "page": "PAGE 1",
+  "quote": "answers our test questions as before, but the agent, unaided, no longer repairs either model: on LFM2-VL accuracy re- covers by about 4 points, against 17 from the unrounded"
+ },
+ "evidence_quality": {
+  "random_or_null_control": "yes",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "yes",
+  "inference_only_fix_tested": "no",
+  "n_runs_or_seeds": "1-12 sessions per condition over 1-6 checkpoints (many LFM2-VL conditions single)",
+  "full_test_set": "unclear",
+  "held_out_eval": "yes",
+  "preregistered": "no",
+  "code_or_data_released": "no",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "no",
+ "relation_to_qwen_math_edit": "none",
+ "key_claims": [
+  {"claim": "Faults computed in float32 on BF16 weights leave nonzero low bits only on damaged weights, and the agent uses this cue to locate and exactly undo the damage.", "page": "PAGE 1", "quote": "only the damaged weights carry, a cue that a real failure"},
+  {"claim": "On unrounded weights, thirteen of fourteen sessions return every rescaled weight to its exact clean value.", "page": "PAGE 2", "quote": "in thirteen of these fourteen sessions it returns"},
+  {"claim": "A fixed grid-fit script written by the author recovers most of the agent's gain on unrounded SmolVLM weights.", "page": "PAGE 5", "quote": "and gains 40.63 of the agent’s 45.31 points."},
+  {"claim": "Gradient fitting (Adam, LoRA) recovers more accuracy than the hinted agent on rounded weights but restores almost no damaged weight.", "page": "PAGE 7", "quote": "Adam gains 36.46 points and LoRA 25.26, against"},
+  {"claim": "Swapped rows or columns, which preserve stored values, are not found unaided on either model.", "page": "PAGE 7", "quote": "Without a hint and within these budgets, the agent did not"},
+  {"claim": "The author recommends that weight-repair studies report the number format and include a rounded control.", "page": "PAGE 9", "quote": "weights, as our scaling and noise faults do. We recommend"}
+ ],
+ "limitations_stated": [
+  {"text": "Two models, one agent model, synthetic scenes and one family of photo questions; most LFM2-VL conditions are a single session.", "page": "PAGE 8", "quote": "We study two models, one agent model,"},
+  {"text": "The fraction hint, grid-fit scripts, histogram rule and gradient fits are post hoc comparisons.", "page": "PAGE 8", "quote": "the gradient fits on T4–T9 are post hoc comparisons."},
+  {"text": "Every audit depends on a clean reference, which real failures lack.", "page": "PAGE 8", "quote": "Every audit here depends on a clean"}
+ ],
+ "notes_for_review": "A careful audit showing that LLM-agent repair of planted VLM faults largely exploits a numerical artifact: float32 fault arithmetic leaves nonzero low bits on BF16 weights, and removing that trace (rounding) removes most of the repair. Includes random-edit controls, a placebo-hint control, fixed scripts, and Adam/LoRA fits, with weight-by-weight audit against clean checkpoints; the main hint test on six checkpoints gives a 19.01-point paired gain over placebo. Small sample sizes and many single-session conditions; the paper's methodological recommendation (report number format, include a rounded control) applies to other planted-fault WSP studies."
+}

@@ -1,0 +1,90 @@
+{
+ "agreement": 0.9010989010989011,
+ "kappa": 0.8118538938662991,
+ "per_field": {
+  "random_or_null_control": [
+   13,
+   13
+  ],
+  "non_llm_baseline": [
+   12,
+   13
+  ],
+  "finetune_comparison": [
+   10,
+   13
+  ],
+  "inference_only_fix_tested": [
+   12,
+   13
+  ],
+  "preregistered": [
+   13,
+   13
+  ],
+  "code_or_data_released": [
+   12,
+   13
+  ],
+  "full_test_set": [
+   10,
+   13
+  ]
+ },
+ "disagreements": [
+  [
+   "arxiv_2611.09559",
+   "inference_only_fix_tested",
+   "yes",
+   "no"
+  ],
+  [
+   "arxiv_2611.09559",
+   "full_test_set",
+   "unclear",
+   "no"
+  ],
+  [
+   "arxiv_2611.17246",
+   "finetune_comparison",
+   "no",
+   "yes"
+  ],
+  [
+   "arxiv_2611.17246",
+   "full_test_set",
+   "yes",
+   "unclear"
+  ],
+  [
+   "arxiv_2611.26408",
+   "non_llm_baseline",
+   "unclear",
+   "yes"
+  ],
+  [
+   "arxiv_2611.26408",
+   "finetune_comparison",
+   "no",
+   "unclear"
+  ],
+  [
+   "zenodo_24047726",
+   "full_test_set",
+   "yes",
+   "unclear"
+  ],
+  [
+   "zenodo_24373917",
+   "finetune_comparison",
+   "no",
+   "yes"
+  ],
+  [
+   "zenodo_24373917",
+   "code_or_data_released",
+   "yes",
+   "no"
+  ]
+ ]
+}

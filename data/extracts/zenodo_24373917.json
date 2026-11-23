@@ -1,0 +1,89 @@
+{
+  "key": "zenodo_24373917",
+  "title": "A published change to a small language model's weights leaves its default-mode math accuracy unchanged",
+  "authors": ["unknown (not stated in the deposited files)"],
+  "date": "2026-11-06",
+  "doc_type": "replication",
+  "wsp_role": ["read", "repair_or_edit", "write_from_scratch"],
+  "is_wsp": true,
+  "editor_models": ["GPT-6 Astra", "Claude Opus 5.5"],
+  "target_networks": [
+    {"name": "Qwen3.5-0.8B", "params": "0.8B", "kind": "LLM"},
+    {"name": "MinAtar policies (Breakout, Seaquest, Asterix)", "params": "unknown", "kind": "policy"},
+    {"name": "Kinetix car-driving policy", "params": "unknown", "kind": "policy"},
+    {"name": "Small DDPM shape model", "params": "unknown", "kind": "diffusion"},
+    {"name": "Character-level text model", "params": "unknown", "kind": "LLM"},
+    {"name": "9x9 Go network", "params": "unknown", "kind": "policy"}
+  ],
+  "domain": "math reasoning, reinforcement learning, games",
+  "tasks_benchmarks": ["MATH-500", "GSM8K", "AMC23", "Minerva", "MinAtar Breakout", "MinAtar Seaquest", "MinAtar Asterix", "Kinetix", "9x9 Go"],
+  "headline_result": {
+    "text": "The published Astra edit to Qwen3.5-0.8B, rebuilt bit for bit, changed default-mode (thinking off) accuracy by 0.0 +/- 1.25 points pooled over four math benchmarks, and the unedited model in default mode already reached 74-89% of the published thinking-mode gain; in thinking mode the edit does work (49.0%).",
+    "page": "FILE PAPER.md",
+    "quote": "Across them, accuracy changed by 0.0 ± 1.25 percentage points, and the unedited model in default mode already reached 74–89% of the published gain."
+  },
+  "evidence_quality": {
+    "random_or_null_control": "yes",
+    "non_llm_baseline": "yes",
+    "finetune_comparison": "no",
+    "inference_only_fix_tested": "yes",
+    "n_runs_or_seeds": "1 sample per problem on MATH-500, GSM8K and Minerva, 4 on AMC23; 5 repeats per game per model for network writing",
+    "full_test_set": "no",
+    "held_out_eval": "yes",
+    "preregistered": "no",
+    "code_or_data_released": "yes",
+    "peer_reviewed": "no"
+  },
+  "replicates_mit": "partial",
+  "relation_to_qwen_math_edit": "critiques",
+  "key_claims": [
+    {
+      "claim": "With thinking on, the published edit reproduces: 49.0% on every fifth MATH-500 problem against 45.0% published on those problems.",
+      "page": "FILE PAPER.md",
+      "quote": "On every fifth MATH-500 problem, the edited model scored 49.0%, with 33% of answers cut off at the token limit; the published score on those problems was 45.0%."
+    },
+    {
+      "claim": "The edited thinking-mode model beats the unedited default model by 4-9 points, at 5-11 times the tokens per answer.",
+      "page": "FILE PAPER.md",
+      "quote": "The edited thinking-mode model beats the unedited default model by 4–9 points, at 5–11 times the tokens per answer."
+    },
+    {
+      "claim": "A mechanical difference-of-means direction removal (no LLM) found a useful direction (17.0% vs 2.0% for a random direction) but scored about a third of the published edit.",
+      "page": "FILE PAPER.md",
+      "quote": "The simple recipe therefore found a useful direction, while a random direction did nothing. The published edit nevertheless scored about three times as high as this recipe."
+    },
+    {
+      "claim": "Zero-shot MinAtar network writing reproduced across two LLMs: 28 of 30 attempts beat the post's best 100M-step PPO baseline.",
+      "page": "FILE PAPER.md",
+      "quote": "Twenty-eight of 30 attempts beat the post's best 100-million-step training baseline."
+    },
+    {
+      "claim": "The Kinetix car edit succeeds equally on an all-zero or shuffled network, so it overrides rather than repairs the trained network.",
+      "page": "FILE PAPER.md",
+      "quote": "The same edit also succeeded in every episode when applied to a network with every weight set to zero, and when applied to a network with shuffled weights."
+    },
+    {
+      "claim": "Game identification from weights follows a row-length training footprint: a function-destroying decoy keeping only row lengths was read correctly 20 of 20 times at 96% confidence.",
+      "page": "FILE PAPER.md",
+      "quote": "It also succeeded in 20 of 20 readings of a decoy that retained only the row lengths while destroying the network's function, with the same reported confidence of 96%."
+    }
+  ],
+  "limitations_stated": [
+    {
+      "text": "Fewer samples per problem than the original and GSM8K subsampled.",
+      "page": "FILE PAPER.md",
+      "quote": "We used one sample per problem on MATH-500, GSM8K and Minerva and four on AMC23, whereas the post averaged two to sixteen; GSM8K used every third problem."
+    },
+    {
+      "text": "Only one statistical recipe for a non-LLM edit was tested, so it is a lower bound.",
+      "page": "FILE PAPER.md",
+      "quote": "We tested only one statistical recipe for finding an edit, so its performance is a lower bound on what such methods can achieve."
+    },
+    {
+      "text": "Default and thinking modes use different token limits, and default mode still fails on a third of MATH-500 problems.",
+      "page": "FILE PAPER.md",
+      "quote": "The comparison uses the model card's settings for each mode, including their different token limits, and default mode still fails on a third of MATH-500 problems."
+    }
+  ],
+  "notes_for_review": "The sharpest critique of MIT's Experiment 8: the 7.9% baseline is the model's loop-prone optional thinking mode, and simply leaving thinking off gives 43.8% on MATH-500, so the edit's practical gain is about 4-9 points at several times the compute. It also adds a non-LLM difference-of-means edit and random-direction control, decoy tests for weight reading, and an all-zero-network control for the car repair. Evidence is single-sample on a consumer GPU at half precision, authors are not named in the deposit, and the attached (AI-style) reviews ask that 'unchanged' be framed as a measured size and note a possible folder-name leak in the original Experiment 3 runs."
+}

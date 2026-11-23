@@ -1,0 +1,14 @@
+{"key": "zenodo_24047726",
+ "random_or_null_control": "yes",
+ "non_llm_baseline": "no",
+ "finetune_comparison": "no",
+ "inference_only_fix_tested": "no",
+ "preregistered": "yes",
+ "code_or_data_released": "yes",
+ "full_test_set": "unclear",
+ "evidence": {
+  "random_or_null_control": "TASKS.md: \"Each instance also has a CONTROL arm: the same prompt with every summary array's values randomly permuted across positions (structure destroyed, value statistics kept).\"",
+  "preregistered": "TASKS.md: \"WeightBench v0: weight-space tasks on small open models (pre-registered 2026-11-07, before any run)\"; RESULT.md: \"Rule (TASKS.md, sha in tasks.sha256, unchanged)\"",
+  "code_or_data_released": "Zenodo deposit itself (LEADERBOARD.md, RESULT.md, TASKS.md with per-cell results); harness.py/gen.py are referenced but not visible in the extracted text",
+  "full_test_set_note": "reading benchmark of n=24 constructed instances per task; T5 labels from \"the first 2000 MNIST test images\""
+ }}

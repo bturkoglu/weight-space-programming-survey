@@ -1,0 +1,28 @@
+{
+ "key": "arxiv_2611.21310",
+ "peripheral": false,
+ "operation": ["read", "edit"],
+ "protocol": "closed_loop",
+ "mechanism": ["solver_delegated"],
+ "scope": "external",
+ "editor_tier": ["open_weight"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": 3821000000,
+ "edited_fraction": "unclear",
+ "cost_reported": "round-robin runs took 4.7-42.7 minutes each, 374 minutes total; no $ and no matched baseline cost",
+ "wsp_evidence": {
+  "random_or_null_control": "no",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "no",
+  "full_test_set": "no",
+  "held_out_eval": "yes",
+  "multiple_runs": "yes",
+  "code_or_data_released": "yes"
+ },
+ "prereg": "none",
+ "llm_in_authoring_or_grading": "yes",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["simple_baseline_matches"],
+ "evidence_notes": "LLM-guided weight editing is the whole paper. A small open-weight analyst reads a topological digest (not raw weights) and picks among four affine operations, and ridge regression bakes the change into feed-forward weights (p.1-3), so solver_delegated and closed_loop. Largest target is Phi-3-mini at 3,821M parameters (Table 7). A category-aware heuristic matched the analyst and tuned heuristics matched or beat it (p.6). The three seeds resample data on the same weights (p.8). Claude Opus 5.5 helped analyse run outputs (Declaration, p.~9); code at github.com/amingolnari/weight-baking."
+}

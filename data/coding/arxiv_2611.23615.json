@@ -1,0 +1,28 @@
+{
+ "key": "arxiv_2611.23615",
+ "peripheral": false,
+ "operation": ["read", "edit"],
+ "protocol": "closed_loop",
+ "mechanism": ["code_or_tensor_tool"],
+ "scope": "external",
+ "editor_tier": ["frontier_proprietary"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": 450000000,
+ "edited_fraction": "about 1.7-1.8 million weights per patch (planted faults touch a stated share of SmolVLM's weights and 0.2% of LFM2-VL's)",
+ "cost_reported": "session budgets only (e.g. 20 minutes and eight scores per writing session); no $",
+ "wsp_evidence": {
+  "random_or_null_control": "yes",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "yes",
+  "inference_only_fix_tested": "no",
+  "full_test_set": "unclear",
+  "held_out_eval": "yes",
+  "multiple_runs": "yes",
+  "code_or_data_released": "no"
+ },
+ "prereg": "none",
+ "llm_in_authoring_or_grading": "no",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["numerical_artifact", "simple_baseline_matches"],
+ "evidence_notes": "WSP repair audit is the whole paper. GPT-6 Astra (Codex CLI) writes code that edits weights and gets scores for candidate patches (p.3), so code_or_tensor_tool and closed_loop. Repair relies on float32 low-bit traces on BF16 weights; rounding removes most of the gain (p.1, p.4), and a fixed grid-fit script recovers 40.63 of 45.31 points (p.5). Fixed rules, the placebo hint and Adam/LoRA are post hoc comparisons (p.8). No preregistration and no code link found."
+}

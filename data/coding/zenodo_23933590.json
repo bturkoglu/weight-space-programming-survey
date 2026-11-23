@@ -1,0 +1,28 @@
+{
+ "key": "zenodo_23933590",
+ "peripheral": true,
+ "operation": ["edit"],
+ "protocol": "open_loop",
+ "mechanism": ["none"],
+ "scope": "external",
+ "editor_tier": ["none"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": 355000000,
+ "edited_fraction": "single final-layer MLP edit per request (rank-limited); fraction not stated",
+ "cost_reported": "no",
+ "wsp_evidence": {
+  "random_or_null_control": "no",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "no",
+  "full_test_set": "no",
+  "held_out_eval": "yes",
+  "multiple_runs": "yes",
+  "code_or_data_released": "no"
+ },
+ "prereg": "none",
+ "llm_in_authoring_or_grading": "no",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["none_reported"],
+ "evidence_notes": "Theory paper motivated by the MIT blog (PAGE 2) in which all edits are computed by closed-form or convex solvers; it states the numerical editors are explicit algorithms, not tests of LLM capability, and that arithmetic costs do not show an LLM can execute the editor (PAGE 18), so no LLM editor and peripheral to WSP. Compared against ROME/AlphaEdit-style matched-location adaptations on GPT-2 and GPT-2 Medium (PAGE 23-24), 5 seeds per controlled family, 128 CounterFact requests per checkpoint. No preregistration, no code link and no LLM-use statement found."
+}

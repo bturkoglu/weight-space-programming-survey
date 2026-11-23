@@ -1,0 +1,14 @@
+{"key": "arxiv_2611.21432",
+ "random_or_null_control": "no",
+ "non_llm_baseline": "yes",
+ "finetune_comparison": "no",
+ "inference_only_fix_tested": "no",
+ "preregistered": "yes",
+ "code_or_data_released": "yes",
+ "full_test_set": "no",
+ "evidence": {
+  "non_llm_baseline": "p.1: \"We replace it by a sort: we take the 8 neurons whose activation has the smallest coefficient of variation\"; p.2 Table 1 arms lp, sort_k8, knap_k8 (all mechanical, no LLM editor)",
+  "preregistered": "p.2: \"The protocol, the arms and the verdict rule were committed before any number was produced.\"; p.4: \"The two pre-registered protocols ... are available ... at https://doi.org/10.5281/zenodo.24286137\"",
+  "code_or_data_released": "p.4: \"the code, the vectors u and v of all arms and the per-problem results are available, with this note, at https://doi.org/10.5281/zenodo.24286137\"",
+  "full_test_set_note": "p.2: \"on MATH-500 [4] and on the first 500 problems of the GSM8K test set\" (GSM8K subset); p.3: \"We did not test a constant shift along u ... a steering arm is the natural next control\""
+ }}

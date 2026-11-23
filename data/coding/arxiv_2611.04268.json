@@ -1,0 +1,28 @@
+{
+ "key": "arxiv_2611.04268",
+ "peripheral": false,
+ "operation": ["read", "edit"],
+ "protocol": "closed_loop",
+ "mechanism": ["code_or_tensor_tool"],
+ "scope": "external",
+ "editor_tier": ["none"],
+ "open_weight_editor_failed": "not_tested",
+ "target_params_max": null,
+ "edited_fraction": "proposed cap < 0.1% (no experiment run)",
+ "cost_reported": "no",
+ "wsp_evidence": {
+  "random_or_null_control": "no",
+  "non_llm_baseline": "no",
+  "finetune_comparison": "no",
+  "inference_only_fix_tested": "no",
+  "full_test_set": "no",
+  "held_out_eval": "no",
+  "multiple_runs": "no",
+  "code_or_data_released": "no"
+ },
+ "prereg": "none",
+ "llm_in_authoring_or_grading": "yes",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["none_reported"],
+ "evidence_notes": "Position paper with no experiments (p.1 'numerical conjectures ... are merely hypotheses'; p.8 'The next step is to run the experiments'); WSP is the whole paper. The proposed sandbox has the LLM call propose_edit(layer, slice, delta) and receive PSNR feedback (p.5), hence code_or_tensor_tool and closed_loop; the 100M UNet (p.7) is illustrative, so target size is null. 'Doubao' (an LLM) is listed as co-author (p.1); Table 1 (p.4) gives only expected yes/no editability, not numeric results."
+}

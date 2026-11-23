@@ -1,0 +1,52 @@
+{
+ "key": "arxiv_2611.21449",
+ "title": "Replicating and Extending Weight-Space Programming: Frontier LLMs Compile Programs into Weights and Read Input Layers",
+ "authors": ["Roksana Goworek", "Alexander Hickey", "Federico Nanni", "Martin O'Reilly"],
+ "date": "2026-11-16",
+ "doc_type": "replication",
+ "wsp_role": ["read", "write_from_scratch", "other"],
+ "is_wsp": true,
+ "editor_models": ["GPT-6 Astra", "Claude Opus 5.5", "Claude Opus 5", "Claude Opus 4.5", "GPT-5.6 Sol", "GPT-5.2", "Kimi-K3.1-Pro", "Kimi-K3", "DeepSeek-V4-Pro", "Qwen3.8-27B"],
+ "target_networks": [
+  {"name": "MinAtar game policy MLP (600 inputs, 2x32 hidden, 6 outputs)", "params": "20,486", "kind": "policy"},
+  {"name": "MNIST MLP (784 inputs, 2x32 hidden, 10 outputs)", "params": "unknown", "kind": "MLP"},
+  {"name": "small shape diffusion models (from MIT post)", "params": "unknown", "kind": "diffusion"},
+  {"name": "Olmo 3 190M (clean vs poisoned)", "params": "190M", "kind": "LLM"},
+  {"name": "Qwen3.5-0.8B persona/backdoor adapters", "params": "0.8B base", "kind": "LLM"}
+ ],
+ "domain": "games (MinAtar), vision (MNIST), interpretability and model auditing / security",
+ "tasks_benchmarks": ["MinAtar Breakout", "MinAtar Seaquest", "MinAtar Asterix", "Breakout variants (left-right swapped, upside down)", "MNIST and rotated MNIST", "game-network identification (Breakout, Freeway, Pong, Pacman)", "three new games (Whac-A-Mole, reverse Space Invaders, middle-row shooter)", "poisoned Olmo 3 190M detection (<SUDO> trigger)", "malicious/backdoored adapter detection"],
+ "headline_result": {
+  "text": "Astra's tool-free Breakout networks scored 514, 550 and 307 (MIT reported 517), but on MNIST its written networks averaged 50%, below an 82% template classifier, and weight reading mostly reflected input-layer layout.",
+  "page": "PAGE 1",
+  "quote": "Astra’s networks for the game Breakout scored 514, 550 and 307 across three runs (the original reported 517), and scored just as well on two modified versions of Breakout that exist nowhere else"
+ },
+ "evidence_quality": {
+  "random_or_null_control": "yes",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "yes",
+  "inference_only_fix_tested": "no",
+  "n_runs_or_seeds": "1 to 5 runs per model and task (3 for most Astra conditions; single run for Python programs)",
+  "full_test_set": "yes",
+  "held_out_eval": "yes",
+  "preregistered": "no",
+  "code_or_data_released": "no",
+  "peer_reviewed": "no"
+ },
+ "replicates_mit": "yes",
+ "relation_to_qwen_math_edit": "critiques",
+ "key_claims": [
+  {"claim": "Weight writing reproduces and is not memorized: Astra's networks for unseen Breakout variants averaged 515, while its standard-game network scored near zero on them.", "page": "PAGE 3", "quote": "The network Astra wrote for the standard Breakout game scores just 0.5 and 0.0 on these variations, while the networks it wrote for these custom variations averaged 515 on both"},
+  {"claim": "Models could write good policies as Python a generation before they could write them as weights; written networks behave as compiled programs and decompile exactly into Python.", "page": "PAGE 6", "quote": "Both programs choose the same move as the written network in 100% of the 49,189 game states we tested, and over 1,000 games they score 502.9 on average, exactly as the network does."},
+  {"claim": "On MNIST, a task with no program to compile, Astra's written networks averaged 49.6%, below an 82.0% template baseline and a 96.7% trained network.", "page": "PAGE 8", "quote": "A network of this architecture trained on the 60,000 training images reaches 96.7%. A much simpler baseline, which compares each image with the average image of each digit, reaches 82.0%."},
+  {"claim": "Weight reading is mostly reading the first-layer layout; on three new games Astra recovered layout but mostly missed mechanics, and shuffled weights drop identification to chance.", "page": "PAGE 8", "quote": "On three new games we trained ourselves, Astra recovered the lay- out but mostly missed the mechanics, such as which action does what, and often named a familiar game when the mechanics did not fit."},
+  {"claim": "Weight-only auditing is shallow: Astra flagged the training-poisoned model in 10/10 runs, the fine-tune-poisoned one in 7/10, and malicious adapters in 23/32, but never found the trigger or behaviour.", "page": "PAGE 1", "quote": "but it never found the trigger or described the malicious behaviour."},
+  {"claim": "The authors cite critiques that the Qwen maths gain comes from stopping looping and shrinks under other sampling settings; they did not re-run that experiment.", "page": "PAGE 8", "quote": "The Qwen maths gain comes from stop- ping the model looping rather than improving its maths ability, and it shrinks sharply under other sampling settings (Pyke, 2026)."}
+ ],
+ "limitations_stated": [
+  {"text": "Three-day sprint; only some MIT experiments replicated; code written by the evaluated model families and not independently reviewed.", "page": "PAGE 16", "quote": "The code was written primarily by Claude Opus 5.5 and GPT-6 Astra, the same model families we evaluate, and has not been independently reviewed."},
+  {"text": "Few runs per condition and high run-to-run variance.", "page": "PAGE 16", "quote": "Most results come from one to five runs per model and task (a single run for the Python programs), and scores vary between runs."},
+  {"text": "Only small networks and one fuzzy task; proprietary models may change; the decompilation restrictions were instructions, not enforced.", "page": "PAGE 17", "quote": "All the networks we studied are small, and we tested only one fuzzy task, so whether these abilities extend further remains open."}
+ ],
+ "notes_for_review": "Independent replication (Alan Turing Institute working note) that confirms MIT's MinAtar weight-writing and game-identification results with shuffled-weight controls and novel game variants, and then narrows them: written networks are sparse compiled programs, a template classifier beats Astra on MNIST, and reading mostly recovers input-layer layout. The PPO baselines are the original authors' and the note flags them as probably under-tuned. Evidence is 1-5 runs per condition and no code release is stated. The Qwen MATH-500 edit is not re-run; it is critiqued only by citing blog commentary."
+}

@@ -1,0 +1,28 @@
+{
+ "key": "arxiv_2611.13758",
+ "peripheral": false,
+ "operation": ["read", "write", "edit"],
+ "protocol": "both",
+ "mechanism": ["code_or_tensor_tool"],
+ "scope": "external",
+ "editor_tier": ["frontier_proprietary", "open_weight"],
+ "open_weight_editor_failed": "no",
+ "target_params_max": 941189,
+ "edited_fraction": "unclear (whole network in the write-from-zero experiment; edit sizes not reported as a fraction)",
+ "cost_reported": "Writing a network: 8.50-9.08 USD (Opus) and 38-39 min wall-clock vs 2-5 s of A100 gradient training",
+ "wsp_evidence": {
+  "random_or_null_control": "yes",
+  "non_llm_baseline": "yes",
+  "finetune_comparison": "yes",
+  "inference_only_fix_tested": "no",
+  "full_test_set": "yes",
+  "held_out_eval": "yes",
+  "multiple_runs": "yes",
+  "code_or_data_released": "no"
+ },
+ "prereg": "none",
+ "llm_in_authoring_or_grading": "yes",
+ "unexecuted_numbers": "no",
+ "failure_modes": ["proxy_overfitting", "simple_baseline_matches", "layout_or_prior_fallback"],
+ "evidence_notes": "LLM reading, editing and writing of EEG/ECG classifiers is the whole study (p.1-2). Except for reading (exp. 1, weights as text, no tools), edits and writing go through a persistent sandboxed Python session holding the tensors, with and without evaluate/pass feedback (p.4), so code_or_tensor_tool and both protocols; DeepSeek matched Opus on EEG repair (Table III, p.6), so open-weight did not clearly fail. Success rules were 'fixed in advance' (p.2, p.7) but no registry, timestamp or hash is given, so prereg is coded none; gpt-oss-120b grades all textual answers and Claude helped with figures and consistency checks (p.8). Prompts and reasoning traces are on a project website (p.2) but no code release link is given."
+}
