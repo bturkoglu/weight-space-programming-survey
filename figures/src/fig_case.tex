@@ -1,7 +1,7 @@
 % Fig. 6: Qwen3.5-0.8B MATH-500 case study, full set (500 x 4). (a) gain vs unedited with 95% CI; (b) accuracy vs tokens.
 \begin{tikzpicture}
 \begin{axis}[wspaxis,name=g,width=8.8cm,height=6.0cm,xbar,bar width=8pt,bar shift=0pt,xmin=0,xmax=50,ymin=0.4,ymax=6.6,
-  ytick={1,...,6},yticklabels={LoRA on own solutions (C1),Evolution strategy (median seed),Evolution strategy (best seed),LoRA on Qwen3.5-4B solutions (C2),Thinking off (no edit),GPT-6 Astra edit},
+  ytick={1,...,6},yticklabels={LoRA on own solutions (L1),Evolution strategy (median seed),Evolution strategy (best seed),LoRA on Qwen3.5-4B solutions (L2),Thinking off (no edit),GPT-6 Astra edit},
   y tick label style={font=\scriptsize},xmajorgrids,xlabel={Gain over the unedited model (points, 95\% CI)},
   title={(a) Gain on MATH-500 (unedited: 7.8\%)},title style={at={(0,1)},anchor=south west,xshift=-3.5cm},
   error bars/x dir=both,error bars/x explicit,error bars/error bar style={line width=0.7pt,cInk},error bars/error mark options={rotate=90,mark size=2pt,cInk}]
@@ -22,10 +22,10 @@
 \addplot[only marks,mark=*,mark size=3pt,draw=white,line width=0.8pt,fill=cYellow] coordinates {(7.782,48.7)};
 \addplot[only marks,mark=*,mark size=3pt,draw=white,line width=0.8pt,fill=cOrange] coordinates {(21.638,51.3)};
 \node[font=\tiny,anchor=east] at (axis cs:30.2,7.8) {unedited};
-\node[font=\tiny,anchor=east] at (axis cs:27.0,18.7) {LoRA (C1)};
+\node[font=\tiny,anchor=east] at (axis cs:27.0,18.7) {LoRA (L1)};
 \node[font=\tiny,anchor=east] at (axis cs:26.7,27.4) {evolution strategy};
 \node[font=\tiny,anchor=west] at (axis cs:8.6,48.7) {thinking off};
-\node[font=\tiny,anchor=north] at (axis cs:18.214,43.2) {LoRA (C2)};
+\node[font=\tiny,anchor=north] at (axis cs:18.214,43.2) {LoRA (L2)};
 \node[font=\tiny,anchor=west] at (axis cs:22.4,51.3) {Astra edit};
 \end{axis}
 \end{tikzpicture}

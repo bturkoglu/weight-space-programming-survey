@@ -94,7 +94,7 @@
  },
  {
   "key": "zenodo_23933590",
-  "date": "2026-11-03",
+  "date": "2026-11-04",
   "title": "The Mathematics of Weight-Space Programming",
   "authors": "Miquel Noguer i Alonso",
   "url": "https://doi.org/10.5281/zenodo.23933590",
@@ -125,7 +125,7 @@
  },
  {
   "key": "arxiv_2611.08647",
-  "date": "2026-11-04",
+  "date": "2026-11-05",
   "title": "IWIBench: Evaluating Gradient-Free Model Driven Intra-weight Injection",
   "authors": "Chris von Csefalvay; Pranav Doma; Achyuthan Unni Krishnan; Tamás Földi",
   "url": "https://arxiv.org/abs/2611.08647",
@@ -528,7 +528,7 @@
  },
  {
   "key": "zenodo_24373915",
-  "date": "2026-11-06",
+  "date": "2026-11-19",
   "title": "Two language models can read and change neural networks, but reliability depends on the task",
   "authors": "Mutuo Research AI scientist",
   "url": "https://doi.org/10.5281/zenodo.24373915",
@@ -559,7 +559,7 @@
  },
  {
   "key": "zenodo_24373917",
-  "date": "2026-11-06",
+  "date": "2026-11-19",
   "title": "A published change to a small language model's weights leaves its default-mode math accuracy unchanged",
   "authors": "Mutuo Research AI scientist",
   "url": "https://doi.org/10.5281/zenodo.24373917",
@@ -1303,7 +1303,7 @@
  },
  {
   "key": "arxiv_2611.05798",
-  "date": "2026-11-13",
+  "date": "2026-11-04",
   "title": "Function-Preserving Audits of Visual Weight Readers",
   "authors": "Sungguk Cha; Mintae Kim; Youngsub Han; Byoung-Ki Jeon; Sangyeob Lee",
   "url": "https://arxiv.org/abs/2611.05798",
@@ -2047,7 +2047,7 @@
  },
  {
   "key": "arxiv_2611.23615",
-  "date": "2026-11-19",
+  "date": "2026-11-17",
   "title": "Weight Space Programming for Vision Language Model Repair",
   "authors": "Avinash Goutham Aluguvelly",
   "url": "https://arxiv.org/abs/2611.23615",
@@ -2171,7 +2171,7 @@
  },
  {
   "key": "zenodo_24198536",
-  "date": "2026-11-19",
+  "date": "2026-11-13",
   "title": "The Mathematics of Weight-Space Programming: Behavioral Geometry, Constructive Synthesis, and Proof-Carrying Neural Edits",
   "authors": "Derrick Macharia",
   "url": "https://doi.org/10.5281/zenodo.24198536",
@@ -2202,7 +2202,7 @@
  },
  {
   "key": "zenodo_24377674",
-  "date": "2026-11-19",
+  "date": "2026-11-20",
   "title": "Edits, sparse autoencoders and jet sets for \"Weight-space programming and mechanistic interpretability for model editing in particle physics\"",
   "authors": "Raphaël Bonnet-Guerrini; Johann Ioannou-Nikolaides; Troels Petersen",
   "url": "https://doi.org/10.5281/zenodo.24377674",
@@ -2233,7 +2233,7 @@
  },
  {
   "key": "arxiv_2611.19292",
-  "date": "2026-11-20",
+  "date": "2026-11-14",
   "title": "Zero-Shot Weight-Space Programming for Prediction and Classification of Target Variables in Structured Datasets",
   "authors": "Eduardo C. Garrido-Merchán",
   "url": "https://arxiv.org/abs/2611.19292",
@@ -2419,7 +2419,7 @@
  },
  {
   "key": "zenodo_24058693",
-  "date": "2026-11-21",
+  "date": "2026-11-08",
   "title": "Knowing Is Not Committing: Replicating MIT's weight-space edit and programming a truth-gated reflex into a 0.8B reasoning model (report)",
   "authors": "Dave Uhlemann",
   "url": "https://doi.org/10.5281/zenodo.24058693",
